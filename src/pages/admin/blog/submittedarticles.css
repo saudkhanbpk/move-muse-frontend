@@ -1,0 +1,51 @@
+.submitmnmmain {
+    background-color: #F2E7CB;
+    height: 300vh;
+}
+
+.imagehandwrite {
+    width: 80px;
+}
+
+.card {
+    border: 2px solid #FFF7D8;
+    background-color: #FFF7D8;
+    width: 800px;
+    padding: 5px;
+    border: 2px #9BB09D solid;
+}
+
+.cardunderbtns {
+    background: #ffff;
+}
+
+.minicard {
+    width: 800px;
+    border: 2px #9BB09D solid;
+    background: #FFF7D8;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .submitmnmmain {
+        background-color: #F2E7CB;
+        height: 860vh;
+    }
+
+    .card {
+
+        width: 250px;
+    }
+
+    .arrowline {
+        width: 200px;
+    }
+
+    .btns {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .minicard {
+        width: 250px;
+    }
+}

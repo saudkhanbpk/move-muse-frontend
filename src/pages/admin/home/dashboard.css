@@ -1,0 +1,49 @@
+.dashboardmain {
+    background: #F5DEA8;
+}
+
+
+.textand4images{
+    width: 80%;
+}
+.imgmagic {
+    width: 300px;
+    margin-top: 30px;
+}
+.h2andborder{
+    width: 200px;
+   }
+   
+
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+ 
+    .useragrementsection {
+        width: 200px;
+    }
+    .firsttowimage{
+       width: 200px;
+    }
+    .borderbottom{
+        width: 200px;
+    }
+    .textand4images{
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        
+
+    }
+   
+   .mainimgmagic{
+    width: 220px;
+    margin: auto;
+    display: block;
+   }    
+   .imgmagic {
+    width: 220px !important;
+    
+}
+
+   
+}

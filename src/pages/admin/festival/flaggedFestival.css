@@ -1,0 +1,50 @@
+.festival-container{
+    background-color: #FFF7D8;
+    padding: 50px;
+}
+.main2{
+    margin-left: 85px;
+}
+
+.festival-card{
+    width: 100%;
+}
+
+.div1{
+    width: 100px;
+    height: 100px;
+    background-color: #F5DEA8;
+}
+
+.div2{
+    width: 100px;
+    height: 100px;
+    background-color: #D7D6D6;
+}
+
+.div1-container{
+    border: 1px solid #231F20;
+}
+.div2-container{
+    border: 1px solid #231F20;
+}
+
+.FestivalCard{
+    min-width: 300px;
+}
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .festival-container{
+        background-color: #FFF7D8;
+        padding: 0px;
+       
+    }
+    .main2{
+        margin-left: 0px;
+    }
+   .festival_cards5{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    max-height: 100%;
+   }
+}

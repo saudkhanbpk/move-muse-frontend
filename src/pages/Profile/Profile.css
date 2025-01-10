@@ -1,0 +1,638 @@
+.profile_maindiv {
+  background-color: #f6d46b;
+}
+
+.profileUser {
+  position: relative;
+}
+
+.editImg {
+  mix-blend-mode: multiply;
+}
+
+.profile_Info h3 {
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  font-weight: bold;
+  width: 60%;
+  margin: auto;
+  border-bottom: 2px solid rgb(5, 90, 5);
+}
+
+.profile_Info h3::after {
+  content: "";
+  position: absolute;
+  top: 80%;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.profile_Info h3::before {
+  content: "";
+  position: absolute;
+  top: 120%;
+  left: 0px;
+  width: 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  mix-blend-mode: multiply;
+  background-image: url("../../img//icons/dropdown.png");
+}
+
+.profile_tablediv {
+  margin-top: 40px;
+  padding: 10px;
+}
+
+.logserivce {
+  width: 90px;
+  mix-blend-mode: multiply;
+}
+
+.logosimg {
+  width: 100px;
+}
+
+.plus_icon {
+  border: 1px solid purple;
+  color: purple;
+  cursor: pointer;
+}
+
+.icon-bell {
+  width: 40px;
+}
+
+.maintwo {
+  background-color: #fffae7;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.icon-arrow {
+  width: 40px;
+}
+
+.labelinfo {
+  width: 75%;
+}
+
+.background-color {
+  background-color: #fff7d8;
+}
+
+.background {
+  background-color: #fff7d8;
+}
+
+.img-dots {
+  width: 400px;
+  height: 400px;
+}
+
+.shape {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #f6d46b;
+}
+
+.imgUploadBg {
+  background-color: #fff7d8;
+}
+
+.abs {
+  position: absolute;
+  top: 100px;
+  right: 590px;
+  z-index: 50px;
+}
+
+.position {
+  position: absolute;
+  top: 40px;
+  padding: 10px;
+  align-items: center;
+  margin-left: 10px;
+  margin-bottom: 40px;
+}
+
+.shape2 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #99c4b8;
+  position: absolute;
+  bottom: 180px;
+  right: 80px;
+}
+
+.abss {
+  position: absolute;
+  bottom: 70px;
+  right: 40px;
+}
+
+.input-like {
+  width: 0%;
+  min-width: 250px;
+  margin-bottom: 6px;
+  border: none;
+  border-bottom: 2px solid #480249;
+  /* Change color and style as needed */
+  background: none;
+  outline: none;
+  box-shadow: none;
+  /* Remove any default shadow if applied */
+  font-size: 1rem;
+}
+
+.labelDatausername {
+  width: 20%;
+  color: purple;
+}
+
+.labelData {
+  width: 20%;
+  color: purple;
+}
+
+.plusicon {
+  width: 30px;
+  height: 20px;
+  margin-top: 40px;
+}
+
+.rell {
+  position: relative;
+}
+
+.absss {
+  position: absolute;
+  top: -20px;
+  left: 220px;
+}
+
+.maincform {
+  padding-top: 30px;
+  max-width: 900px;
+}
+
+.mainconform {
+  padding-top: 30px;
+  width: fit-content;
+  height: 760px;
+}
+
+.bg-color {
+  background-color: #aa02ff;
+}
+
+.plusss {
+  width: 15px;
+  height: 15px;
+  margin-bottom: 40px;
+}
+
+.cardimgadd {
+  width: 20px;
+  height: 20px;
+}
+
+.design {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #000;
+}
+
+.arrow {
+  width: 25px;
+  height: 20px;
+  margin-bottom: 10px;
+  background: #000;
+}
+
+.ull {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.bggg {
+  background-color: #e2e2e2;
+}
+
+.kudosbg {
+  background-color: #f5dea8;
+}
+
+.arrowrightmainrlft {
+  width: 100%;
+}
+
+.arrow-right {
+  width: 70px;
+  height: 70px;
+}
+
+.arrow-righttt2 {
+  width: 50px;
+  height: 50px;
+  margin-right: 30px;
+}
+
+.kusosimg {
+  width: 100px;
+  height: 100px;
+}
+
+.blend {
+  /* mixBlendMode : "multiply" */
+  mix-blend-mode: multiply;
+}
+
+/* this css is for kudos recived menus */
+.imgstyle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #2c2843;
+}
+
+.onediv {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.parentposition {
+  position: relative;
+  width: 120px;
+}
+
+.childposition {
+  position: absolute;
+  top: 12px;
+  left: 105px;
+}
+
+.childposition2 {
+  position: absolute;
+  top: 27px;
+  left: 100px;
+}
+
+.imgstyle1 {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #afdbe4;
+}
+
+.twodiv {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.onediv2 {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.imgstyle2 {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #7bdbd7;
+}
+
+.threediv {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.imgstyle3 {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(200deg, #7d8080, #d6e9ec, #e2e222);
+}
+
+.flage {
+  width: 50px;
+  height: 50px;
+  mix-blend-mode: multiply;
+}
+
+.position {
+  position: relative;
+}
+
+.positionabs {
+  position: absolute;
+}
+
+.cards {
+  background-color: #fff;
+  width: 280px;
+  height: 280px;
+  border-top-left-radius: 10px;
+  /* border-top-right-radius: 10px; */
+  /* border-bottom-right-radius: 10px; */
+  border-bottom-left-radius: 0px;
+  outline: none;
+  border: 2px solid white;
+}
+
+.cardsimg {
+  width: 280px;
+  height: 280px;
+  object-fit: contain;
+}
+
+.arrowfavouritemain {
+  display: flex;
+  justify-content: end;
+  margin-right: 30px;
+  width: 95%;
+}
+
+.arrow-rightfavourite {
+  width: 50px;
+  height: 50px;
+  margin-left: 70px;
+}
+
+.heartimg {
+  width: 80px;
+  height: 80px;
+}
+
+.form_Profile {
+  align-items: center;
+  border: 2px solid purple;
+  height: fit-content;
+}
+
+.cardtitle {
+  width: 100%;
+  height: 100%;
+  justify-content: start;
+  display: flex;
+  align-items: center;
+}
+
+.imghand {
+  width: 260px;
+}
+
+.flagesection {
+  width: 80%;
+}
+
+.custom-card.small {
+  width: 200px;
+}
+
+.custom-card.large {
+  width: 250px;
+}
+
+.submitform {
+  background: #fffae7;
+  width: 100px;
+  height: 50px;
+  border-radius: 10%;
+  border: 1px solid #800080;
+}
+
+.mainplusdiv {
+  width: 60%;
+}
+
+.kudosimage {
+  width: 145px;
+}
+
+.arrowmainn {
+  width: 220px;
+}
+
+.mobresp {
+  font-size: 24px;
+}
+
+.advancemainimg {
+  width: 100%;
+}
+
+.advancemaintext {
+  width: 100%;
+}
+
+.select-w {
+  width: 50%;
+}
+
+.dropdown-container {
+  width: 100%;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .custom-card.small,
+  .custom-card.large {
+    width: 230px !important;
+  }
+  .favouritearticle {
+    max-width: 100%;
+  }
+  .attendance1 {
+    width: 50%;
+    /* height: 30%; */
+    display: flex;
+    justify-content: end;
+  }
+
+  .heleritextmain {
+    width: 100%;
+  }
+
+  .arrowmainn {
+    width: 220px;
+  }
+
+  .mobilcards {
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+    /* border: 5px solid red; */
+  }
+
+  .logserivce {
+    width: 40px;
+    mix-blend-mode: multiply;
+  }
+
+  .textsize {
+    font-size: 10px;
+  }
+
+  .maincform {
+    height: 100%;
+  }
+
+  .mainconform {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .inputmbl {
+    width: 170px;
+  }
+
+  /* .form_Profile {
+    width: 80% !important;
+  } */
+  .labelinfo {
+    width: 80%;
+    padding: 10px;
+  }
+
+  .arrow-right {
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+  }
+
+  .arrowfavouritemain {
+    width: 65%;
+  }
+
+  .imghand {
+    width: 220px;
+  }
+
+  .maintwo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+  }
+
+  .icon-arrow {
+    width: 20px;
+    height: 20px;
+  }
+
+  .arrow-righttt2 {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+  }
+
+  .arrowrightcnfrm {
+    width: 83%;
+  }
+
+  .stars {
+    margin-left: 50px;
+  }
+
+  .comfirmpastmain {
+    width: 50%;
+  }
+
+  .kusostext {
+    padding: 10px;
+  }
+
+  .kusoscards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .kudosimage {
+    width: 100px;
+  }
+
+  .mwid {
+    width: 260px;
+  }
+
+  .responsewid {
+    width: 60px;
+    margin-top: 10px;
+  }
+
+  /* .mainplusdiv {
+    width: 60%;
+    margin-top: 10px;
+  } */
+  .plus_icon {
+    display: flex;
+    justify-content: end;
+  }
+}
+
+.kudosimage {
+  width: 100px;
+}
+
+.mwid {
+  width: 260px;
+}
+
+.responsewid {
+  width: 60px;
+  margin-top: 10px;
+}
+
+.mainplusdiv {
+  width: 60%;
+  margin-top: 10px;
+}
+
+.plus_icon {
+  display: flex;
+  justify-content: end;
+}
+
+.mobresp {
+  padding-left: 0px;
+  font-size: 16px;
+}
+
+.lastcards {
+  margin-left: 16px;
+}
+
+@media (max-width: 576px) {
+  .font-size-13 {
+    font-size: 13px;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1089px) {
+  .kusoscards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+  }
+}

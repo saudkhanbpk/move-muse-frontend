@@ -1,0 +1,57 @@
+.imageuser_div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 37px;
+  padding: 10px;
+  margin-left: 50px;
+}
+
+.count_img {
+  position: relative;
+}
+.count_img span {
+  width: 40px;
+  height: 40px;
+  display: block;
+  position: absolute;
+  top: 0;
+  font-size: 16px;
+  right: -5px;
+  text-align: center;
+  padding: 7px;
+  z-index: 9;
+  border-radius: 50%;
+  background-color: bisque;
+  color: rgb(118, 77, 1);
+}
+.More_count {
+  background-color: lightpink;
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+  font-weight: bold;
+  font-size: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.festival-name {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.input_div{
+position: relative;
+
+}
+.search_div{
+position: absolute;
+top: 143%;
+right: 100px;
+font-size: 30px;
+;
+}
+

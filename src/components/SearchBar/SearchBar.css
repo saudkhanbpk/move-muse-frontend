@@ -1,0 +1,84 @@
+/* SearchBar.css */
+
+/* Container for any search bar */
+.search-bar-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #f7f7f7; /* Adjust the color to match your design */
+  }
+  
+  /* The main input group that holds dropdowns and input field */
+  .search-bar-input-group {
+    width: 100%;
+    max-width: 600px; /* Adjust this as needed for your design */
+    display: flex;
+    border-radius: 0.25rem;
+    overflow: hidden;
+  }
+  
+  /* Styles for the dropdowns and input fields */
+  .search-bar-dropdown,
+  .search-bar-input {
+    border: 1px solid #ced4da;
+    margin-left: -1px; /* This removes double borders between elements */
+  }
+  
+  /* Specific styles for the first dropdown to round the left corners */
+  .search-bar-dropdown:first-child {
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+  }
+  
+  /* Styles for the search button to round the right corners */
+  .search-bar-button {
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    border: 1px solid #ced4da;
+  }
+  
+  /* Make sure the input fields take up the available space */
+  .search-bar-input {
+    flex-grow: 1;
+  }
+  
+  /* Specific styles for the search button */
+  .search-bar-button {
+    cursor: pointer;
+    background-color: #ffffff;
+    border: none;
+  }
+  
+  .search-bar-button:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .search-bar-button:active {
+    background-color: #e9ecef;
+  }
+  
+  /* Responsive adjustments can be added as needed for different screen sizes */
+  @media (max-width: 768px) {
+    .search-bar-input-group {
+      flex-direction: column;
+      max-width: none;
+    }
+  
+    .search-bar-dropdown,
+    .search-bar-input,
+    .search-bar-button {
+      width: 100%;
+      margin-left: 0;
+    }
+  
+    .search-bar-dropdown,
+    .search-bar-input {
+      border-radius: 0.25rem;
+      margin-bottom: 5px; /* Adds space between stacked elements */
+    }
+  
+    .search-bar-button {
+      border-radius: 0.25rem;
+    }
+  }
+  

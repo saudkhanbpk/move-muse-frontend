@@ -1,0 +1,127 @@
+import React from 'react'
+import plus1 from '../../../img/icons/plusss.png'
+import arrowright from '../../../img/icons/arrowright.png'
+import blueplus from '../../../img/icons/blueplus.png'
+import plus2 from '../../../img/icons/we_want_your_feedback.png'
+
+function MyFPevents() {
+    return (
+        <div className='p-5 ' style={{backgroundColor: '#fff7d8'}}>
+            <div className='d-flex justify-content-between '>
+                <h2 className='text-violet fw-bold'>My Future <br />
+                    Events</h2>
+                <div className='d-flex gap-3'>
+                    <div
+                        className='rounded-4 position-relative d-flex flex-column justify-content-end align-items-start p-3 shadow'
+                        style={{ backgroundColor: '#72559f', width: '250px', height: '250px' }}
+                    >
+                        <img
+                            src={plus1}
+                            alt='plus icon'
+                            width={20}
+                            height={20}
+                            className='position-absolute top-0 end-0 m-2'
+                        />
+                        {/* Bottom Start Text */}
+                        <h5 className='text-white fw-bold mb-2 ms-2'>
+                            Love Kiz
+                        </h5>
+                    </div>
+                    <div
+                        className='rounded-4 position-relative d-flex flex-column justify-content-end align-items-start p-3 shadow'
+                        style={{ backgroundColor: '#e2e2e2', width: '250px', height: '250px' }}
+                    >
+                        <img
+                            src={blueplus}
+                            alt='plus icon'
+                            width={20}
+                            height={20}
+                            className='position-absolute top-0 end-0 m-2'
+                        />
+                        {/* Bottom Start Text */}
+                        <h5 className='text-white fw-bold mb-2 ms-2'>
+                            Swing World
+                        </h5>
+                    </div>
+                    <div
+                        className='rounded-4 position-relative d-flex flex-column justify-content-end align-items-start p-3 shadow'
+                        style={{ backgroundColor: '#ede4da', width: '300px', height: '200px' }}
+                    >
+                        <img
+                            src={plus1}
+                            alt='plus icon'
+                            width={25}
+                            height={25}
+                            className='position-absolute top-0 end-0 m-2'
+                        />
+                        {/* Bottom Start Text */}
+                        <h5 className='text-white fw-bold mb-2 ms-2'>
+                            Salsamania
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div className='self-end d-flex my-5   justify-content-end w-100'>
+            <img src={arrowright} alt='arrow' width={50}/>
+            </div>
+            <div className='d-flex justify-content-between '>
+                <h2 className='text-violet fw-bold'>My Confirmed<br/> Past Events</h2>
+                <div className='d-flex gap-3'>
+                    <div
+                        className='rounded-4 position-relative d-flex flex-column justify-content-end align-items-start p-3 shadow'
+                        style={{ backgroundColor: '#e2e2e2', width: '250px', height: '250px' }}
+                    >
+                        <img
+                            src={blueplus}
+                            alt='plus icon'
+                            width={20}
+                            height={20}
+                            className='position-absolute top-0 end-0 m-2'
+                        />
+                        {/* Bottom Start Text */}
+                        <h5 className='text-black fw-bold mb-2 ms-2'>
+                        Kiz in the 6
+                        </h5>
+                    </div>
+                    <div
+                        className='rounded-4 position-relative d-flex flex-column justify-content-end align-items-start p-3 shadow'
+                        style={{ backgroundColor: '#aa02ff', width: '250px', height: '250px' }}
+                    >
+                        <img
+                            src={plus1}
+                            alt='plus icon'
+                            width={20}
+                            height={20}
+                            className='position-absolute top-0 end-0 m-2'
+                        />
+                        {/* Bottom Start Text */}
+                        <h5 className='text-white fw-bold mb-2 ms-2'>
+                        Learning & Development Community
+                        </h5>
+                    </div>
+                    <div
+                        className='rounded-4 position-relative d-flex flex-column justify-content-end align-items-start p-3 shadow'
+                        style={{ backgroundColor: '#95b1a9', width: '300px', height: '250px' }}
+                    >
+                        <img
+                            src={plus2}
+                            alt='plus icon'
+                            width={150}
+                            
+                            className='position-absolute top-0'
+                        />
+                        {/* Bottom Start Text */}
+                        <h5 className='text-white fw-bold mb-2 ms-2'>
+                        Bachata mi gente
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div className='self-end d-flex my-5   justify-content-end w-100'>
+            <img src={arrowright} alt='arrow' width={50}/>
+            </div>
+        </div>
+    )
+}
+
+export default MyFPevents

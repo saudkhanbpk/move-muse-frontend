@@ -1,0 +1,22 @@
+.blog-container-hero {
+  background-color: #f6d46b;
+}
+
+.regular-search-container {
+  background-color: #fff7d8;
+}
+
+.choose-category-container {
+  max-width: 300px;
+}
+
+.topic-card .topic-heading {
+  font-family: "Dancing Script", cursive;
+}
+.topic-heading {
+  font-family: "Dancing Script", cursive;
+}
+
+.move-and-mouse-color {
+  color: #545454 !important;
+}

@@ -1,0 +1,32 @@
+.flagged-heading {
+  color: #013f3f;
+}
+.FlagedReviewsimg{
+  padding-left: 90px;
+}
+.amount {
+  color: #9d1c19;
+}
+
+.primary-div-bg {
+  background-color: #fff7d8;
+}
+
+.color-card-text {
+  color: #013f3f;
+}
+
+.cardInfo {
+  border: 3px solid #9bb09d;
+  background-color: #f2e7cb;
+  max-width: 800px;
+}
+
+.cardInfo .title {
+  color: #480249;
+}
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .FlagedReviewsimg{
+    padding-left: 0px;
+  }
+}

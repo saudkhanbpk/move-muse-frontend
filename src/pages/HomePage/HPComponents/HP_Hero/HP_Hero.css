@@ -1,0 +1,125 @@
+/* HP_Hero.css */
+
+/* Base styles */
+.Hero {
+  position: relative;
+  padding-top: var(--nav-bar-height);
+  background-color: #f6d46b; 
+  color: black;
+  overflow: hidden;
+}
+
+.hero-content {
+  padding: 2rem;
+}
+
+.hero-content h1 {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.hero-content p {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.User_celebration .user_cleb {
+  mix-blend-mode: multiply;
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  top: -60px;
+}
+
+.hero-decorations .magic-stream-upwards {
+  background-image: url("../../../../img/icons/magic_stream_upwards.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 300px;
+  width: 300px; 
+  position: absolute;
+  top: 48%;
+  right: 0;
+  z-index: 1;
+}
+
+.hero-decorations .magic-stream-left {
+  background-image: url("../../../../img/icons/magic_stream_left.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 200px;
+  width: 200px; 
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.hero-decorations .magic-stream-left p {
+  font-weight: bold;
+  font-size: 20px;
+  color: rgb(102, 0, 102);
+  position: absolute;
+  bottom: 30px;
+  text-wrap: nowrap;
+  left: 100%;
+}
+:root {
+  --nav-bar-height: 60px; 
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-content {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem; 
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .User_celebration .user_cleb {
+    width: 80%; 
+    top: -30px; 
+  }
+
+  .hero-decorations .magic-stream-upwards,
+  .hero-decorations .magic-stream-left {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-content p {
+    font-size: 0.875rem; 
+  }
+
+  .User_celebration .user_cleb {
+    width: 100%; 
+  }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1000px) {
+  .hero-content {
+    width: 100%;
+    margin-left: 0px;
+  }
+  /* .Hero {
+    display: block;
+  } */
+  .hero-decorations .magic-stream-left {
+    display: none;
+  }
+  .hero-decorations .magic-stream-upwards {
+    display: none;
+  }
+}

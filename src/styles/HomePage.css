@@ -1,0 +1,52 @@
+/* HomePage.css */
+
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Typography */
+  body {
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  /* Navbar styles */
+  .navbar {
+    background-color: #fff; /* Adjust the color to match your design */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* This adds a slight shadow for depth */
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    color: #DA4453; /* Your brand color */
+  }
+  
+  /* Main content styles */
+  .homepage-header {
+    background-color: #FEF3BD; /* Background color for the header section */
+    color: #333; /* Text color */
+    padding: 2rem 0; /* Spacing around content */
+  }
+  
+  /* Button styles */
+  .btn-primary {
+    background-color: #DA4453; /* Use your primary color */
+    border: none; /* No border for the buttons */
+  }
+  
+  .btn-primary:hover {
+    background-color: darken(#DA4453, 10%); /* Slightly darker on hover */
+  }
+  
+  /* This is where you will add responsive design elements */
+  @media (max-width: 768px) {
+    /* Adjust styles for mobile if necessary */
+    .homepage-header {
+      padding: 1rem 0;
+    }
+  }
+  
+  /* Add additional styles for other elements based on your design */
+  

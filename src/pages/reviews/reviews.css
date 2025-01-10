@@ -1,0 +1,84 @@
+.main-bg-color {
+  background-color: #f6d46b;
+}
+
+.bg-recent-kudos-plus {
+  background-color: #f0cdff;
+  width: 100px;
+  height: 100px;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.heading-color {
+  color: #480249;
+}
+
+.badge-image {
+  width: 30px;
+  height: 30px;
+}
+.badge-image span {
+  width: 30px;
+  height: 30px;
+}
+
+.kudos-badge {
+  right: 8px;
+}
+.kudos-badge span {
+  left: 3px;
+}
+.border-l {
+  border-left: 1px solid black;
+  padding-left: 5px;
+}
+
+.dropdownSpan {
+  height: 33px;
+  display: block;
+  position: absolute;
+  width: 100%;
+  top: 9px;
+  left: 4px;
+}
+
+.dropHover:hover {
+  background-color: blanchedalmond;
+}
+
+.drop-main {
+  min-width: 150px;
+}
+
+.filter-container {
+  width: fit-content;
+}
+
+.card-image-span {
+  width: 100px;
+  height: 100px;
+  background-color: #9bb09d;
+  border-color: #f2e7cb !important;
+}
+
+.cardInfo {
+  background-color: #F2E7CB;
+  border: 3px solid #9BB09D !important;
+}
+
+.color-card-text {
+  color: #013F3F;
+}
+
+.text-justify{
+  text-align: justify;
+}
+.Revivewsection {
+  padding-left: 30px;
+}
+
+/* .reviewCard{
+  max-width: 900px;
+} */

@@ -1,0 +1,87 @@
+.hp-platform-features {
+  padding: 40px 20px;
+  background-color: #ffd6ae;
+}
+
+.hp-platform-features h2 {
+  margin-bottom: 30px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin-left: 10px;
+  width: 70%;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.features-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.feature-item {
+  width: 270px;
+  margin: 20px;
+  transition: transform 0.3s;
+}
+
+.feature-item:hover {
+  transform: scale(1.05);
+}
+
+.feature-item img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.feature-item h5 {
+  color: #333;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.feature-item p {
+  font-size: 14px;
+  color: #666;
+}
+
+.feature-item a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.feature-item .line {
+  width: 90%;
+  border-bottom: 1px solid black;
+  margin: 20px 0px;
+  position: relative;
+}
+.feature-item .line::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+@media (max-width: 768px) {
+  .features-container {
+    justify-content: center;
+  }
+  .hp-platform-features {
+    padding: 40px 5px;
+    background-color: #ffd6ae;
+  }
+  .hp-platform-features h2 {
+    margin-left: 0px;
+    width: 100%;
+  }
+  .feature-item {
+    width: 100%;
+  }
+}

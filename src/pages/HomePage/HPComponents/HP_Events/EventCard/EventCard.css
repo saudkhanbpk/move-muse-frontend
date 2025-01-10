@@ -1,0 +1,89 @@
+.event-card {
+  position: relative;
+  width: 250px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.event-card .event-image {
+  height: 140px;
+  background-size: cover;
+  background-position: center;
+}
+
+.event-card .event-info {
+  padding: 10px;
+}
+
+.event-card .event-info h5,
+.event-card .event-info p {
+  margin: 5px 0;
+  text-align: start;
+}
+
+.event-card .event-info h5 {
+  font-size: 18px;
+  font-weight: bold;
+}
+.event-card .event-info p {
+  font-size: 14px;
+}
+
+.event-card .event-favorite {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.event-card .event-favorite img {
+  width: 24px;
+  height: 24px;
+}
+/* Alternate background and font colors for event cards */
+.event-card:nth-child(6n + 1) {
+  background-color: #ffd1dc;
+  color: #333;
+}
+.event-card:nth-child(6n + 2) {
+  background-color: #d1fffc;
+  color: #333;
+}
+.event-card:nth-child(6n + 3) {
+  background-color: #d1e8ff;
+  color: #333;
+}
+.event-card:nth-child(6n + 4) {
+  background-color: #ffd1e8;
+  color: #333;
+}
+.event-card:nth-child(6n + 5) {
+  background-color: #e8d1ff;
+  color: #333;
+}
+.event-card:nth-child(6n + 0) {
+  background-color: #e8ffd1;
+  color: #333;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .event-card {
+    width: 100%;
+  }
+  .event-card .event-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+  }
+}

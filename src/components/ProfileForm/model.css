@@ -1,0 +1,13 @@
+.model-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: wheat;
+}
+
+.event-container {
+  max-width: 500px;
+}
+
+.react-datetime-picker__wrapper {
+  border: none !important;
+}

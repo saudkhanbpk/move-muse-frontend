@@ -1,0 +1,63 @@
+.hero-container {
+  background-color: #f6d46b;
+}
+
+.info-container {
+  width: clamp(300px, 0, 800px);
+}
+
+.hero-container img {
+  width: clamp(300px, 100%, 700px);
+}
+
+.about-us-main-container {
+  background-color: #fff7d8;
+}
+
+.aboutUs-container {
+  width: clamp(300px, 100%, 800px);
+}
+
+.aboutUs-img-container {
+  width: clamp(300px, 100%, 300px);
+}
+
+.ourMission-container {
+  background-color: #ffead7;
+}
+
+.ourMission-container .info-container p {
+  width: clamp(300px, 100%, 600px);
+}
+
+.move-and-mouse-container {
+  background-color: #f6d46b;
+}
+
+.community-guide-lines-container {
+  background-color: #fff7d8;
+}
+
+.community-heading {
+  color: #013f3f;
+}
+
+.drop-down {
+  width: 300px;
+}
+
+.drop-down-option-container {
+  width: 240px !important;
+  right: 28px;
+}
+
+.drop-btn:active {
+  outline: none !important;
+  border: none !important;
+}
+
+.community-guide-lines-info-container {
+  border: 5px solid #769c99;
+  max-width: 1200px;
+  color: #453731 !important;
+}

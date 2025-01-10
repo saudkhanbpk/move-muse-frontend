@@ -1,0 +1,150 @@
+.recentkudossectionmain {
+    background: #F6D46B;
+
+    width: 100%;
+
+}
+
+.kudossec {
+    width: 100%;
+    height: 100vh;
+}
+.imageuser_div img {
+    mix-blend-mode: multiply;
+    width: 120px;
+  }
+.section_two_main {
+    width: 96%;
+}
+
+.section_two_main_two {
+    width: 96%;
+}
+
+.section_two_start_image_div {
+    position: relative;
+    right: 1%;
+    bottom: 30px;
+    
+}
+
+.section_two_start_image {
+    width: 40px;
+}
+
+.section2_heart_img {
+    width: 40px;
+
+}
+
+.section4_inputmain_div {
+    width: 96%;
+    outline: none;
+}
+
+.section4_maintwo {
+    width: 300px;
+}
+
+.input_div {
+    width: 300px;
+}
+
+.input {
+    width: 100%;
+}
+
+.icon_search_div {
+    right: 40px;
+    top: 8px;
+    font-size: 30px;
+}
+/* .dropdownSpan {
+    height: 33px;
+    display: block;
+    position: absolute;
+    width: 100%;
+    top: 9px;
+    left: 4px;
+    
+  } */
+.section_five_cards_main{
+    width: 96%;
+}
+.section_7_main{
+    background-color: #FFF7D8;
+    width: 70%;
+    margin: auto;
+    border: 2px solid #776655;
+    
+}
+.section_7_flage_image{
+    mix-blend-mode: multiply;
+    width: 70px;
+}
+
+.searchbar_maindev{
+        border: rgb(109, 109, 109) solid 1px;
+        height: 60px;
+        border-radius: 20px;
+    }
+    .submit-card{
+        top: 20px;
+        width: 250px;
+    }
+
+    @media only screen and (min-width: 320px) and (max-width: 768px) {
+        .section_five_cards_main{
+            display: flex;
+            justify-content: center;
+        }
+        .section_five_last_card{
+            display: flex;
+            justify-content: center;
+
+
+        }
+        .section_six_cards{
+            display: flex;
+            justify-content: center;
+            margin-left: 58px;
+        }
+        .section_two_main{
+            display: flex;
+            justify-content: center;
+            
+        }
+        .section3_h4{
+            display: flex;
+            justify-content: center;
+        }
+        .section4_maintwo{
+            display: flex;
+            padding-left: 25px;
+            margin-top: 20px;
+            /* border: 2px solid red; */
+            
+        }
+       
+        .section_7_main{
+            background-color: #FFF7D8;
+            width: 100%;
+            margin: auto;
+            border: 2px solid #776655;
+            
+        }
+        .big_card_section7{
+            display: flex;
+            flex-direction: column;
+            
+            
+
+        }
+        .submit-card{
+            
+            top: -75px;
+            right: 25%;
+            width: 200px;
+        }
+       
+    }

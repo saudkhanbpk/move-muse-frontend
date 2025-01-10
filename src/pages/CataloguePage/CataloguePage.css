@@ -1,0 +1,24 @@
+.font-style {
+  font-family: "Dancing Script", cursive;
+}
+
+.add-btn {
+  outline: none;
+  border: none;
+}
+
+.blog-title-input {
+  outline: none;
+  border: none;
+  background: none;
+  font-family: "Dancing Script", cursive;
+}
+
+
+.text-area-blog{
+    outline: none;
+    border: none;
+    background: none;
+    width: 100%;
+    min-height: 500px;
+}

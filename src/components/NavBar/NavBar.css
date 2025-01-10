@@ -1,0 +1,95 @@
+.navbar {
+  background: #F6D46B !important;
+  overflow: hidden; /* Ensures the content is contained within the navbar */
+  box-shadow: none !important;
+}
+
+.nav-link {
+  color: #480249; /* Your specified deep purple color */
+  font-family: "HK Grotesk", sans-serif;
+  float: left; /* Align links to the left side */
+  display: block; /* Makes the links appear as block elements */
+  text-align: center; /* Center text inside the link */
+  padding: 14px 5px; /* Padding inside the link */
+  text-decoration: none; /* Removes underline from links */
+  font-size: 20px;
+  padding: 10px 10px;
+  margin: 5px;
+  font-weight: bold;
+  border-radius: 20px;
+}
+.logout_text{
+  color: #480249; 
+  font-family: "HK Grotesk", sans-serif;
+  float: left; 
+  display: block; 
+  text-align: center; 
+  padding: 14px 5px;
+  font-size: 20px;
+  padding: 10px 10px;
+  margin: 5px;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.main-logo {
+  width: 150px;
+  height: 150px;
+}
+.nav-link.active {
+  border-radius: 15px;
+  background-color: #fff;
+}
+.logo-signup {
+  height: 80px;
+}
+/* Hover effect for links */
+.navbar a:hover {
+  color: black; /* Text color change on hover */
+}
+
+/* Active link styling */
+.navbar a.active {
+  background-color: transparent; /* Different background for the active/current link */
+  color: #480249 !important;
+  border: 2px solid #480249;
+}
+
+.section {
+  height: 100vh;
+  /* styles for each section */
+}
+
+/* Animation when a section comes into view */
+@keyframes popUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add this class to elements you want to animate on scroll */
+.animated {
+  animation: popUp 1s ease-out;
+}
+
+.mainLogin:hover {
+  animation: pulse 1s infinite;
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

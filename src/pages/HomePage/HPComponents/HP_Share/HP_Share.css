@@ -1,0 +1,123 @@
+.hp-share {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: rgba(
+    135,
+    48,
+    173,
+    0.501
+  ); /* Adjust the background color as needed */
+  position: relative; /* For absolute positioning of the cloud */
+}
+
+.share-content {
+  max-width: 100%; /* Adjust width as necessary */
+}
+
+.share-content h2 {
+  color: #333; /* Title color */
+}
+
+.share-content p,
+.share-content li {
+  color: #666; /* Text color */
+}
+
+.share-content ul {
+  /* list-style-type: none;  */
+  list-style-type: decimal;
+  padding: 0;
+  margin-left: 20px;
+}
+.circle-list {
+  list-style-type: circle !important;
+}
+
+/* .share-content ul li:before {
+  content: "⬤"; 
+  color: #333; 
+  font-size: 12px; 
+  vertical-align: middle;
+  margin-right: 8px;
+} */
+
+/* .feedback-quote {
+    position: absolute;
+    top: 20px; 
+    right: 20px; 
+    text-align: center;
+  }
+  
+  .feedback-quote img {
+    width: 100px;
+    height: auto;
+  } */
+
+/* .share-actions {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  } */
+
+.sign-in-button,
+.create-account-button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin-left: 10px; /* Space between buttons */
+  text-decoration: none;
+  color: #333; /* Button text color */
+  font-weight: bold;
+  position: relative;
+}
+
+.sign-in-button:hover,
+.create-account-button:hover {
+}
+.signup_btn {
+  position: relative;
+  padding: 10px;
+  top: 10px;
+  margin-right: 80px;
+  z-index: 999 !important;
+  font-size: 16px;
+}
+.signup_btn2 {
+  position: relative;
+  padding: 10px;
+  width: 100px;
+  top: 10px;
+  font-size: 16px;
+  margin-right: 80px;
+  z-index: 999 !important;
+}
+.signIn_btn {
+  border: 1px solid white;
+  padding: 5px 10px;
+  background-color: beige;
+  border-radius: 10px;
+}
+.cloudimage {
+  position: absolute;
+  top: -80px;
+  right: -60px;
+  z-index: -1;
+  width: 200px;
+}
+.cloudimage2 {
+  position: absolute;
+  top: -80px;
+  right: -40px;
+  z-index: -1;
+  width: 200px;
+}
+.reminder {
+  font-weight: bold;
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hp-share {
+    flex-direction: column;
+  }
+}

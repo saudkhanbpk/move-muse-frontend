@@ -1,0 +1,27 @@
+.bubble-arrow-button {
+    width: 50px; /* Initial size */
+    height: 50px; /* Initial size */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .bubble-arrow-button:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+  }
+  
+  .bubble-arrow-button.prev {
+    transform: rotate(180deg); /* Flip the image for previous */
+  }
+  
+  /* Example media query for larger screens */
+  @media (min-width: 768px) {
+    .bubble-arrow-button {
+      width: 70px; /* Larger size on wider screens */
+      height: 70px; /* Larger size on wider screens */
+    }
+  }
+  

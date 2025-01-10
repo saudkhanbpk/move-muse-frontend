@@ -1,0 +1,25 @@
+
+.move_muse_section{
+    height: auto;
+    background-color: blanchedalmond;
+    padding: 20px;
+}
+.header_move{
+    font-weight: bold;
+    font-size: 50px;
+    position: relative;
+    width: 100%;
+}
+.signup_btn {
+    position: relative;
+
+    z-index: 999 !important;
+
+  }
+  .cloudimage {
+    position: absolute;
+    top: -80px;
+    right: -60px;
+    z-index: -1;
+    width: 200px;
+  }

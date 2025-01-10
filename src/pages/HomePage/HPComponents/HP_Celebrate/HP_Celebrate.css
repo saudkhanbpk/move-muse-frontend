@@ -1,0 +1,104 @@
+.hp-celebrate {
+  position: relative;
+  text-align: left;
+  padding: 20px;
+  background-color: #fee78164; /* Or use the color from your design */
+}
+
+.celebrate-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.magicimg {
+  width: 300px;
+  position: relative;
+  top: 0px;
+}
+.celebrate-description {
+  margin-bottom: 20px;
+}
+.signIn_btn_celebrate{
+  border: 1px solid white;
+  padding: 5px 10px;
+  background-color: rgb(99, 5, 99);
+  color: white;
+  border-radius: 10px;
+}
+.celebrate-steps {
+  counter-reset: step-counter;
+  list-style: none;
+  padding-left: 0;
+}
+
+.celebrate-steps li {
+  counter-increment: step-counter;
+  position: relative;
+  padding-left: 40px;
+  margin-bottom: 10px;
+}
+
+.celebrate-steps li:before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #fcddec; /* Or use the color from your design */
+  color: #333;
+}
+
+.cloud-sign-in {
+  width: 60px; /* Adjust size as needed */
+}
+
+.celebrate-imagery .magic-stream {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px; /* Adjust size as needed */
+}
+
+.celebrate-imagery .celebrate-image {
+  display: block;
+  margin: 0 auto; /* Center the image /
+width: 80%; / Adjust size as needed */
+}
+
+.celebrate-imagery .arrow-lady {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px; /* Adjust size as needed */
+}
+
+.celebrate-imagery .star-icon i {
+  width: 120px;
+}
+.reminder img {
+  width: 80px !important;
+}
+.reminder {
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .celebrate-header {
+    flex-direction: column;
+  }
+
+  .celebrate-imagery .magic-stream,
+  .celebrate-imagery .arrow-lady,
+  .celebrate-imagery .star-icon {
+    display: none; /* Hide certain elements on smaller screens if necessary */
+  }
+}

@@ -1,0 +1,62 @@
+.paragraph {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .paragraph {
+        width: 100% /* Or any value you'd like for larger screens */
+    }
+}
+
+@media (min-width: 1024px) {
+    .paragraph {
+        width: 100%; 
+    }
+}
+@media (min-width: 320px) {
+    .paragraph {
+        width: 220px; 
+    }
+}
+.imgdiv{
+    width: 100%;
+ 
+}
+@media (min-width: 320px) {
+    .imgdiv{
+        width: 220px;
+    }
+}
+.danceone{
+    width: 100%;
+    
+}
+@media (min-width: 320px) {
+    .danceone{
+        width: 220px;
+        
+    }
+}
+.dancetow{
+    width: 100%;
+}
+@media (min-width: 320px) {
+    .dancetow{
+        width: 180px;
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 320px) {
+    .circle{
+        margin-top: 20px;
+    }
+    
+}
+.danceee{
+    width: 180px;
+}
+.input{
+    width: 700px;
+    width: 200px;
+}

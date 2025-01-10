@@ -1,0 +1,40 @@
+.Discover-section {
+  background-color: rgba(255, 166, 0, 0.419);
+  overflow: clip;
+  padding: 20px;
+  font-weight: 600;
+  position: relative;
+}
+.Discover-section p {
+  margin-top: 30px;
+}
+.Discover-section .techniqueimage {
+  width: 280px;
+  mix-blend-mode: multiply;
+  position: relative;
+  top: 40px;
+}
+
+.userScope {
+  width: 280px;
+  position: absolute;
+  top: 0px;
+  right: 10px;
+}
+.listof-order {
+  margin-bottom: 10px;
+}
+.all_text {
+  width: 50%;
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .all_text {
+    width: 100%;
+  }
+  .userScope {
+    width: 100%;
+    position: relative; /* Changed to 'relative' to use 'top' and 'right' */
+    top: 0px;
+    right: 10px;
+  }
+}

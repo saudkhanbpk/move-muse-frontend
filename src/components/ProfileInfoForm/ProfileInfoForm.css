@@ -1,0 +1,51 @@
+.profile-info-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #fff7f0; /* Soft background color */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .photo-upload-placeholder {
+    background-image: url('/frontend/src/img/icons/magic_circle.png'); /* Path to your sparkle background image */
+    background-size: cover;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    margin: 0 auto 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  
+  .profile-info-form label {
+    display: block;
+    margin-bottom: 1rem;
+  }
+  
+  .profile-info-form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .profile-info-form button {
+    background-color: #f0b429; /* Golden color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+    width: 100%;
+  }
+  
+  .profile-info-form button:hover {
+    background-color: #c69320; /* Darker golden color */
+  }
+  

@@ -1,0 +1,35 @@
+.hp-events {
+  padding: 20px;
+  background-color: bisque;
+  /* Additional styles if needed */
+}
+
+.hp-events .upcoming-events,
+.hp-events .past-events {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+.width_text {
+  width: 25%;
+}
+
+.hp-events .events-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Include additional media queries and styles to make this section responsive */
+@media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .width_text {
+    width: 100%;
+  }
+  .hp-events .upcoming-events,
+  .hp-events .past-events {
+    display: block;
+    text-align: center;
+  }
+}
