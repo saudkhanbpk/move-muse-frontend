@@ -26,6 +26,7 @@ import SinglePastEvent from "./components/ProfileForm/SinglePastEvent";
 import Notification from "./pages/NotificationPage/Notification";
 import MyDances from "./pages/NotificationPage/MyDances/MyDances";
 import ContactUs from "./components/ContactUs/ContactUs";
+import AllTopics from "./components/MusingGuide/AllTopics";
 
 const Router = () => {
   const { user, showAdditionalSignInInfo } = useContext(UserContext);
@@ -56,6 +57,7 @@ const Router = () => {
         <Route path="/blog-discover" element={<BlogDiscover />} />
         <Route path="/reviews" element={<ReviewsPage />} />
         <Route path="/recent-kudos" Component={RecentKudosSection} />
+        <Route path="/alltopics" Component={AllTopics} />
         <Route path="/privacy-policy" Component={PrivacyPolicy} />
         <Route path="/events/:id" Component={EventPage} />
         <Route path="/articles" Component={Article} />
