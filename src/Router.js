@@ -8,13 +8,13 @@ import FestivalsPage from "./pages/FestivalsPage/FestivalsPage";
 import MyAccountPage from "./pages/MyAccountPage/MyAccountPage";
 import { Navigate, Route, Routes } from "react-router-dom";
 import LoginForm from "./pages/LoginForm/LoginForm";
+import Signup from "./pages/Signup/Signup";
 import { ProtectedRoute } from "./ProtectedRoutes/ProtectedRoute";
 import { UserContext } from "./context/UserContext";
 import BlogDiscover from "./pages/BlogDiscover/BlogDiscover";
 import Profile from "./pages/Profile/Profile";
 import RecentKudosSection from "./components/RecentKudosSections/RecentKudosSections";
 import ReviewsPage from "./pages/reviews/Reviews";
-import AdminRoutes from "./pages/admin/Admin.routes";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import Article from "./pages/BlogPage/Article";
 import MAndNPage from "./pages/M&NPage/M&NPage";
@@ -55,7 +55,6 @@ const Router = () => {
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog-discover" element={<BlogDiscover />} />
         <Route path="/reviews" element={<ReviewsPage />} />
-        <Route path="/admin/*" Component={AdminRoutes} />
         <Route path="/recent-kudos" Component={RecentKudosSection} />
         <Route path="/privacy-policy" Component={PrivacyPolicy} />
         <Route path="/events/:id" Component={EventPage} />
@@ -80,6 +79,7 @@ const Router = () => {
             </RedirectToHomeIfLoggedIn>
           }
         />
+        <Route path='/signup' element={<Signup/>} />
       </Routes>
       <ContactUs />
     </>

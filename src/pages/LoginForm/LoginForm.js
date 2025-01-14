@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./LoginForm.css";
-import { json, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import NotificationService from "../../components/NotificationService/NotificationService";
 import AdditionalSignInInfo from "../../components/AdditionalSignInInfo/AdditionalSignInInfo";
 import { BaseUrl } from "../../BaseUrl";
+import axios from "axios";
 
 const LoginForm = () => {
   const {
@@ -17,7 +18,7 @@ const LoginForm = () => {
     email: "",
     password: "",
   });
-
+  const [error, setError] = useState("");
   const [searchParams, _setSearchParams] = useSearchParams();
 
   const handleChange = (e) => {
@@ -27,28 +28,33 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Your login logic here
+    try {
+      const response = await axios.post(`${BaseUrl}/api/v1/auth/login`, formData);
+      console.log("API Response:", response); // Log the entire response for debugging
+      if (response.data && response.data.success) {
+        localStorage.setItem("token", response.data.token);
+        NotificationService.notifySuccess("Login successful!");
+        setUserLoggedIn(true);
+        navigate("/");
+      } else {
+        setError(response.data.message || "Login failed");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      if (error.response) {
+        // Server responded with a status other than 2xx
+        setError(error.response.data.message || "Internal server error");
+      } else if (error.request) {
+        // No response was received
+        setError("No response from server");
+      } else {
+        // Something else happened
+        setError("Internal server error");
+      }
+    }
   };
 
-  const handleLoginWithFacebook = () => {
-    const fbLoginUrl = `${BaseUrl}/api/v1/auth/facebook`;
-    // const fbLoginWindow = window.open(
-    //   fbLoginUrl,
-    //   "fbLoginWindow",
-    //   "width=600,height=700"
-    // );
-    const fbLoginWindow = window.open(
-      fbLoginUrl, "_self"
-    );
-
-    // const interval = setInterval(() => {
-    //   if (fbLoginWindow.closed) {
-    //     clearInterval(interval);
-    //   }
-    // }, 1000);
-
-  };
-  const token = searchParams.get("token")
+  const token = searchParams.get("token");
   const isAdditionalInfoRequired = JSON.parse(searchParams.get("isAdditionalInfoRequired"));
 
   useEffect(() => {
@@ -59,13 +65,14 @@ const LoginForm = () => {
     if (isAdditionalInfoRequired) {
       setShowAdditionalSignInInfo(true);
     }
-  }, [isAdditionalInfoRequired, isAdditionalInfoRequired]);
+  }, [token, isAdditionalInfoRequired]);
 
   return (
     <>
       {showAdditionalSignInInfo && <AdditionalSignInInfo />}
       <div className="Login_backgorund">
         <form onSubmit={handleSubmit} className="login-form">
+        {error && <div className="error-message">{error}</div>}
           <input
             id="email"
             type="email"
@@ -84,10 +91,14 @@ const LoginForm = () => {
             onChange={handleChange}
             required
           />
+       
           <button type="submit">Log In</button>
-          <button type="button" onClick={handleLoginWithFacebook}>
-            Log In with Facebook
-          </button>
+          <Link to="/signup" >
+          <button type="button">I am New</button> </Link>
+          <p>
+          
+            
+          </p>
         </form>
       </div>
     </>
@@ -95,4 +106,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-
