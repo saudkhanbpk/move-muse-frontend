@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import ReviewUserImage from "../../img/icons/dance.svg";
-import StarImage from "../../img/icons/star-1.png";
+import { FaStar, FaStarHalfAlt } from "react-icons/fa"; // Import full star and half star icons
 import redImage from "../../img/icons/redImage.png";
 import FlaggedBg from "../../img/icons/flagged-bg.svg";
-import flagfigma from "../../img/icons/flagfigma.png"
+import flagfigma from "../../img/icons/flagfigma.png";
 import ApiService from "../../services/ApiService";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function ReviewCard({ 
+export default function ReviewCard({
   item: {
     _id,
     title,
@@ -28,13 +28,13 @@ export default function ReviewCard({
   const [stars, setStars] = useState(0);
   const [showMessage, setShowMessage] = useState(false);
   const [message, setMessage] = useState("");
-  const [isFlagged, setFlagged] = useState(flagged); 
+  const [isFlagged, setFlagged] = useState(flagged);
 
   useEffect(() => {
     const calculateStars = () => {
       const total = venue + ratio + organization + artists + culture;
-      const maxPossible = 5; 
-      return Math.min(Math.ceil(total / 5), maxPossible);
+      const maxPossible = 5;
+      return Math.min(total / 5, maxPossible);
     };
 
     setStars(calculateStars());
@@ -50,25 +50,25 @@ export default function ReviewCard({
         flagged: true,
         message: message,
       });
-      fetchFeedback(); 
+      fetchFeedback();
       if (response.data.success) {
         setFlagged(true); // Update local flag state
-        toast.success("Content flagged successfully."); 
+        toast.success("Content flagged successfully.");
         setShowMessage(false); // Close modal
       } else {
-        toast.error("Failed to flag content."); 
+        toast.error("Failed to flag content.");
       }
     } catch (error) {
       console.error("Error flagging content:", error);
-      toast.error("There was an error flagging the content."); 
+      toast.error("There was an error flagging the content.");
     }
   };
 
   const handleUnflag = async () => {
     try {
       const response = await ApiService.put(`events/update-feedback/${_id}`, {
-        flagged: false, 
-        message: "", 
+        flagged: false,
+        message: "",
       });
       fetchFeedback(); // Refresh feedback data
       if (response.data.success) {
@@ -81,6 +81,23 @@ export default function ReviewCard({
       console.error("Error unflagging content:", error);
       toast.error("There was an error unflagging the content."); // Error handling
     }
+  };
+
+  const renderStars = () => {
+    const fullStars = Math.floor(stars);
+    const hasHalfStar = stars - fullStars >= 0.5;
+
+    const starElements = [];
+
+    for (let i = 0; i < fullStars; i++) {
+      starElements.push(<FaStar key={`full-${i}`} color="#f8b706" size={20} />);
+    }
+
+    if (hasHalfStar) {
+      starElements.push(<FaStarHalfAlt key="half" color="#f8b706" size={20} />);
+    }
+
+    return starElements;
   };
 
   return (
@@ -98,11 +115,7 @@ export default function ReviewCard({
         </span>
         <span className="fw-semibold fs-5 text-capitalize">{as}</span>
         <span className="d-flex">
-          {Array(stars)
-            .fill(null)
-            .map((_, index) => (
-              <img src={StarImage} width={20} alt="Star" key={index} />
-            ))}
+          {renderStars()}
         </span>
       </div>
 
@@ -185,7 +198,6 @@ export default function ReviewCard({
               onClick={handleFlag}
               className="btn position-relative start-50 "
               style={{
-                // border: "1px solid black",
                 backgroundSize: "contain",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",

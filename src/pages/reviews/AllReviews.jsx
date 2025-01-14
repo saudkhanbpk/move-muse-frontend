@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import dropdown from "../../img/icons/dropdown.png";
-import star from "../../img/icons/star.png";
+import { FaStar, FaStarHalfAlt } from "react-icons/fa"; // Import full star and half star icons
 import arrowright from "../../img/icons/arrowright.png";
 import arrowleft from "../../img/icons/arrow_previous_prpl.png"; // Add an arrow left icon for the previous button
 import { BaseUrl } from "../../BaseUrl";
+
 function AllReviews() {
     const [flaggedReviews, setFlaggedReviews] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -23,12 +24,6 @@ function AllReviews() {
         fetchFlaggedReviews();
     }, []);
 
-
-
-  
-
-  
-
     const totalPages = Math.ceil(flaggedReviews.length / reviewsPerPage);
     const startIndex = (currentPage - 1) * reviewsPerPage;
     const currentReviews = flaggedReviews.slice(startIndex, startIndex + reviewsPerPage);
@@ -39,6 +34,30 @@ function AllReviews() {
 
     const handlePreviousPage = () => {
         if (currentPage > 1) setCurrentPage(currentPage - 1);
+    };
+
+    const calculateStars = (rev) => {
+        const total = rev.venue + rev.ratio + rev.organization + rev.artists + rev.culture;
+        const maxPossible = 5;
+        return Math.min(total / 5, maxPossible);
+    };
+
+    const renderStars = (rev) => {
+        const stars = calculateStars(rev);
+        const fullStars = Math.floor(stars);
+        const hasHalfStar = stars - fullStars >= 0.5;
+
+        const starElements = [];
+
+        for (let i = 0; i < fullStars; i++) {
+            starElements.push(<FaStar key={`full-${i}`} color="#f8b706" size={20} />);
+        }
+
+        if (hasHalfStar) {
+            starElements.push(<FaStarHalfAlt key="half" color="#f8b706" size={20} />);
+        }
+
+        return starElements;
     };
 
     return (
@@ -72,17 +91,14 @@ function AllReviews() {
                         <img src={dropdown} alt="dropdown" width={20} />
                     </div>
                 </div>
-
             </div>
-            <div className="mt-5 d-flex flex-wrap gap-5 justify-content-center" style={{minHeight: '500px'}}>
+            <div className="mt-5 d-flex flex-wrap gap-5 justify-content-center" style={{ minHeight: '500px' }}>
                 {currentReviews.map((rev, index) => (
                     <div key={index} className="d-md-flex mb-3 gap-5">
                         <div>
                             <div className="d-flex justify-content-end">
                                 <div className="d-flex align-items-end">
-                                    {Array(5).fill().map((_, index) => (
-                                        <img key={index} src={star} alt="star" width={20} />
-                                    ))}
+                                    {renderStars(rev)}
                                 </div>
                             </div>
                             <div className="rounded-4 p-3 mt-1 cardInfo" style={{ border: "3px solid #9BB09D" }}>
@@ -104,7 +120,6 @@ function AllReviews() {
                                 )}
                             </div>
                         </div>
-
                     </div>
                 ))}
             </div>
@@ -125,7 +140,6 @@ function AllReviews() {
                     className={`cursor-pointer ${currentPage === totalPages ? "opacity-50" : ""}`}
                     onClick={handleNextPage}
                     style={{ cursor: "pointer" }}
-
                 />
             </div>
         </div>

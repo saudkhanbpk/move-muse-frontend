@@ -90,7 +90,7 @@ const FeedbackForm = ({ onSubmit }) => {
                 name="title"
                 value={formData.title}
                 onChange={handleChange}
-                placeholder="Title (optional)"
+                placeholder="Give a title to your review! (Optional)"
                 className="form-control rounded"
                 style={{
                   backgroundColor: "#F2E7CB",
@@ -128,8 +128,8 @@ const FeedbackForm = ({ onSubmit }) => {
                   {[
                     "Attendee",
                     "Volunteer",
-                    "Artist (Paid)",
-                    "Invited Guest",
+                    "Artist(Paid)",
+                    "InvitedGuest",
                   ].map((role, idx) => (
                     <div className="form-check " key={role}>
                       <input
@@ -177,7 +177,7 @@ const FeedbackForm = ({ onSubmit }) => {
                           border: "2px solid gray",
                           outline: "none",
                           height: "30px",
-                          width: "40px", 
+                          width: "40px",
                         }}
                       />
                     </div>

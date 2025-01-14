@@ -16,24 +16,25 @@ const CardsForFutureEvents = () => {
   const eventsPerPage = 4;
   const navigate = useNavigate();
 
+  const fetchFutureEvents = async () => {
+    try {
+      const response = await axios.get(
+        `${BaseUrl}/api/v1/events/future-events`,
+      );
+      setEvents(response.data);
+      setLoading(false);
+    } catch (err) {
+      setError("Failed to fetch events.");
+      setLoading(false);
+    }
+  };
   useEffect(() => {
-    const fetchFutureEvents = async () => {
-      try {
-        const response = await axios.get(
-          `${BaseUrl}/api/v1/events/future-events`,
-        );
-        setEvents(response.data);
-        setLoading(false);
-      } catch (err) {
-        setError("Failed to fetch events.");
-        setLoading(false);
-      }
-    };
+   
 
     fetchFutureEvents(); // Initial fetch
 
    
-  }, []);
+  }, [events]);
 
   if (loading) {
     return <div>Loading events...</div>;

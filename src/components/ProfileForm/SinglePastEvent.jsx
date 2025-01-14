@@ -332,7 +332,6 @@ const SinglePastEvent = () => {
           </div>
         </div>
       </div>
-      <ContactUs />
     </div>
   );
 };

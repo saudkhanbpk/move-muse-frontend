@@ -462,7 +462,6 @@ const SingleFutureEvent = () => {
           </div>
         </div>
       </div>
-      <ContactUs />
     </div>
   );
 };
