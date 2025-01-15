@@ -12,7 +12,7 @@ import "../../../src/components/ProfileForm/eventdetail.css";
 import ContactUs from "../ContactUs/ContactUs";
 import { Link, useParams } from "react-router-dom";
 import { BaseUrl } from "../../BaseUrl";
-import FlaggedBg from "../../img/icons/flagged-bg.svg";
+import papershape from "../../img/icons/paper123.png";
 import ApiService from "../../services/ApiService";
 import { toast } from "react-toastify";
 
@@ -178,21 +178,21 @@ const SingleFutureEvent = () => {
                     position: "absolute",
                     right: "250px",
                     top: "110px",
-                    backgroundImage: `url(${FlaggedBg})`,
-                    backgroundSize: "contain",
+                    backgroundImage: `url(${papershape})`,
+                    backgroundSize: "cover",
                     backgroundPosition: "center",
                     backgroundRepeat: "no-repeat",
-                    height: "170px",
-                    width: "280px",
+                    height: "180px",
+                    width: "300px",
                   }}
                 >
-                  <div className="w-75 h-75 d-flex flex-column">
+                  <div className="w-75 h-75 d-flex flex-column pt-3">
                     <textarea
                       name="message"
                       id="message"
                       onChange={(e) => setMessage(e.target.value)}
                       value={message}
-                      className="w-100 h-100 border-0 p-1"
+                      className="w-100 h-100 border-0 p-1 bg-none "
                       placeholder="When flagging content please include message for our admin"
                       style={{ outline: "none" }}
                     ></textarea>
@@ -203,9 +203,10 @@ const SingleFutureEvent = () => {
                         backgroundSize: "contain",
                         backgroundPosition: "center",
                         backgroundRepeat: "no-repeat",
-                        width: "110px",
-                        height: "50px",
-                        borderRadius: '50px'
+                        width: "80px",
+                        height: "40px",
+                        borderRadius: "50px",
+                        marginLeft: '20px'
                       }}
                       onClick={handleUpdate}
                     >
@@ -225,17 +226,6 @@ const SingleFutureEvent = () => {
                 className="d-flex gap-2 mt-5  "
                 style={{ marginRight: "40px" }}
               >
-                {/* <img
-                  src={isFlagged ? redImage : flagfigma}
-                  onClick={handleFlagClick}
-                  className="flage"
-                  style={{
-                    cursor: "pointer",
-                    width: "40px",
-                    height: "40px",
-                    marginTop: "2px",
-                  }}
-                /> */}
                 <img
                   src={isFlagged ? redImage : flagfigma}
                   onClick={handleFlagClick}

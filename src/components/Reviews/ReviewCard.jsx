@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReviewUserImage from "../../img/icons/dance.svg";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa"; // Import full star and half star icons
 import redImage from "../../img/icons/redImage.png";
-import FlaggedBg from "../../img/icons/flagged-bg.svg";
+import papershape from "../../img/icons/paper123.png";
 import flagfigma from "../../img/icons/flagfigma.png";
 import ApiService from "../../services/ApiService";
 import { toast } from "react-toastify";
@@ -42,7 +42,7 @@ export default function ReviewCard({
 
   const handleFlag = async () => {
     try {
-      if (message === '') {
+      if (message === "") {
         toast.error("Message can't be empty");
         return;
       }
@@ -114,9 +114,7 @@ export default function ReviewCard({
           <img src={ReviewUserImage} width={30} alt="review" />
         </span>
         <span className="fw-semibold fs-5 text-capitalize">{as}</span>
-        <span className="d-flex">
-          {renderStars()}
-        </span>
+        <span className="d-flex">{renderStars()}</span>
       </div>
 
       {/* Review Content Section */}
@@ -146,7 +144,11 @@ export default function ReviewCard({
                 title="Click to unflag your review"
                 onClick={handleUnflag} // Unflag action
               >
-                <img src={redImage} alt="flagged" style={{ width: "30px", height: "30px" }} />
+                <img
+                  src={redImage}
+                  alt="flagged"
+                  style={{ width: "30px", height: "30px" }}
+                />
               </button>
             ) : (
               // Display flagfigma when not flagged
@@ -175,22 +177,25 @@ export default function ReviewCard({
       {/* Modal for Flagging */}
       {showMessage && (
         <div
-          className="position-absolute end-0 top-0 d-flex align-items-center justify-content-center"
+          className="position-absolute end-0 top-0 d-flex align-items-center justify-content-center "
           style={{
-            backgroundImage: `url(${FlaggedBg})`,
-            backgroundSize: "contain",
+            backgroundImage: `url(${papershape})`,
+            right: "250px",
+            top: "110px",
+            backgroundImage: `url(${papershape})`,
+            backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
-            height: "170px",
-            width: "280px",
+            height: "180px",
+            width: "300px",
           }}
         >
-          <div className="w-75 h-75 d-flex flex-column">
+          <div className="w-75 h-75 d-flex flex-column pt-3">
             <textarea
               name="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className="w-100 h-100 border-0 p-1"
+              className="w-100 h-100 border-0 p-1 bg-none "
               placeholder="When flagging content, please include a message for our admin"
               style={{ outline: "none" }}
             ></textarea>
@@ -198,13 +203,14 @@ export default function ReviewCard({
               onClick={handleFlag}
               className="btn position-relative start-50 "
               style={{
+                background: "#F6D46B",
                 backgroundSize: "contain",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
-                width: "110px",
-                height: "50px",
-                background: '#F6D46B',
-                borderRadius: '50px'
+                width: "80px",
+                height: "40px",
+                borderRadius: "50px",
+                marginLeft: "20px",
               }}
             >
               Submit
