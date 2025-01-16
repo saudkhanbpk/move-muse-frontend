@@ -9,7 +9,7 @@ export const UserProvider = ({ children }) => {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [profileCredentials, setProfileCredentials] = useState(null);
   const [showAdditionalSignInInfo, setShowAdditionalSignInInfo] = useState(false);
-  const [profilePicture, setProfilePicture] = useState('');
+  const [ProfilePicture, setProfilePicture] = useState('');
 
   const fetchUser = useRef(() => {});
   const navigate = useNavigate();
@@ -88,7 +88,7 @@ export const UserProvider = ({ children }) => {
         setUserLoggedIn,
         showAdditionalSignInInfo,
         setShowAdditionalSignInInfo,
-        profilePicture,
+        ProfilePicture,
         setProfilePicture,
       }}
     >

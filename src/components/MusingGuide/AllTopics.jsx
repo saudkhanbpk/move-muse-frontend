@@ -85,7 +85,7 @@ const AllTopics = () => {
   };
 
   return (
-    <div className="px-5 py-5">
+    <div className="px-5 py-5 " style={{background: '#F2E7CB', borderRadius: '10px'}}>
       <div className="mb-5">
         <input
           type="text"
@@ -102,10 +102,10 @@ const AllTopics = () => {
           filteredTopics.map((topic, index) => (
             <div key={topic.id} className="">
               <div
-                className="h-100 p-2 cursor-pointer"
+                className="h-100 p-2 "
                 onClick={() => navigate("/articles", { state: topic })}
               >
-                <h5>
+                <h5 className="cursor-pointer " style={{width: '160px', textAlign: 'justify'}}>
                   {index + 1}. {topic.name}
                 </h5>
               </div>

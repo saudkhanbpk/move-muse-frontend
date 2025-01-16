@@ -55,9 +55,10 @@ const Signup = () => {
       .then(res => {
         console.log('Token Exchange Response:', res);
         localStorage.setItem('token', res.data.token); // Save JWT token
+        localStorage.setItem('userData', JSON.stringify(res.data.user)); // Save user data
         setUserLoggedIn(true);
         setUser(res.data.user); // Assuming the response includes user info
-        setProfilePicture(res.data.user.pic); // Set profile picture URL
+        setProfilePicture(res.data.user.profilePicture); // Set profile picture URL
         navigate('/');
       })
       .catch(error => {

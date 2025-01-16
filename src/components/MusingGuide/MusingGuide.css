@@ -25,63 +25,9 @@
   font-size: 40px;
   width: 20%;
   font-family: "Dancing Script", cursive;
-}
-/* .main_misguide {
-  font-family: Arial, sans-serif;
+  border: 2px solid greenyellow;
 }
 
-.input_topic {
-  width: 20%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 99%;
-  left: 13%;
-  right: 0;
-  z-index: 1000;
-  display: block;
-  float: left;
-  min-width: 160px;
-  width: 200px;
-  padding: 5px 0;
-  margin: 2px 0 0;
-  font-size: 14px;
-  color: #333;
-  text-align: left;
-  list-style: none;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-}
-
-.dropdown-item {
-  display: block;
-  width: 20%;
-  padding: 3px 20px;
-  clear: both;
-  font-weight: 400;
-  color: #333;
-  text-align: inherit;
-  white-space: nowrap;
-  background: none;
-  border: 0;
-}
-
-.dropdown-item:hover {
-  background-color: #f8f9fa;
-  cursor: pointer;
-}
-
-.arrow-next {
-  margin-left: 10px;
-} */
 .main_misguide {
   font-family: Arial, sans-serif;
 }
@@ -115,8 +61,8 @@
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  max-height: 150px; /* Set a max height for the dropdown */
-  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 150px; 
+  overflow-y: auto; 
 }
 
 .dropdown-item {
