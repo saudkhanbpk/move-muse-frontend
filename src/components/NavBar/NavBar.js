@@ -26,9 +26,11 @@ const NavBar = () => {
   const handleLogout = () => {
     logout();
     NotificationService.notifySuccess("User logged out.");
-    navigate("/");
     setExpanded(false);
     setUserLoggedIn(false);
+    localStorage.removeItem("token");
+    localStorage.removeItem("userData");
+    navigate("/");
   };
 
   const handleNavLinkClick = () => {
