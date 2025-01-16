@@ -1,17 +1,12 @@
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
-
 import React from "react";
 import NavBar from "./components/NavBar/NavBar";
 import Router from "./Router";
 import { ToastContainer } from "react-toastify";
-import { useLocation } from "react-router-dom";
 import { EventProvider } from "./EventContext";
 
 function App() {
-  const location = useLocation();
-  const isAdminRout = location.pathname.startsWith("/admin");
   return (
     <>
      <EventProvider>
@@ -27,7 +22,7 @@ function App() {
         pauseOnHover
       />
       <div className="App">
-        {!isAdminRout && <NavBar />}
+      <NavBar />
         <Router />
       </div>
       </EventProvider>
