@@ -79,7 +79,6 @@ const Article = () => {
     }, []);
     return (
         <>
-
             <div className='selectbox-maindiv '>
 
                 <MusingGuide
@@ -87,25 +86,7 @@ const Article = () => {
                     fetchData={fetchData}
                     setTopicValue={setTopicValue}
                 />
-
-                {/* <ol className="order_list_path my-4 border border-2 border-danger">
-                    {topics.map((topic, index) => {
-                        return (
-                            <li
-                                className={`list__data ${topicValue === topic ? "line-through" : ""
-                                    } `}
-                                onClick={() => setTopicValue(topic)}
-                                key={index}
-                            >
-                                {topic.name}
-                            </li>
-                        );
-                    })}
-                </ol> */}
             </div>
-
-
-
         </>
     )
 }
