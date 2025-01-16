@@ -4,11 +4,12 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import axios from "axios";
 import { BaseUrl } from "../../BaseUrl";
 import { useParams } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const FeedbackForm = ({ onSubmit }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showRoleOptions, setShowRoleOptions] = useState(false);
-  const [showOrganizerInput, setShowOrganizerInput] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
     as: "",
@@ -23,7 +24,7 @@ const FeedbackForm = ({ onSubmit }) => {
     flagged: false,
     role: "",
   });
-  const [successMessage, setSuccessMessage] = useState("");
+  const [error, setError] = useState("");
 
   const { id } = useParams();
 
@@ -43,15 +44,33 @@ const FeedbackForm = ({ onSubmit }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.as) {
+      setError("Role selection is required.");
+      return;
+    }
+    setError("");
     try {
       const response = await axios.post(
         `${BaseUrl}/api/v1/events/feedback/${id}`,
         formData
       );
-      setSuccessMessage(response.data.message);
-      setTimeout(() => setSuccessMessage(""), 5000);
+      toast.success("Thank you for sharing your experience with the community!"); // Display the firework emoji as a toast message
       onSubmit();
       setIsOpen(false);
+      setFormData({
+        title: "",
+        as: "",
+        stars: "",
+        venue: "",
+        ratio: "",
+        organization: "",
+        artists: "",
+        culture: "",
+        label: "",
+        description: "",
+        flagged: false,
+        role: "",
+      });
     } catch (error) {
       console.error("Error submitting feedback:", error);
     }
@@ -59,6 +78,7 @@ const FeedbackForm = ({ onSubmit }) => {
 
   return (
     <div className="container ">
+      <ToastContainer /> {/* Add the ToastContainer here */}
       <div
         className="d-flex justify-content-end justify-content-md-center justify-content-lg-end"
         style={{ width: "240px" }}
@@ -73,15 +93,11 @@ const FeedbackForm = ({ onSubmit }) => {
         </button>
       </div>
 
-      {successMessage && (
-        <div className="alert alert-success mt-3">{successMessage}</div>
-      )}
-
       {isOpen && (
         <form
           onSubmit={handleSubmit}
           className="card bg-light mx-auto rounded  mt-4"
-          style={{ maxWidth: "600px", width: "100%" }}
+          style={{ maxWidth: "660px", width: "100%" }}
         >
           <div className="card-body" style={{ backgroundColor: "#F2E7CB" }}>
             <div className="mb-3">
@@ -128,12 +144,13 @@ const FeedbackForm = ({ onSubmit }) => {
                   {[
                     "Attendee",
                     "Volunteer",
-                    "Artist(Paid)",
-                    "InvitedGuest",
+                    "Artist",
+                    "Guest",
                   ].map((role, idx) => (
                     <div className="form-check " key={role}>
                       <input
                         type="radio"
+                        required
                         className="form-check-input rounded"
                         name="as"
                         id={`role-${idx}`}
@@ -151,20 +168,23 @@ const FeedbackForm = ({ onSubmit }) => {
                   ))}
                 </div>
               )}
+              {error && <div className="text-danger mt-2">{error}</div>}
             </div>
 
             <div className="mb-3">
-              <div className="d-md-flex flex-wrap gap-2 w-100">
+            <label className="form-check-label fw-bold mb-2">Rate your experience</label>
+              <div className="d-md-flex flex-wrap gap-1 ">
                 {["venue", "ratio",  "artists", "organization", "culture"].map(
                   (field) => (
                     <div
                       className="d-md-flex align-items-center flex-grow-1 mb-2"
                       key={field}
                     >
-                      <label className="form-label fw-bold me-2">{field}</label>
+                      <label className="form-label fw-semibold me-2">{field}</label>
                       <input
                         type="text"
                         name={field}
+                        placeholder="0.0"
                         value={formData[field]}
                         onChange={(e) => {
                           if (validateInput(e.target.value)) {
@@ -177,7 +197,7 @@ const FeedbackForm = ({ onSubmit }) => {
                           border: "2px solid gray",
                           outline: "none",
                           height: "30px",
-                          width: "40px",
+                          width: "46px",
                         }}
                       />
                     </div>

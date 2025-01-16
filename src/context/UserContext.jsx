@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useRef, useState } from "react";
 import ApiService from "../services/ApiService";
+import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext();
 
@@ -11,6 +12,7 @@ export const UserProvider = ({ children }) => {
     useState(false);
 
   const fetchUser = useRef(() => {});
+  const navigate = useNavigate()
 
   fetchUser.current = async () => {
     try {
@@ -43,6 +45,7 @@ export const UserProvider = ({ children }) => {
           },
         }
       );
+      navigate('/')
     } catch (error) {
       setUser(null)
     }

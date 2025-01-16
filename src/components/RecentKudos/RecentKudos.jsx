@@ -69,14 +69,15 @@ const RecentKudos = ({ users }) => {
       </div>
 
       {/* Right-aligned Import Event button */}
-      <div className="d-flex justify-content-end mb-4 mt-5" style={{}}>
+      <div className="d-flex justify-content-end " >
         <div
           style={{
             backgroundImage: `url(${MagicCircle})`,
             backgroundPosition: "center",
             backgroundSize: "cover",
-            height: "200px",
-            position: "relative",
+            height: "180px",
+            position: "absolute",
+            top:'100px',
             zIndex: 0,
           }}
         >
@@ -89,12 +90,12 @@ const RecentKudos = ({ users }) => {
               border: "2px solid #703768",
               color: "#703768",
               fontWeight: "bold",
-              width: "300px",
-              height: "70px",
+              width: "250px",
+              height: "60px",
               borderRadius: "20px",
               position: "relative",
               zIndex: 1, // Ensure the form is on top of the button
-              top: "80px",
+              top: "60px",
             }}
           >
             Import an EVENT
