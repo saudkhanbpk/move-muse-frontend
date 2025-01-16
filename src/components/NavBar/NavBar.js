@@ -140,6 +140,7 @@ const NavBar = () => {
                   src={ProfilePicture}
                   alt="Profile"
                   className="logo-signup img-fluid rounded-circle"
+                  referrerPolicy="no-referrer"
                   style={{
                     width: "50px",
                     height: "50px",
