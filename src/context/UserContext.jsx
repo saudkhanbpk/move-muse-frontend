@@ -8,11 +8,11 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [profileCredentials, setProfileCredentials] = useState(null);
-  const [showAdditionalSignInInfo, setShowAdditionalSignInInfo] =
-    useState(false);
+  const [showAdditionalSignInInfo, setShowAdditionalSignInInfo] = useState(false);
+  const [profilePicture, setProfilePicture] = useState('');
 
   const fetchUser = useRef(() => {});
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   fetchUser.current = async () => {
     try {
@@ -45,9 +45,9 @@ export const UserProvider = ({ children }) => {
           },
         }
       );
-      navigate('/')
+      navigate('/');
     } catch (error) {
-      setUser(null)
+      setUser(null);
     }
 
     setUser(null);
@@ -81,12 +81,15 @@ export const UserProvider = ({ children }) => {
     <UserContext.Provider
       value={{
         user,
+        setUser,
         logout,
         profileCredentials,
         setProfileCredentials,
         setUserLoggedIn,
         showAdditionalSignInInfo,
         setShowAdditionalSignInInfo,
+        profilePicture,
+        setProfilePicture,
       }}
     >
       {children}
