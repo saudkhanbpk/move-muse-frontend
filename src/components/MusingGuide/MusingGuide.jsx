@@ -247,7 +247,7 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
                 marginLeft: "45px",
               }}
             />
-            <div className="mt-5">
+            <div className="mt-5 " style={{paddingLeft: '38px'}}>
               <h1>tags</h1>
               <div className="d-flex gap-2">
                 <span>#dance</span>

@@ -91,7 +91,11 @@
 .arrow-next.open {
   transform: translateY(120px); 
 }
-
+.buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
   .imgesss {
@@ -109,6 +113,14 @@
   }
   .socialiamge {
     width: 100%;
+  }
+  .buttons{
+    width: 200px;
+    margin-left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    
   }
 }
 .button-3d {
