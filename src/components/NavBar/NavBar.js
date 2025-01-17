@@ -20,10 +20,11 @@ const NavBar = () => {
   const { user, logout, setUserLoggedIn, setProfilePicture, ProfilePicture } = useContext(UserContext);
   const navigate = useNavigate();
   const [expanded, setExpanded] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('userData'));
-      console.log('User Data Retrieved from Local Storage:', userData);
+    console.log('User Data Retrieved from Local Storage:', userData);
     if (userData && userData.profilePicture) {
       setProfilePicture(userData.profilePicture);
     }
@@ -37,6 +38,7 @@ const NavBar = () => {
     NotificationService.notifySuccess("User logged out.");
     setExpanded(false);
     setUserLoggedIn(false);
+    setProfileOpen(!profileOpen);
     localStorage.removeItem("token");
     localStorage.removeItem("userData");
     navigate("/");
@@ -49,7 +51,7 @@ const NavBar = () => {
   const isLoggedIn = !!user;
 
   return (
-    <Navbar bg="transparent" expand="lg" expanded={expanded}>
+    <Navbar bg="transparent" zIndex={2} expand="lg" expanded={expanded}>
       <Container fluid>
         <Navbar.Brand href="/">
           <img src={logo} alt="Logo" className="main-logo" />
@@ -73,7 +75,7 @@ const NavBar = () => {
             ))}
           </Nav>
 
-          <div className="d-flex align-items-center">
+          <div className="d-flex align-items-center gap-1">
             <div>
               <Link to="/notification">
                 <img src={notify} alt="Notification" width={40} className="notification-icon" />
@@ -81,14 +83,14 @@ const NavBar = () => {
             </div>
             {isLoggedIn ? (
               <Nav>
-                <Nav.Link
+                {/* <Nav.Link
                   as={NavLink}
                   to="/profile"
                   className={({ isActive }) => (isActive ? "active" : "")}
                   onClick={handleNavLinkClick}
                 >
                   {user.fullName.split(" ")[0]}
-                </Nav.Link>
+                </Nav.Link> */}
               </Nav>
             ) : (
               <div
@@ -128,42 +130,55 @@ const NavBar = () => {
             )}
             {isLoggedIn && (
               <div
-               
+
                 style={{
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
+
                 }}
               >
                 <img
                   src={ProfilePicture}
                   alt="Profile"
-                  className="logo-signup img-fluid rounded-circle"
                   referrerPolicy="no-referrer"
+                  onClick={() => setProfileOpen(!profileOpen)}
+                  className="logo-signup img-fluid rounded-circle"
+<<<<<<< HEAD
+                  referrerPolicy="no-referrer"
+=======
+                  title="Click to view more"
+>>>>>>> 36fbecd5048fbda0cd19c963a058ee054112674d
                   style={{
                     width: "50px",
                     height: "50px",
-                    position: "relative",
-                    top: "15px",
+                    cursor: "pointer",
                   }}
                 />
-                <p
-                  className="logout_text"
-                  onClick={handleLogout}
+                <div
+                  className="rounded-4 dropdown"
                   style={{
-                    fontSize: "12px",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    position: "relative",
-                    top:'10px', 
-                    cursor: "pointer",
+                  display: `${profileOpen ? "block" : "none"}`,
+                    
+                  }}>
+                  <p className="fw-bold text-white">{user.fullName.split(" ")[0]}</p>
+                  <p className="py-1 profile-btn"
+                  onClick={() => setProfileOpen(!profileOpen)}><Link to="/mydances" className="fw-bold" style={{ textDecoration: "none", color: 'white', listStyleType: 'none' }}>My Dances</Link></p>
+                  <p
+                    className="profile-btn"
+                    onClick={handleLogout}
+                    style={{
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                      color: 'white'
 
-                  }}
-                >
-                  Log out
-                </p>
+
+                    }}
+                  >
+                    Log out
+                  </p>
+                </div>
               </div>
             )}
           </div>

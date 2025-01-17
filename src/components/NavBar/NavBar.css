@@ -18,19 +18,9 @@
   font-weight: bold;
   border-radius: 20px;
 }
-.logout_text{
-  color: #480249; 
-  font-family: "HK Grotesk", sans-serif;
-  float: left; 
-  display: block; 
-  text-align: center; 
-  padding: 14px 5px;
-  font-size: 20px;
-  padding: 10px 10px;
-  margin: 5px;
-  font-weight: bold;
-  border-radius: 20px;
-  cursor: pointer;
+
+.profile-btn:hover {
+background-color: #8d168f;
 }
 .main-logo {
   width: 150px;
@@ -59,7 +49,16 @@
   height: 100vh;
   /* styles for each section */
 }
-
+.dropdown {
+  z-index: 100;
+  width: "200px";
+  position: absolute;
+  top: 0;
+  right: 50px;
+  padding: 20px;
+  background-color: #480249;
+  color: 'white';
+}
 /* Animation when a section comes into view */
 @keyframes popUp {
   from {
@@ -91,5 +90,15 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+@media screen and (max-width: 768px) {
+  .dropdown {
+  position: absolute;
+  top: 300px;
+  right: 40px;
+  padding: 20px;
+  background-color: #480249;
+  color: 'white';
   }
 }
