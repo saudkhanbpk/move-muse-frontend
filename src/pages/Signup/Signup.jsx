@@ -6,6 +6,7 @@ import { BaseUrl } from "../../BaseUrl";
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import { UserContext } from '../../context/UserContext';
 import NotificationService from "../../components/NotificationService/NotificationService";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -59,6 +60,7 @@ const Signup = () => {
         setUserLoggedIn(true);
         setUser(res.data.user); // Assuming the response includes user info
         setProfilePicture(res.data.user.profilePicture); // Set profile picture URL
+        toast.success('Login successful!');
         navigate('/');
       })
       .catch(error => {
