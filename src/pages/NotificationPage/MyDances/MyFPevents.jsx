@@ -7,10 +7,10 @@ import plus2 from '../../../img/icons/we_want_your_feedback.png'
 function MyFPevents() {
     return (
         <div className='p-5 ' style={{backgroundColor: '#fff7d8'}}>
-            <div className='d-flex justify-content-between '>
+            <div className='d-md-flex justify-content-between '>
                 <h2 className='text-violet fw-bold'>My Future <br />
                     Events</h2>
-                <div className='d-flex gap-3'>
+                <div className='d-md-flex gap-3'>
                     <div
                         className='rounded-4 position-relative d-flex flex-column justify-content-end align-items-start p-3 shadow'
                         style={{ backgroundColor: '#72559f', width: '250px', height: '250px' }}
@@ -64,7 +64,7 @@ function MyFPevents() {
             <div className='self-end d-flex my-5   justify-content-end w-100'>
             <img src={arrowright} alt='arrow' width={50}/>
             </div>
-            <div className='d-flex justify-content-between '>
+            <div className='d-md-flex justify-content-between '>
                 <h2 className='text-violet fw-bold'>My Confirmed<br/> Past Events</h2>
                 <div className='d-flex gap-3'>
                     <div

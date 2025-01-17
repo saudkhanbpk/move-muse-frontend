@@ -1,0 +1,14 @@
+.imgmain {
+    width: 330px; /* Default width for larger screens */
+}
+.textdiv{
+    width: 160px;
+}
+@media (max-width: 480px) {
+    .imgmain {
+        width: 180px; 
+    }
+    .textdiv{
+        width: 100px;
+    }
+}
