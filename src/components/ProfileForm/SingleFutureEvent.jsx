@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import redImage from "../../img/icons/redImage.png";
-import { FaHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import flagfigma from "../../img/icons/flagfigma.png";
 import { KudoCard } from "./KudoCard";
 import ReviewsSection from "../Reviews/ReviewsSection";
@@ -248,11 +248,22 @@ const SingleFutureEvent = () => {
                 />
 
                 <div className="mt-2">
-                  <FaHeart
-                    size={30}
-                    style={{ color: isFavorited ? "red" : "white" }}
-                    onClick={handleFavoriteToggle}
-                  />
+                  {
+                    isFavorited ? (
+                      <FaHeart
+                        size={30}
+                        style={{ color: "red" }}
+                        onClick={handleFavoriteToggle}
+                      />
+                    ) : (
+                      <FaRegHeart
+                        size={30}
+                        style={{ color: "red" }}
+                        onClick={handleFavoriteToggle}
+                      />
+                    )
+                  }
+                 
                 </div>
               </div>
             </div>

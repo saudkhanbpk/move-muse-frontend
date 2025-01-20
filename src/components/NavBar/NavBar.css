@@ -96,7 +96,7 @@ background-color: #8d168f;
   .dropdown {
   position: absolute;
   top: 300px;
-  right: 40px;
+  right: 40 px;
   padding: 20px;
   background-color: #480249;
   color: 'white';

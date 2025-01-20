@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReviewUserImage from "../../img/icons/dance.svg";
-import { FaStar, FaStarHalfAlt } from "react-icons/fa"; // Import full star and half star icons
+import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import redImage from "../../img/icons/redImage.png";
 import papershape from "../../img/icons/paper123.png";
 import flagfigma from "../../img/icons/flagfigma.png";
@@ -33,59 +33,65 @@ export default function ReviewCard({
   useEffect(() => {
     const calculateStars = () => {
       const total = venue + ratio + organization + artists + culture;
-      const maxPossible = 5;
-      return Math.min(total / 5, maxPossible);
+      const average = total / 5;
+
+      // Round to the nearest whole or half-star
+      if (average - Math.floor(average) <= 0.5) {
+        return Math.floor(average) + 0.5; // Retain the half-star
+      } else {
+        return Math.round(average); // Round to full star
+      }
     };
 
     setStars(calculateStars());
   }, [venue, ratio, organization, artists, culture]);
 
   const handleFlag = async () => {
+    if (message === "") {
+      toast.error("Message can't be empty");
+      return;
+    }
     try {
-      if (message === "") {
-        toast.error("Message can't be empty");
-        return;
-      }
       const response = await ApiService.put(`events/update-feedback/${_id}`, {
         flagged: true,
         message: message,
       });
       fetchFeedback();
       if (response.data.success) {
-        setFlagged(true); // Update local flag state
+        setFlagged(true);
         toast.success("Content flagged successfully.");
-        setShowMessage(false); // Close modal
+        setShowMessage(false);
       } else {
         toast.error("Failed to flag content.");
       }
     } catch (error) {
-      console.error("Error flagging content:", error);
       toast.error("There was an error flagging the content.");
     }
   };
 
   const handleUnflag = async () => {
     try {
+
       const response = await ApiService.put(`events/update-feedback/${_id}`, {
         flagged: false,
         message: "",
       });
-      fetchFeedback(); // Refresh feedback data
+      fetchFeedback();
       if (response.data.success) {
-        setFlagged(false); // Update local flag state
-        toast.success("Content unflagged successfully."); // Notify user
+        setFlagged(false);
+        toast.success("Content unflagged successfully.");
+        setShowMessage(false);
       } else {
-        toast.error("Failed to unflag content."); // Notify user in case of failure
+        toast.error("Failed to unflag content.");
       }
     } catch (error) {
-      console.error("Error unflagging content:", error);
-      toast.error("There was an error unflagging the content."); // Error handling
+      toast.error("There was an error unflagging the content.");
     }
   };
 
   const renderStars = () => {
     const fullStars = Math.floor(stars);
-    const hasHalfStar = stars - fullStars >= 0.5;
+    const hasHalfStar = stars % 1 !== 0;
 
     const starElements = [];
 
@@ -119,13 +125,9 @@ export default function ReviewCard({
 
       {/* Review Content Section */}
       <div>
-        <div className="d-flex align-items-center justify-content-between"></div>
         <div className="cardInfo p-3 rounded-4 position-relative">
           <div className="d-flex gap-2 justify-center">
-            <div
-              className="d-flex flex-wrap gap-2"
-              style={{ height: "fit-content" }}
-            >
+            <div className="d-flex flex-wrap gap-2" style={{ height: "fit-content" }}>
               <span>Venue {venue}</span>
               <span>Ratio {ratio}</span>
               <span>Organization {organization}</span>
@@ -133,7 +135,6 @@ export default function ReviewCard({
               <span>Culture {culture}</span>
             </div>
             {isFlagged ? (
-              // Display redImage when flagged
               <button
                 className="position-relative btn"
                 style={{
@@ -142,7 +143,7 @@ export default function ReviewCard({
                   cursor: "pointer",
                 }}
                 title="Click to unflag your review"
-                onClick={handleUnflag} // Unflag action
+                onClick={handleUnflag}
               >
                 <img
                   src={redImage}
@@ -151,7 +152,6 @@ export default function ReviewCard({
                 />
               </button>
             ) : (
-              // Display flagfigma when not flagged
               <img
                 src={flagfigma}
                 style={{
@@ -159,7 +159,7 @@ export default function ReviewCard({
                   height: "50px",
                   cursor: "pointer",
                 }}
-                onClick={() => setShowMessage(!showMessage)} // Open flag modal
+                onClick={() => setShowMessage(!showMessage)}
                 title="Click to flag your review"
               />
             )}
@@ -177,12 +177,11 @@ export default function ReviewCard({
       {/* Modal for Flagging */}
       {showMessage && (
         <div
-          className="position-absolute end-0 top-0 d-flex align-items-center justify-content-center "
+          className="position-absolute end-0 top-0 d-flex align-items-center justify-content-center"
           style={{
             backgroundImage: `url(${papershape})`,
             right: "250px",
             top: "110px",
-            backgroundImage: `url(${papershape})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -195,18 +194,15 @@ export default function ReviewCard({
               name="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className="w-100 h-100 border-0 p-1 bg-none "
+              className="w-100 h-100 border-0 p-1 bg-none"
               placeholder="When flagging content, please include a message for our admin"
               style={{ outline: "none" }}
             ></textarea>
             <button
               onClick={handleFlag}
-              className="btn position-relative start-50 "
+              className="btn position-relative start-50"
               style={{
                 background: "#F6D46B",
-                backgroundSize: "contain",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
                 width: "80px",
                 height: "40px",
                 borderRadius: "50px",

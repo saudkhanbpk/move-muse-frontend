@@ -62,10 +62,10 @@ const Router = () => {
         <Route path="/events/:id" Component={EventPage} />
         <Route path="/articles" Component={Article} />
         <Route path="/blogs" Component={MAndNPage} />
-        <Route path="/mydances" Component={MyDances} />
+        <Route path="/profile" Component={MyDances} />
         <Route path="/m&m/catalogue" Component={CataloguePage} />
         <Route
-          path="/profile"
+          path="/myprofile"
           element={
             <ProtectedRoute user={user}>
               <Profile />

@@ -4,8 +4,8 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import axios from "axios";
 import { BaseUrl } from "../../BaseUrl";
 import { useParams } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const FeedbackForm = ({ onSubmit }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,6 +24,7 @@ const FeedbackForm = ({ onSubmit }) => {
     flagged: false,
     role: "",
   });
+  const [loading, setLoading] = useState(false); // Loading state
   const [error, setError] = useState("");
 
   const { id } = useParams();
@@ -49,12 +50,13 @@ const FeedbackForm = ({ onSubmit }) => {
       return;
     }
     setError("");
+    setLoading(true); // Start loading
     try {
       const response = await axios.post(
         `${BaseUrl}/api/v1/events/feedback/${id}`,
         formData
       );
-      toast.success("Thank you for sharing your experience with the community!"); // Display the firework emoji as a toast message
+      toast.success("Thank you for sharing your experience with the community!");
       onSubmit();
       setIsOpen(false);
       setFormData({
@@ -73,12 +75,14 @@ const FeedbackForm = ({ onSubmit }) => {
       });
     } catch (error) {
       console.error("Error submitting feedback:", error);
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
   return (
-    <div className="container ">
-      <ToastContainer /> {/* Add the ToastContainer here */}
+    <div className="container">
+      <ToastContainer />
       <div
         className="d-flex justify-content-end justify-content-md-center justify-content-lg-end"
         style={{ width: "240px" }}
@@ -96,7 +100,7 @@ const FeedbackForm = ({ onSubmit }) => {
       {isOpen && (
         <form
           onSubmit={handleSubmit}
-          className="card bg-light mx-auto rounded  mt-4"
+          className="card bg-light mx-auto rounded mt-4"
           style={{ maxWidth: "660px", width: "100%" }}
         >
           <div className="card-body" style={{ backgroundColor: "#F2E7CB" }}>
@@ -123,7 +127,7 @@ const FeedbackForm = ({ onSubmit }) => {
                   onClick={() => setShowRoleOptions(!showRoleOptions)}
                   style={{ fontSize: "30px", cursor: "pointer" }}
                 />
-                <div className="form-check ms-2 ">
+                <div className="form-check ms-2">
                   <input
                     type="checkbox"
                     name="role"
@@ -140,69 +144,74 @@ const FeedbackForm = ({ onSubmit }) => {
                 </div>
               </div>
               {showRoleOptions && (
-                <div className="mt-2 ">
-                  {[
-                    "Attendee",
-                    "Volunteer",
-                    "Artist",
-                    "Guest",
-                  ].map((role, idx) => (
-                    <div className="form-check " key={role}>
-                      <input
-                        type="radio"
-                        required
-                        className="form-check-input rounded"
-                        name="as"
-                        id={`role-${idx}`}
-                        value={role.toLowerCase()}
-                        checked={formData.as === role.toLowerCase()}
-                        onChange={handleChange}
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor={`role-${idx}`}
-                      >
-                        {role}
-                      </label>
-                    </div>
-                  ))}
+                <div className="mt-2">
+                  {["Attendee", "Volunteer", "Artist", "Guest"].map(
+                    (role, idx) => (
+                      <div className="form-check" key={role}>
+                        <input
+                          type="radio"
+                          required
+                          className="form-check-input rounded"
+                          name="as"
+                          id={`role-${idx}`}
+                          value={role.toLowerCase()}
+                          checked={formData.as === role.toLowerCase()}
+                          onChange={handleChange}
+                        />
+                        <label
+                          className="form-check-label"
+                          htmlFor={`role-${idx}`}
+                        >
+                          {role}
+                        </label>
+                      </div>
+                    )
+                  )}
                 </div>
               )}
               {error && <div className="text-danger mt-2">{error}</div>}
             </div>
 
             <div className="mb-3">
-            <label className="form-check-label fw-bold mb-2">Rate your experience</label>
-              <div className="d-md-flex flex-wrap gap-1 ">
-                {["venue", "ratio",  "artists", "organization", "culture"].map(
-                  (field) => (
-                    <div
-                      className="d-md-flex align-items-center flex-grow-1 mb-2"
-                      key={field}
-                    >
-                      <label className="form-label fw-semibold me-2">{field}</label>
-                      <input
-                        type="text"
-                        name={field}
-                        placeholder="0.0"
-                        value={formData[field]}
-                        onChange={(e) => {
-                          if (validateInput(e.target.value)) {
-                            handleChange(e);
-                          }
-                        }}
-                        className="form-control rounded"
-                        style={{
-                          backgroundColor: "#F2E7CB",
-                          border: "2px solid gray",
-                          outline: "none",
-                          height: "30px",
-                          width: "46px",
-                        }}
-                      />
-                    </div>
-                  )
-                )}
+              <label className="form-check-label fw-bold mb-2">
+                Rate your experience
+              </label>
+              <div className="d-md-flex flex-wrap gap-1">
+                {[
+                  "venue",
+                  "ratio",
+                  "artists",
+                  "organization",
+                  "culture",
+                ].map((field) => (
+                  <div
+                    className="d-md-flex align-items-center flex-grow-1 mb-2"
+                    key={field}
+                  >
+                    <label className="form-label fw-semibold me-2">
+                      {field}
+                    </label>
+                    <input
+                      type="text"
+                      name={field}
+                      placeholder="0.0"
+                      value={formData[field]}
+                      onChange={(e) => {
+                        if (validateInput(e.target.value)) {
+                          handleChange(e);
+                        }
+                      }}
+                      className="form-control rounded"
+                      style={{
+                        backgroundColor: "#F2E7CB",
+                        border: "2px solid gray",
+                        outline: "none",
+                        height: "30px",
+                        width: "46px",
+                      }}
+                    />
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -225,8 +234,13 @@ const FeedbackForm = ({ onSubmit }) => {
               style={{ background: "#F6D46B", width: "200px" }}
               type="submit"
               className="btn btn-gray rounded mt-3"
+              disabled={loading} // Disable the button when loading
             >
-              Submit Feedback
+              {loading ? (
+                <div className="spinner-border text-dark ms-2" role="status" />
+              ) : (
+                "Submit Feedback"
+              )}
             </button>
           </div>
         </form>

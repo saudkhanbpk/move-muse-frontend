@@ -146,6 +146,7 @@ const NavBar = () => {
                   onClick={() => setProfileOpen(!profileOpen)}
                   className="logo-signup img-fluid rounded-circle"
                   title="Click to view more"
+                  
                   style={{
                     width: "50px",
                     height: "50px",
@@ -160,7 +161,7 @@ const NavBar = () => {
                   }}>
                   <p className="fw-bold text-white">{user.fullName.split(" ")[0]}</p>
                   <p className="py-1 profile-btn"
-                  onClick={() => setProfileOpen(!profileOpen)}><Link to="/mydances" className="fw-bold" style={{ textDecoration: "none", color: 'white', listStyleType: 'none' }}>My Dances</Link></p>
+                  onClick={() => setProfileOpen(!profileOpen)}><Link to="/profile" className="fw-bold" style={{ textDecoration: "none", color: 'white', listStyleType: 'none' }}>My Dances</Link></p>
                   <p
                     className="profile-btn"
                     onClick={handleLogout}

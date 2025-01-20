@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import MusingGuide from '../../components/MusingGuide/MusingGuide';
 import ApiService from '../../services/ApiService';
 import NotificationService from '../../components/NotificationService/NotificationService';
 
 import back from "../../img/icons/backarrow.png";
 import forward from "../../img/icons/forwardarrow.png";
+
 const Article = () => {
     const [topics, setTopics] = useState([]);
     const [newTopic, setNewTopic] = useState("");
@@ -14,10 +15,8 @@ const Article = () => {
     const [selectedDates, setSelectedDates] = useState("");
     const [selectedTopic, setSelectedTopic] = useState("");
     const [selectedPost, setSelectedPost] = useState(null);
-    // const [dates, setDates] = useState([]);
     const [authorFilter, setAuthorFilter] = useState("");
     const postsPerPage = 8;
-
 
     let filteredPosts = [...posts];
 
@@ -76,11 +75,12 @@ const Article = () => {
 
     useEffect(() => {
         fetchData();
+        window.scrollTo(0, 0); // Scroll to the top of the page
     }, []);
+
     return (
         <>
             <div className='selectbox-maindiv '>
-
                 <MusingGuide
                     topicValue={topicValue}
                     fetchData={fetchData}
@@ -88,7 +88,7 @@ const Article = () => {
                 />
             </div>
         </>
-    )
-}
+    );
+};
 
-export default Article
+export default Article;
