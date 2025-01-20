@@ -23,7 +23,7 @@ const ProfileInfoForm = ({ onSave }) => {
   return (
     <form className="profile-info-form" onSubmit={handleSubmit}>
       <div className="photo-upload-placeholder">
-        <span>Upload your photo so others can recognize you and share some kudo love!</span>
+        <span></span>
       </div>
       <label>
         Name:

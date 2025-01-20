@@ -1,8 +1,40 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import circleimg from "../../img/icons/upload1.png";
 import Dropdown from "../../components/custom-dropdown/Dropdown";
+import { IoMdCamera } from "react-icons/io";
+import magic_circle from "../../img/icons/magic_circle.png";
+import ApiService from "../../services/ApiService";
+import NotificationService from "../../components/NotificationService/NotificationService";
+import { UserContext } from "../../context/UserContext";
 
 const InitialSignInInfo = () => {
+  const { profileCredentials, setProfileCredentials } = useContext(UserContext);
+  const [userImage, setUserImage] = useState(null);
+  const [previewImage, setPreviewImage] = useState(null);
+  const fallbackImage =
+    "https://res.cloudinary.com/dobkvroor/image/upload/v1716439396/muitgl2brnavvwqhrplw.svg";
+  const fileRef = useRef(() => {});
+  fileRef.current = async () => {
+    const formData = new FormData();
+    formData.append("image", userImage);
+    try {
+      const res = await ApiService.post("upload-image/upload", formData, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      setProfileCredentials({
+        ...profileCredentials,
+        profilePic: res.data.url,
+      });
+      if (res.status === 200) {
+        NotificationService.notifySuccess("Image upload successfully");
+      }
+    } catch (error) {
+      NotificationService.notifyError("Image can't uploaded try again later ");
+    }
+  };
   const [dances, setDances] = useState([
     {
       style: "Bachata",
@@ -29,6 +61,15 @@ const InitialSignInInfo = () => {
   };
   const handleStyle = (e) => {};
   const styleOptions = ["Male", "Female", "Others"];
+  const handleImageChange = (e) => {
+    setUserImage(e.target.files[0]);
+    setPreviewImage(URL.createObjectURL(e.target.files[0]));
+  };
+  useEffect(() => {
+    if (userImage) {
+      fileRef.current();
+    }
+  }, [userImage, fileRef]);
   return (
     <div
       className="d-flex flex-column align-items-center justify-content-center p-5"
@@ -38,21 +79,77 @@ const InitialSignInInfo = () => {
         {/* <div>
           <img src={circleimg} alt="img" className="w-32 md:w-40  border border-2 border-danger" />
         </div> */}
-        <div>
+        {/* <div>
           <img
             src={circleimg}
             alt="img"
             class="img-fluid w-md-75 w-sm-30 w-md-40 "
           />
-        </div>
+        </div> */}
       </div>
       <div className="my-5 max-w-screen-sm w-full">
+      <div className="d-flex flex-wrap align-items-center justify-content-center py-5 w-100">
+                  <div
+                    className="flex-grow-1 position-relative"
+                    style={{ maxWidth: "70%" }}
+                  >
+                    <div
+                      style={{
+                        backgroundImage: `url(${magic_circle})`,
+                        maxWidth: "500px",
+                        maxHeight: "500px",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                      }}
+                      className="d-flex align-items-center justify-content-center m-auto"
+                    >
+                      <div
+                        className="position-relative rounded-circle d-flex flex-column align-items-center justify-content-center imgUploadBg m-5 "
+                        style={{
+                          height: 200,
+                          width: 200,
+                        }}
+                      >
+                        {previewImage ? (
+                          <img
+                            src={previewImage}
+                            alt="userImage"
+                            width={200}
+                            height={200}
+                            className="rounded-circle"
+                          />
+                        ) : (
+                          <span className="small p-2">
+                            Upload your photo so others can recognize you and
+                            share some kudo love!
+                          </span>
+                        )}
+                        <label
+                          htmlFor="imageUpload"
+                          className="z-3 position-absolute bottom-0"
+                        >
+                          <IoMdCamera size={40} />
+                        </label>
+                        <input
+                          type="file"
+                          name="userImage"
+                          id="imageUpload"
+                          className="d-none"
+                          onChange={handleImageChange}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
         <div className="card bg-transparent shadow p-5 rounded-4 border-3 border-black">
+          
           <div className="container mt-5">
+            
             <div className="card shadow border-0">
               <div className="card-body p-4">
+                
                 <form>
-                <div className="row mb-3">
+                  <div className="row mb-3">
                     <label
                       for="name"
                       className="col-md-4 col-form-label fw-bold"
@@ -102,7 +199,6 @@ const InitialSignInInfo = () => {
                     </div>
                   </div>
 
-                 
                   <div className="row mb-3">
                     <label
                       for="danceAlias"
@@ -119,8 +215,6 @@ const InitialSignInInfo = () => {
                       />
                     </div>
                   </div>
-
-                 
 
                   <div className="row mb-3">
                     <label

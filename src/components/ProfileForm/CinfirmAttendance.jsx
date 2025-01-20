@@ -19,7 +19,6 @@ import cardcircle from "../../img/icons/cardcircle.png";
 import blurstar from "../../img/icons/blurstar.png";
 import Kudos_given from "../../img/icons/Kudos_given.png";
 import magic_stream_left from "../../img/icons/magic_stream_left.png";
-import ContactUs from "../ContactUs/ContactUs";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Dropdown from "../Dropdown/Dropdown";
@@ -1048,7 +1047,7 @@ const ConfirmAttendance = () => {
           </div>
         </div>
 
-        <ContactUs />
+        
       </div>
     </>
   );

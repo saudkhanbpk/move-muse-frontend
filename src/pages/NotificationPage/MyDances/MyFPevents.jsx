@@ -3,7 +3,7 @@ import plus1 from '../../../img/icons/plusss.png'
 import arrowright from '../../../img/icons/arrowright.png'
 import blueplus from '../../../img/icons/blueplus.png'
 import plus2 from '../../../img/icons/we_want_your_feedback.png'
-
+import '../MyDances/mydances.css'
 function MyFPevents() {
     return (
         <div className='p-5 ' style={{backgroundColor: '#fff7d8'}}>
@@ -12,7 +12,7 @@ function MyFPevents() {
                     Events</h2>
                 <div className='d-md-flex gap-3'>
                     <div
-                        className='rounded-4 position-relative d-flex flex-column justify-content-end align-items-start p-3 shadow'
+                        className='rounded-4 position-relative d-flex flex-column justify-content-end  mt-md-0 mt-3 align-items-start p-3 shadow'
                         style={{ backgroundColor: '#72559f', width: '250px', height: '250px' }}
                     >
                         <img
@@ -28,7 +28,7 @@ function MyFPevents() {
                         </h5>
                     </div>
                     <div
-                        className='rounded-4 position-relative d-flex flex-column justify-content-end align-items-start p-3 shadow'
+                        className='rounded-4 position-relative d-flex flex-column justify-content-end mt-md-0 mt-3 align-items-start p-3 shadow'
                         style={{ backgroundColor: '#e2e2e2', width: '250px', height: '250px' }}
                     >
                         <img
@@ -44,8 +44,8 @@ function MyFPevents() {
                         </h5>
                     </div>
                     <div
-                        className='rounded-4 position-relative d-flex flex-column justify-content-end align-items-start p-3 shadow'
-                        style={{ backgroundColor: '#ede4da', width: '300px', height: '200px' }}
+                        className='rounded-4 position-relative d-flex flex-column justify-content-end Salsamania align-items-start p-3 shadow'
+                        style={{ backgroundColor: '#ede4da',}}
                     >
                         <img
                             src={plus1}
@@ -55,7 +55,7 @@ function MyFPevents() {
                             className='position-absolute top-0 end-0 m-2'
                         />
                         {/* Bottom Start Text */}
-                        <h5 className='text-white fw-bold mb-2 ms-2'>
+                        <h5 className='text-white fw-bold mb-2 ms-md-2'>
                             Salsamania
                         </h5>
                     </div>

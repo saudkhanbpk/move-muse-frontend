@@ -1,14 +1,36 @@
 .imgmain {
-    width: 330px; /* Default width for larger screens */
+  width: 330px; /* Default width for larger screens */
 }
-.textdiv{
-    width: 160px;
+.dropdownline{
+    width: 20;
+    border: 4xp solid yellow;
+}
+.textmain{
+    display: flex;
+    justify-content: space-between;
+
+}
+.textdiv {
+  width: 160px;
+}
+.Salsamania {
+  width: 300px;
+  height: 200px;
 }
 @media (max-width: 480px) {
-    .imgmain {
-        width: 180px; 
-    }
-    .textdiv{
-        width: 100px;
-    }
+  .imgmain {
+    width: 180px;
+  }
+  
+  .Salsamania {
+    width: 240px;
+    height: 200px;
+    margin-top: 20px;
+  }
+  .textmain{
+   display: flex;
+   flex-direction: column;
+   padding: 5px;
+    
+}
 }
