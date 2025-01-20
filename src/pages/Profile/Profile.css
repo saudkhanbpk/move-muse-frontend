@@ -580,10 +580,6 @@
     margin-top: 10px;
   }
 
-  /* .mainplusdiv {
-    width: 60%;
-    margin-top: 10px;
-  } */
   .plus_icon {
     display: flex;
     justify-content: end;
@@ -621,10 +617,84 @@
 .lastcards {
   margin-left: 16px;
 }
+/* new */
+.profile-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 8px;
+  align-items: center;
+  width: 100%;
+}
+
+.profile-details {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 150px auto; 
+  gap: 5px;
+  margin-right: 20px; 
+}
+
+.detail-item {
+  display: contents;
+}
+
+.detail-item h4:first-child {
+  margin-right: 10px;
+}
+
+.detail-item h4:last-child {
+  text-align: left;
+  white-space: nowrap; 
+}
+h4{
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.profile-image img {
+  max-width: 20%; 
+  height: auto;
+  border-radius: 8px;
+  margin-top: 40px;
+}
+
+.profile-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 @media (max-width: 576px) {
   .font-size-13 {
     font-size: 13px;
+
+  }
+  .profile-container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .profile-details {
+  margin-right: 0;
+    
+  }
+
+  .detail-item h4:last-child {
+    text-align: left;
+    white-space: normal;
+    
+  }
+
+  .profile-image img {
+    max-width: 40%;
+    margin-top: 20px;
+  }
+
+  .profile-image {
+    margin-top: 20px;
   }
 }
 

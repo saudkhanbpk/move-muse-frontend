@@ -95,7 +95,7 @@ function KuduRecieved() {
       </div>
       <div>
         <div className='d-md-flex gap-3'>
-          <div className='d-flex gap-5'>
+          <div className='d-md-flex gap-5'>
             {Profile.map((item, index) => (
               <div>
                 <img src={item.image} alt='' width={120} />
@@ -109,7 +109,7 @@ function KuduRecieved() {
               <img src={dropdown} alt='dropdown' width={20} />
             </div>
             <h5>PKC 2023</h5>
-            <div className='d-flex gap-2'>
+            <div className='d-md-flex gap-2'>
               <h5 className='d-flex align-self-end'>Annoying and clumsy! </h5>
               <img src={flag} alt='flag' width={50} onClick={handleFlagClick} />
             </div>

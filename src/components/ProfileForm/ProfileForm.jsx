@@ -94,7 +94,7 @@ const ProfileForm = () => {
   return (
     <>
       <div className="container maincform d-flex  justify-content-center">
-        <form
+        {/* <form
           className="form_Profile flex-fill rounded-5 p-4 "
           onSubmit={handleSubmit}
         >
@@ -236,7 +236,8 @@ const ProfileForm = () => {
               Submit
             </button>
           </div>
-        </form>
+        </form> */}
+        
       </div>
       {/* <CreateEvent /> */}
       <CinfirmAttendance />

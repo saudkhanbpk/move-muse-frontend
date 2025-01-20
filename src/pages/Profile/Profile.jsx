@@ -13,54 +13,24 @@ import bell from "../../img/icons/bell.png";
 import arrowcorrect from "../../img/icons/arrowcorrect.png";
 import arrowblur from "../../img/icons/arrowblur.png";
 import arrowright from "../../img/icons/arrowright.png";
-import magic_circle from "../../img/icons/magic_circle.png";
+
 import ProfileForm from "../../components/ProfileForm/ProfileForm";
 import ApiService from "../../services/ApiService";
 import { IoMdCamera } from "react-icons/io";
 import NotificationService from "../../components/NotificationService/NotificationService";
 import { UserContext } from "../../context/UserContext";
-
+import eliza from '../../img/icons/eliza.png'
+import InitialSignInInfo from "../NotificationPage/InitialSignInInfo";
 const Profile = () => {
-  const { profileCredentials, setProfileCredentials } = useContext(UserContext);
+  
 
-  const [userImage, setUserImage] = useState(null);
-  const [previewImage, setPreviewImage] = useState(null);
-  const fallbackImage =
-    "https://res.cloudinary.com/dobkvroor/image/upload/v1716439396/muitgl2brnavvwqhrplw.svg";
-  const fileRef = useRef(() => {});
 
-  fileRef.current = async () => {
-    const formData = new FormData();
-    formData.append("image", userImage);
-    try {
-      const res = await ApiService.post("upload-image/upload", formData, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      setProfileCredentials({
-        ...profileCredentials,
-        profilePic: res.data.url,
-      });
-      if (res.status === 200) {
-        NotificationService.notifySuccess("Image upload successfully");
-      }
-    } catch (error) {
-      NotificationService.notifyError("Image can't uploaded try again later ");
-    }
-  };
 
-  useEffect(() => {
-    if (userImage) {
-      fileRef.current();
-    }
-  }, [userImage, fileRef]);
+  
 
-  const handleImageChange = (e) => {
-    setUserImage(e.target.files[0]);
-    setPreviewImage(URL.createObjectURL(e.target.files[0]));
-  };
+ 
+
+  
 
   return (
     <>
@@ -74,13 +44,10 @@ const Profile = () => {
               height={30}
               className="position-absolute top-0 editImg"
             />
-            <img
-              src={profileCredentials?.profilePic || fallbackImage}
-              width={250}
-              height={250}
-              alt=""
-              className="rounded-circle object-fit-cover align-self-center m-auto"
-            />
+            <div>
+              {" "}
+              <img src={eliza} alt="eliza" className="imgmain" />
+            </div>
           </div>
           <div className="col-md-6 profile_Info p-0 ">
             <h3>My Dance Profile</h3>
@@ -144,54 +111,35 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          <div className="my-4 row ">
-            <div className="col-md-4 row p-3">
-              <div className="mobresp fw-bold col-6 ">
-                <p className="fw-bold">username</p>
+          <div className="profile-container">
+            <div className="profile-details">
+              <div className="detail-item">
+                <h4 className="text">UserName:</h4>
+                <h4>HugsOfFire</h4>
               </div>
-              <div className="mobresp col-6  ">
-                <p className="">{profileCredentials?.username}</p>
+              <div className="detail-item">
+                <h4>Email:</h4>
+                <h4>voila@gmail.com</h4>
               </div>
-              <div className="mobresp col-6  ">
-                <p className="fw-bold">Email</p>
+              <div className="detail-item">
+                <h4>Name:</h4>
+                <h4>Eliza</h4>
               </div>
-              <div className="mobresp col-6">
-                <span className="mobresp mb-0 d-block font-size-13 ">
-                  {profileCredentials?.email}
-                </span>
+              <div className="detail-item">
+                <h4>Dance alias:</h4>
+                <h4>Hugs Of Fire</h4>
               </div>
-              <div className="mobresp col-6">
-                <p className="fw-bold">Name</p>
+              <div className="detail-item">
+                <h4>City:</h4>
+                <h4>MTL</h4>
               </div>
-              <div className="mobresp col-6">
-                <p className="">{profileCredentials?.userId?.fullName}</p>
-              </div>
-              <div className="mobresp col-6 ">
-                <p className="fw-bold">Dance alias: </p>
-              </div>
-              <div className="mobresp col-6">
-                <p className="">{profileCredentials?.danceAlias}</p>
-              </div>
-              <div className="mobresp col-6  ">
-                <p className="fw-bold">City: </p>
-              </div>
-              <div className="mobresp col-6">
-                <p className="">{profileCredentials?.danceAlias}</p>
-              </div>
-              <div className="mobresp col-6  ">
-                <p className="fw-bold">I Move & Muse: </p>
-              </div>
-              <div className="mobresp col-6">
-                <p className="">{profileCredentials?.moveMuse}</p>
+              <div className="detail-item">
+                <h4>I Move&Muse:</h4>
+                <h4>With all my being</h4>
               </div>
             </div>
-            <div className="col-md-6  d-flex justify-content-end">
-              <img
-                src={sidelogo}
-                className="img-fluid"
-                style={{ width: "280px" }}
-                alt=""
-              />
+            <div className="profile-image">
+              <img src={sidelogo} alt="Profile" />
             </div>
           </div>
         </div>
@@ -259,66 +207,9 @@ const Profile = () => {
           <img src={arrowright} alt="" className="arrow-rightfavourite" />
         </div>
 
-        <div className="d-flex flex-wrap align-items-center justify-content-center py-5 w-100">
-          <div
-            className="flex-grow-1 position-relative"
-            style={{ maxWidth: "70%" }}
-          >
-            <div
-              style={{
-                backgroundImage: `url(${magic_circle})`,
-                maxWidth: "500px",
-                maxHeight: "500px",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-              className="d-flex align-items-center justify-content-center m-auto"
-            >
-              <div
-                className="position-relative rounded-circle d-flex flex-column align-items-center justify-content-center imgUploadBg m-5 "
-                style={{
-                  height: 200,
-                  width: 200,
-                }}
-              >
-                {previewImage ? (
-                  <img
-                    src={previewImage}
-                    alt="userImage"
-                    width={200}
-                    height={200}
-                    className="rounded-circle"
-                  />
-                ) : (
-                  <span className="small p-2">
-                    Upload your photo so others can recognize you and share some
-                    kudo love!
-                  </span>
-                )}
-                <label
-                  htmlFor="imageUpload"
-                  className="z-3 position-absolute bottom-0"
-                >
-                  <IoMdCamera size={40} />
-                </label>
-                <input
-                  type="file"
-                  name="userImage"
-                  id="imageUpload"
-                  className="d-none"
-                  onChange={handleImageChange}
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            style={{ width: 200, height: 200, backgroundColor: "#99C4B8" }}
-            className="rounded-circle d-flex align-items-center justify-content-center text-light"
-          >
-            <p className="fw-bold"> Initial sign in info</p>
-          </div>
-        </div>
+        
       </div>
+      <InitialSignInInfo/>
       <ProfileForm />
     </>
   );
