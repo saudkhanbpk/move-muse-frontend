@@ -76,7 +76,7 @@ function MyDances() {
                     </div>
                 </div>
             </div>
-            <MyFPevents />
+            {/* <MyFPevents /> */}
             <KuduRecieved/>
             <ReviewLeft/>
             <KuduShared/>

@@ -1,5 +1,6 @@
 .profile_maindiv {
   background-color: #f6d46b;
+  width: 100%;
 }
 
 .profileUser {
@@ -180,7 +181,6 @@
 }
 
 .maincform {
-  padding-top: 30px;
   max-width: 900px;
 }
 
@@ -451,7 +451,7 @@
   width: 100%;
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
+@media (min-width: 320px) and (max-width: 480px) {
   .custom-card.small,
   .custom-card.large {
     width: 230px !important;
@@ -524,6 +524,7 @@
   .imghand {
     width: 220px;
   }
+  
 
   .maintwo {
     display: flex;
@@ -583,6 +584,9 @@
   .plus_icon {
     display: flex;
     justify-content: end;
+  }
+  .profile_maindiv {
+    width: fit-content;
   }
 }
 
@@ -668,6 +672,10 @@ h4{
 
 
 @media (max-width: 576px) {
+.profile_maindiv{
+  width: 120%;
+  border: 3pz solid red;
+}
   .font-size-13 {
     font-size: 13px;
 

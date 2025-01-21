@@ -2,6 +2,7 @@
   background: #F6D46B !important;
   overflow: hidden; /* Ensures the content is contained within the navbar */
   box-shadow: none !important;
+  width: 100%;
 }
 
 .nav-link {
@@ -92,13 +93,17 @@ background-color: #8d168f;
     transform: scale(1);
   }
 }
-@media screen and (max-width: 768px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
   .dropdown {
-  position: absolute;
-  top: 300px;
-  right: 40px;
-  padding: 20px;
-  background-color: #480249;
-  color: 'white';
-  }
+    position: absolute;
+    top: 300px;
+    right: 40px;
+    padding: 20px;
+    background-color: #480249;
+    color: 'white';
+    }
+    .navbar{
+      width: 120%;
+    }
 }
+

@@ -51,6 +51,7 @@ const NavBar = () => {
   const isLoggedIn = !!user;
 
   return (
+    
     <Navbar bg="transparent" zIndex={2} expand="lg" expanded={expanded}>
       <Container fluid>
         <Navbar.Brand href="/">

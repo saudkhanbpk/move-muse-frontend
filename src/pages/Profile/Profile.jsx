@@ -19,23 +19,15 @@ import ApiService from "../../services/ApiService";
 import { IoMdCamera } from "react-icons/io";
 import NotificationService from "../../components/NotificationService/NotificationService";
 import { UserContext } from "../../context/UserContext";
-import eliza from '../../img/icons/eliza.png'
+import eliza from "../../img/icons/eliza.png";
 import InitialSignInInfo from "../NotificationPage/InitialSignInInfo";
+import MyFPevents from "../NotificationPage/MyDances/MyFPevents";
 const Profile = () => {
-  
-
-
-
-  
-
- 
-
-  
-
   return (
     <>
-      <main className="profile_maindiv " style={{ overflowX: "hidden" }}>
-        <div className="p-4 col-md-11 row  mx-auto">
+    <div className="profile_maindiv">
+      <main className=" " style={{ overflowX: "hidden" }}>
+        <div className="p-4 col-md-11  row  mx-auto">
           <div className="col-md-6  profileUser d-flex align-items-center ">
             <img
               src={edit}
@@ -144,8 +136,9 @@ const Profile = () => {
           </div>
         </div>
       </main>
+      </div>
 
-      <div className="maintwo pt-5 h-50 d-flex justify-content-center align-items-center">
+      {/* <div className="maintwo pt-5 h-50 d-flex justify-content-center align-items-center">
         <div className="  d-flex align-items-center gap-3  justify-content-center">
           <img src={bell} alt="" className="img-fluid icon-bell" />
           <div className="notificationmain">
@@ -208,9 +201,10 @@ const Profile = () => {
         </div>
 
         
-      </div>
-      <InitialSignInInfo/>
+      </div> */}
+      <InitialSignInInfo />
       <ProfileForm />
+      <MyFPevents />
     </>
   );
 };
