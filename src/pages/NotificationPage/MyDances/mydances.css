@@ -1,14 +1,13 @@
 .imgmain {
   width: 330px; /* Default width for larger screens */
 }
-.dropdownline{
-    width: 20;
-    border: 4xp solid yellow;
+.dropdownline {
+  width: 20;
+  border: 4xp solid yellow;
 }
-.textmain{
-    display: flex;
-    justify-content: space-between;
-
+.textmain {
+  display: flex;
+  justify-content: space-between;
 }
 .textdiv {
   width: 160px;
@@ -17,20 +16,57 @@
   width: 300px;
   height: 200px;
 }
-@media (max-width: 480px) {
+.bachata {
+  width: 300px;
+  height: 250px;
+  background-color: #95b1a9 !important;
+}
+.imgg {
+  width: 150px;
+}
+/* initialsignininfo */
+.initialmain{
+  width: 100%;
+}
+.uploadmaindiv{
+  max-width: 70%;
+}
+/* myfutur */
+.myfuturemain{
+  width: 100%;
+}
+@media (min-width: 320px) and (max-width: 480px) {
   .imgmain {
     width: 180px;
   }
-  
   .Salsamania {
     width: 240px;
     height: 200px;
     margin-top: 20px;
   }
-  .textmain{
-   display: flex;
-   flex-direction: column;
-   padding: 5px;
-    
-}
+  .textmain {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+  }
+  .imgg {
+    width: 100%;
+  }
+  .bachata {
+    width: 100%;
+  }
+  /* initialsignininfo */
+  .initialmain{
+width: fit-content;
+  }
+  .uploadmaindiv{
+    max-width: 220px;
+  }
+  .myfuturemain{
+    width: 120%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

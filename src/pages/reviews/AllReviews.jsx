@@ -9,7 +9,7 @@ import { BaseUrl } from "../../BaseUrl";
 function AllReviews() {
     const [flaggedReviews, setFlaggedReviews] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const reviewsPerPage = 4; // Number of reviews per page
+    const reviewsPerPage = 4;
 
     useEffect(() => {
         const fetchFlaggedReviews = async () => {
@@ -39,13 +39,21 @@ function AllReviews() {
     const calculateStars = (rev) => {
         const total = rev.venue + rev.ratio + rev.organization + rev.artists + rev.culture;
         const maxPossible = 5;
-        return Math.min(total / 5, maxPossible);
+        const average = total / 5;
+
+        // Round up to the next whole number if the average is 0.5 or higher
+        if (average % 1 >= 0.5) {
+            return Math.ceil(average);
+        }
+
+        // Return the average rating
+        return average;
     };
 
     const renderStars = (rev) => {
         const stars = calculateStars(rev);
         const fullStars = Math.floor(stars);
-        const hasHalfStar = stars - fullStars >= 0.5;
+        const hasHalfStar = stars - fullStars > 0 && stars - fullStars < 0.5;
 
         const starElements = [];
 

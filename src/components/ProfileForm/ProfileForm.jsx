@@ -240,7 +240,7 @@ const ProfileForm = () => {
         
       </div>
       {/* <CreateEvent /> */}
-      <CinfirmAttendance />
+      {/* <CinfirmAttendance /> */}
     </>
   );
 };

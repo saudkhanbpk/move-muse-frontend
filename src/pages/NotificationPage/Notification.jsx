@@ -67,7 +67,7 @@ function Notification() {
           <img src={arrowright} alt="arrow" width={50} />
         </div>
       </div>
-      <InitialSignInInfo />
+      {/* <InitialSignInInfo /> */}
       <ConfirmAttendee />
     </>
   );

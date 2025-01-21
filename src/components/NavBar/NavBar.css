@@ -1,19 +1,18 @@
 .navbar {
   background: #F6D46B !important;
-  /* overflow: hidden;  */
   position: relative;
   box-shadow: none !important;
-  z-index: 1000 !important;
+  width: 100%;
 }
 
 .nav-link {
-  color: #480249; /* Your specified deep purple color */
+  color: #480249; 
   font-family: "HK Grotesk", sans-serif;
-  float: left; /* Align links to the left side */
-  display: block; /* Makes the links appear as block elements */
-  text-align: center; /* Center text inside the link */
-  padding: 14px 5px; /* Padding inside the link */
-  text-decoration: none; /* Removes underline from links */
+  float: left; 
+  display: block; 
+  text-align: center; 
+  padding: 14px 5px; 
+  text-decoration: none; 
   font-size: 20px;
   padding: 10px 10px;
   margin: 5px;
@@ -35,21 +34,18 @@ background-color: #8d168f;
 .logo-signup {
   height: 80px;
 }
-/* Hover effect for links */
 .navbar a:hover {
-  color: black; /* Text color change on hover */
+  color: black; 
 }
 
-/* Active link styling */
 .navbar a.active {
-  background-color: transparent; /* Different background for the active/current link */
+  background-color: transparent; 
   color: #480249 !important;
   border: 2px solid #480249;
 }
 
 .section {
   height: 100vh;
-  /* styles for each section */
 }
 .dropdown {
   z-index: 1000 !important;
@@ -94,13 +90,14 @@ background-color: #8d168f;
     transform: scale(1);
   }
 }
-@media screen and (max-width: 768px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
   .dropdown {
   position: absolute;
   top: 300px;
-  right: 40 px;
+  right: 40px;
   padding: 20px;
   background-color: #480249;
   color: 'white';
   }
 }
+

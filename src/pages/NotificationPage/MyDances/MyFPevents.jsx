@@ -6,7 +6,7 @@ import plus2 from '../../../img/icons/we_want_your_feedback.png'
 import '../MyDances/mydances.css'
 function MyFPevents() {
     return (
-        <div className='p-5 ' style={{backgroundColor: '#fff7d8'}}>
+        <div className='p-5 myfuturemain' style={{backgroundColor: '#fff7d8'}}>
             <div className='d-md-flex justify-content-between '>
                 <h2 className='text-violet fw-bold'>My Future <br />
                     Events</h2>
@@ -61,14 +61,14 @@ function MyFPevents() {
                     </div>
                 </div>
             </div>
-            <div className='self-end d-flex my-5   justify-content-end w-100'>
+            <div className='self-end d-flex my-5   justify-content-end w-md-100'>
             <img src={arrowright} alt='arrow' width={50}/>
             </div>
             <div className='d-md-flex justify-content-between '>
                 <h2 className='text-violet fw-bold'>My Confirmed<br/> Past Events</h2>
-                <div className='d-flex gap-3'>
+                <div className='d-md-flex gap-3'>
                     <div
-                        className='rounded-4 position-relative d-flex flex-column justify-content-end align-items-start p-3 shadow'
+                        className='rounded-4 position-relative d-flex flex-column justify-content-end align-items-start p-3 mt-md-0 mt-3 shadow'
                         style={{ backgroundColor: '#e2e2e2', width: '250px', height: '250px' }}
                     >
                         <img
@@ -84,7 +84,7 @@ function MyFPevents() {
                         </h5>
                     </div>
                     <div
-                        className='rounded-4 position-relative d-flex flex-column justify-content-end align-items-start p-3 shadow'
+                        className='rounded-4 position-relative d-flex flex-column justify-content-end align-items-start mt-md-0 mt-3 p-3 shadow'
                         style={{ backgroundColor: '#aa02ff', width: '250px', height: '250px' }}
                     >
                         <img
@@ -100,15 +100,15 @@ function MyFPevents() {
                         </h5>
                     </div>
                     <div
-                        className='rounded-4 position-relative d-flex flex-column justify-content-end align-items-start p-3 shadow'
-                        style={{ backgroundColor: '#95b1a9', width: '300px', height: '250px' }}
+                        className='rounded-4 position-relative d-md-flex flex-column justify-content-end bachata align-items-start mt-md-0 mt-3 p-3 shadow'
+                        style={{ backgroundColor: '#95b1a9',  }}
                     >
                         <img
                             src={plus2}
                             alt='plus icon'
-                            width={150}
+                            // width={150}
                             
-                            className='position-absolute top-0'
+                            className='position-absolute top-0 imgg'
                         />
                         {/* Bottom Start Text */}
                         <h5 className='text-white fw-bold mb-2 ms-2'>

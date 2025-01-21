@@ -72,8 +72,8 @@ const InitialSignInInfo = () => {
   }, [userImage, fileRef]);
   return (
     <div
-      className="d-flex flex-column align-items-center justify-content-center p-5"
-      style={{ backgroundColor: "#fff7d8" }}
+      className="d-flex flex-column align-items-center justify-content-center p-5 initialmain"
+      style={{ backgroundColor: "#fff7d8",  }}
     >
       <div className="d-flex gap-5">
         {/* <div>
@@ -88,10 +88,10 @@ const InitialSignInInfo = () => {
         </div> */}
       </div>
       <div className="my-5 max-w-screen-sm w-full">
-      <div className="d-flex flex-wrap align-items-center justify-content-center py-5 w-100">
+      <div className="d-flex flex-wrap align-items-center justify-content-center py-5 w-md-100">
                   <div
-                    className="flex-grow-1 position-relative"
-                    style={{ maxWidth: "70%" }}
+                    className="flex-grow-1 position-relative uploadmaindiv"
+                  
                   >
                     <div
                       style={{
