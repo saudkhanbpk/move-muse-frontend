@@ -80,7 +80,6 @@ export default function ReviewCard({
       if (response.data.success) {
         setFlagged(false);
         toast.success("Content unflagged successfully.");
-        setShowMessage(false);
       } else {
         toast.error("Failed to unflag content.");
       }

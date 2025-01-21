@@ -238,7 +238,7 @@ const BlogPage = () => {
               >
                 <h2>{post.title?.name}</h2>
                 <p>
-                  {/* <strong>Author:</strong> {post.author.fullName} */}
+                  <strong>Author:</strong> {post.author.fullName}
                 </p>
                 <p>
                   <strong>Date:</strong> {post.date.slice(0, 10)}

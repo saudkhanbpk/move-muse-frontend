@@ -1,7 +1,9 @@
 .navbar {
   background: #F6D46B !important;
-  overflow: hidden; /* Ensures the content is contained within the navbar */
+  /* overflow: hidden;  */
+  position: relative;
   box-shadow: none !important;
+  z-index: 1000 !important;
 }
 
 .nav-link {
@@ -50,10 +52,10 @@ background-color: #8d168f;
   /* styles for each section */
 }
 .dropdown {
-  z-index: 100;
+  z-index: 1000 !important;
   width: "200px";
   position: absolute;
-  top: 0;
+  top: 110px;
   right: 50px;
   padding: 20px;
   background-color: #480249;

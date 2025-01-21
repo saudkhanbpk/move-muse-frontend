@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 // import { Container, Row, Col, Button, Nav, Navbar } from "react-bootstrap";
 import Hero from "./HPComponents/HP_Hero/HP_Hero";
 import MoveMuse from "./HPComponents/HP_MoveMuse/HP_MoveMuse";
-import "../../styles/HomePage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HP_Celebrate from "./HPComponents/HP_Celebrate/HP_Celebrate";
 import HP_Share from "./HPComponents/HP_Share/HP_Share";
@@ -48,7 +47,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className="homepage">
+    <div className="homepage" >
       <Hero />
       {/* <FbEvent eventId={eventId} accessToken={accessToken} /> */}
       <HP_Events

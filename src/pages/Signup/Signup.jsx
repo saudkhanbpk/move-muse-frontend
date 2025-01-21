@@ -7,6 +7,7 @@ import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import { UserContext } from '../../context/UserContext';
 import NotificationService from "../../components/NotificationService/NotificationService";
 import { toast } from "react-toastify";
+import { Spinner } from "react-bootstrap"; // Import Spinner from react-bootstrap
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const Signup = () => {
     password: "",
   });
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false); // State to manage loading spinner
   const { setUserLoggedIn, setUser, setProfilePicture } = useContext(UserContext);
 
   const handleChange = (e) => {
@@ -25,6 +27,7 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Show loading spinner
     try {
       const response = await axios.post(`${BaseUrl}/api/v1/auth/signup`, formData);
       console.log("API Response:", response);
@@ -46,12 +49,15 @@ const Signup = () => {
         // Something else happened
         setError("Internal server error");
       }
+    } finally {
+      setLoading(false); // Hide loading spinner
     }
   };
 
   const handleGoogleLogin = (response) => {
     console.log('Google Login Response:', response);
     const { credential } = response;
+    setLoading(true); // Show loading spinner
     axios.post(`${BaseUrl}/api/v1/auth/google`, { idToken: credential })
       .then(res => {
         console.log('Token Exchange Response:', res);
@@ -75,6 +81,9 @@ const Signup = () => {
           // Something else happened
           setError("Google login failed. Please try again.");
         }
+      })
+      .finally(() => {
+        setLoading(false); // Hide loading spinner
       });
   };
 
@@ -111,8 +120,10 @@ const Signup = () => {
             required
           />
 
-          <button type="submit">Sign Up</button>
-          <button>
+          <button type="submit" disabled={loading}>
+            {loading ? <Spinner animation="border" size="sm" /> : "Sign Up"}
+          </button>
+          <button disabled={loading}>
             <GoogleLogin
               onSuccess={handleGoogleLogin}
               onError={() => {
@@ -120,6 +131,7 @@ const Signup = () => {
                 setError("Google login failed. Please try again.");
               }}
               useOneTap
+              disabled={loading}
             />
           </button>
           <p>

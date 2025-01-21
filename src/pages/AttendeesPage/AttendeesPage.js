@@ -1,7 +1,6 @@
 import React from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import SignUpButton from '../../components/Buttons/SignUpButton/SignUpButton';
-import '../../styles/HomePage.css'; // Make sure to create this CSS file
 
 const HomePage = () => {
   return (
