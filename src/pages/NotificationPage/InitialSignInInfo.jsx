@@ -72,7 +72,7 @@ const InitialSignInInfo = () => {
   }, [userImage, fileRef]);
   return (
     <div
-      className="d-flex flex-column align-items-center justify-content-center p-5 initialmain"
+      className="d-flex flex-column align-items-center justify-content-center p-5 "
       style={{ backgroundColor: "#fff7d8",  }}
     >
       <div className="d-flex gap-5">
@@ -119,7 +119,7 @@ const InitialSignInInfo = () => {
                             className="rounded-circle"
                           />
                         ) : (
-                          <span className="small p-2">
+                          <span className="small fs-6 p-2">
                             Upload your photo so others can recognize you and
                             share some kudo love!
                           </span>

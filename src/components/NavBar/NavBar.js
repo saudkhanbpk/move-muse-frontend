@@ -172,7 +172,7 @@ const NavBar = () => {
                     display: `${profileOpen ? "block" : "none"}`,
                   }}
                 >
-                  <div className="fw-bold text-white">
+                  <div className=" text-white d-flex ">
                   <img
                   src={ProfilePicture}
                   alt="Profile"
@@ -186,8 +186,10 @@ const NavBar = () => {
                     cursor: "pointer",
                     marginRight:'10px'
                   }}
-                />
-                    {user.fullName.split(" ")[0].toUpperCase()}</div>
+                /><div>
+                    {user.fullName.toUpperCase()}
+                    <p>{user.email}</p>
+                    </div></div>
                   <Link to="/profile" onClick={() => setProfileOpen(false)} className="fw-bold p-2 mt-2 profile-btn" style={{ textDecoration: "none", color: 'white', listStyleType: 'none' }}><ImProfile/> My Profile</Link>
                   <Link
                     className=" p-2 mt-1 fw-bold  profile-btn"
