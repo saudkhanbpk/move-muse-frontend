@@ -114,6 +114,7 @@ const SingleFutureEvent = () => {
         );
         setEvent(response.data.event);
         setIsFlagged(response.data.event.flagged); // Set initial flagged state
+        setIsFavorited(response.data.event.favourite); // Set initial favorited state
         setLoading(false);
       } catch (err) {
         setError("Failed to fetch events.");
@@ -173,7 +174,7 @@ const SingleFutureEvent = () => {
             <div className="col-12 col-md-6 d-md-flex justify-content-md-end">
               {showMessage && (
                 <div
-                  className=" d-flex align-items-center justify-content-center"
+                  className="d-flex align-items-center justify-content-center"
                   style={{
                     position: "absolute",
                     right: "250px",
@@ -192,12 +193,12 @@ const SingleFutureEvent = () => {
                       id="message"
                       onChange={(e) => setMessage(e.target.value)}
                       value={message}
-                      className="w-100 h-100 border-0 p-1 bg-none "
+                      className="w-100 h-100 border-0 p-1 bg-none"
                       placeholder="When flagging content please include message for our admin"
                       style={{ outline: "none" }}
                     ></textarea>
                     <button
-                      className="btn position-relative start-50  "
+                      className="btn position-relative start-50"
                       style={{
                         background: "#F6D46B",
                         backgroundSize: "contain",
@@ -223,7 +224,7 @@ const SingleFutureEvent = () => {
                 </div>
               )}
               <div
-                className="d-flex gap-2 mt-5  "
+                className="d-flex gap-2 mt-5"
                 style={{ marginRight: "40px" }}
               >
                 <img
@@ -263,12 +264,11 @@ const SingleFutureEvent = () => {
                       />
                     )
                   }
-                 
                 </div>
               </div>
             </div>
           </div>
-          <div className="mt-2 d-md-flex justify-content-end ">
+          <div className="mt-2 d-md-flex justify-content-end">
             <div className="col-12 col-md-7">
               <Link to={event.eventlink}>
                 <img
@@ -417,7 +417,7 @@ const SingleFutureEvent = () => {
                   </strong>
                   {event.organizer}
                 </div>
-                <div className="d-md-flex align-items-center gap-2 mb-3">
+                <div className="d-md-flex gap-2 align-items-center mb-3">
                   <strong className="font-weight-semibold mb-0 text-decoration-underline">
                     Artists:
                   </strong>
@@ -458,7 +458,7 @@ const SingleFutureEvent = () => {
                 <p style={{ marginTop: "1rem" }}>{event.location}</p>
               </div>
 
-              <KudoCard poeple={event.peopleResponse} />
+              <KudoCard people={event.peopleResponse} />
             </div>
           </div>
         </div>

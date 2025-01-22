@@ -19,7 +19,7 @@ const navLinks = [
 ];
 
 const NavBar = () => {
-  const { user, logout, setUserLoggedIn, setProfilePicture, ProfilePicture } = useContext(UserContext);
+  const { user, logout, setUserLoggedIn, setProfilePicture, ProfilePicture, profileCredentials } = useContext(UserContext);
   const navigate = useNavigate();
   const [expanded, setExpanded] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
@@ -29,9 +29,9 @@ const NavBar = () => {
     const userData = JSON.parse(localStorage.getItem('userData'));
     console.log('User Data Retrieved from Local Storage:', userData);
     if (userData && userData.profilePicture) {
-      setProfilePicture(userData.profilePicture);
+      setProfilePicture(userData.profilePicture)
     } else {
-      setProfilePicture(dancelogo);
+      setProfilePicture(profileCredentials.profilePicture);
     }
   }, [user]);
 
