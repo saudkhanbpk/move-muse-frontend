@@ -90,23 +90,17 @@ const NavBar = () => {
             ))}
           </Nav>
 
-          <div className="d-flex align-items-center gap-1">
+          <div className="d-flex align-items-center gap-1 ">
+         
             <div>
               <Link to="/notification">
-                <img src={notify} alt="Notification" width={40} className="notification-icon" />
+                <img src={notify} alt="Notification" width={30} className="notification-icon" />
               </Link>
             </div>
+           
             {isLoggedIn ? (
               <Nav>
-                {/* <Nav.Link
-                  as={NavLink}
-                  to="/profile"
-                  className={({ isActive }) => (isActive ? "active" : "")}
-                  onClick={handleNavLinkClick}
-                >
-                  {user.fullName.split(" ")[0]}
-                </Nav.Link> */}
-              </Nav>
+               </Nav>
             ) : (
               <div
                 style={{
@@ -161,8 +155,8 @@ const NavBar = () => {
                   className="logo-signup img-fluid rounded-circle"
                   title="Click to view more"
                   style={{
-                    width: "50px",
-                    height: "50px",
+                    width: "40px",
+                    height: "40px",
                     cursor: "pointer",
                   }}
                 />
@@ -172,7 +166,7 @@ const NavBar = () => {
                     display: `${profileOpen ? "block" : "none"}`,
                   }}
                 >
-                  <div className=" text-white d-flex ">
+                  {/* <div className="fw-bold text-white" style={{border: '2px solid white'}}>
                   <img
                   src={ProfilePicture}
                   alt="Profile"
@@ -181,15 +175,13 @@ const NavBar = () => {
                   className="logo-signup img-fluid rounded-3 "
                  
                   style={{
-                    width: "50px",
-                    height: "50px",
+                    width: "40px",
+                    height: "40px",
                     cursor: "pointer",
-                    marginRight:'10px'
+                    marginRight:'10px',
                   }}
-                /><div>
-                    {user.fullName.toUpperCase()}
-                    <p>{user.email}</p>
-                    </div></div>
+                />
+                    {user.fullName.split(" ")[0].toUpperCase()}</div> */}
                   <Link to="/profile" onClick={() => setProfileOpen(false)} className="fw-bold p-2 mt-2 profile-btn" style={{ textDecoration: "none", color: 'white', listStyleType: 'none' }}><ImProfile/> My Profile</Link>
                   <Link
                     className=" p-2 mt-1 fw-bold  profile-btn"

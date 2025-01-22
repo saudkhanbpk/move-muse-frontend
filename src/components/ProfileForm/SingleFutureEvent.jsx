@@ -207,7 +207,7 @@ const SingleFutureEvent = () => {
                         width: "80px",
                         height: "40px",
                         borderRadius: "50px",
-                        marginLeft: '20px'
+                        marginLeft: "20px",
                       }}
                       onClick={handleUpdate}
                     >
@@ -248,22 +248,20 @@ const SingleFutureEvent = () => {
                   }
                 />
 
-                <div className="mt-2">
-                  {
-                    isFavorited ? (
-                      <FaHeart
-                        size={30}
-                        style={{ color: "red" }}
-                        onClick={handleFavoriteToggle}
-                      />
-                    ) : (
-                      <FaRegHeart
-                        size={30}
-                        style={{ color: "red" }}
-                        onClick={handleFavoriteToggle}
-                      />
-                    )
-                  }
+                <div className="mt-2 border border-2 border-primary">
+                  {isFavorited ? (
+                    <FaHeart
+                      size={30}
+                      style={{ color: "red" }}
+                      onClick={handleFavoriteToggle}
+                    />
+                  ) : (
+                    <FaRegHeart
+                      size={30}
+                      style={{ color: "red" }}
+                      onClick={handleFavoriteToggle}
+                    />
+                  )}
                 </div>
               </div>
             </div>
@@ -389,12 +387,19 @@ const SingleFutureEvent = () => {
                   />
                 </div>
                 <div>
-                  <Link to={event.eventlink}>
+                  <a
+                    href={event.eventlink}
+                    target="blank"
+                    rel="noopener noreferrer"
+                  >
                     <FaFacebookSquare
                       size={30}
-                      style={{ color: "blue", cursor: "pointer" }}
+                      style={{
+                        color: "blue",
+                        cursor: "pointer",
+                      }}
                     />
-                  </Link>
+                  </a>
                 </div>
               </div>
               <p>{event.description}</p>

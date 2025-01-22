@@ -24,7 +24,7 @@ const FeedbackForm = ({ onSubmit }) => {
     flagged: false,
     role: "",
   });
-  const [loading, setLoading] = useState(false); // Loading state
+  const [loading, setLoading] = useState(false); 
   const [error, setError] = useState("");
 
   const { id } = useParams();
@@ -50,7 +50,7 @@ const FeedbackForm = ({ onSubmit }) => {
       return;
     }
     setError("");
-    setLoading(true); // Start loading
+    setLoading(true);
     try {
       const response = await axios.post(
         `${BaseUrl}/api/v1/events/feedback/${id}`,
@@ -76,7 +76,7 @@ const FeedbackForm = ({ onSubmit }) => {
     } catch (error) {
       console.error("Error submitting feedback:", error);
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false); 
     }
   };
 
@@ -178,11 +178,11 @@ const FeedbackForm = ({ onSubmit }) => {
               </label>
               <div className="d-md-flex flex-wrap gap-1">
                 {[
-                  "venue",
-                  "ratio",
-                  "artists",
-                  "organization",
-                  "culture",
+                  "Venue",
+                  "Ratio",
+                  "Artists",
+                  "Organization",
+                  "Culture",
                 ].map((field) => (
                   <div
                     className="d-md-flex align-items-center flex-grow-1 mb-2"
@@ -208,6 +208,8 @@ const FeedbackForm = ({ onSubmit }) => {
                         outline: "none",
                         height: "30px",
                         width: "46px",
+                        fontSize: '14px'
+                      
                       }}
                     />
                   </div>
@@ -234,7 +236,7 @@ const FeedbackForm = ({ onSubmit }) => {
               style={{ background: "#F6D46B", width: "200px" }}
               type="submit"
               className="btn btn-gray rounded mt-3"
-              disabled={loading} // Disable the button when loading
+              disabled={loading} 
             >
               {loading ? (
                 <div className="spinner-border text-dark ms-2" role="status" />
