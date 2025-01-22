@@ -14,6 +14,7 @@ import arrowcorrect from "../../img/icons/arrowcorrect.png";
 import arrowblur from "../../img/icons/arrowblur.png";
 import arrowright from "../../img/icons/arrowright.png";
 
+
 import ProfileForm from "../../components/ProfileForm/ProfileForm";
 import ApiService from "../../services/ApiService";
 import { IoMdCamera } from "react-icons/io";
@@ -202,9 +203,11 @@ const Profile = () => {
 
         
       </div> */}
+
       <InitialSignInInfo />
       <ProfileForm />
       <MyFPevents />
+      
     </>
   );
 };

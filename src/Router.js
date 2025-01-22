@@ -27,6 +27,8 @@ import Notification from "./pages/NotificationPage/Notification";
 import MyDances from "./pages/NotificationPage/MyDances/MyDances";
 import ContactUs from "./components/ContactUs/ContactUs";
 import AllTopics from "./components/MusingGuide/AllTopics";
+import FavouriteEvents from "./components/ProfileForm/FavouriteEvents";
+
 
 const Router = () => {
   const { user, showAdditionalSignInInfo } = useContext(UserContext);
@@ -64,6 +66,7 @@ const Router = () => {
         <Route path="/blogs" Component={MAndNPage} />
         <Route path="/myprofile" Component={MyDances} />
         <Route path="/m&m/catalogue" Component={CataloguePage} />
+        <Route path="/favoriteevents" Component={FavouriteEvents} />
         <Route
           path="/profile"
           element={

@@ -4,6 +4,9 @@ import arrowright from '../../../img/icons/arrowright.png'
 import blueplus from '../../../img/icons/blueplus.png'
 import plus2 from '../../../img/icons/we_want_your_feedback.png'
 import '../MyDances/mydances.css'
+import { Link } from "react-router-dom";
+import { GoHeart } from "react-icons/go";
+
 function MyFPevents() {
     return (
         <div className='p-5 myfuturemain' style={{backgroundColor: '#fff7d8'}}>
@@ -119,6 +122,12 @@ function MyFPevents() {
             </div>
             <div className='self-end d-flex my-5   justify-content-end w-100'>
             <img src={arrowright} alt='arrow' width={50}/>
+            </div>
+            <div>
+              <Link to="/favoriteevents">
+                {/* <img src={notify} alt="Notification" width={30} className="notification-icon" /> */}
+                <GoHeart style={{fontSize: '30px',color:'black'}}/>
+              </Link>
             </div>
         </div>
     )
