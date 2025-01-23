@@ -10,7 +10,14 @@
 .editImg {
   mix-blend-mode: multiply;
 }
-
+.imgmain {
+  background-size: contain;
+  background-position: center;
+  border-radius: 100%;
+  width: 260px;
+  height:260px;
+  
+}
 .profile_Info h3 {
   padding: 10px;
   text-align: center;

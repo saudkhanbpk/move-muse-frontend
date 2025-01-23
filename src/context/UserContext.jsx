@@ -12,6 +12,7 @@ export const UserProvider = ({ children }) => {
   const [profileCredentials, setProfileCredentials] = useState({});
   const [showAdditionalSignInInfo, setShowAdditionalSignInInfo] = useState(false);
   const [ProfilePicture, setProfilePicture] = useState('');
+  const [open, setOpen] = useState(false);
   const [token, setToken] = useState(null);
   const fetchUser = useRef(() => {});
   const navigate = useNavigate();
@@ -123,7 +124,10 @@ export const UserProvider = ({ children }) => {
         setShowAdditionalSignInInfo,
         ProfilePicture,
         setProfilePicture,
-        fetchUserData 
+        fetchUserData ,
+        open,
+        setOpen
+
       }}
     >
       {children}

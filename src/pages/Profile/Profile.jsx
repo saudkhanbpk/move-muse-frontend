@@ -8,8 +8,6 @@ import follow from "../../img/icons/follow.png";
 import sidelogo from "../../img/icons/magic_stream_upwards.png";
 import eliza from "../../img/icons/eliza.png";
 
-
-import ProfileForm from "../../components/ProfileForm/ProfileForm";
 import { IoMdCamera } from "react-icons/io";
 import NotificationService from "../../components/NotificationService/NotificationService";
 import { UserContext } from "../../context/UserContext";
@@ -18,7 +16,7 @@ import MyFPevents from "../NotificationPage/MyDances/MyFPevents";
 import { BaseUrl } from "../../BaseUrl";
 
 const Profile = () => {
-  const { profileCredentials, setProfileCredentials, token } = useContext(UserContext);
+  const { profileCredentials, setProfileCredentials, token, setOpen, open } = useContext(UserContext);
   const [userData, setUserData] = useState(null);
   const [dances, setDances] = useState([]);
 
@@ -62,7 +60,9 @@ const Profile = () => {
                 alt=""
                 width={30}
                 height={30}
-                className="position-absolute top-0 editImg"
+                title="Edit Profile"
+                onClick={() => setOpen(!open)}
+                className="position-absolute top-0 editImg cursor-pointer"
               />
               <div>
                 {" "}
@@ -80,7 +80,7 @@ const Profile = () => {
                     style={{ mixBlendMode: "multiply" }}
                   />
                   <div className="d-flex justify-content-around align-items-center gap-1 advancemainimg">
-                    {dances.map((dance, index) => (
+                    {profileCredentials?.dances?.map((dance, index) => (
                       <div key={index} className="">
                         {/* <img src={dance.icon} alt={dance.style} className="img-fluid logserivce" /> */}
                         <span>{dance.style}</span>
@@ -96,7 +96,7 @@ const Profile = () => {
                     style={{ mixBlendMode: "multiply" }}
                   />
                   <div className="d-flex justify-content-between mt-2  advancemaintext">
-                    {dances.map((dance, index) => (
+                    {profileCredentials?.dances?.map((dance, index) => (
                       <div key={index} className="fw-bold w-25 text-start px-2">{dance.years}</div>
                     ))}
                   </div>
@@ -109,7 +109,7 @@ const Profile = () => {
                     style={{ mixBlendMode: "multiply" }}
                   />
                   <div className="d-flex justify-content-between mt-2 p-2 w-100  advancemaintext advancemaintextlg">
-                    {dances.map((dance, index) => (
+                    {profileCredentials?.dances?.map((dance, index) => (
                       <div key={index} className="fw-bold textsize w-25">{dance.follow}</div>
                     ))}
                   </div>
@@ -122,7 +122,7 @@ const Profile = () => {
                     style={{ mixBlendMode: "multiply" }}
                   />
                   <div className="d-flex justify-content-between mt-2 p-2 w-100  advancemaintext advancemaintextlg">
-                    {dances.map((dance, index) => (
+                    {profileCredentials?.dances?.map((dance, index) => (
                       <div key={index} className="fw-bold textsize w-25">{dance.lead}</div>
                     ))}
                   </div>
@@ -131,29 +131,30 @@ const Profile = () => {
             </div>
             <div className="profile-container">
               <div className="profile-details">
+              <div className="detail-item">
+                  <h4>Name:</h4>
+                  <h4>{profileCredentials?.fullName}</h4>
+                </div>
                 <div className="detail-item">
                   <h4 className="text">UserName:</h4>
-                  <h4>{profileCredentials.username}</h4>
+                  <h4>{profileCredentials?.username}</h4>
                 </div>
                 <div className="detail-item">
                   <h4>Email:</h4>
-                  <h4>{profileCredentials.email}</h4>
-                </div>
-                <div className="detail-item">
-                  <h4>Name:</h4>
-                  <h4>{profileCredentials.fullName}</h4>
-                </div>
-                <div className="detail-item">
-                  <h4>Dance alias:</h4>
-                  <h4>{profileCredentials.danceAlias}</h4>
+                  <h4>{profileCredentials?.email}</h4>
                 </div>
                 <div className="detail-item">
                   <h4>City:</h4>
-                  <h4>{profileCredentials.city}</h4>
+                  <h4>{profileCredentials?.city}</h4>
                 </div>
                 <div className="detail-item">
+                  <h4>Dance alias:</h4>
+                  <h4>{profileCredentials?.danceAlias}</h4>
+                </div>
+                
+                <div className="detail-item">
                   <h4>I Move&Muse:</h4>
-                  <h4>{profileCredentials.moveMuse}</h4>
+                  <h4>{profileCredentials?.moveMuse}</h4>
                 </div>
               </div>
               <div className="profile-image">
@@ -164,75 +165,9 @@ const Profile = () => {
         </main>
       </div>
 
-      {/* <div className="maintwo pt-5 h-50 d-flex justify-content-center align-items-center">
-        <div className="  d-flex align-items-center gap-3  justify-content-center">
-          <img src={bell} alt="" className="img-fluid icon-bell" />
-          <div className="notificationmain">
-            <h3 className="  fw-bold d-flex justify-content-center  ">
-              Notifications
-            </h3>
-          </div>
-          <img src={bell} alt="" className="img-fluid icon-bell" />
-        </div>
-        <div className="labelinfo align-items-center gap-2 justify-content-center">
-          <div className="d-flex align-items-center gap-3  ">
-            <div className="  border border-1 border- black p-3 mt-3 rounded-5 ">
-              <h3>Your reviw was flagged </h3>
-              <p className="">
-                Creme de la creme of African dances and 1 Gala night of
-                celebration of multiculturalism, diversity, the arts including
-                performances and fashion shows by African designers. More of
-                celebration of multiculturalism, diversity, the arts including
-                performances and fashion shows by African designers.
-              </p>
-            </div>
-            <div className="icon-arrow">
-              <img src={arrowcorrect} alt="" className="icon-arrow" />
-            </div>
-          </div>
+      {open && <InitialSignInInfo />}
 
-          <div className="d-flex align-items-center gap-3  mt-3">
-            <div className="  border border-1 border- black p-3 mt-3 rounded-5 ">
-              <h3>The review you flagged was removed </h3>
-              <p className="">
-                Creme de la creme of African dances and 1 Gala night of
-                celebration of multiculturalism, diversity, the arts including
-                performances and fashion shows by African designers. More of
-                celebration of multiculturalism, diversity, the arts including
-                performances and fashion shows by African designers.
-              </p>
-            </div>
-            <div>
-              <img src={arrowblur} alt="" className="icon-arrow" />
-            </div>
-          </div>
-          <div className="d-flex align-items-center gap-3 mt-3">
-            <div className="border border-1 border- black p-3 mt-3 rounded-5 ">
-              <h3>Your Other Magic Kudo was flagged </h3>
-              <p className="">
-                Creme de la creme of African dances and 1 Gala night of
-                celebration of multiculturalism, diversity, the arts including
-                performances and fashion shows by African designers. More of
-                celebration of multiculturalism, diversity, the arts including
-                performances and fashion shows by African designers.
-              </p>
-            </div>
-            <div className="iconarowmainkudoflaged">
-              <img src={arrowcorrect} alt="" className="icon-arrow" />
-            </div>
-          </div>
-        </div>
-        <div className="arrowfavouritemain">
-          <img src={arrowright} alt="" className="arrow-rightfavourite" />
-        </div>
-
-        
-      </div> */}
-
-      <InitialSignInInfo />
-      <ProfileForm />
       <MyFPevents />
-      
     </>
   );
 };

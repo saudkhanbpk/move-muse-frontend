@@ -152,7 +152,7 @@ const NavBar = () => {
                   alt="Profile"
                   referrerPolicy="no-referrer"
                   onClick={() => setProfileOpen(!profileOpen)}
-                  className="logo-signup img-fluid rounded-circle"
+                  className="logo-signup img-fluid rounded-circle "
                   title="Click to view more"
                   style={{
                     width: "40px",

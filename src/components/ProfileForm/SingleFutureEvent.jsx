@@ -26,14 +26,15 @@ const SingleFutureEvent = () => {
   const [isFavorited, setIsFavorited] = useState(false); // State to track if the event is favorited
 
   const { id } = useParams();
+const handleFlaged = () => {
+  if(isFlagged){
+    toast.error("Already Flagged");
+  }
+  else{
+    setShowMessage(true);
 
-  const handleFlagClick = () => {
-    if (isFlagged) {
-      handleUnflag();
-    } else {
-      setShowMessage(true);
-    }
-  };
+  }
+}
 
   const handleUpdate = async () => {
     try {
@@ -58,27 +59,27 @@ const SingleFutureEvent = () => {
     }
   };
 
-  const handleUnflag = async () => {
-    try {
-      const response = await ApiService.put(
-        `events/future-event-update/${id}`,
-        {
-          flagged: false,
-          message: "",
-        }
-      );
-      console.log("response", response);
-      if (response.data.success) {
-        toast.success("Content unflagged successfully.");
-        setIsFlagged(false);
-      } else {
-        toast.error("Failed to unflag content.");
-      }
-    } catch (error) {
-      console.error("Error unflagging content:", error);
-      toast.error("There was an error unflagging the content.");
-    }
-  };
+  // const handleUnflag = async () => {
+  //   try {
+  //     const response = await ApiService.put(
+  //       `events/future-event-update/${id}`,
+  //       {
+  //         flagged: false,
+  //         message: "",
+  //       }
+  //     );
+  //     console.log("response", response);
+  //     if (response.data.success) {
+  //       toast.success("Content unflagged successfully.");
+  //       setIsFlagged(false);
+  //     } else {
+  //       toast.error("Failed to unflag content.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error unflagging content:", error);
+  //     toast.error("There was an error unflagging the content.");
+  //   }
+  // };
 
   const favouriteUpdate = async (isFavorited) => {
     try {
@@ -229,7 +230,7 @@ const SingleFutureEvent = () => {
               >
                 <img
                   src={isFlagged ? redImage : flagfigma}
-                  onClick={handleFlagClick}
+                  onClick={handleFlaged}
                   className="flage"
                   style={
                     isFlagged
@@ -248,7 +249,7 @@ const SingleFutureEvent = () => {
                   }
                 />
 
-                <div className="mt-2 border border-2 border-primary">
+                <div className="mt-2 ">
                   {isFavorited ? (
                     <FaHeart
                       size={30}

@@ -24,7 +24,7 @@ const FeedbackForm = ({ onSubmit }) => {
     flagged: false,
     role: "",
   });
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const { id } = useParams();
@@ -52,6 +52,7 @@ const FeedbackForm = ({ onSubmit }) => {
     setError("");
     setLoading(true);
     try {
+      console.log("Form Data:", formData); // Add this line to log the form data
       const response = await axios.post(
         `${BaseUrl}/api/v1/events/feedback/${id}`,
         formData
@@ -75,8 +76,14 @@ const FeedbackForm = ({ onSubmit }) => {
       });
     } catch (error) {
       console.error("Error submitting feedback:", error);
+      if (error.response && error.response.data) {
+        console.error("Error details:", error.response.data);
+        setError(error.response.data.message || "An error occurred.");
+      } else {
+        setError("An unexpected error occurred.");
+      }
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
@@ -146,21 +153,21 @@ const FeedbackForm = ({ onSubmit }) => {
               {showRoleOptions && (
                 <div className="mt-2">
                   {["Attendee", "Volunteer", "Artist", "Guest"].map(
-                    (role, idx) => (
+                    (role, id) => (
                       <div className="form-check" key={role}>
                         <input
                           type="radio"
                           required
                           className="form-check-input rounded"
                           name="as"
-                          id={`role-${idx}`}
+                          id={`role-${id}`}
                           value={role.toLowerCase()}
                           checked={formData.as === role.toLowerCase()}
                           onChange={handleChange}
                         />
                         <label
                           className="form-check-label"
-                          htmlFor={`role-${idx}`}
+                          htmlFor={`role-${id}`}
                         >
                           {role}
                         </label>
@@ -193,9 +200,9 @@ const FeedbackForm = ({ onSubmit }) => {
                     </label>
                     <input
                       type="text"
-                      name={field}
+                      name={field.toLowerCase()}
                       placeholder="0.0"
-                      value={formData[field]}
+                      value={formData[field.toLowerCase()]}
                       onChange={(e) => {
                         if (validateInput(e.target.value)) {
                           handleChange(e);
@@ -209,7 +216,6 @@ const FeedbackForm = ({ onSubmit }) => {
                         height: "30px",
                         width: "46px",
                         fontSize: '14px'
-                      
                       }}
                     />
                   </div>
@@ -236,7 +242,7 @@ const FeedbackForm = ({ onSubmit }) => {
               style={{ background: "#F6D46B", width: "200px" }}
               type="submit"
               className="btn btn-gray rounded mt-3"
-              disabled={loading} 
+              disabled={loading}
             >
               {loading ? (
                 <div className="spinner-border text-dark ms-2" role="status" />

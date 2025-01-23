@@ -1,33 +1,21 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Dropdown from "../../components/custom-dropdown/Dropdown";
 import { IoMdCamera } from "react-icons/io";
 import magic_circle from "../../img/icons/magic_circle.png";
 import NotificationService from "../../components/NotificationService/NotificationService";
 import { UserContext } from "../../context/UserContext";
 import { BaseUrl } from "../../BaseUrl";
+import './initialSignin.css';
 
 const InitialSignInInfo = () => {
-  const { profileCredentials, setProfileCredentials, token, fetchUserData } = useContext(UserContext);
+  const { profileCredentials, setProfileCredentials, token, fetchUserData, open, setOpen, setProfilePicture } = useContext(UserContext);
   const [userImage, setUserImage] = useState(null);
-  const [previewImage, setPreviewImage] = useState(null);
-  const [dances, setDances] = useState([
-    {
-      style: "Bachata",
-      years: "5 years",
-      follow: "advanced",
-      lead: "beginner",
-    },
-    {
-      style: "Kizomba",
-      years: "2 years",
-      follow: "intermediate",
-      lead: "intermediate",
-    },
-  ]);
+  const [previewImage, setPreviewImage] = useState(profileCredentials.profilePicture || null);
+  const [dances, setDances] = useState(profileCredentials.dances || []);
 
-  const [gender, setGender] = useState("");
-  const [ethnicity, setEthnicity] = useState("");
-  const [birthday, setBirthday] = useState("");
+  const [gender, setGender] = useState(profileCredentials.gender || "");
+  const [ethnicity, setEthnicity] = useState(profileCredentials.ethnicity || "");
+  const [birthday, setBirthday] = useState(profileCredentials.birthday || "");
   const [style, setStyle] = useState("");
   const [since, setSince] = useState("");
   const [follow, setFollow] = useState("");
@@ -41,6 +29,10 @@ const InitialSignInInfo = () => {
   const followLeadOptions = ["Beginner", "Intermediate", "Advanced"];
 
   const addDance = () => {
+    if (dances.length >= 3) {
+      NotificationService.notifyError("You can add a maximum of three dances.");
+      return;
+    }
     const newDance = {
       style: style || "New Style",
       years: since || "0 years",
@@ -54,20 +46,33 @@ const InitialSignInInfo = () => {
     setLead("");
   };
 
+  const removeDance = (index) => {
+    const updatedDances = dances.filter((_, i) => i !== index);
+    setDances(updatedDances);
+    NotificationService.notifySuccess("Dance removed successfully");
+  };
+
   const handleImageChange = (e) => {
     setUserImage(e.target.files[0]);
     setPreviewImage(URL.createObjectURL(e.target.files[0]));
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setProfileCredentials({
+      ...profileCredentials,
+      [name]: value,
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
     const data = {
-      fullName: formData.get("name"),
-      username: formData.get("username"),
-      city: formData.get("city"),
-      danceAlias: formData.get("danceAlias"),
-      moveMuse: formData.get("moveMuse"),
+      fullName: profileCredentials.fullName,
+      username: profileCredentials.username,
+      city: profileCredentials.city,
+      danceAlias: profileCredentials.danceAlias,
+      moveMuse: profileCredentials.moveMuse,
       dances: dances,
       gender,
       ethnicity,
@@ -89,6 +94,8 @@ const InitialSignInInfo = () => {
         const imageData = await imageRes.json();
         if (imageRes.ok) {
           data.profilePicture = imageData.url;
+          setProfilePicture(data.profilePicture)
+          NotificationService.notifySuccess("Image uploaded successfully");
         } else {
           NotificationService.notifyError("Image can't be uploaded. Try again later.");
           return;
@@ -117,8 +124,10 @@ const InitialSignInInfo = () => {
           ...data,
           profilePicture: data.profilePicture,
         });
+
         // Fetch the updated profile data
         fetchUserData();
+        setOpen(false);
       } else {
         NotificationService.notifyError("Profile update failed");
       }
@@ -129,7 +138,7 @@ const InitialSignInInfo = () => {
 
   return (
     <div
-      className="d-flex flex-column align-items-center justify-content-center p-5 "
+      className={`${open ? "d-flex" : "d-none"}  flex-column align-items-center justify-content-center p-5 `}
       style={{ backgroundColor: "#fff7d8" }}
     >
       <div className="d-flex gap-5">
@@ -160,10 +169,11 @@ const InitialSignInInfo = () => {
               className="d-flex align-items-center justify-content-center m-auto"
             >
               <div
-                className="position-relative rounded-circle d-flex flex-column align-items-center justify-content-center imgUploadBg m-5 "
+                className="position-relative rounded-circle d-flex flex-column align-items-center justify-content-center imgUploadBg m-5 hover-effect"
                 style={{
                   height: 200,
                   width: 200,
+                  cursor: "pointer",
                 }}
               >
                 {previewImage ? (
@@ -182,7 +192,7 @@ const InitialSignInInfo = () => {
                 )}
                 <label
                   htmlFor="imageUpload"
-                  className="z-3 position-absolute bottom-0"
+                  className="z-3 position-absolute bottom-0 camera-icon"
                 >
                   <IoMdCamera size={40} />
                 </label>
@@ -213,8 +223,10 @@ const InitialSignInInfo = () => {
                       <input
                         type="text"
                         id="name"
-                        name="name"
+                        name="fullName"
                         className="form-control"
+                        value={profileCredentials.fullName}
+                        onChange={handleChange}
                         placeholder="Enter your name"
                       />
                     </div>
@@ -233,6 +245,8 @@ const InitialSignInInfo = () => {
                         id="username"
                         name="username"
                         className="form-control"
+                        value={profileCredentials.username}
+                        onChange={handleChange}
                         placeholder="Enter your username"
                       />
                     </div>
@@ -250,6 +264,8 @@ const InitialSignInInfo = () => {
                         id="city"
                         name="city"
                         className="form-control"
+                        value={profileCredentials.city}
+                        onChange={handleChange}
                         placeholder="Enter your city"
                       />
                     </div>
@@ -268,6 +284,8 @@ const InitialSignInInfo = () => {
                         id="danceAlias"
                         name="danceAlias"
                         className="form-control"
+                        value={profileCredentials.danceAlias}
+                        onChange={handleChange}
                         placeholder="Enter your dance alias"
                       />
                     </div>
@@ -286,12 +304,17 @@ const InitialSignInInfo = () => {
                         id="moveMuse"
                         name="moveMuse"
                         className="form-control"
+                        value={profileCredentials.moveMuse}
+                        onChange={handleChange}
                         placeholder="Enter your movement inspiration"
                       />
                     </div>
                   </div>
                   <button type="submit" className="btn btn-primary">
-                    Submit
+                    Update Profile
+                  </button>
+                  <button type="button" className="btn btn-secondary mx-2" onClick={() => setOpen(false)}>
+                    Cancel
                   </button>
                 </form>
               </div>
@@ -305,7 +328,7 @@ const InitialSignInInfo = () => {
             <div className="col-md-4 sm:col-md-4">
               <Dropdown
                 id="gender"
-                label="Gender"
+                label={gender || "Gender"}
                 value={gender}
                 onChange={(e) => setGender(e.target.value)}
                 options={genderOptions}
@@ -314,7 +337,7 @@ const InitialSignInInfo = () => {
             <div className="col-md-4 sm:col-md-4 mt-3 mt-md-0">
               <Dropdown
                 id="ethnicity"
-                label="Ethnicity"
+                label={ethnicity || "Ethnicity"}
                 value={ethnicity}
                 onChange={(e) => setEthnicity(e.target.value)}
                 options={ethnicityOptions}
@@ -323,7 +346,7 @@ const InitialSignInInfo = () => {
             <div className="col-md-4 sm:col-md-4 mt-3 mt-md-0">
               <Dropdown
                 id="birthday"
-                label="Birthday"
+                label={birthday || "Birthday"}
                 value={birthday}
                 onChange={(e) => setBirthday(e.target.value)}
                 options={birthdayOptions}
@@ -343,7 +366,7 @@ const InitialSignInInfo = () => {
                   <div className="mb-3 w-full">
                     <Dropdown
                       id="style"
-                      label="Style"
+                      label={style || "Style"}
                       value={style}
                       onChange={(e) => setStyle(e.target.value)}
                       options={styleOptions}
@@ -352,7 +375,7 @@ const InitialSignInInfo = () => {
                   <div className="mb-3 w-full">
                     <Dropdown
                       id="since"
-                      label="Since"
+                      label={since || "Since"}
                       value={since}
                       onChange={(e) => setSince(e.target.value)}
                       options={sinceOptions}
@@ -363,7 +386,7 @@ const InitialSignInInfo = () => {
                   <div className="mb-3 w-full">
                     <Dropdown
                       id="follow"
-                      label="Follow"
+                      label={follow || "Follow"}
                       value={follow}
                       onChange={(e) => setFollow(e.target.value)}
                       options={followLeadOptions}
@@ -372,7 +395,7 @@ const InitialSignInInfo = () => {
                   <div className="mb-3 w-full">
                     <Dropdown
                       id="lead"
-                      label="Lead"
+                      label={lead || "Lead"}
                       value={lead}
                       onChange={(e) => setLead(e.target.value)}
                       options={followLeadOptions}
@@ -393,10 +416,17 @@ const InitialSignInInfo = () => {
           </div>
           <div className="mt-3">
             {dances.map((dance, index) => (
-              <p key={index} className="fw-bold" style={{ color: "#480249" }}>
-                {index + 1}. {dance.style}; {dance.years}; Follow -{" "}
-                {dance.follow}; Lead - {dance.lead}
-              </p>
+              <div key={index} className="d-flex justify-content-between align-items-center mb-2">
+                <p className="fw-bold" style={{ color: "#480249" }}>
+                  {index + 1}. {dance.style}; {dance.years}; Follow - {dance.follow}; Lead - {dance.lead}
+                </p>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => removeDance(index)}
+                >
+                  <span>&times;</span>
+                </button>
+              </div>
             ))}
           </div>
         </div>
