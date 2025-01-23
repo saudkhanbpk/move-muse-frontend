@@ -247,7 +247,7 @@ const SingleFutureEvent = () => {
                   }
                 />
 
-                <div className="mt-2 border border-2 border-primary">
+                <div className="mt-2 ">
                   {isFavorited ? (
                     <FaHeart
                       size={30}

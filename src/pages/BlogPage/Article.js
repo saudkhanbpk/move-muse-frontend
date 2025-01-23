@@ -5,9 +5,11 @@ import NotificationService from '../../components/NotificationService/Notificati
 
 import back from "../../img/icons/backarrow.png";
 import forward from "../../img/icons/forwardarrow.png";
+import MAndNHero from '../M&NPage/hero/MAndNHero';
 
 const Article = () => {
     const [topics, setTopics] = useState([]);
+    console.log('topics', topics)
     const [newTopic, setNewTopic] = useState("");
     const [topicValue, setTopicValue] = useState("");
     const [posts, setPosts] = useState([]);
@@ -80,7 +82,8 @@ const Article = () => {
 
     return (
         <>
-            <div className='selectbox-maindiv '>
+            <div className=' '>
+                <MAndNHero/>
                 <MusingGuide
                     topicValue={topicValue}
                     fetchData={fetchData}

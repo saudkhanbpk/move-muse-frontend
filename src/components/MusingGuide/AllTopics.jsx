@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
-const AllTopics = () => {
+import './alltopics.css';
+const AllTopics = ({originalTopics}) => {
   const location = useLocation();
-  const { state } = location;
+  // const { state } = location;
   const navigate = useNavigate();
 
   // State to manage the filter input and filtered topics
   const [filter, setFilter] = useState("");
   const [filteredTopics, setFilteredTopics] = useState(
-    state?.originalTopics || []
+    originalTopics || []
   );
 
   // Pagination states
@@ -22,7 +22,7 @@ const AllTopics = () => {
     setFilter(searchQuery);
 
     // Filter the topics based on the search query
-    const filtered = state?.originalTopics?.filter((topic) =>
+    const filtered =originalTopics?.filter((topic) =>
       topic.name.toLowerCase().includes(searchQuery)
     );
     setFilteredTopics(filtered);
@@ -49,7 +49,7 @@ const AllTopics = () => {
   return (
     <div
       className="px-5 py-5 "
-      style={{ background: "#F2E7CB", borderRadius: "10px" }}
+      style={{ background: "#FFFFFF", borderRadius: "10px" }}
     >
       <div className="mb-5">
         <input
@@ -71,8 +71,8 @@ const AllTopics = () => {
                 onClick={() => navigate("/articles", { state: topic })}
               >
                 <h5
-                  className="cursor-pointer"
-                  style={{ width: "160px", textAlign: "justify" }}
+                  className="cursor-pointer cedarville-cursive-regular"
+                  style={{ width: "220px", textAlign: "justify",  }}
                 >
                   {index + 1 + (currentPage - 1) * topicsPerPage}. {topic.name}
                 </h5>

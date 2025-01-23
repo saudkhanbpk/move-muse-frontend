@@ -8,6 +8,8 @@ import ApiService from "../../services/ApiService";
 import { UserContext } from "../../context/UserContext";
 import arrow_next_prpl from "../../../src/img/icons/arrow_next_prpl.png";
 import { useNavigate, useLocation } from "react-router-dom";
+import { CiSearch } from "react-icons/ci";
+import AllTopics from "./AllTopics";
 
 const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
   const { user } = useContext(UserContext);
@@ -26,7 +28,6 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
   const [filter, setFilter] = useState("");
   const [originalTopics, setOriginalTopics] = useState([]);
   const [displayedTopics, setDisplayedTopics] = useState([]);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const topicsPerPage = 5;
 
   useEffect(() => {
@@ -50,7 +51,6 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
     );
     setTopics(filtered);
     setDisplayedTopics(filtered.slice(0, topicsPerPage));
-    setIsDropdownOpen(true);
   };
 
   const handleKeyPress = (e) => {
@@ -140,15 +140,6 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
   return (
     <>
       <div className="main_misguide mt-4 ">
-        <h2 style={{ fontWeight: "bold", color: "#545454" }}>Musing Guide</h2>
-        <ol>
-          {guideSteps.map((step, index) => (
-            <li
-              style={{ color: "#545454", fontWeight: "600" }}
-              key={index}
-            >{`${step}`}</li>
-          ))}
-        </ol>
         <div
           className=" p-5 "
           style={{
@@ -158,43 +149,55 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
           }}
         >
           <div className="mb-3 ">
-            <h1 className="fw-bold">Topic Title </h1>
-            <input
-              type="text"
-              value={newTopic}
-              onChange={handleFilterChange}
-              className="input_topic"
-              placeholder="Search For a Topic"
-            />
-            {isDropdownOpen && displayedTopics.length > 0 && (
-              <ul className="dropdown-menu">
-                {displayedTopics.map((topic, index) => (
-                  <li
-                    key={index}
-                    className="dropdown-item border border-1 border-lime"
-                    onClick={() => {
-                      setTopicValue(topic);
-                      setNewTopic(topic.name);
-                      setIsDropdownOpen(false);
-                    }}
-                  >
-                    {topic.name}
-                  </li>
-                ))}
-              </ul>
-            )}
+            {/* <h1 className="fw-bold">Topic Title </h1> */}
             <div
-              onClick={() =>
-                navigate("/alltopics", { state: { originalTopics } })
-              }
+              className=""
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "end",
+              }}
             >
-              <img
-                src={arrow_next_prpl}
-                alt="Arrow Next"
-                className={`arrow-next ${isDropdownOpen ? "open" : ""}`}
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                style={{ cursor: "pointer", width: "100px", height: "100px" }}
+              <input
+                type="text"
+                value={newTopic}
+                onChange={handleFilterChange}
+                className="input_topic"
+                placeholder="contain text"
               />
+              <div
+                onClick={() =>
+                  navigate("/alltopics", { state: { originalTopics } })
+                }
+              >
+                <CiSearch
+                  src={arrow_next_prpl}
+                  alt="Arrow Next"
+                  style={{ cursor: "pointer", fontSize: "30px" }}
+                />
+              </div>
+            </div>
+            <div>
+              <AllTopics originalTopics={originalTopics} />
+            </div>
+            <div className="musingparagraph" style={{ background: "#FFFFFF" }}>
+              <h2
+                style={{
+                  fontWeight: "bold",
+                  color: "#545454",
+                  paddingLeft: "15px ",
+                }}
+              >
+                Musing Guide
+              </h2>
+              <ol>
+                {guideSteps.map((step, index) => (
+                  <li
+                    style={{ color: "#545454", fontWeight: "600" }}
+                    key={index}
+                  >{`${step}`}</li>
+                ))}
+              </ol>
             </div>
           </div>
         </div>
@@ -232,7 +235,7 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
                   width: "150px",
                   marginLeft: "20px",
                 }}
-              />{" "}
+              />
               Date : {new Date().toLocaleDateString()}
             </p>
             <textarea
@@ -247,15 +250,20 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
                 marginLeft: "45px",
               }}
             />
-            <div className="mt-5 " style={{paddingLeft: '38px'}}>
-              <h1>tags</h1>
-              <div className="d-flex gap-2">
-                <span>#dance</span>
-                <span>#bachata</span>
-                <span>#kozombadancenight</span>
-                <span>#festivals</span>
-              </div>
-            </div>
+          </div>
+
+          <div className="" style={{ width: "800px", position: "relative" }}>
+            <p
+              className="cedarville-cursive-regular "
+              style={{
+                fontSize: "40px",
+                width: "300px",
+                position: "absolute",
+                left: "99%",
+              }}
+            >
+              Move & Muse Community | Author
+            </p>
           </div>
         </div>
 
