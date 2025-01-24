@@ -7,8 +7,6 @@ import notify from '../../img/icons/bell.png';
 import dancelogo from "../../img/icons/DanceLogIn.png";
 import { UserContext } from "../../context/UserContext";
 import NotificationService from "../NotificationService/NotificationService";
-import { ImProfile } from "react-icons/im";
-import { MdLogout } from "react-icons/md";
 
 const navLinks = [
   { to: "/", text: "Home", key: "home" },
@@ -182,7 +180,7 @@ const NavBar = () => {
                   }}
                 />
                     {user.fullName.split(" ")[0].toUpperCase()}</div> */}
-                  <Link to="/profile" onClick={() => setProfileOpen(false)} className="fw-bold p-2 mt-2 profile-btn" style={{ textDecoration: "none", color: 'white', listStyleType: 'none' }}><ImProfile/> My Profile</Link>
+                  <Link to="/profile" onClick={() => setProfileOpen(false)} className="fw-bold p-2 mt-2 profile-btn" style={{ textDecoration: "none", color: 'white', listStyleType: 'none' }}>My Profile</Link>
                   <Link
                     className=" p-2 mt-1 fw-bold  profile-btn"
                     onClick={handleLogout}
@@ -192,7 +190,7 @@ const NavBar = () => {
                       textDecoration: "none"
                     }}
                   >
-                   <MdLogout /> Logout
+                    Logout
                   </Link>
                 </div>
               </div>

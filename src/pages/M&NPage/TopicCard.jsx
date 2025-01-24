@@ -36,7 +36,7 @@ export default function TopicCard({
           <h1 className="topic-heading">
             {title?.name ? title?.name : "title"}
           </h1>
-          <span>{author?.fullName}</span>
+          <span className="fs-5 topic-heading">{author?.fullName}</span>
           <p className="text-justify overflow-hidden" style={{height:'120px'}}>{message ? message : "_________"}</p>
         </div>
       </div>
