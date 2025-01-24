@@ -102,10 +102,25 @@
   font-family: "Cedarville Cursive", serif;
   font-weight: 400;
   font-style: normal;
+
+  
 }
 
+.moveandmusetextmain{
+  width: 800px;
+   position: relative ;
+}
+.moveandmusetextchild{
 
+    font-size: 40px;
+    width: 300px;
+    position: absolute;
+    left: 99%;
 
+}
+span{
+  font-size: 41px !important;
+}
 @media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
   .imgesss {
     display: block;
@@ -130,6 +145,15 @@
     flex-wrap: wrap;
     row-gap: 10px;
     
+  }
+  .moveandmusetextmain{
+    width: fit-content;
+
+  }
+  span{
+    font-size: 21px !important;
+    padding: 30px;
+    padding-left: 20px;
   }
 }
 .button-3d {

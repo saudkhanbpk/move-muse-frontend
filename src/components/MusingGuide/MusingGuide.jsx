@@ -252,17 +252,11 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
             />
           </div>
 
-          <div className="" style={{ width: "800px", position: "relative" }}>
-            <p
-              className="cedarville-cursive-regular "
-              style={{
-                fontSize: "40px",
-                width: "300px",
-                position: "absolute",
-                left: "99%",
-              }}
-            >
-              Move & Muse Community | Author
+          <div className="moveandmusetextmain">
+            <p className=" moveandmusetextchild">
+              <span className="cedarville-cursive-regular">
+                Move & Muse Community | Author
+              </span>
             </p>
           </div>
         </div>
