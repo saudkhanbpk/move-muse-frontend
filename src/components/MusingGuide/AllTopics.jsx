@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import './alltopics.css';
-const AllTopics = ({originalTopics}) => {
+import "./alltopics.css";
+import { CiSearch } from "react-icons/ci";
+const AllTopics = ({ originalTopics }) => {
   const location = useLocation();
   // const { state } = location;
   const navigate = useNavigate();
 
   // State to manage the filter input and filtered topics
   const [filter, setFilter] = useState("");
-  const [filteredTopics, setFilteredTopics] = useState(
-    originalTopics || []
-  );
+  const [filteredTopics, setFilteredTopics] = useState(originalTopics || []);
 
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
@@ -22,7 +21,7 @@ const AllTopics = ({originalTopics}) => {
     setFilter(searchQuery);
 
     // Filter the topics based on the search query
-    const filtered =originalTopics?.filter((topic) =>
+    const filtered = originalTopics?.filter((topic) =>
       topic.name.toLowerCase().includes(searchQuery)
     );
     setFilteredTopics(filtered);
@@ -48,17 +47,30 @@ const AllTopics = ({originalTopics}) => {
 
   return (
     <div
-      className="px-5 py-5 "
+      className="px-md-5 py-md-5  "
       style={{ background: "#FFFFFF", borderRadius: "10px" }}
     >
-      <div className="mb-5">
-        <input
-          type="text"
-          placeholder="Search topics..."
-          value={filter}
-          onChange={handleFilterChange}
-          className="border rounded px-3 py-2 w-full max-w-md"
-        />
+      <div className="mb-5 firsttwoinputsmain ms-2 d-md-flex d-block  ">
+        <div className="d-md-flex gap-3">
+          <div className="ms-md-3 ms-0">
+            <input type="text" placeholder="Style" className="childinput" />
+          </div>
+          <div>
+            <input type="text" placeholder="Topics" className="childinput" />
+          </div>
+        </div>
+        <div className="searchfotopicinputmain">
+          <input
+            type="text"
+            placeholder="Search topics..."
+            value={filter}
+            onChange={handleFilterChange}
+            className="py-md-1 px-md-2 searfotopicinout"
+          />
+          <div>
+            <CiSearch style={{ fontSize: "30px" }} />
+          </div>
+        </div>
       </div>
 
       {/* Display Filtered Topics */}
@@ -72,7 +84,7 @@ const AllTopics = ({originalTopics}) => {
               >
                 <h5
                   className="cursor-pointer cedarville-cursive-regular"
-                  style={{ width: "220px", textAlign: "justify",  }}
+                  style={{ width: "fit-content", textAlign: "justify" }}
                 >
                   {index + 1 + (currentPage - 1) * topicsPerPage}. {topic.name}
                 </h5>
@@ -120,4 +132,3 @@ const AllTopics = ({originalTopics}) => {
 };
 
 export default AllTopics;
-

@@ -158,29 +158,16 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
                 justifyContent: "end",
               }}
             >
-              <input
-                type="text"
-                value={newTopic}
-                onChange={handleFilterChange}
-                className="input_topic"
-                placeholder="contain text"
-              />
               <div
                 onClick={() =>
                   navigate("/alltopics", { state: { originalTopics } })
                 }
-              >
-                <CiSearch
-                  src={arrow_next_prpl}
-                  alt="Arrow Next"
-                  style={{ cursor: "pointer", fontSize: "30px" }}
-                />
-              </div>
+              ></div>
             </div>
             <div>
               <AllTopics originalTopics={originalTopics} />
             </div>
-            <div className="musingparagraph" style={{ background: "#FFFFFF" }}>
+            <div className="musingparagraph ms-md-5 ms-0" style={{ background: "#FFFFFF" }}>
               <h2
                 style={{
                   fontWeight: "bold",
@@ -190,7 +177,7 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
               >
                 Musing Guide
               </h2>
-              <ol>
+              <ol >
                 {guideSteps.map((step, index) => (
                   <li
                     style={{ color: "#545454", fontWeight: "600" }}

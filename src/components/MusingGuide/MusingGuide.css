@@ -27,7 +27,7 @@
   font-family: "Dancing Script", cursive;
   border: 2px solid greenyellow;
 }
-.musingparagraph{
+.musingparagraph {
   width: 90%;
   text-align: justify;
 }
@@ -63,8 +63,8 @@
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  max-height: 150px; 
-  overflow-y: auto; 
+  max-height: 150px;
+  overflow-y: auto;
 }
 
 .dropdown-item {
@@ -87,13 +87,13 @@
 
 .arrow-next {
   margin-left: 10px;
-  transition: transform 0.3s ease; 
+  transition: transform 0.3s ease;
 }
 
 .arrow-next.open {
-  transform: translateY(120px); 
+  transform: translateY(120px);
 }
-.buttons{
+.buttons {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,24 +102,53 @@
   font-family: "Cedarville Cursive", serif;
   font-weight: 400;
   font-style: normal;
-
-  
 }
 
-.moveandmusetextmain{
+.moveandmusetextmain {
   width: 800px;
-   position: relative ;
+  position: relative;
 }
-.moveandmusetextchild{
-
-    font-size: 40px;
-    width: 300px;
-    position: absolute;
-    left: 99%;
-
+.moveandmusetextchild {
+  font-size: 40px;
+  width: 300px;
+  position: absolute;
+  left: 99%;
 }
-span{
+span {
   font-size: 41px !important;
+}
+
+.firsttwoinputsmain {
+  display: flex;
+  gap: 20px;
+  background-color: #fff7d8;
+  padding: 10px;
+  border-radius: 25px;
+  justify-content: space-between;
+  width: 100%;
+}
+.childinput {
+  outline: none;
+  border: 2px solid gray;
+  padding-top: 5px;
+  border-radius: 10px;
+  width: 140px;
+  text-align: center;
+}
+.searchfotopicinputmain{
+  
+    display: flex;
+    align-Items: center;
+    gap: 10px;
+    justify-Content: end;
+
+}
+.searfotopicinout{
+  
+    outline: none;
+    border: 2px solid gray;
+    padding-Top: 5px;
+    border-Radius: 10px;
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
   .imgesss {
@@ -138,24 +167,55 @@ span{
   .socialiamge {
     width: 100%;
   }
-  .buttons{
+  .buttons {
     width: 200px;
     margin-left: 10px;
     display: flex;
     flex-wrap: wrap;
     row-gap: 10px;
-    
   }
-  .moveandmusetextmain{
+  .moveandmusetextmain {
     width: fit-content;
-
   }
-  span{
+  span {
     font-size: 21px !important;
     padding: 30px;
     padding-left: 20px;
   }
+
+   /* Mobile screen CSS */
+
+   .firsttwoinputsmain {
+    padding: 20px; 
+    border-radius: 25px;
+    width: fit-content;
+    overflow-x: hidden;
+  }
+
+  .childinput {
+    outline: none;
+    border: 2px solid gray;
+    padding: 10px;
+    border-radius: 10px;
+    max-width:  80%; 
+    text-align: center;
+    margin-top: 10px;
+    min-width: 200px; 
+  }
+
+  .searchfotopicinputmain {
+    width: 100%; 
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .searfotopicinout {
+    width: 100%; 
+    padding: 10px;
+  }
 }
+
+
 .button-3d {
   background-color: #ffffff;
   color: black;
