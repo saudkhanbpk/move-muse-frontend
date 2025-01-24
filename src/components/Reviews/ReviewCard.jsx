@@ -69,24 +69,6 @@ export default function ReviewCard({
     }
   };
 
-  const handleUnflag = async () => {
-    try {
-
-      const response = await ApiService.put(`events/update-feedback/${_id}`, {
-        flagged: false,
-        message: "",
-      });
-      fetchFeedback();
-      if (response.data.success) {
-        setFlagged(false);
-        toast.success("Content unflagged successfully.");
-      } else {
-        toast.error("Failed to unflag content.");
-      }
-    } catch (error) {
-      toast.error("There was an error unflagging the content.");
-    }
-  };
 
   const renderStars = () => {
     const fullStars = Math.floor(stars);
@@ -142,7 +124,7 @@ export default function ReviewCard({
                   cursor: "pointer",
                 }}
                 title="Click to unflag your review"
-                onClick={handleUnflag}
+                
               >
                 <img
                   src={redImage}

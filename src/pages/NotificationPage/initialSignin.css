@@ -1,0 +1,8 @@
+.hover-effect .camera-icon {
+    display: none;
+  }
+  
+  .hover-effect:hover .camera-icon {
+    display: block;
+  }
+  

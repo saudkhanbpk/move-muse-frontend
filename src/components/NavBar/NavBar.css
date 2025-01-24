@@ -33,6 +33,7 @@ background-color: #8d168f;
 }
 .logo-signup {
   height: 80px;
+  width: 80px;
 }
 .navbar a:hover {
   color: black; 
