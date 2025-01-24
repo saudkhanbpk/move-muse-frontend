@@ -1,19 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./alltopics.css";
 import { CiSearch } from "react-icons/ci";
+
 const AllTopics = ({ originalTopics }) => {
   const location = useLocation();
-  // const { state } = location;
   const navigate = useNavigate();
 
   // State to manage the filter input and filtered topics
   const [filter, setFilter] = useState("");
-  const [filteredTopics, setFilteredTopics] = useState(originalTopics || []);
+  const [filteredTopics, setFilteredTopics] = useState([]);
 
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
   const topicsPerPage = 10;
+
+  useEffect(() => {
+    // Ensure at least ten topics are displayed initially
+    const initialTopics = originalTopics.slice(0, 10);
+    setFilteredTopics(initialTopics);
+  }, [originalTopics]);
 
   // Handle filter input changes
   const handleFilterChange = (event) => {
@@ -24,7 +30,14 @@ const AllTopics = ({ originalTopics }) => {
     const filtered = originalTopics?.filter((topic) =>
       topic.name.toLowerCase().includes(searchQuery)
     );
-    setFilteredTopics(filtered);
+
+    // Ensure at least ten topics are displayed
+    if (filtered.length < 10) {
+      const additionalTopics = originalTopics.slice(0, 10 - filtered.length);
+      setFilteredTopics([...filtered, ...additionalTopics]);
+    } else {
+      setFilteredTopics(filtered);
+    }
   };
 
   // Logic to paginate the filtered topics
@@ -47,10 +60,10 @@ const AllTopics = ({ originalTopics }) => {
 
   return (
     <div
-      className="px-md-5 py-md-5  "
+      className="px-md-5 py-md-5"
       style={{ background: "#FFFFFF", borderRadius: "10px" }}
     >
-      <div className="mb-5 firsttwoinputsmain ms-2 d-md-flex d-block  ">
+      <div className="mb-5 firsttwoinputsmain ms-2 d-md-flex d-block">
         <div className="d-md-flex gap-3">
           <div className="ms-md-3 ms-0">
             <input type="text" placeholder="Style" className="childinput" />
@@ -79,7 +92,7 @@ const AllTopics = ({ originalTopics }) => {
           currentTopics.map((topic, index) => (
             <div key={topic.id} className="">
               <div
-                className="h-100 p-2 "
+                className="h-100 p-2"
                 onClick={() => navigate("/articles", { state: topic })}
               >
                 <h5
