@@ -424,7 +424,7 @@ const InitialSignInInfo = () => {
                   className="btn btn-danger"
                   onClick={() => removeDance(index)}
                 >
-                  <span>&times;</span>
+                  <span className="fs-6">&times;</span>
                 </button>
               </div>
             ))}
