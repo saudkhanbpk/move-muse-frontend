@@ -7,55 +7,39 @@ const AllTopics = ({ originalTopics }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // State to manage the filter input and filtered topics
   const [filter, setFilter] = useState("");
   const [filteredTopics, setFilteredTopics] = useState([]);
 
-  // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
   const topicsPerPage = 10;
 
   useEffect(() => {
-    // Ensure at least ten topics are displayed initially
-    const initialTopics = originalTopics.slice(0, 10);
-    setFilteredTopics(initialTopics);
+    setFilteredTopics(originalTopics);
   }, [originalTopics]);
 
-  // Handle filter input changes
   const handleFilterChange = (event) => {
     const searchQuery = event.target.value.toLowerCase();
     setFilter(searchQuery);
 
-    // Filter the topics based on the search query
     const filtered = originalTopics?.filter((topic) =>
       topic.name.toLowerCase().includes(searchQuery)
     );
 
-    // Ensure at least ten topics are displayed
-    if (filtered.length < 10) {
-      const additionalTopics = originalTopics.slice(0, 10 - filtered.length);
-      setFilteredTopics([...filtered, ...additionalTopics]);
-    } else {
-      setFilteredTopics(filtered);
-    }
+    setFilteredTopics(filtered);
   };
 
-  // Logic to paginate the filtered topics
   const paginate = (topics, pageNumber) => {
     const indexOfLastTopic = pageNumber * topicsPerPage;
     const indexOfFirstTopic = indexOfLastTopic - topicsPerPage;
     return topics.slice(indexOfFirstTopic, indexOfLastTopic);
   };
 
-  // Get current topics for the current page
   const currentTopics = paginate(filteredTopics, currentPage);
 
-  // Handle page change
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  // Calculate total pages
   const totalPages = Math.ceil(filteredTopics.length / topicsPerPage);
 
   return (
