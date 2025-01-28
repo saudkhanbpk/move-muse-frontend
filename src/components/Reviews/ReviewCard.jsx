@@ -100,7 +100,7 @@ export default function ReviewCard({
         >
           <img src={ReviewUserImage} width={30} alt="review" />
         </span>
-        <span className="fw-semibold fs-5 text-capitalize">{as}</span>
+        <span className="fw-semibold fs-5  text-capitalize">{as}</span>
         <span className="d-flex">{renderStars()}</span>
       </div>
 
@@ -108,12 +108,12 @@ export default function ReviewCard({
       <div>
         <div className="cardInfo p-3 rounded-4 position-relative">
           <div className="d-flex gap-2 justify-center">
-            <div className="d-flex flex-wrap gap-2" style={{ height: "fit-content" }}>
-              <span>Venue {venue}</span>
-              <span>Ratio {ratio}</span>
-              <span>Organization {organization}</span>
-              <span>Artists {artists}</span>
-              <span>Culture {culture}</span>
+            <div className="d-flex flex-wrap gap-2 " style={{ height: "fit-content" }}>
+              <span className="fs-6 fw-bold">Venue {venue}</span>
+              <span className="fs-6 fw-bold">Ratio {ratio}</span>
+              <span className="fs-6 fw-bold">Organization {organization}</span>
+              <span className="fs-6 fw-bold">Artists {artists}</span>
+              <span className="fs-6 fw-bold">Culture {culture}</span>
             </div>
             {isFlagged ? (
               <button
@@ -175,9 +175,10 @@ export default function ReviewCard({
               name="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className="w-100 h-100 border-0 p-1 bg-none"
+              className="w-100 h-100 border-0 p-1 bg-none active"
               placeholder="When flagging content, please include a message for our admin"
               style={{ outline: "none" }}
+              autoFocus={true}
             ></textarea>
             <button
               onClick={handleFlag}

@@ -105,7 +105,7 @@ const CardsForFutureEvents = () => {
                     onClick={handlePreviousPage}
                     style={{ cursor: "pointer" }}
                 />
-                <span className="fw-bold">{`Page ${currentPage} of ${totalPages}`}</span>
+                <span className="fw-bold fs-6">{`Page ${currentPage} of ${totalPages}`}</span>
                 <img
                     src={arrowright}
                     alt="next"

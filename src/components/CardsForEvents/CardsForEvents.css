@@ -38,9 +38,11 @@ background-color:  #AB51B5;
 .event-description {
     color: rgb(0, 0, 0);
    
+   
 }
 .sub {
-    color:rgb(43, 37, 44) !important
+    color:rgb(43, 37, 44) !important;
+    font-size: medium !important;
 }
 .event-title {
     color: rgb(0, 0, 0);

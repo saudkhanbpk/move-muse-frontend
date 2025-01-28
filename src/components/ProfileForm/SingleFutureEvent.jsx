@@ -197,6 +197,7 @@ const handleFlaged = () => {
                       className="w-100 h-100 border-0 p-1 bg-none"
                       placeholder="When flagging content please include message for our admin"
                       style={{ outline: "none" }}
+                      autoFocus={true}
                     ></textarea>
                     <button
                       className="btn position-relative start-50"
@@ -253,13 +254,13 @@ const handleFlaged = () => {
                   {isFavorited ? (
                     <FaHeart
                       size={30}
-                      style={{ color: "red" }}
+                      style={{ color: "red", cursor: "pointer" }}
                       onClick={handleFavoriteToggle}
                     />
                   ) : (
                     <FaRegHeart
                       size={30}
-                      style={{ color: "red" }}
+                      style={{ color: "red", cursor: "pointer" }}
                       onClick={handleFavoriteToggle}
                     />
                   )}

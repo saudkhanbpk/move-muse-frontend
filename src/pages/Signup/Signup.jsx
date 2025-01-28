@@ -123,7 +123,7 @@ const Signup = () => {
           <button type="submit" disabled={loading}>
             {loading ? <Spinner animation="border" size="sm" /> : "Sign Up"}
           </button>
-          <button disabled={loading}>
+          
             <GoogleLogin
               onSuccess={handleGoogleLogin}
               onError={() => {
@@ -133,9 +133,9 @@ const Signup = () => {
               useOneTap
               disabled={loading}
             />
-          </button>
+        
           <p>
-            Already have an account? <Link to="/login" className="text-blue">Log In</Link>
+            Already have an account? <Link to="/login" className="text-blue mt-2">Log In</Link>
           </p>
         </form>
       </div>

@@ -27,7 +27,7 @@ export default function RecentKudosCard({ user, index }) {
           }`}
         />
         <div className="bg-white rounded-circle badge-image position-absolute top-0 kudos-badge">
-          <span className="border border-2 rounded-circle border-warning d-block text-warning position-relative end-1 text-center">
+          <span className="border border-2 fs-5 rounded-circle border-warning d-block text-warning position-relative end-1 text-center">
             +{user.count}
           </span>
         </div>

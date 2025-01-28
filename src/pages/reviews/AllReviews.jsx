@@ -3,7 +3,7 @@ import axios from "axios";
 import dropdown from "../../img/icons/dropdown.png";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa"; // Import full star and half star icons
 import arrowright from "../../img/icons/arrowright.png";
-import arrowleft from "../../img/icons/arrow_previous_prpl.png"; // Add an arrow left icon for the previous button
+import arrowleft from "../../img/icons/leftbtn.png"; // Add an arrow left icon for the previous button
 import { BaseUrl } from "../../BaseUrl";
 
 function AllReviews() {
@@ -111,11 +111,11 @@ function AllReviews() {
                             </div>
                             <div className="rounded-4 p-3 mt-1 cardInfo" style={{ border: "3px solid #9BB09D" }}>
                                 <div className="d-flex flex-wrap gap-3 fw-bold">
-                                    <span className="d-flex gap-2">Venue <span>{rev.venue}</span></span>
-                                    <span className="d-flex gap-2">Ratio <span>{rev.ratio}</span></span>
-                                    <span className="d-flex gap-2">Organization <span>{rev.organization}</span></span>
-                                    <span className="d-flex gap-2">Artists <span>{rev.artists}</span></span>
-                                    <span className="d-flex gap-2">Culture <span>{rev.culture}</span></span>
+                                    <span className="d-flex fs-6 gap-2">Venue <span className="fs-6">{rev.venue}</span></span>
+                                    <span className="d-flex fs-6 gap-2">Ratio <span className="fs-6">{rev.ratio}</span></span>
+                                    <span className="d-flex fs-6 gap-2">Organization <span className="fs-6">{rev.organization}</span></span>
+                                    <span className="d-flex fs-6 gap-2">Artists <span className="fs-6">{rev.artists}</span></span>
+                                    <span className="d-flex fs-6 gap-2">Culture <span className="fs-6">{rev.culture}</span></span>
                                 </div>
                                 <h4 className="text-decoration-underline color-card-text fw-semibold mt-md-0 mt-3">
                                     {rev.title}
@@ -140,7 +140,7 @@ function AllReviews() {
                     onClick={handlePreviousPage}
                     style={{ cursor: "pointer" }}
                 />
-                <span className="fw-bold">{`Page ${currentPage} of ${totalPages}`}</span>
+                <span className="fw-bold fs-6">{`Page ${currentPage} of ${totalPages}`}</span>
                 <img
                     src={arrowright}
                     alt="next"

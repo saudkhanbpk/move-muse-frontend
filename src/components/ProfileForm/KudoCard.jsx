@@ -69,7 +69,7 @@ export const KudoCard = ({poeple}) => {
           ))}
           <div className="col d-flex align-items-center justify-content-center mt-3">
             <span className="count__peoplee border border-5 border-dark px-3 py-2">
-              <p className="m-0">+56 People</p>
+              <p className="m-0 fs-6">+56 People</p>
             </span>
           </div>
         </div>

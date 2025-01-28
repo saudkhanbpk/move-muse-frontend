@@ -62,7 +62,7 @@ const RecentKudos = ({ users }) => {
         {remainingCount > 0 && (
           <div className="col d-flex align-items-center justify-content-center">
             <span className="count__people border border-5 border-dark">
-              <p className="m-0">+{remainingCount} People</p>
+              <p className="m-0 fs-6 fw-bold">+{remainingCount} People</p>
             </span>
           </div>
         )}

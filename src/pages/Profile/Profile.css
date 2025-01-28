@@ -7,6 +7,9 @@
   position: relative;
 }
 
+.fonts {
+  font-family: "Dancing Script", cursive;
+}
 .editImg {
   mix-blend-mode: multiply;
 }

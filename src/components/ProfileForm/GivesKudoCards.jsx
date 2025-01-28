@@ -31,7 +31,7 @@
             className="bg-white rounded-circle badge-image position-absolute top-0 kudos-badge"
             style={{ width: "10px", height: "10px" }}  // Badge size
           >
-            <span className="border border-2 rounded-circle border-warning d-block text-warning text-center">
+            <span className="border border-2 fs-6 fw-bold rounded-circle border-warning d-block text-warning text-center">
               +{user.count}
             </span>
           </div>

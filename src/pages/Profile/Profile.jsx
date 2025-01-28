@@ -83,7 +83,7 @@ const Profile = () => {
                     {profileCredentials?.dances?.map((dance, index) => (
                       <div key={index} className="">
                         {/* <img src={dance.icon} alt={dance.style} className="img-fluid logserivce" /> */}
-                        <span>{dance.style}</span>
+                        <span className="fonts fs-4">{dance.style}</span>
                       </div>
                     ))}
                   </div>
