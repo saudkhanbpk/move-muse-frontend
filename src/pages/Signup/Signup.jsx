@@ -130,8 +130,6 @@ const Signup = () => {
                 console.log('Login Failed');
                 setError("Google login failed. Please try again.");
               }}
-              useOneTap
-              disabled={loading}
             />
         
           <p>
