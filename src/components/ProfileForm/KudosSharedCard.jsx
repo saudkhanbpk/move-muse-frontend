@@ -21,7 +21,7 @@ export default function KudosSharedCard() {
               />
             </div>
             <div>
-              <h4 className="fw-semibold ps-md-0 ps-3 pt-2 pt-md-0 ">
+              <h4 className="fw-semibold ps-md-0 ps-3 pt-2 pt-md-0 " >
                 Other Magic
               </h4>
             </div>

@@ -109,7 +109,7 @@ const FavouriteEvents = () => {
           width={120}
           className={`cursor-pointer ${currentPage === totalPages ? "opacity-50" : ""}`}
           onClick={handleNextPage}
-          style={{ cursor: "pointer" }}
+          style={{ cursor: "pointer",  }}
         />
       </div>
     </section>

@@ -1,73 +1,120 @@
+
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 import "./ContactUs.css";
 
 const ContactUs = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-  const handleSubmit = (e) => {
+  const [submitData, setSubmitData] = useState([]);
+  const [isSending, setIsSending] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Implement your submit logic here
-    // For example, send a POST request to your server
-    console.log({ name, email, message });
+    setIsSending(true);
+
+    const emailParams = {
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+    };
+
+    try {
+      await emailjs.send(
+        "service_7sm7wzu", 
+        "template_iu2b20e", 
+        emailParams,
+        "i0llQyv6i-LDBF6X5" 
+      );
+
+      setSuccessMessage("Your message has been sent successfully!");
+
+      setSubmitData((prevData) => [...prevData, formData]);
+
+      setFormData({ name: "", email: "", message: "" });
+
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setSuccessMessage("Failed to send message. Please try again.");
+    }
+
+    setIsSending(false);
   };
 
   return (
     <div className="contact-us-container">
       <div className="container">
         <div className="row">
-          <div className="col-md-4 d-flex  align-items-center">
+          <div className="col-md-4 d-flex align-items-center">
             <div className="contact-info">
               <p>Telephone: (123) 456-7890</p>
               <p>Mobile: (123) 456-7890</p>
               <p>hello@reallygreatsite.com</p>
             </div>
           </div>
-          <div className="col-md-8 ">
+          <div className="col-md-8">
             <div className="form_width">
-              <h2
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "40px",
-                  color: "#000000",
-                }}
-              >
-                Contact us
-              </h2>
+              <h2 className="text-bold text-4xl text-black">Contact us</h2>
               <form onSubmit={handleSubmit}>
                 <input
                   type="text"
                   placeholder="Your Name *"
                   required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                 />
                 <input
                   type="email"
                   placeholder="Your E-mail *"
                   required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                 />
                 <textarea
                   placeholder="Your Message *"
                   required
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                 />
                 <button
                   type="submit"
                   className="btn w-50 w-md-10 p-2"
-                  style={{ fontSize: "18px", height: "auto" }}
+                  style={{ fontSize: "18px" }}
+                  disabled={isSending}
                 >
-                  SEND MESSAGE
+                  {isSending ? "Sending..." : "SEND MESSAGE"}
                 </button>
               </form>
+              {successMessage && <p className="success-msg">{successMessage}</p>}
             </div>
           </div>
         </div>
       </div>
+
+      {/* {submitData.length > 0 && (
+        <div className="mt-4 submitdata">
+          <h3>Submitted Messages:</h3>
+          {submitData.map((item, index) => (
+            <div key={index} className="p-2 my-2">
+              <p><strong>Name:</strong> {item.name}</p>
+              <p><strong>Email:</strong> {item.email}</p>
+              <p><strong>Message:</strong> {item.message}</p>
+            </div>
+          ))}
+        </div>
+      )} */}
     </div>
   );
 };

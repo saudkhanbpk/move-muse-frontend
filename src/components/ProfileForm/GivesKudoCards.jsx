@@ -21,8 +21,8 @@
           <img
             src={image}
             alt="user image"
-            width={80}  // Smaller size
-            height={80}  // Smaller size
+            width={80}  
+            height={80}  
             className={`rounded-circle object-fit-cover border border-4 ${
               borderClasses[index % borderClasses.length]
             }`}
