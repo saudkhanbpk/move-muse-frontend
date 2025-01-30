@@ -1,6 +1,7 @@
-
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./ContactUs.css";
 
 const ContactUs = () => {
@@ -12,7 +13,6 @@ const ContactUs = () => {
 
   const [submitData, setSubmitData] = useState([]);
   const [isSending, setIsSending] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,13 +30,13 @@ const ContactUs = () => {
 
     try {
       await emailjs.send(
-        "service_7sm7wzu", 
-        "template_iu2b20e", 
+        "service_7sm7wzu",
+        "template_iu2b20e",
         emailParams,
-        "i0llQyv6i-LDBF6X5" 
+        "i0llQyv6i-LDBF6X5"
       );
 
-      setSuccessMessage("Your message has been sent successfully!");
+      toast.success("Your message has been sent successfully!");
 
       setSubmitData((prevData) => [...prevData, formData]);
 
@@ -44,7 +44,7 @@ const ContactUs = () => {
 
     } catch (error) {
       console.error("EmailJS Error:", error);
-      setSuccessMessage("Failed to send message. Please try again.");
+      toast.error("Failed to send message. Please try again.");
     }
 
     setIsSending(false);
@@ -97,11 +97,11 @@ const ContactUs = () => {
                   {isSending ? "Sending..." : "SEND MESSAGE"}
                 </button>
               </form>
-              {successMessage && <p className="success-msg">{successMessage}</p>}
             </div>
           </div>
         </div>
       </div>
+      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 };
