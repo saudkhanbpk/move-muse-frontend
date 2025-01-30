@@ -102,19 +102,6 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
-
-      {/* {submitData.length > 0 && (
-        <div className="mt-4 submitdata">
-          <h3>Submitted Messages:</h3>
-          {submitData.map((item, index) => (
-            <div key={index} className="p-2 my-2">
-              <p><strong>Name:</strong> {item.name}</p>
-              <p><strong>Email:</strong> {item.email}</p>
-              <p><strong>Message:</strong> {item.message}</p>
-            </div>
-          ))}
-        </div>
-      )} */}
     </div>
   );
 };
