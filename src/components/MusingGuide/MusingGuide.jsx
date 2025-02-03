@@ -167,7 +167,10 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
             <div>
               <AllTopics originalTopics={originalTopics} />
             </div>
-            <div className="musingparagraph ms-md-5 ms-0" style={{ background: "#FFFFFF" }}>
+            <div
+              className="musingparagraph ms-md-5 ms-0"
+              style={{ background: "#FFFFFF" }}
+            >
               <h2
                 style={{
                   fontWeight: "bold",
@@ -177,7 +180,7 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
               >
                 Musing Guide
               </h2>
-              <ol >
+              <ol>
                 {guideSteps.map((step, index) => (
                   <li
                     style={{ color: "#545454", fontWeight: "600" }}
@@ -204,11 +207,11 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
               placeholder="Enter Your Title"
               value={topicValue?.name || state?.name}
               className="Title_input "
-              style={{ fontFamily: "cursive", paddingLeft: "46px" }}
+              style={{ fontFamily: "cursive" }}
             />
             <p
-              className="my-2  fs-5 d-flex justify-content-between align-items-center p-2"
-              style={{ marginLeft: "20px", marginTop: "20px" }}
+              className="my-2 d-md-flex flex-column  "
+              style={{ marginTop: "20px" }}
             >
               <input
                 type="text"
@@ -219,23 +222,19 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
                   background: "transparent",
                   outline: "none",
                   border: "none",
-                  width: "150px",
-                  marginLeft: "20px",
+                  width: "fit-content",
+                  fontSize: "30px",
                 }}
               />
-              Date : {new Date().toLocaleDateString()}
+              <strong style={{ fontSize: "22px" }}>
+                Date : {new Date().toLocaleDateString()}
+              </strong>
             </p>
             <textarea
               value={text}
               placeholder="Start Writing here..."
               onChange={handleTextChange}
-              className="my-2  fs-5  w-md-100  border-0"
-              style={{
-                minHeight: "150px",
-                background: "transparent",
-                outline: "none",
-                marginLeft: "45px",
-              }}
+              className="my-2  fs-5   textareamsg border-0"
             />
           </div>
 

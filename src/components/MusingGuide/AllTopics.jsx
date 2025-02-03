@@ -2,14 +2,19 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./alltopics.css";
 import { CiSearch } from "react-icons/ci";
-
+import { PlusCircle } from "lucide-react";
+import axios from "axios";
+import { BaseUrl } from "../../BaseUrl";
+import { toast, ToastContainer } from "react-toastify";
+const adminToken = localStorage.getItem("adminToken");
 const AllTopics = ({ originalTopics }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
   const [filter, setFilter] = useState("");
   const [filteredTopics, setFilteredTopics] = useState([]);
-
+  const [titles, setTitles] = useState([]);
+  const [newTitle, setNewTitle] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const topicsPerPage = 10;
 
@@ -39,6 +44,32 @@ const AllTopics = ({ originalTopics }) => {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+  const axiosConfig = {
+    headers: {
+      Authorization: `Bearer ${adminToken}`, 
+    },
+  };
+  const handleAddTitle = async () => {
+    console.log("clicked", newTitle)
+    if (newTitle.trim()) {
+      try {
+        const response = await axios.post(
+          `${BaseUrl}/api/v1/addTitle`,
+          { name: newTitle }, 
+          axiosConfig,
+        );
+        if (response.data.success) {
+          setNewTitle('');
+          setTitles(response.data.data.titles); 
+          toast.success('Title added successfully!');
+        } else {
+          console.error('Error adding title:', response.data.message);
+        }
+      } catch (error) {
+        console.error('Error adding title:', error);
+      }
+    }
+  };
 
   const totalPages = Math.ceil(filteredTopics.length / topicsPerPage);
 
@@ -49,9 +80,11 @@ const AllTopics = ({ originalTopics }) => {
     >
       <div className="mb-5 firsttwoinputsmain ms-2 d-md-flex d-block">
         <div className="d-md-flex gap-3">
-          <div className="ms-md-3 ms-0">
-            <input type="text" placeholder="Style" className="childinput" />
+          <div className="ms-md-3 ms-0 d-flex align-items-center gap-2">
+            <input type="text" onChange={(e)=> setNewTitle(e.target.value)} placeholder="Add new Tpoic" className="childinput" />
+            <PlusCircle style={{cursor: 'pointer'}}  onClick={() => handleAddTitle}/>
           </div>
+          <button onClick={handleAddTitle}>add</button>
           <div>
             <input type="text" placeholder="Topics" className="childinput" />
           </div>
@@ -92,7 +125,13 @@ const AllTopics = ({ originalTopics }) => {
           <p className="text-center w-full">No topics found.</p>
         )}
       </div>
-
+      <div style={{fontFamily: 'serif'}}>
+        <button
+          style={{ background: "#F0F0F0", padding: "10px", border: "0px" , borderRadius: '5px', fontSize: '18px' }}
+        >
+          Add New topic
+        </button>
+      </div>
       {/* Pagination Controls */}
       {totalPages > 1 && (
         <div className="buttons">

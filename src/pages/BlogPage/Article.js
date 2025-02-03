@@ -83,7 +83,7 @@ const Article = () => {
     return (
         <>
             <div className=' '>
-                <MAndNHero/>
+                <MAndNHero />
                 <MusingGuide
                     topicValue={topicValue}
                     fetchData={fetchData}

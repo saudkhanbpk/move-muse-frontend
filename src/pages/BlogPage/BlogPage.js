@@ -117,7 +117,7 @@ const BlogPage = () => {
   };
   return (
     <>
-      <div className="p-4 bg-colormain">
+      <div className="p-4 bg-colormain" >
         <div className="row">
           <div className="headingmove_msue ">
             <h2 className="">Move & Muse Catalogue</h2>
@@ -182,7 +182,7 @@ const BlogPage = () => {
             />
           </div>
 
-          <div className="search_divInput">
+          <div className="search_divInput" >
             <input
               type="text"
               value={searchTerm}

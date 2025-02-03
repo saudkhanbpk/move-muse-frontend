@@ -55,7 +55,7 @@ const Router = () => {
         <Route path="/past-event/:id" element={<SinglePastEvent />} />
         <Route path="/eventDetail" element={<EventDetails />} />
         <Route path="/myaccount" element={<MyAccountPage />} />
-        <Route path="/blog" element={<BlogPage />} />
+        {/* <Route path="/blog" element={<BlogPage />} /> */}
         <Route path="/blog-discover" element={<BlogDiscover />} />
         <Route path="/reviews" element={<ReviewsPage />} />
         <Route path="/recent-kudos" Component={RecentKudosSection} />

@@ -19,10 +19,10 @@ export default function MAndFilter({
 }) {
   return (
     <div className="d-flex flex-column mt-5 px-5 gap-5">
-      <div className="d-flex gap-1 align-content-center mb-5">
+      {/* <div className="d-flex gap-1 align-content-center mb-5">
         <img src={ArrowIcon} alt="arrow" className="mb-2" />
         <p className="mb-0"> Search</p>
-      </div>
+      </div> */}
       <div className="d-flex gap-2 align-items-center justify-content-center regular-search-container flex-wrap rounded-5 p-3">
         <div className="flex-grow-1">
           <Dropdown

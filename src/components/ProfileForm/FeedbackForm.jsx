@@ -6,7 +6,7 @@ import { BaseUrl } from "../../BaseUrl";
 import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import './feedbackformtextarea.css'
 const FeedbackForm = ({ onSubmit }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showRoleOptions, setShowRoleOptions] = useState(false);
@@ -138,13 +138,14 @@ const FeedbackForm = ({ onSubmit }) => {
                   <input
                     type="checkbox"
                     name="role"
-                    className="form-check-input rounded"
+                    className="form-check-input rounded custom-checkbox"
                     checked={formData.role}
                     onChange={handleChange}
                     style={{
                       backgroundColor: "#F2E7CB",
                       border: "2px solid gray",
                       outline: "none",
+
                     }}
                   />
                   <label className="form-check-label">Hide my role</label>

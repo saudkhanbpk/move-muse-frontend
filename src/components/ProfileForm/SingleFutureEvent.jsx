@@ -26,15 +26,13 @@ const SingleFutureEvent = () => {
   const [isFavorited, setIsFavorited] = useState(false); // State to track if the event is favorited
 
   const { id } = useParams();
-const handleFlaged = () => {
-  if(isFlagged){
-    toast.error("Already Flagged");
-  }
-  else{
-    setShowMessage(true);
-
-  }
-}
+  const handleFlaged = () => {
+    if (isFlagged) {
+      toast.error("Already Flagged");
+    } else {
+      setShowMessage(true);
+    }
+  };
 
   const handleUpdate = async () => {
     try {

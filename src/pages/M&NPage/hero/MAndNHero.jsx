@@ -49,7 +49,7 @@ export default function MAndNHero() {
             the essays are aligned with our values.
           </p>
         </div>
-        <div className="flex-grow-1 d-flex align-items-center justify-content-center">
+        <div className="flex-grow-1 d-flex align-items-center justify-content-center ">
           <img src={VictoryHand} alt="img" />
         </div>
       </div>
@@ -85,6 +85,7 @@ export default function MAndNHero() {
                   backgroundRepeat: "no-repeat",
                   width: "250px",
                   height: "250px",
+                  
                 }}
                 key={index}
               >

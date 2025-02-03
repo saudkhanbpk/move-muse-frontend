@@ -86,7 +86,7 @@ const BlogDiscover = () => {
       <div className="p-4 bg-colormain">
         <div className="row">
           <div className="headingmove_msue ">
-            <h2 className="" style={{ fontSize: "40px" }}>
+            <h2 className="" style={{ fontSize: "40px", }}>
               Welcome to Move & Muse
             </h2>
             <img
@@ -111,7 +111,7 @@ const BlogDiscover = () => {
             <img src={hand} alt="" style={{ mixBlendMode: "multiply" }} />
           </div>
         </div>
-        <SmallCards imageArray={imageArray} />
+        <SmallCards imageArray={imageArray}  />
       </div>
       <div className="p-md-4 selectbox-maindiv">
         <div

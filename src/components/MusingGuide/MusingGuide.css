@@ -112,7 +112,7 @@
   font-size: 40px;
   width: 300px;
   position: absolute;
-  left: 99%;
+  left: 50%;
 }
 span {
   font-size: 41px !important;
@@ -135,20 +135,23 @@ span {
   width: 140px;
   text-align: center;
 }
-.searchfotopicinputmain{
-  
-    display: flex;
-    align-Items: center;
-    gap: 10px;
-    justify-Content: end;
-
+.searchfotopicinputmain {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: end;
 }
-.searfotopicinout{
-  
-    outline: none;
-    border: 2px solid gray;
-    padding-Top: 5px;
-    border-Radius: 10px;
+.searfotopicinout {
+  outline: none;
+  border: 2px solid gray;
+  padding-top: 5px;
+  border-radius: 10px;
+}
+.textareamsg {
+  min-height: 150px;
+  background: transparent;
+  outline: none;
+  width: 90%;
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
   .imgesss {
@@ -183,10 +186,10 @@ span {
     padding-left: 20px;
   }
 
-   /* Mobile screen CSS */
+  /* Mobile screen CSS */
 
-   .firsttwoinputsmain {
-    padding: 20px; 
+  .firsttwoinputsmain {
+    padding: 20px;
     border-radius: 25px;
     width: fit-content;
     overflow-x: hidden;
@@ -197,24 +200,27 @@ span {
     border: 2px solid gray;
     padding: 10px;
     border-radius: 10px;
-    max-width:  80%; 
+    max-width: 80%;
     text-align: center;
     margin-top: 10px;
-    min-width: 200px; 
+    min-width: 200px;
+  }
+  .textareamsg{
+    width: fit-content;
+    padding: 20px;
   }
 
   .searchfotopicinputmain {
-    width: 100%; 
+    width: 100%;
     align-items: center;
     margin-top: 10px;
   }
 
   .searfotopicinout {
-    width: 100%; 
+    width: 100%;
     padding: 10px;
   }
 }
-
 
 .button-3d {
   background-color: #ffffff;
