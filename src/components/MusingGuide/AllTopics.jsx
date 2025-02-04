@@ -6,15 +6,19 @@ import { PlusCircle } from "lucide-react";
 import axios from "axios";
 import { BaseUrl } from "../../BaseUrl";
 import { toast, ToastContainer } from "react-toastify";
-const adminToken = localStorage.getItem("adminToken");
-const AllTopics = ({ originalTopics }) => {
+import { CiSquarePlus } from "react-icons/ci";
+
+const adminToken = localStorage.getItem("token");
+
+
+const AllTopics = ({ originalTopics, handleScroll }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
   const [filter, setFilter] = useState("");
   const [filteredTopics, setFilteredTopics] = useState([]);
   const [titles, setTitles] = useState([]);
-  const [newTitle, setNewTitle] = useState('');
+  const [newTitle, setNewTitle] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const topicsPerPage = 10;
 
@@ -46,27 +50,27 @@ const AllTopics = ({ originalTopics }) => {
   };
   const axiosConfig = {
     headers: {
-      Authorization: `Bearer ${adminToken}`, 
+      Authorization: `Bearer ${adminToken}`,
     },
   };
   const handleAddTitle = async () => {
-    console.log("clicked", newTitle)
+    console.log("clicked", newTitle);
     if (newTitle.trim()) {
       try {
         const response = await axios.post(
           `${BaseUrl}/api/v1/addTitle`,
-          { name: newTitle }, 
-          axiosConfig,
+          { name: newTitle },
+          axiosConfig
         );
         if (response.data.success) {
-          setNewTitle('');
-          setTitles(response.data.data.titles); 
-          toast.success('Title added successfully!');
+          setNewTitle("");
+          setTitles(response.data.data.titles);
+          toast.success("Title added successfully!");
         } else {
-          console.error('Error adding title:', response.data.message);
+          console.error("Error adding title:", response.data.message);
         }
       } catch (error) {
-        console.error('Error adding title:', error);
+        console.error("Error adding title:", error);
       }
     }
   };
@@ -81,10 +85,14 @@ const AllTopics = ({ originalTopics }) => {
       <div className="mb-5 firsttwoinputsmain ms-2 d-md-flex d-block">
         <div className="d-md-flex gap-3">
           <div className="ms-md-3 ms-0 d-flex align-items-center gap-2">
-            <input type="text" onChange={(e)=> setNewTitle(e.target.value)} placeholder="Add new Tpoic" className="childinput" />
-            <PlusCircle style={{cursor: 'pointer'}}  onClick={() => handleAddTitle}/>
+            <input
+              type="text"
+              onChange={(e) => setNewTitle(e.target.value)}
+              placeholder="Add new Tpoic"
+              className="childinput"
+            />
           </div>
-          <button onClick={handleAddTitle}>add</button>
+
           <div>
             <input type="text" placeholder="Topics" className="childinput" />
           </div>
@@ -110,7 +118,10 @@ const AllTopics = ({ originalTopics }) => {
             <div key={topic.id} className="">
               <div
                 className="h-100 p-2"
-                onClick={() => navigate("/articles", { state: topic })}
+                onClick={() => {
+                  navigate("/articles", { state: topic });
+                  handleScroll();
+                }}
               >
                 <h5
                   className="cursor-pointer cedarville-cursive-regular"
@@ -124,17 +135,24 @@ const AllTopics = ({ originalTopics }) => {
         ) : (
           <p className="text-center w-full">No topics found.</p>
         )}
+        <div style={{ fontFamily: "serif" }}>
+          <CiSquarePlus
+            onClick={handleAddTitle}
+            style={{
+              // background: "#F0F0F0",
+              // padding: "10px",
+              border: "0px",
+              borderRadius: "5px",
+              fontSize: "50px",
+              cursor: "pointer",
+            }}
+          />
+        </div>
       </div>
-      <div style={{fontFamily: 'serif'}}>
-        <button
-          style={{ background: "#F0F0F0", padding: "10px", border: "0px" , borderRadius: '5px', fontSize: '18px' }}
-        >
-          Add New topic
-        </button>
-      </div>
+
       {/* Pagination Controls */}
       {totalPages > 1 && (
-        <div className="buttons">
+        <div className="buttons mt-md-0 mt-4">
           <button
             className="px-3 py-1 mx-1 border rounded"
             disabled={currentPage === 1}

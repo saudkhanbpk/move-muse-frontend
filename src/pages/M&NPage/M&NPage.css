@@ -20,3 +20,27 @@
 .move-and-mouse-color {
   color: #545454 !important;
 }
+.backgroundblogreadmore {
+  width: 101%;
+  height: 400px;
+  background-image: url('../../img/icons/blogcatalogue.svg'); 
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media (max-width: 768px) {
+  .backgroundblogreadmore {
+    height: 300px;
+    background-position: top; 
+  }
+}
+
+@media (max-width: 480px) {
+  .backgroundblogreadmore {
+    height: fit-content; 
+    background-position: top center; 
+  }
+}
+
+

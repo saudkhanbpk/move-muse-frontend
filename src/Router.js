@@ -28,6 +28,7 @@ import MyDances from "./pages/NotificationPage/MyDances/MyDances";
 import ContactUs from "./components/ContactUs/ContactUs";
 import AllTopics from "./components/MusingGuide/AllTopics";
 import FavouriteEvents from "./components/ProfileForm/FavouriteEvents";
+import TopicCardReadmore from "./pages/M&NPage/TopicCardReadmore";
 
 
 const Router = () => {
@@ -67,6 +68,8 @@ const Router = () => {
         <Route path="/myprofile" Component={MyDances} />
         <Route path="/m&m/catalogue" Component={CataloguePage} />
         <Route path="/favoriteevents" Component={FavouriteEvents} />
+        <Route path="/topicCardreadmore/:id" element={<TopicCardReadmore />} />
+        
         <Route
           path="/profile"
           element={

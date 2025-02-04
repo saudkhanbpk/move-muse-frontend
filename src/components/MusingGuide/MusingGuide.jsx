@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import "./MusingGuide.css";
 import mic from "../../img/icons/mic.png";
 import mictext from "../../img/icons/mictext.png";
@@ -7,7 +7,7 @@ import NotificationService from "../NotificationService/NotificationService";
 import ApiService from "../../services/ApiService";
 import { UserContext } from "../../context/UserContext";
 import arrow_next_prpl from "../../../src/img/icons/arrow_next_prpl.png";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import AllTopics from "./AllTopics";
 
@@ -29,6 +29,7 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
   const [originalTopics, setOriginalTopics] = useState([]);
   const [displayedTopics, setDisplayedTopics] = useState([]);
   const topicsPerPage = 5;
+  const submitArticeleContainerRef = useRef();
 
   useEffect(() => {
     setDisplayedTopics(topics.slice(0, topicsPerPage));
@@ -103,7 +104,9 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
     setText("");
   };
 
-  console.log("the selected hashtags are show here : ", selectedHashtags);
+  const handleScroll = () => {
+    submitArticeleContainerRef.current.scrollIntoView({ behavior: "smooth" });
+  };
 
   const guideSteps = [
     "We see musing about dance like a generous flow of sap! But for our blog posts we are inviting you to share the maple syrup thoughts that can heal hearts, or trigger profound conversations in our communities. Therefore please enjoy the playground of 500 words.",
@@ -165,7 +168,10 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
               ></div>
             </div>
             <div>
-              <AllTopics originalTopics={originalTopics} />
+              <AllTopics
+                originalTopics={originalTopics}
+                handleScroll={handleScroll}
+              />
             </div>
             <div
               className="musingparagraph ms-md-5 ms-0"
@@ -200,6 +206,7 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
             height: "100vh",
           }}
           className="p-md-4 mt-5"
+          ref={submitArticeleContainerRef}
         >
           <div>
             <input

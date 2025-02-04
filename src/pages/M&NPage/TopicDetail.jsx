@@ -31,10 +31,10 @@ export default function TopicDetail({ blog }) {
         className="mt-5 p-5"
       >
         <div>
-          <h1 className="topic-heading move-and-mouse-color ">
+          <h1 className="topic-heading move-and-mouse-color  ">
             {blog?.title?.name ? blog?.title?.name : "No Title"}
           </h1>
-          <p className="move-and-mouse-color fs-4">
+          <p className="move-and-mouse-color fs-4 ">
             {blog?.author?.fullName}, {formattedDate(blog?.createdAt)}
           </p>
           <p className="text-justify overflow-x-hidden">{blog?.message}</p>
