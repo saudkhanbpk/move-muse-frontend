@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import blog from "../../img/icons/blogcatalogue.svg";
 import "./M&NPage.css";
+import { BaseUrl } from "../../BaseUrl";
 
 const TopicCardReadmore = () => {
   const { id } = useParams(); // Retrieve the blog ID from the URL
@@ -10,7 +11,7 @@ const TopicCardReadmore = () => {
     window.scroll(0, 0);
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/blog/${id}`)
+    fetch(`${BaseUrl}/api/v1/blog/${id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch blog content");
@@ -22,9 +23,9 @@ const TopicCardReadmore = () => {
   }, [id]);
 
   if (!blogContent) {
-    return <p>Loading...</p>;
+    return <p>Error </p>;
   }
- 
+ console.log(blogContent);
 
   return (
     <div className="backgroundblogreadmore p-5">

@@ -46,7 +46,7 @@ const Profile = () => {
   }, [token]);
 
   if (!userData) {
-    return <div>Loading...</div>;
+    return <div>Internal Server Error...</div>;
   }
 
   return (
@@ -62,11 +62,11 @@ const Profile = () => {
                 height={30}
                 title="Edit Profile"
                 onClick={() => setOpen(!open)}
-                className="position-absolute top-0 editImg cursor-pointer"
+                className="position-absolute top-25 editImg cursor-pointer "
               />
-              <div>
-                {" "}
-                <img src={profileCredentials.profilePicture || eliza} alt="eliza" className="imgmain" />
+              <div className="image-container">
+           
+                <img src={profileCredentials.profilePicture || eliza} alt="eliza" className=" " style={{borderRadius: '100%'}} />
               </div>
             </div>
             <div className="col-md-6 profile_Info p-0 ">
