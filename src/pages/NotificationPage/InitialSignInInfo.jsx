@@ -5,16 +5,28 @@ import magic_circle from "../../img/icons/magic_circle.png";
 import NotificationService from "../../components/NotificationService/NotificationService";
 import { UserContext } from "../../context/UserContext";
 import { BaseUrl } from "../../BaseUrl";
-import './initialSignin.css';
+import "./initialSignin.css";
 
 const InitialSignInInfo = () => {
-  const { profileCredentials, setProfileCredentials, token, fetchUserData, open, setOpen, setProfilePicture } = useContext(UserContext);
+  const {
+    profileCredentials,
+    setProfileCredentials,
+    token,
+    fetchUserData,
+    open,
+    setOpen,
+    setProfilePicture,
+  } = useContext(UserContext);
   const [userImage, setUserImage] = useState(null);
-  const [previewImage, setPreviewImage] = useState(profileCredentials.profilePicture || null);
+  const [previewImage, setPreviewImage] = useState(
+    profileCredentials.profilePicture || null
+  );
   const [dances, setDances] = useState(profileCredentials.dances || []);
 
   const [gender, setGender] = useState(profileCredentials.gender || "");
-  const [ethnicity, setEthnicity] = useState(profileCredentials.ethnicity || "");
+  const [ethnicity, setEthnicity] = useState(
+    profileCredentials.ethnicity || ""
+  );
   const [birthday, setBirthday] = useState(profileCredentials.birthday || "");
   const [style, setStyle] = useState("");
   const [since, setSince] = useState("");
@@ -22,8 +34,27 @@ const InitialSignInInfo = () => {
   const [lead, setLead] = useState("");
 
   const genderOptions = ["Male", "Female", "Others"];
-  const ethnicityOptions = ["African", "Asian", "Caucasian", "Hispanic", "Other"];
-  const birthdayOptions = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const ethnicityOptions = [
+    "African",
+    "Asian",
+    "Caucasian",
+    "Hispanic",
+    "Other",
+  ];
+  const birthdayOptions = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
   const styleOptions = ["Bachata", "Kizomba", "Salsa", "Tango", "Other"];
   const sinceOptions = ["1 year", "2 years", "3 years", "4 years", "5+ years"];
   const followLeadOptions = ["Beginner", "Intermediate", "Advanced"];
@@ -88,20 +119,24 @@ const InitialSignInInfo = () => {
           method: "POST",
           body: imageFormData,
           headers: {
-            "Authorization": `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         });
         const imageData = await imageRes.json();
         if (imageRes.ok) {
           data.profilePicture = imageData.url;
-          setProfilePicture(data.profilePicture)
+          setProfilePicture(data.profilePicture);
           NotificationService.notifySuccess("Image uploaded successfully");
         } else {
-          NotificationService.notifyError("Image can't be uploaded. Try again later.");
+          NotificationService.notifyError(
+            "Image can't be uploaded. Try again later."
+          );
           return;
         }
       } catch (error) {
-        NotificationService.notifyError("Image can't be uploaded. Try again later.");
+        NotificationService.notifyError(
+          "Image can't be uploaded. Try again later."
+        );
         return;
       }
     }
@@ -113,7 +148,7 @@ const InitialSignInInfo = () => {
         body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
       const resData = await res.json();
@@ -138,7 +173,9 @@ const InitialSignInInfo = () => {
 
   return (
     <div
-      className={`${open ? "d-flex" : "d-none"}  flex-column align-items-center justify-content-center p-5 `}
+      className={`${
+        open ? "d-flex" : "d-none"
+      }  flex-column align-items-center justify-content-center p-5 `}
       style={{ backgroundColor: "#fff7d8" }}
     >
       <div className="d-flex gap-5">
@@ -155,9 +192,7 @@ const InitialSignInInfo = () => {
       </div>
       <div className="my-5 max-w-screen-sm w-full">
         <div className="d-flex flex-wrap align-items-center justify-content-center py-5 w-md-100">
-          <div
-            className="flex-grow-1 position-relative uploadmaindiv"
-          >
+          <div className="flex-grow-1 position-relative uploadmaindiv">
             <div
               style={{
                 backgroundImage: `url(${magic_circle})`,
@@ -186,8 +221,8 @@ const InitialSignInInfo = () => {
                   />
                 ) : (
                   <span className="small fs-6 p-2">
-                    Upload your photo so others can recognize you and
-                    share some kudo love!
+                    Upload your photo so others can recognize you and share some
+                    kudo love!
                   </span>
                 )}
                 <label
@@ -313,7 +348,11 @@ const InitialSignInInfo = () => {
                   <button type="submit" className="btn btn-primary">
                     Update Profile
                   </button>
-                  <button type="button" className="btn btn-secondary mx-2" onClick={() => setOpen(false)}>
+                  <button
+                    type="button"
+                    className="btn btn-secondary mx-2"
+                    onClick={() => setOpen(false)}
+                  >
                     Cancel
                   </button>
                 </form>
@@ -416,9 +455,13 @@ const InitialSignInInfo = () => {
           </div>
           <div className="mt-3">
             {dances.map((dance, index) => (
-              <div key={index} className="d-flex justify-content-between align-items-center mb-2">
+              <div
+                key={index}
+                className="d-flex justify-content-between align-items-center mb-2"
+              >
                 <p className="fw-bold" style={{ color: "#480249" }}>
-                  {index + 1}. {dance.style}; {dance.years}; Follow - {dance.follow}; Lead - {dance.lead}
+                  {index + 1}. {dance.style}; {dance.years}; Follow -{" "}
+                  {dance.follow}; Lead - {dance.lead}
                 </p>
                 <button
                   className="btn btn-danger"

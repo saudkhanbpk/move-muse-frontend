@@ -13,14 +13,28 @@
 .editImg {
   mix-blend-mode: multiply;
 }
-.imgmain {
-  background-size: contain;
-  background-position: center;
+/* .imgmain {
   border-radius: 100%;
-  width: 260px;
-  height:260px;
+  width: 150px;
+  height:150px;
+  object-fit: cover;
   
+  
+} */
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 220px;
+  height: 220px; /* or any height you prefer */
+  border-radius: 100%;
 }
+.profile_Info{
+  bottom: 0;
+}
+
+
+
 .profile_Info h3 {
   padding: 10px;
   text-align: center;
