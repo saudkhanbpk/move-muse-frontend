@@ -68,7 +68,7 @@ function Notification() {
         </div>
       </div>
       {/* <InitialSignInInfo /> */}
-      <ConfirmAttendee />
+      {/* <ConfirmAttendee /> */}
     </>
   );
 }

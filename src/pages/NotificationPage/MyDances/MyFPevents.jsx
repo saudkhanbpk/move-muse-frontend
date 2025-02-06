@@ -124,10 +124,10 @@ function MyFPevents() {
             <img src={arrowright} alt='arrow' width={50}/>
             </div>
             <div>
-              <Link to="/favoriteevents">
+              {/* <Link to="/favoriteevents"> */}
                 {/* <img src={notify} alt="Notification" width={30} className="notification-icon" /> */}
-                <GoHeart style={{fontSize: '30px',color:'black'}}/>
-              </Link>
+                {/* <GoHeart style={{fontSize: '30px',color:'black'}}/> */}
+              {/* </Link> */}
             </div>
         </div>
     )
