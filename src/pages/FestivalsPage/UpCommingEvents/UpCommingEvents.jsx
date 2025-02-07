@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Dropdown from "../../../components/Dropdown/Dropdown";
 import { CiSearch } from "react-icons/ci";
 import "./UpCommingEvents.css";
@@ -21,7 +21,9 @@ const UpCommingEvents = () => {
   const handleLocation = () => {};
   const handleDates = () => {};
   const handleRates = () => {};
-
+useEffect(()=>{
+window.scroll(0, 0)
+},[])
   return (
     <>
       <section className="p-4 col-md-11 mx-auto">

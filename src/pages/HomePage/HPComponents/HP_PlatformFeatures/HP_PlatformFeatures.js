@@ -25,7 +25,7 @@ const HP_PlatformFeatures = () => {
       <h2>What can you do on the Move & Muse platform?</h2>
       <div className="features-container">
         <div className="feature-item">
-          <Link to="/festivals">
+          <Link to="/discoverevent">
             <img src={discoverImage} alt="Discover New Events" />
             <div className="line"></div>
             <h5>
@@ -38,7 +38,7 @@ const HP_PlatformFeatures = () => {
           </Link>
         </div>
         <div className="feature-item">
-          <Link to="/login">
+          <Link to="/hpshare">
             <img src={shareImage} alt="Share Honest Reviews" />
             <div className="line"></div>
             <h5>
@@ -48,7 +48,7 @@ const HP_PlatformFeatures = () => {
           </Link>
         </div>
         <div className="feature-item">
-          <Link to="/login">
+          <Link to="/hpcelebrate">
             <img src={celebrateImage} alt="Celebrate Fellow Dancers" />
             <div className="line"></div>
             <h5>
@@ -59,7 +59,7 @@ const HP_PlatformFeatures = () => {
           </Link>
         </div>
         <div className="feature-item">
-          <Link to="/articles">
+          <Link to="/hpmovemuse">
             <img src={moveMuseImage} alt="Move & Muse" />
             <div className="line"></div>
             <h5>

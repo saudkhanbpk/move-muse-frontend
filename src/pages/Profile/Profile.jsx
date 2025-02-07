@@ -1,4 +1,3 @@
-
 import React, { useContext, useEffect, useState } from "react";
 import "./Profile.css";
 import edit from "../../img/icons/edit.png";
@@ -52,21 +51,19 @@ const Profile = () => {
   useEffect(() => {
     localStorage.setItem("success", JSON.stringify(success));
   }, [success]);
-console.log("userdata:", userData);
+  console.log("userdata:", userData);
 
-useEffect(() => {
-  if (!userData?.isCompleted) {
+  useEffect(() => {
+    if (!userData?.isCompleted) {
       setOpen(true);
-  } else {
+    } else {
       setOpen(false);
-  }
-}, [userData]); 
+    }
+  }, [userData]);
 
   if (!userData) {
     return <div>Internal Server Error...</div>;
   }
-
-  
 
   return (
     <>
@@ -85,10 +82,13 @@ useEffect(() => {
               />
               <div className="image-container">
                 <img
-                  src={profileCredentials.profilePicture || eliza}
-                  alt="eliza"
+                  src={profileCredentials.profilePicture}
                   className=" "
-                  style={{ borderRadius: "100%" }}
+                  style={{
+                    borderRadius: "100%",
+                    width: "100px",
+                    height: "100px",
+                  }}
                 />
               </div>
             </div>
@@ -186,7 +186,7 @@ useEffect(() => {
                     <h4>{profileCredentials?.moveMuse}</h4>
                   </div>
                 </div>
-                <div className="profile-image">
+                <div className="profile-image ">
                   <img src={sidelogo} alt="Profile" />
                 </div>
               </div>

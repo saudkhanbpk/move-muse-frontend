@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import "./NavBar.css";
 import logo from "../../img/logo/Black sq.png";
 import notify from '../../img/icons/bell.png';
@@ -19,9 +19,11 @@ const navLinks = [
 const NavBar = () => {
   const { user, logout, setUserLoggedIn, setProfilePicture, ProfilePicture, profileCredentials } = useContext(UserContext);
   const navigate = useNavigate();
+  const location = useLocation();
   const [expanded, setExpanded] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const dropdownRef = useRef(null);
+
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('userData'));
@@ -32,6 +34,7 @@ const NavBar = () => {
       setProfilePicture(profileCredentials.profilePicture);
     }
   }, [user]);
+
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -46,6 +49,7 @@ const NavBar = () => {
     };
   }, [dropdownRef]);
 
+
   const handleLogout = () => {
     logout();
     NotificationService.notifySuccess("User logged out.");
@@ -59,6 +63,14 @@ const NavBar = () => {
 
   const handleNavLinkClick = () => {
     setExpanded(false);
+  };
+
+  const handleNotificationClick = () => {
+    if (location.pathname === "/notification") {
+      navigate(-1);
+    } else {
+      navigate("/notification");
+    }
   };
 
   const isLoggedIn = !!user;
@@ -89,16 +101,20 @@ const NavBar = () => {
           </Nav>
 
           <div className="d-flex align-items-center gap-1 ">
-         
             <div>
-              <Link to="/notification">
-                <img src={notify} alt="Notification" width={30} className="notification-icon" />
-              </Link>
+              <img
+                src={notify}
+                alt="Notification"
+                width={30}
+                className="notification-icon"
+                onClick={handleNotificationClick}
+                style={{ cursor: 'pointer' }}
+              />
             </div>
-           
+
             {isLoggedIn ? (
               <Nav>
-               </Nav>
+              </Nav>
             ) : (
               <div
                 style={{
@@ -164,22 +180,6 @@ const NavBar = () => {
                     display: `${profileOpen ? "block" : "none"}`,
                   }}
                 >
-                  {/* <div className="fw-bold text-white" style={{border: '2px solid white'}}>
-                  <img
-                  src={ProfilePicture}
-                  alt="Profile"
-                  referrerPolicy="no-referrer"
-               
-                  className="logo-signup img-fluid rounded-3 "
-                 
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    cursor: "pointer",
-                    marginRight:'10px',
-                  }}
-                />
-                    {user.fullName.split(" ")[0].toUpperCase()}</div> */}
                   <Link to="/profile" onClick={() => setProfileOpen(false)} className="fw-bold p-2 mt-2 profile-btn" style={{ textDecoration: "none", color: 'white', listStyleType: 'none' }}>My Profile</Link>
                   <Link
                     className=" p-2 mt-1 fw-bold  profile-btn"

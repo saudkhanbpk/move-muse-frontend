@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import { Link } from "react-router-dom";
 import "./HP_Celebrate.css";
 // import magicStreamRight from "../../../../img/icons/magic_stream_right.png";
@@ -9,6 +9,9 @@ import feedbackCloud from "../../../../img/icons/cloud_prpl.png";
 import userselebration from "../../../../img/icons/HP_celebrate_section.png";
 import "./HP_Celebrate.css";
 const HP_Celebrate = () => {
+  useEffect(()=>{
+window.scroll(0, 0)
+  },[])
   return (
     <section className="hp-celebrate">
       <div className="celebrate-content">

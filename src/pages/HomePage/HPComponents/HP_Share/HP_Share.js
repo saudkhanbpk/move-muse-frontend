@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./HP_Share.css"; // HP_Share specific styles
 import feedbackCloud from "../../../../img/icons/cloud_peach.png"; // Adjust the import path as needed
@@ -7,6 +7,9 @@ import arrow from "../../../../img/icons/arrow_purple.png"; // Adjust the import
 import feedback from "../../../../img/icons/we_want_your_feedback.png"; // Adjust the import path as needed
 
 const HP_Share = () => {
+  useEffect(()=>{
+    window.scroll(0, 0)
+  },[])
   return (
     <section className="hp-share">
       <div className="share-content">

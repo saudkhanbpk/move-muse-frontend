@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./DiscoverNewEvent.css";
 import technique from "../../img/icons/discoverbelow.png";
 import userscoping from "../../img/icons/1_share_reviews.png";
 const DiscoverNewEvent = () => {
+  useEffect(()=>{
+    window.scroll(0, 0)
+  },[])
   return (
     <>
       <section className="Discover-section">

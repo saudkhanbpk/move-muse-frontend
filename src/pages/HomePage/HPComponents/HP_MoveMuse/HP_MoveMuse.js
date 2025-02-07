@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./HP_MoveMuse.css";
 import magicright from "../../../../img/icons/magic_stream_right.png";
 import mouseimg from "../../../../img/icons/movemouseimg.png";
 import feedbackCloud from "../../../../img/icons/cloud_prpl.png";
 const HP_MoveMuse = () => {
+  useEffect(()=>{
+    window.scroll(0, 0)
+  },[])
   return (
     <>
       <section className="move_muse_section">
