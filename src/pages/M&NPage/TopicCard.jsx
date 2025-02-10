@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import topicCardBg from "../../img/icons/topic-card-bg.svg";
+import { useEffect } from "react";
 
 const backgroundColors = ["#FFEBA9", "#EECDC6", "#D9D9D9", "#A4A68B"];
 
@@ -11,10 +12,13 @@ export default function TopicCard({
   const backgroundColor = backgroundColors[index % backgroundColors.length];
   const navigate = useNavigate();
 
-  const handleReadMore = (e) => {
-    e.stopPropagation(); 
-    navigate(`/topicCardreadmore/${_id}`); 
+  const handleCardClick = () => {
+    setBlogId(_id);
+    navigate(`/topicCardreadmore/${_id}`);
   };
+  useEffect(()=>{
+    window.scroll(0, 0)
+  }, [])
 
   return (
     <div
@@ -24,9 +28,10 @@ export default function TopicCard({
         height: "200px",
         backgroundColor: backgroundColor,
         margin: "2rem auto",
+        cursor: "pointer",
       }}
       tabIndex={0}
-      onClick={() => setBlogId(_id)}
+      onClick={handleCardClick}
     >
       <div className="position-relative">
         <img
@@ -39,21 +44,21 @@ export default function TopicCard({
         />
         <div
           className="position-absolute"
-          style={{ width: 245, marginLeft: "2rem" }}
+          style={{ width: 245, marginLeft: "2rem", height: "100%" }}
         >
           <h1 className="topic-heading">
             {title?.name ? title?.name : "title"}
           </h1>
           <span className="fs-5 topic-heading">{author?.fullName}</span>
           <p
-            className="text-justify overflow-hidden"
-            style={{ height: "120px" }}
+            className="text-justify"
+            style={{
+              height: "120px",
+              overflowY: "auto", // Add scrollbar for overflow content
+            }}
           >
             {message ? message : "_________"}
           </p>
-          <button  style={{ zIndex: "999", border: '0px', padding: '5px 13px', borderRadius: '10px' }} onClick={handleReadMore}>
-            Read More
-          </button>
         </div>
       </div>
     </div>

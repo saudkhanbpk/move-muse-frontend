@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import blog from "../../img/icons/blogcatalogue.svg";
+import { useParams, useNavigate } from "react-router-dom"; // Import useNavigate
 import "./M&NPage.css";
 import { BaseUrl } from "../../BaseUrl";
-
+import arrow_previous_prpl from "../../../src/img/icons/arrow_previous_prpl.png";
 const TopicCardReadmore = () => {
-  const { id } = useParams(); // Retrieve the blog ID from the URL
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [blogContent, setBlogContent] = useState(null);
+
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
+
   useEffect(() => {
     fetch(`${BaseUrl}/api/v1/blog/${id}`)
       .then((response) => {
@@ -23,20 +25,39 @@ const TopicCardReadmore = () => {
   }, [id]);
 
   if (!blogContent) {
-    return <p>Error </p>;
+    return <p>Loading... </p>;
   }
- console.log(blogContent);
 
   return (
-    <div className="backgroundblogreadmore p-5">
-      <div className="blog-header">
-        <h1>{blogContent.title.name}</h1>
-        <h3>{blogContent.author?.fullName}</h3>
+    <div className="topicreadmoremain p-5">
+      <div className="backgroundblogreadmore">
+        <div className="blog-header">
+          <h1>{blogContent.title.name}</h1>
+          <h3>{blogContent.author?.fullName}</h3>
+        </div>
+        <div className="blog-content">
+          <p style={{ fontSize: "21px", textAlign: "justify" }}>
+            {blogContent.message}
+          </p>
+          <div className="textmainn">
+            <p className="mt-md-5 ms-md-5">
+              <span className="cedarville-cursive-regular">
+                Move & Muse Community | Author
+              </span>
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="blog-content">
-        <p style={{ fontSize: "21px", textAlign: "justify" }}>
-          {blogContent.message}
-        </p>
+
+      {/* Back to Topic Cards Button */}
+      <div className="text-center">
+        <img
+          src={arrow_previous_prpl}
+          alt=""
+          className=""
+          style={{ width: "100px", cursor: 'pointer' }}
+          onClick={() => navigate(-1)}
+        />
       </div>
     </div>
   );
