@@ -7,11 +7,20 @@
   position: relative;
 }
 
-.fonts {
+.maintext{
+  font-weight: bold;
+  width: 25%;
+  text-align: left;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   font-family: "Dancing Script", cursive;
+  font-size: 20px;
 }
 .editImg {
   mix-blend-mode: multiply;
+}
+.formlabels{
+  font-family: "Dancing Script", cursive;
 }
 /* .imgmain {
   border-radius: 100%;
@@ -32,8 +41,6 @@
 .profile_Info{
   bottom: 0;
 }
-
-
 
 .profile_Info h3 {
   padding: 10px;
@@ -483,6 +490,18 @@
   .favouritearticle {
     max-width: 100%;
   }
+  /* new 11/2/25 */
+  .profile-container{
+    width: fit-content;
+    padding: 10px;
+  }
+  .profile-details{
+    width: fit-content;
+  }
+  .detail-item{
+    width: fit-content;
+  }
+  /* end 11/2/25 */
   .attendance1 {
     width: 50%;
     /* height: 30%; */
@@ -517,7 +536,11 @@
   .maincform {
     height: 100%;
   }
-
+.maintext{
+  font-weight: bold;
+  width: 100%;
+  font-size: 16px;
+}
   .mainconform {
     width: 100% !important;
     height: auto !important;
@@ -646,6 +669,10 @@
   margin-left: 16px;
 }
 /* new */
+.mainofprofile{
+  position: relative;
+  
+}
 .profile-container {
   display: flex;
   justify-content: space-between;
@@ -653,6 +680,7 @@
   border-radius: 8px;
   align-items: center;
   width: 100%;
+
 }
 
 .profile-details {
@@ -661,6 +689,8 @@
   grid-template-columns: 150px auto; 
   gap: 5px;
   margin-right: 20px; 
+  position: absolute;
+  top: 30;
 }
 
 .detail-item {
@@ -676,7 +706,7 @@
   white-space: nowrap; 
 }
 h4{
-  font-weight: 700;
+  font-weight: 650;
   font-size: 20px;
 }
 
@@ -717,6 +747,7 @@ h4{
   .detail-item h4:last-child {
     text-align: left;
     white-space: normal;
+    font-size: 20px;
     
   }
 

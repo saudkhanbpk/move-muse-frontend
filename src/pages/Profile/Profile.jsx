@@ -69,7 +69,7 @@ const Profile = () => {
     <>
       <div className="profile_maindiv">
         <main className=" " style={{ overflowX: "hidden" }}>
-          <div className="p-4 col-md-11 row mx-auto">
+          <div className="p-4 col-md-11 row mx-auto mainofprofile">
             <div className="col-md-6 profileUser d-flex align-items-center ">
               <img
                 src={edit}
@@ -94,18 +94,18 @@ const Profile = () => {
             </div>
             <div className="col-md-6 profile_Info p-0 ">
               <h3>My Dance Profile</h3>
-              <div className="profile_tablediv">
-                <div className="d-md-flex justify-content-between align-items-center gap-2 advancemainimg ">
+              <div className="profile_tablediv" >
+                <div className="d-md-flex justify-content-between align-items-center gap-2 advancemainimg " >
                   <img
                     src={dance}
                     alt=""
                     className="img-fluid"
                     style={{ mixBlendMode: "multiply" }}
                   />
-                  <div className="d-flex justify-content-around align-items-center gap-1 advancemainimg">
+                  <div className="d-flex justify-content-around align-items-center gap-md-4 gap-sm-0 advancemainimg " >
                     {profileCredentials?.dances?.map((dance, index) => (
-                      <div key={index} className="">
-                        <span className="fonts fs-4">{dance.style}</span>
+                      <div key={index} className="" >
+                        <span className="maintext fs-5 ">{dance.style}</span>
                       </div>
                     ))}
                   </div>
@@ -119,7 +119,7 @@ const Profile = () => {
                   />
                   <div className="d-flex justify-content-between mt-2 advancemaintext">
                     {profileCredentials?.dances?.map((dance, index) => (
-                      <div key={index} className="fw-bold w-25 text-start px-2">
+                      <div key={index} className="maintext ms-2" >
                         {dance.years}
                       </div>
                     ))}
@@ -132,9 +132,9 @@ const Profile = () => {
                     className="img-fluid"
                     style={{ mixBlendMode: "multiply" }}
                   />
-                  <div className="d-flex justify-content-between mt-2 p-2 w-100 advancemaintext advancemaintextlg">
+                  <div className="d-flex justify-content-between mt-2 p-md-2 w-100 advancemaintext advancemaintextlg">
                     {profileCredentials?.dances?.map((dance, index) => (
-                      <div key={index} className="fw-bold textsize w-25">
+                      <div key={index} className="maintext">
                         {dance.follow}
                       </div>
                     ))}
@@ -149,7 +149,7 @@ const Profile = () => {
                   />
                   <div className="d-flex justify-content-between mt-2 p-2 w-100 advancemaintext advancemaintextlg">
                     {profileCredentials?.dances?.map((dance, index) => (
-                      <div key={index} className="fw-bold textsize w-25">
+                      <div key={index} className="maintext">
                         {dance.lead}
                       </div>
                     ))}
@@ -159,36 +159,36 @@ const Profile = () => {
             </div>
 
             {success ? (
-              <div className="profile-container">
+              <div className="profile-container " >
                 <div className="profile-details">
                   <div className="detail-item">
                     <h4>Name:</h4>
-                    <h4>{profileCredentials?.fullName}</h4>
+                    <h4 className="formlabels">{profileCredentials?.fullName}</h4>
                   </div>
                   <div className="detail-item">
-                    <h4 className="text">UserName:</h4>
-                    <h4>{profileCredentials?.username}</h4>
+                    <h4 className="text">Username:</h4>
+                    <h4 className="formlabels">{profileCredentials?.username}</h4>
                   </div>
                   <div className="detail-item">
-                    <h4>Email:</h4>
-                    <h4>{profileCredentials?.email}</h4>
+                    <h4>email:</h4>
+                    <h4 className="formlabels">{profileCredentials?.email}</h4>
                   </div>
                   <div className="detail-item">
                     <h4>City:</h4>
-                    <h4>{profileCredentials?.city}</h4>
+                    <h4 className="formlabels">{profileCredentials?.city}</h4>
                   </div>
                   <div className="detail-item">
                     <h4>Dance alias:</h4>
-                    <h4>{profileCredentials?.danceAlias}</h4>
+                    <h4 className="formlabels">{profileCredentials?.danceAlias}</h4>
                   </div>
                   <div className="detail-item">
                     <h4>I Move&Muse:</h4>
-                    <h4>{profileCredentials?.moveMuse}</h4>
+                    <h4 className="formlabels">{profileCredentials?.moveMuse}</h4>
                   </div>
                 </div>
-                <div className="profile-image ">
+                {/* <div className="profile-image " >
                   <img src={sidelogo} alt="Profile" />
-                </div>
+                </div> */}
               </div>
             ) : (
               ""
