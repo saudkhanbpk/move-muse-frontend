@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./HP_Share.css"; // HP_Share specific styles
 import feedbackCloud from "../../../../img/icons/cloud_peach.png"; // Adjust the import path as needed
 import map from "../../../../img/icons/map.png"; // Adjust the import path as needed
@@ -10,6 +10,7 @@ const HP_Share = () => {
   useEffect(()=>{
     window.scroll(0, 0)
   },[])
+  const Navigate = useNavigate();
   return (
     <section className="hp-share">
       <div className="share-content">
@@ -20,11 +21,11 @@ const HP_Share = () => {
           </h2>
           {/* <div className="share-actions"> */}
           <div className=" align-items-center gap-2 d-none d-sm-flex  ">
-            <h5 className="signup_btn">
+            <h5 onClick={()=> Navigate('/signup')} className="signup_btn">
               Sign In
               <img src={feedbackCloud} alt="" className="cloudimage" />
             </h5>
-            <h5 className="signup_btn2">
+            <h5  onClick={()=> Navigate('/signup')} className="signup_btn2">
               Create an Account
               <img src={feedbackCloud} alt="" className="cloudimage2" />
             </h5>

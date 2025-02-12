@@ -7,7 +7,7 @@ import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import { UserContext } from '../../context/UserContext';
 import NotificationService from "../../components/NotificationService/NotificationService";
 import { toast } from "react-toastify";
-import { Spinner } from "react-bootstrap"; // Import Spinner from react-bootstrap
+import { Spinner } from "react-bootstrap"; 
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ const Signup = () => {
     password: "",
   });
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false); // State to manage loading spinner
+  const [loading, setLoading] = useState(false);
   const { setUserLoggedIn, setUser, setProfilePicture } = useContext(UserContext);
 
   const handleChange = (e) => {
@@ -27,63 +27,59 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Show loading spinner
+    setLoading(true); 
     try {
       const response = await axios.post(`${BaseUrl}/api/v1/auth/signup`, formData);
       console.log("API Response:", response);
       if (response.data && response.data.success) {
         NotificationService.notifySuccess("User registered successfully!");
-        navigate("/login"); // Redirect to login page after successful signup
+        navigate("/login"); 
       } else {
         setError(response.data.message || "Registration failed");
       }
     } catch (error) {
       console.error("Error during signup:", error);
       if (error.response) {
-        // Server responded with a status other than 2xx
         setError(error.response.data.message || "Internal server error");
       } else if (error.request) {
-        // No response was received
         setError("No response from server");
       } else {
-        // Something else happened
         setError("Internal server error");
       }
     } finally {
-      setLoading(false); // Hide loading spinner
+      setLoading(false); 
     }
   };
 
   const handleGoogleLogin = (response) => {
-    console.log('Google Login Response:', response);
     const { credential } = response;
-    setLoading(true); // Show loading spinner
+    setLoading(true); 
     axios.post(`${BaseUrl}/api/v1/auth/google`, { idToken: credential })
       .then(res => {
         console.log('Token Exchange Response:', res);
-        localStorage.setItem('token', res.data.token); // Save JWT token
-        localStorage.setItem('userData', JSON.stringify(res.data.user)); // Save user data
+        localStorage.setItem('token', res.data.token); 
+        localStorage.setItem('userData', JSON.stringify(res.data.user)); 
         setUserLoggedIn(true);
-        setUser(res.data.user); // Assuming the response includes user info
-        setProfilePicture(res.data.user.profilePicture); // Set profile picture URL
+        setUser(res.data.user); 
+        setProfilePicture(res.data.user.profilePicture); 
         toast.success('Login successful!');
         navigate('/');
       })
       .catch(error => {
         console.error('Error logging in with Google', error);
         if (error.response) {
-          // Server responded with a status other than 2xx
+      
           setError(error.response.data.message || "Google login failed. Please try again.");
         } else if (error.request) {
-          // No response was received
+         
           setError("No response from server. Please try again.");
         } else {
-          // Something else happened
+         
           setError("Google login failed. Please try again.");
         }
       })
       .finally(() => {
-        setLoading(false); // Hide loading spinner
+        setLoading(false); 
       });
   };
 
@@ -120,11 +116,11 @@ const Signup = () => {
             required
           />
 
-          <button type="submit" disabled={loading}>
+          <button  type="submit" disabled={loading}>
             {loading ? <Spinner animation="border" size="sm" /> : "Sign Up"}
           </button>
           
-            <GoogleLogin
+            <GoogleLogin 
               onSuccess={handleGoogleLogin}
               onError={() => {
                 console.log('Login Failed');

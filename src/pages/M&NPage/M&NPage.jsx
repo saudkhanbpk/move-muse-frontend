@@ -11,14 +11,12 @@ import WriteIcon from "../../img/icons/mAndn-writting.svg";
 import { Link } from "react-router-dom";
 
 export default function MAndNPage() {
-  // states for all fetching all blogs and displaying
   const [blogs, setBlogs] = useState([]);
   const [blogsLoading, setBlogsLoading] = useState(true);
   const [page, setPage] = useState(0);
   const [blogsLength, setBlogsLength] = useState(0);
   const [blogId, setBlogId] = useState("");
 
-  // TODO: these are the handlers functions
   const handleTopics = (e) => {};
   const handleStyle = (e) => {};
   const handleRegularInput = (e) => {};

@@ -8,10 +8,12 @@ import userlist from "../../../../img/icons/arrow_lady.png";
 import feedbackCloud from "../../../../img/icons/cloud_prpl.png";
 import userselebration from "../../../../img/icons/HP_celebrate_section.png";
 import "./HP_Celebrate.css";
+import { useNavigate } from "react-router-dom";
 const HP_Celebrate = () => {
   useEffect(()=>{
 window.scroll(0, 0)
   },[])
+  const navigate = useNavigate();
   return (
     <section className="hp-celebrate">
       <div className="celebrate-content">
@@ -25,11 +27,11 @@ window.scroll(0, 0)
           </h2>
           <div className="d-flex align-items-center gap-4">
             <div className="d-sm-flex d-none align-items-center gap-2 ">
-              <h5 className="signup_btn">
+              <h5 onClick={()=> navigate('/signup')} className="signup_btn">
                 Sign In
                 <img src={feedbackCloud} alt="" className="cloudimage" />
               </h5>
-              <h5 className="signup_btn2">
+              <h5 onClick={()=> navigate('/signup')} className="signup_btn2">
                 Create an Account
                 <img src={feedbackCloud} alt="" className="cloudimage2" />
               </h5>

@@ -1,14 +1,10 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import "./MusingGuide.css";
-import mic from "../../img/icons/mic.png";
-import mictext from "../../img/icons/mictext.png";
 import blog from "../../img/icons/blogcatalogue.svg";
 import NotificationService from "../NotificationService/NotificationService";
 import ApiService from "../../services/ApiService";
 import { UserContext } from "../../context/UserContext";
-import arrow_next_prpl from "../../../src/img/icons/arrow_next_prpl.png";
 import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
-import { CiSearch } from "react-icons/ci";
 import AllTopics from "./AllTopics";
 
 const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
@@ -39,31 +35,31 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
     fetchTopics();
   }, []);
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-  };
+  // const handleInputChange = (e) => {
+  //   setInputValue(e.target.value);
+  // };
 
-  const handleFilterChange = (e) => {
-    const searchValue = e.target.value.toLowerCase();
-    setFilter(searchValue);
-    setNewTopic(searchValue);
-    const filtered = originalTopics.filter((topic) =>
-      topic.name.toLowerCase().startsWith(searchValue)
-    );
-    setTopics(filtered);
-    setDisplayedTopics(filtered.slice(0, topicsPerPage));
-  };
+  // const handleFilterChange = (e) => {
+  //   const searchValue = e.target.value.toLowerCase();
+  //   setFilter(searchValue);
+  //   setNewTopic(searchValue);
+  //   const filtered = originalTopics.filter((topic) =>
+  //     topic.name.toLowerCase().startsWith(searchValue)
+  //   );
+  //   setTopics(filtered);
+  //   setDisplayedTopics(filtered.slice(0, topicsPerPage));
+  // };
 
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      const newHashtags = inputValue
-        .split(" ")
-        .filter((tag) => tag.trim() !== "")
-        .map((tag) => (tag.startsWith("#") ? tag : `#${tag}`));
-      setSelectedHashtags([...selectedHashtags, ...newHashtags]);
-      setInputValue("");
-    }
-  };
+  // const handleKeyPress = (e) => {
+  //   if (e.key === "Enter") {
+  //     const newHashtags = inputValue
+  //       .split(" ")
+  //       .filter((tag) => tag.trim() !== "")
+  //       .map((tag) => (tag.startsWith("#") ? tag : `#${tag}`));
+  //     setSelectedHashtags([...selectedHashtags, ...newHashtags]);
+  //     setInputValue("");
+  //   }
+  // };
 
   const fetchTopics = async () => {
     try {
@@ -152,7 +148,6 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
           }}
         >
           <div className="mb-3 ">
-            {/* <h1 className="fw-bold">Topic Title </h1> */}
             <div
               className=""
               style={{

@@ -3,10 +3,12 @@ import "./HP_MoveMuse.css";
 import magicright from "../../../../img/icons/magic_stream_right.png";
 import mouseimg from "../../../../img/icons/movemouseimg.png";
 import feedbackCloud from "../../../../img/icons/cloud_prpl.png";
+import { useNavigate } from "react-router-dom";
 const HP_MoveMuse = () => {
   useEffect(()=>{
     window.scroll(0, 0)
   },[])
+  const navigate = useNavigate();
   return (
     <>
       <section className="move_muse_section">
@@ -55,8 +57,8 @@ const HP_MoveMuse = () => {
             </p>
           </div>
           <div className="col-md-6 ">
-            <div className="signup_btn  w-25 d-block ms-auto">
-              <span
+            <div  className="signup_btn  w-25 d-block ms-auto">
+              <span onClick={()=> navigate('/signup')}
                 style={{ position: "absolute", top: "10px", right: "20px" }}
               >
                 {" "}

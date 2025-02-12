@@ -42,13 +42,13 @@ const LoginForm = () => {
     } catch (error) {
       console.error("Error during login:", error);
       if (error.response) {
-        // Server responded with a status other than 2xx
+      
         setError(error.response.data.message || "Internal server error");
       } else if (error.request) {
-        // No response was received
+      
         setError("No response from server");
       } else {
-        // Something else happened
+       
         setError("Internal server error");
       }
     }
