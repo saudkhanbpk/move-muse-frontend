@@ -27,7 +27,7 @@ window.scroll(0, 0)
   return (
     <>
       <section className="p-4 col-md-11 mx-auto">
-        <h2 className="" style={{ fontWeight: "bold" }}>
+        <h2 className="" style={{ fontWeight: "bold" , }}>
           Coming Up Events
         </h2>
         <div className="maindiv_comingEvent" style={{ borderRadius: "20px" }}>

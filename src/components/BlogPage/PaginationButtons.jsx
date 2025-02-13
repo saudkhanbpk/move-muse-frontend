@@ -16,7 +16,7 @@ export default function PaginationButtons({ page, setPage, dataLength }) {
   };
 
   return (
-    <div className="d-flex align-items-center justify-content-end me-3">
+    <div className="d-flex align-items-center justify-content-md-end justify-content-center gap-md-0 gap-5  me-3">
       <button className="btn" onClick={prev} disabled={page <= 0}>
         <img src={BackwardBtn} alt="Backward" width={50} />
       </button>

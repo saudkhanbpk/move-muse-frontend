@@ -52,9 +52,9 @@ export default function MAndNPage() {
         handleTopics={handleTopics}
       />
       <div>
-        <div className="container mt-5 py-5 ">
+        <div className="container mt-5 py-5 " >
           <div className="d-flex justify-content-center">
-            <div className="row g-3">
+            <div className="row g-3" >
               {!blogsLoading &&
                 blogs.slice(page, page + 4).map((blog, index) => (
                   <div className="col-md-6" key={index}>
@@ -78,8 +78,8 @@ export default function MAndNPage() {
       {/* line divider */}
       <div className="d-flex flex-column align-items-center justify-content-center px-1 px-sm-5 ">
         <div className="d-flex align-items-center w-100 gap-5 flex-column flex-md-row">
-       <Link to='/articles'>   <img src={WriteIcon} alt="img" /></Link>
-          <p style={{ color: "#545454", fontWeight: 600 }}>
+       <Link to='/articles'>   <img src={WriteIcon} alt="img" className="mt-5 mt-md-0" /></Link>
+          <p className="p-md-0 p-3" style={{ color: "#545454", fontWeight: 600 }}>
             Would like to share your own dance musing? Click here to pick an
             existing or create a new topic!
           </p>

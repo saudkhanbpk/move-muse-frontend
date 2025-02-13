@@ -3,8 +3,6 @@ import MusingGuide from '../../components/MusingGuide/MusingGuide';
 import ApiService from '../../services/ApiService';
 import NotificationService from '../../components/NotificationService/NotificationService';
 
-import back from "../../img/icons/backarrow.png";
-import forward from "../../img/icons/forwardarrow.png";
 import MAndNHero from '../M&NPage/hero/MAndNHero';
 
 const Article = () => {

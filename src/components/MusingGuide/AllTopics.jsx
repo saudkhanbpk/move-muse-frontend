@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./alltopics.css";
 import { CiSearch } from "react-icons/ci";
-import { PlusCircle } from "lucide-react";
 import axios from "axios";
 import { BaseUrl } from "../../BaseUrl";
 import { toast, ToastContainer } from "react-toastify";
@@ -139,9 +138,6 @@ const AllTopics = ({ originalTopics, handleScroll }) => {
           <CiSquarePlus
             onClick={handleAddTitle}
             style={{
-              // background: "#F0F0F0",
-              // padding: "10px",
-              border: "0px",
               borderRadius: "5px",
               fontSize: "50px",
               cursor: "pointer",

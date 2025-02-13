@@ -4,7 +4,7 @@ import blog from "../../img/icons/blogcatalogue.svg";
 import NotificationService from "../NotificationService/NotificationService";
 import ApiService from "../../services/ApiService";
 import { UserContext } from "../../context/UserContext";
-import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
+import { useNavigate, useLocation,  } from "react-router-dom";
 import AllTopics from "./AllTopics";
 
 const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
@@ -35,37 +35,11 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
     fetchTopics();
   }, []);
 
-  // const handleInputChange = (e) => {
-  //   setInputValue(e.target.value);
-  // };
-
-  // const handleFilterChange = (e) => {
-  //   const searchValue = e.target.value.toLowerCase();
-  //   setFilter(searchValue);
-  //   setNewTopic(searchValue);
-  //   const filtered = originalTopics.filter((topic) =>
-  //     topic.name.toLowerCase().startsWith(searchValue)
-  //   );
-  //   setTopics(filtered);
-  //   setDisplayedTopics(filtered.slice(0, topicsPerPage));
-  // };
-
-  // const handleKeyPress = (e) => {
-  //   if (e.key === "Enter") {
-  //     const newHashtags = inputValue
-  //       .split(" ")
-  //       .filter((tag) => tag.trim() !== "")
-  //       .map((tag) => (tag.startsWith("#") ? tag : `#${tag}`));
-  //     setSelectedHashtags([...selectedHashtags, ...newHashtags]);
-  //     setInputValue("");
-  //   }
-  // };
-
   const fetchTopics = async () => {
     try {
       const response = await ApiService.get("getAllTitles");
       setOriginalTopics(response.data.data.titles);
-      setTopics(response.data.data.titles); // Default filtered topics
+      setTopics(response.data.data.titles);
     } catch (error) {
       console.log("Failed to fetch topics:", error);
       NotificationService.notifyError("Failed to fetch topics.");
@@ -125,7 +99,7 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
         setNewTopic("");
         NotificationService.notifyInfo("Title Added Successfully");
         fetchData();
-        fetchTopics(); // Refresh the topics list
+        fetchTopics();
       } catch (error) {
         NotificationService.notifyError("Api failed ");
       }

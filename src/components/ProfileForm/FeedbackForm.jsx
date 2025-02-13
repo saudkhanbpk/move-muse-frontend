@@ -6,7 +6,7 @@ import { BaseUrl } from "../../BaseUrl";
 import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import './feedbackformtextarea.css'
+import "./feedbackformtextarea.css";
 const FeedbackForm = ({ onSubmit }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showRoleOptions, setShowRoleOptions] = useState(false);
@@ -57,7 +57,9 @@ const FeedbackForm = ({ onSubmit }) => {
         `${BaseUrl}/api/v1/events/feedback/${id}`,
         formData
       );
-      toast.success("Thank you for sharing your experience with the community!");
+      toast.success(
+        "Thank you for sharing your experience with the community!"
+      );
       onSubmit();
       setIsOpen(false);
       setFormData({
@@ -145,7 +147,6 @@ const FeedbackForm = ({ onSubmit }) => {
                       backgroundColor: "#F2E7CB",
                       border: "2px solid gray",
                       outline: "none",
-
                     }}
                   />
                   <label className="form-check-label">Hide my role</label>
@@ -185,42 +186,38 @@ const FeedbackForm = ({ onSubmit }) => {
                 Rate your experience
               </label>
               <div className="d-md-flex flex-wrap gap-1">
-                {[
-                  "Venue",
-                  "Ratio",
-                  "Artists",
-                  "Organization",
-                  "Culture",
-                ].map((field) => (
-                  <div
-                    className="d-md-flex align-items-center flex-grow-1 mb-2"
-                    key={field}
-                  >
-                    <label className="form-label fw-semibold me-2">
-                      {field}
-                    </label>
-                    <input
-                      type="text"
-                      name={field.toLowerCase()}
-                      placeholder="0.0"
-                      value={formData[field.toLowerCase()]}
-                      onChange={(e) => {
-                        if (validateInput(e.target.value)) {
-                          handleChange(e);
-                        }
-                      }}
-                      className="form-control rounded"
-                      style={{
-                        backgroundColor: "#F2E7CB",
-                        border: "2px solid gray",
-                        outline: "none",
-                        height: "30px",
-                        width: "46px",
-                        fontSize: '14px'
-                      }}
-                    />
-                  </div>
-                ))}
+                {["Venue", "Ratio", "Artists", "Organization", "Culture"].map(
+                  (field) => (
+                    <div
+                      className="d-md-flex align-items-center flex-grow-1 mb-2"
+                      key={field}
+                    >
+                      <label className="form-label fw-semibold me-2">
+                        {field}
+                      </label>
+                      <input
+                        type="text"
+                        name={field.toLowerCase()}
+                        placeholder="0.0"
+                        value={formData[field.toLowerCase()]}
+                        onChange={(e) => {
+                          if (validateInput(e.target.value)) {
+                            handleChange(e);
+                          }
+                        }}
+                        className="form-control rounded"
+                        style={{
+                          backgroundColor: "#F2E7CB",
+                          border: "2px solid gray",
+                          outline: "none",
+                          height: "30px",
+                          width: "46px",
+                          fontSize: "14px",
+                        }}
+                      />
+                    </div>
+                  )
+                )}
               </div>
             </div>
 
