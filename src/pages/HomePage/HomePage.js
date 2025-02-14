@@ -45,7 +45,7 @@ const HomePage = () => {
   const handleFavoriteToggle = (eventIdData) => {
     console.log(`Toggling favorite status for event ID: ${eventIdData}`);
   };
-
+    
   return (
     <div className="homepage" >
       <Hero />

@@ -54,7 +54,7 @@ export default function TopicCard({
             className="text-justify"
             style={{
               height: "120px",
-              overflowY: "auto", // Add scrollbar for overflow content
+              overflowY: "auto", 
             }}
           >
             {message ? message : "_________"}

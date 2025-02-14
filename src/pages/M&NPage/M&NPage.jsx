@@ -38,7 +38,7 @@ export default function MAndNPage() {
     getAllBlogsRef.current();
   }, [getAllBlogsRef]);
 
-  const visibleBlog = blogs.filter((blog) => blog?._id === blogId);
+  // const visibleBlog = blogs.filter((blog) => blog?._id === blogId);
 
   return (
     <section className="">

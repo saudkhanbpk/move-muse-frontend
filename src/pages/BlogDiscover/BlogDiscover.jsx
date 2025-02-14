@@ -3,19 +3,12 @@ import hand from "../../img/icons/handimg.png";
 import blogtext from "../../img/icons/blogtext.png";
 import SmallCards from "../../components/SmallCards/SmallCards";
 import { CiSearch } from "react-icons/ci";
-import Dropdown from "../../components/Dropdown/Dropdown";
 import arrowForward from "../../img/icons/arrow_charcoal.png";
-import mic from "../../img/icons/mic.png";
-import mictext from "../../img/icons/mictext.png";
-import ApiService from "../../services/ApiService";
-import back from "../../img/icons/backarrow.png";
-import forward from "../../img/icons/forwardarrow.png";
 import kindness from "../../img/icons/kindness.png";
 import awareness from "../../img/icons/awareness.png";
 import cummunity from "../../img/icons/cummunity.png";
 import respect from "../../img/icons/respect.png";
 import curisity from "../../img/icons/curisity.png";
-import writingimg from "../../img/icons/handwriteimg.png";
 import empowerment from "../../img/icons/empowerment.png";
 import { useNavigate } from "react-router-dom";
 import SearchFields from "../../components/SearchFields/SearchFields";
@@ -86,7 +79,7 @@ const BlogDiscover = () => {
       <div className="p-4 bg-colormain">
         <div className="row">
           <div className="headingmove_msue ">
-            <h2 className="" style={{ fontSize: "40px", }}>
+            <h2 className="" style={{ fontSize: "40px" }}>
               Welcome to Move & Muse
             </h2>
             <img
@@ -111,7 +104,7 @@ const BlogDiscover = () => {
             <img src={hand} alt="" style={{ mixBlendMode: "multiply" }} />
           </div>
         </div>
-        <SmallCards imageArray={imageArray}  />
+        <SmallCards imageArray={imageArray} />
       </div>
       <div className="p-md-4 selectbox-maindiv">
         <div
@@ -160,7 +153,11 @@ const BlogDiscover = () => {
                 justifyContent: "end",
               }}
             >
-              <img src={arrowForward} alt="" className="img-fluid arrowImage " />
+              <img
+                src={arrowForward}
+                alt=""
+                className="img-fluid arrowImage "
+              />
               <p style={{ position: "relative", top: "10px" }}>Advance</p>
             </div>
           </div>

@@ -35,11 +35,11 @@ export default function MAndNHero() {
     <div className="blog-container-hero pb-5">
       <div className="d-flex px-5 flex-wrap align-items-center justify-content-center ">
         <div>
-          <span className="d-flex position-relative align-items-center align-items-sm-baseline">
+          <span className="d-md-flex position-relative align-items-md-center">
             <h1 className="fw-bold text-break" style={{ color: "#545454" }}>
               Welcome to Move & Muse
             </h1>
-            <img src={BlogImg} alt="blog-img"  width={100} />
+            <img src={BlogImg} alt="blog-img"  width={100} className="ms-md-0 ms-5"/>
           </span>
           <p
             className="fs-3 text-justify text-sm-start"
