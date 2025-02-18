@@ -68,7 +68,7 @@ const HP_Events = ({ onFavoriteToggle }) => {
           <img
             src={forwardIcon}
             alt="forward btn"
-            style={{ width: "100px", height: "100px" }}
+            style={{ width: "100px", height: "100px",  }}
           />
         </button>
       </div>

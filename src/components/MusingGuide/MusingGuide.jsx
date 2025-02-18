@@ -200,9 +200,10 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
                   border: "none",
                   width: "fit-content",
                   fontSize: "30px",
+                  fontFamily: 'cursive'
                 }}
               />
-              <strong style={{ fontSize: "22px" }}>
+              <strong style={{ fontSize: "30px", fontFamily: 'cursive' }}>
                 Date : {new Date().toLocaleDateString()}
               </strong>
             </p>
@@ -211,12 +212,13 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
               placeholder="Start Writing here..."
               onChange={handleTextChange}
               className="my-2  fs-5   textareamsg border-0"
+              style={{fontFamily: 'cursive'}}
             />
           </div>
 
           <div className="moveandmusetextmain">
             <p className=" moveandmusetextchild">
-              <span className="cedarville-cursive-regular">
+              <span style={{fontFamily: 'cursive'}}>
                 Move & Muse Community | Author
               </span>
             </p>

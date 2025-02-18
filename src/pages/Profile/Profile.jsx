@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./Profile.css";
+import "./profileown.css"
 import edit from "../../img/icons/edit.png";
 import dance from "../../img/icons/dance.png";
 import year from "../../img/icons/year.png";
@@ -78,12 +78,12 @@ const Profile = () => {
                 height={30}
                 title="Edit Profile"
                 onClick={() => setOpen(!open)}
-                className="position-absolute top-25 editImg cursor-pointer "
+                className="position-absolute top-25 editImg cursor-pointer immgg"
               />
               <div className="image-container">
                 <img
                   src={profileCredentials.profilePicture}
-                  className=" "
+                  className="profileimg "
                   style={{
                     borderRadius: "100%",
                     width: "100px",
@@ -134,7 +134,7 @@ const Profile = () => {
                   />
                   <div className="d-flex justify-content-between mt-2 p-md-2 w-100 advancemaintext advancemaintextlg">
                     {profileCredentials?.dances?.map((dance, index) => (
-                      <div key={index} className="maintext">
+                      <div style={{width: 'fit-content'}} key={index} className="maintext">
                         {dance.follow}
                       </div>
                     ))}
@@ -149,7 +149,7 @@ const Profile = () => {
                   />
                   <div className="d-flex justify-content-between mt-2 p-2 w-100 advancemaintext advancemaintextlg">
                     {profileCredentials?.dances?.map((dance, index) => (
-                      <div key={index} className="maintext">
+                      <div style={{width: 'fit-content'}} key={index} className="maintext">
                         {dance.lead}
                       </div>
                     ))}

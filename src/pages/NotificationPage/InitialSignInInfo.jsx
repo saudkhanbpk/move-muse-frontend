@@ -29,8 +29,8 @@ const InitialSignInInfo = ({ setSuccess }) => {
   const [birthday, setBirthday] = useState(profileCredentials.birthday || "");
   const [style, setStyle] = useState("");
   const [since, setSince] = useState("");
-  const [follow, setFollow] = useState("");
-  const [lead, setLead] = useState("");
+  const [follow, setFollow] = useState("Not interested");
+  const [lead, setLead] = useState("Not interested");
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const genderOptions = ["Male", "Female", "Others"];
@@ -57,7 +57,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
   ];
   const styleOptions = ["Bachata", "Kizomba", "Salsa", "Tango", "Other"];
   const sinceOptions = ["1 year", "2 years", "3 years", "4 years", "5+ years"];
-  const followLeadOptions = ["Beginner", "Intermediate", "Advanced"];
+  const followLeadOptions = ["Beginner", "Intermediate", "Advanced", "Not interested"];
 
   const addDance = () => {
     if (dances.length >= 3) {
@@ -67,14 +67,14 @@ const InitialSignInInfo = ({ setSuccess }) => {
     const newDance = {
       style: style || "New Style",
       years: since || "0 years",
-      follow: follow || "beginner",
-      lead: lead || "beginner",
+      follow: follow || "Not interested",
+      lead: lead || "Not interested",
     };
     setDances([...dances, newDance]);
     setStyle("");
     setSince("");
-    setFollow("");
-    setLead("");
+    setFollow("Not interested");
+    setLead("Not interested");
   };
 
   const removeDance = (index) => {
@@ -172,6 +172,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
   return (
     <Modal show={true} onHide={() => setOpen(false)} centered>
       <Modal.Header closeButton></Modal.Header>
+      <h4 style={{textAlign: 'center', marginTop: '10px'}}>Update Profile</h4>
       <Modal.Body>
         <div className="d-flex flex-wrap align-items-center justify-content-center w-full py-2 w-md-100">
           <div className="flex-grow-1 position-relative uploadmaindiv">
@@ -202,7 +203,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
                     className="rounded-circle"
                   />
                 ) : (
-                  <span className="small fs-6 p-2">
+                  <span className="small fs-6 " style={{textAlign: 'center', padding: '10px'}}>
                     Upload your photo so others can recognize you and share some
                     kudo love!
                   </span>
@@ -335,10 +336,10 @@ const InitialSignInInfo = ({ setSuccess }) => {
             </div>
           </div>
 
-          <h5 className="text-center my-4 fw-bold" style={{ color: "#480249" }}>
+          {/* <h5 className="text-center my-4 fw-bold" style={{ color: "#480249" }}>
             A little about me
-          </h5>
-          <div className="row d-flex flex-column align-items-center text-center mb-4">
+          </h5> */}
+          {/* <div className="row d-flex flex-column align-items-center text-center mb-4">
             <div className="col-md-8 sm:col-md-4 mt-3 ">
               <Dropdown
                 id="gender"
@@ -366,7 +367,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
                 options={birthdayOptions}
               />
             </div>
-          </div>
+          </div> */}
 
           <div className="my-3">
             <div className="text-center">

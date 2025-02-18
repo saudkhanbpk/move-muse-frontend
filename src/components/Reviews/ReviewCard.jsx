@@ -7,6 +7,8 @@ import flagfigma from "../../img/icons/flagfigma.png";
 import ApiService from "../../services/ApiService";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import blog_heart_selected from "../../img/icons/blog_heart_selected.png";
+import blog_heart_unselected from "../../img/icons/blog_heart_unselected.png";
 
 export default function ReviewCard({
   item: {
@@ -21,6 +23,7 @@ export default function ReviewCard({
     label,
     description,
     flagged,
+    favourite,
   },
   fetchFeedback,
 }) {
@@ -28,6 +31,7 @@ export default function ReviewCard({
   const [showMessage, setShowMessage] = useState(false);
   const [message, setMessage] = useState("");
   const [isFlagged, setFlagged] = useState(flagged);
+  const [isFavorited, setIsFavorited] = useState(favourite);
 
   useEffect(() => {
     const calculateStars = () => {
@@ -69,6 +73,31 @@ export default function ReviewCard({
     }
   };
 
+  const favouriteUpdate = async (isFavorited) => {
+    try {
+      const response = await ApiService.put(`/favourite-update/:eventId/${_id}`, {
+        favourite: isFavorited,
+      });
+      if (response.data.success) {
+        if (isFavorited) {
+          toast.success("Review added to favorites.");
+        } else {
+          toast.info("Review removed from favorites.");
+        }
+        setIsFavorited(isFavorited); // Update the favorited state
+      } else {
+        toast.error("Failed to update favorite status.");
+      }
+    } catch (error) {
+      console.error("Error updating favorite status:", error);
+      toast.error("There was an error updating the favorite status.");
+    }
+  };
+
+  const handleFavoriteToggle = () => {
+    favouriteUpdate(!isFavorited);
+  };
+
   const renderStars = () => {
     return Array.from({ length: stars }, (_, i) => (
       <FaStar key={i} color="#f8b706" size={20} />
@@ -76,10 +105,7 @@ export default function ReviewCard({
   };
 
   return (
-    <div
-      className="reviewCard d-flex flex-column align-items-center justify-content-start flex-sm-row gap-3 position-relative"
-      style={{ width: "100%" }}
-    >
+    <div className="reviewCard d-flex flex-column align-items-center justify-content-start flex-sm-row gap-3 position-relative">
       <div className="d-flex flex-column align-items-center justify-content-center">
         <span
           className="card-image-span border border-2 rounded-circle d-flex align-items-center justify-content-center"
@@ -92,9 +118,9 @@ export default function ReviewCard({
       </div>
       <div>
         <div className="cardInfo p-3 rounded-4 position-relative">
-          <div className="d-flex gap-2 justify-center">
+          <div className="d-flex gap-2 justify-content-between align-items-center">
             <div
-              className="d-flex flex-wrap gap-2 "
+              className="d-flex flex-wrap gap-2"
               style={{ height: "fit-content" }}
             >
               <span className="fs-6 fw-bold">Venue {venue}</span>
@@ -103,20 +129,39 @@ export default function ReviewCard({
               <span className="fs-6 fw-bold">Artists {artists}</span>
               <span className="fs-6 fw-bold">Culture {culture}</span>
             </div>
-            {isFlagged ? (
-              <img
-                src={redImage}
-                alt="flagged"
-                style={{ width: "30px", height: "30px" }}
-              />
-            ) : (
-              <img
-                src={flagfigma}
-                style={{ width: "50px", height: "50px", cursor: "pointer" }}
-                onClick={() => setShowMessage(!showMessage)}
-                title="Click to flag your review"
-              />
-            )}
+            <div className="d-flex align-items-center ms-2 mt-3">
+              <div>
+                {isFlagged ? (
+                  <img
+                    src={redImage}
+                    alt="flagged"
+                    style={{ width: "30px", height: "30px" }}
+                  />
+                ) : (
+                  <img
+                    src={flagfigma}
+                    style={{ width: "40px", height: "40px", cursor: "pointer" }}
+                    onClick={() => setShowMessage(!showMessage)}
+                    title="Click to flag your review"
+                  />
+                )}
+              </div>
+              <div>
+                {isFavorited ? (
+                  <img
+                    src={blog_heart_selected}
+                    style={{ cursor: "pointer", width: "70px" }}
+                    onClick={handleFavoriteToggle}
+                  />
+                ) : (
+                  <img
+                    src={blog_heart_unselected}
+                    style={{ cursor: "pointer", width: "70px" }}
+                    onClick={handleFavoriteToggle}
+                  />
+                )}
+              </div>
+            </div>
           </div>
           <h4 className="text-decoration-underline color-card-text fw-semibold">
             {title}

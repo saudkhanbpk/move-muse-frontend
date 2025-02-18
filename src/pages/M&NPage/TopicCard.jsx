@@ -15,7 +15,7 @@ export default function TopicCard({
   const handleCardClick = () => {
     setBlogId(_id);
     navigate(`/topicCardreadmore/${_id}`);
-  };
+  };    
   useEffect(()=>{
     window.scroll(0, 0)
   }, [])

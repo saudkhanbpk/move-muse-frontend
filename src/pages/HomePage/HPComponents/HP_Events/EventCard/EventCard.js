@@ -63,7 +63,7 @@ const EventCard = ({ event, onFavoriteToggle, futureEvent, pastEvent }) => {
         <img
           src={heartIcon}
           alt="Favorite"
-          style={{ width: "60px", height: "60px" }}
+          style={{ width: "60px", height: "60px",  }}
         />
       </button>
     </div>

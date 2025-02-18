@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import redImage from "../../img/icons/redImage.png";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import blog_heart_selected from "../../img/icons/blog_heart_selected.png";
+import blog_heart_unselected from "../../img/icons/blog_heart_unselected.png";
 import flagfigma from "../../img/icons/flagfigma.png";
 import { KudoCard } from "./KudoCard";
 import ReviewsSection from "../Reviews/ReviewsSection";
@@ -223,10 +225,7 @@ const SingleFutureEvent = () => {
                   ></button>
                 </div>
               )}
-              <div
-                className="d-flex gap-2 mt-5"
-                style={{ marginRight: "40px" }}
-              >
+              <div className="d-flex mt-5" style={{ marginRight: "40px" }}>
                 <img
                   src={isFlagged ? redImage : flagfigma}
                   onClick={handleFlaged}
@@ -237,28 +236,32 @@ const SingleFutureEvent = () => {
                           cursor: "pointer",
                           width: "30px",
                           height: "30px",
-                          marginTop: "10px",
+                          marginTop: "22px",
                         }
                       : {
                           cursor: "pointer",
                           width: "60px",
                           height: "52px",
-                          marginTop: "2px",
+                          marginTop: "17px",
                         }
                   }
                 />
 
-                <div className="mt-2 ">
+                <div className=" ">
                   {isFavorited ? (
-                    <FaHeart
-                      size={30}
-                      style={{ color: "red", cursor: "pointer" }}
+                    <img
+                      src={blog_heart_selected}
+                      style={{ color: "red", cursor: "pointer", width: "75px" }}
                       onClick={handleFavoriteToggle}
                     />
                   ) : (
-                    <FaRegHeart
-                      size={30}
-                      style={{ color: "red", cursor: "pointer" }}
+                    <img
+                      src={blog_heart_unselected}
+                      style={{
+                        color: "black",
+                        cursor: "pointer",
+                        width: "75px",
+                      }}
                       onClick={handleFavoriteToggle}
                     />
                   )}
