@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import redImage from "../../img/icons/redImage.png";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
 import blog_heart_selected from "../../img/icons/blog_heart_selected.png";
 import blog_heart_unselected from "../../img/icons/blog_heart_unselected.png";
 import flagfigma from "../../img/icons/flagfigma.png";
@@ -11,7 +10,6 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import underLine from "../../img/icons/underLine.svg";
 import "../../../src/components/ProfileForm/eventdetail.css";
-import ContactUs from "../ContactUs/ContactUs";
 import { Link, useParams } from "react-router-dom";
 import { BaseUrl } from "../../BaseUrl";
 import papershape from "../../img/icons/paper123.png";

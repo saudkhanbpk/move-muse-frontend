@@ -1,61 +1,56 @@
-
-.card_Div{
-    width: 48%;
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    border-radius: 10px;
-    cursor: pointer;
-background-color:  #AB51B5;
-;
-    overflow: hidden;
-    box-shadow: inset;
+.card_Div {
+  width: 30% !important;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: inset;
+  background-color: #FFD1DC !important;
+  align-items: center;
+  
 }
 
 .card_Div:hover {
-    transform: translate(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: translate(-5px);
+  /* box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); */
 }
 .cards-text {
-    color: rgb(180, 177, 177);
+  color: rgb(180, 177, 177);
 }
 .imag-wrapper {
-    border-radius: 20px;
-    background-color: rgba(235, 187, 83, 0.884);
-    width: auto;
-    padding: 5px;
-    margin: 0;
-    width: 190px;
-    height: 190px;
+  border-radius: 20px;
+  background-color: rgba(235, 187, 83, 0.884);
+  width: auto;
+  padding: 5px;
+  margin: 0;
+  width: 190px;
+  height: 190px;
 }
 .card-image {
-    width: 100%;
-     height:100%;
-     object-fit: cover;
-     border-radius: 20px;
-   
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
 }
 .event-description {
-    color: rgb(0, 0, 0);
-   
-   
+  color: rgb(0, 0, 0);
 }
 .sub {
-    color:rgb(43, 37, 44) !important;
-    font-size: medium !important;
+  color: rgb(43, 37, 44) !important;
+  font-size: medium !important;
 }
 .event-title {
-    color: rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
 }
 
-@media only screen and (min-device-width : 320px) and (max-device-width : 1024px) {
-    .card_Div{
-        width: 100%;
-    }
-    .card-image {
-        width: 'auto';
-        height: 'auto';
-    }
+@media only screen and (min-device-width: 320px) and (max-device-width: 1024px) {
+  .card_Div {
+    width: 100%;
+  }
+  .card-image {
+    width: "auto";
+    height: "auto";
+  }
 }
-
-

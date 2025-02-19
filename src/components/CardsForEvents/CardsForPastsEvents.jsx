@@ -37,7 +37,6 @@ const CardsForPastsEvents = () => {
     fetchPastEvents();
   }, []);
 
-  
   if (loading) {
     return <div>Loading events...</div>;
   }
@@ -57,6 +56,7 @@ const CardsForPastsEvents = () => {
   const handlePreviousPage = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
+
   return (
     <section className="p-4 cursor-pointer">
       <div className="d-flex row gap-4">
@@ -64,9 +64,8 @@ const CardsForPastsEvents = () => {
           <div
             key={event._id}
             className="card_Div p-3 shadow-sm"
-            onClick={() => navigate(`/past-event/${event._id}`)}
           >
-            <div className="imag-wrapper">
+            {/* <div className="imag-wrapper">
               <img
                 src={
                   event.image ||
@@ -75,10 +74,10 @@ const CardsForPastsEvents = () => {
                 className="card-image"
                 alt="Event Thumbnail"
               />
-            </div>
+            </div> */}
             <div className="card-content" style={{ lineHeight: "10px" }}>
-              <h4 className="event-title fw-bold">{event.title}</h4>
-              <p className="event-description">
+              <h4 className="event-title fs-3 fw-bold ms-4">{event.title}</h4>
+              <p className="event-description pt-3 fw-bold">
                 <span className="sub">
                   {event.description.split(" ").slice(0, 3).join(" ")}...
                 </span>
@@ -97,18 +96,24 @@ const CardsForPastsEvents = () => {
                 <p className="event-description">
                   <FaPeriscope /> <span className="sub">{event.price}</span>
                 </p>
-                <p className="event-description">
+                <p className="event-description align-items-center d-flex gap-1">
                   <FaCalendarAlt />{" "}
                   <span className="sub">
                     {new Date(event.startDateTime).toLocaleDateString()}
                   </span>
                 </p>
               </div>
+              <a
+                className=""
+                onClick={() => navigate(`/past-event/${event._id}`)}
+                style={{display: 'flex', justifyContent: 'center', }}>
+                Visit Event
+              </a>
             </div>
           </div>
         ))}
       </div>
-   
+
       <div className="d-flex justify-content-between align-items-center mt-5 flex-column flex-md-row text-center">
         <img
           src={arrowleft}

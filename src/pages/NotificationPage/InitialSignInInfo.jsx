@@ -57,7 +57,12 @@ const InitialSignInInfo = ({ setSuccess }) => {
   ];
   const styleOptions = ["Bachata", "Kizomba", "Salsa", "Tango", "Other"];
   const sinceOptions = ["1 year", "2 years", "3 years", "4 years", "5+ years"];
-  const followLeadOptions = ["Beginner", "Intermediate", "Advanced", "Not interested"];
+  const followLeadOptions = [
+    "Beginner",
+    "Intermediate",
+    "Advanced",
+    "Not interested",
+  ];
 
   const addDance = () => {
     if (dances.length >= 3) {
@@ -172,9 +177,10 @@ const InitialSignInInfo = ({ setSuccess }) => {
   return (
     <Modal show={true} onHide={() => setOpen(false)} centered>
       <Modal.Header closeButton></Modal.Header>
-      <h4 style={{textAlign: 'center', marginTop: '10px'}}>Update Profile</h4>
+      <h4 style={{ textAlign: "center", marginTop: "10px" }}>Update Profile</h4>
       <Modal.Body>
         <div className="d-flex flex-wrap align-items-center justify-content-center w-full py-2 w-md-100">
+         
           <div className="flex-grow-1 position-relative uploadmaindiv">
             <div
               style={{
@@ -183,6 +189,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
                 maxHeight: "500px",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
+                backgroundColor: "#fff", // Ensure a solid background color
               }}
               className="d-flex align-items-center justify-content-center m-auto"
             >
@@ -192,6 +199,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
                   height: 200,
                   width: 200,
                   cursor: "pointer",
+                  backgroundColor: "#fff", // Ensure a solid background color
                 }}
               >
                 {previewImage ? (
@@ -203,7 +211,13 @@ const InitialSignInInfo = ({ setSuccess }) => {
                     className="rounded-circle"
                   />
                 ) : (
-                  <span className="small fs-6 " style={{textAlign: 'center', padding: '10px'}}>
+                  <span
+                    className="fs-6 p-2"
+                    style={{
+                      textAlign: "center",
+                      padding: "10px",
+                    }}
+                  >
                     Upload your photo so others can recognize you and share some
                     kudo love!
                   </span>
