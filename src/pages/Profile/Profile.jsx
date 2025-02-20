@@ -22,7 +22,8 @@ const Profile = () => {
   const [success, setSuccess] = useState(
     JSON.parse(localStorage.getItem("success")) || false
   );
-
+  console.log ("profileCredentials", profileCredentials)
+console.log('userData:', userData)
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -53,13 +54,13 @@ const Profile = () => {
   }, [success]);
   console.log("userdata:", userData);
 
-  useEffect(() => {
-    if (!userData?.isCompleted) {
-      setOpen(true);
-    } else {
-      setOpen(false);
-    }
-  }, [userData]);
+  // useEffect(() => {
+  //   if (!userData?.isCompleted ) {
+  //     setOpen(true);
+  //   } else {
+  //     setOpen(false);
+  //   }
+  // }, [userData]);
 
   if (!userData) {
     return <div>Internal Server Error...</div>;

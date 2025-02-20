@@ -16,17 +16,18 @@ const InitialSignInInfo = ({ setSuccess }) => {
     fetchUserData,
     setOpen,
     setProfilePicture,
+    changeIsFirstTimeLogin,
   } = useContext(UserContext);
   const [userImage, setUserImage] = useState(null);
   const [previewImage, setPreviewImage] = useState(
-    profileCredentials.profilePicture || null
+    profileCredentials?.profilePicture || null
   );
-  const [dances, setDances] = useState(profileCredentials.dances || []);
-  const [gender, setGender] = useState(profileCredentials.gender || "");
+  const [dances, setDances] = useState(profileCredentials?.dances || []);
+  const [gender, setGender] = useState(profileCredentials?.gender || "");
   const [ethnicity, setEthnicity] = useState(
-    profileCredentials.ethnicity || ""
+    profileCredentials?.ethnicity || ""
   );
-  const [birthday, setBirthday] = useState(profileCredentials.birthday || "");
+  const [birthday, setBirthday] = useState(profileCredentials?.birthday || "");
   const [style, setStyle] = useState("");
   const [since, setSince] = useState("");
   const [follow, setFollow] = useState("Not interested");
@@ -65,7 +66,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
   ];
 
   const addDance = () => {
-    if (dances.length >= 3) {
+    if (dances?.length >= 3) {
       NotificationService.notifyError("You can add a maximum of three dances.");
       return;
     }
@@ -104,11 +105,11 @@ const InitialSignInInfo = ({ setSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
-      fullName: profileCredentials.fullName,
-      username: profileCredentials.username,
-      city: profileCredentials.city,
-      danceAlias: profileCredentials.danceAlias,
-      moveMuse: profileCredentials.moveMuse,
+      fullName: profileCredentials?.fullName,
+      username: profileCredentials?.username,
+      city: profileCredentials?.city,
+      danceAlias: profileCredentials?.danceAlias,
+      moveMuse: profileCredentials?.moveMuse,
       dances: dances,
       gender,
       ethnicity,
@@ -131,6 +132,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
           data.profilePicture = imageData.url;
           setProfilePicture(data.profilePicture);
           NotificationService.notifySuccess("Image uploaded successfully");
+          changeIsFirstTimeLogin();
         } else {
           NotificationService.notifyError(
             "Image can't be uploaded. Try again later."
@@ -138,6 +140,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
           return;
         }
       } catch (error) {
+        console.log(error);
         NotificationService.notifyError(
           "Image can't be uploaded. Try again later."
         );
@@ -163,13 +166,14 @@ const InitialSignInInfo = ({ setSuccess }) => {
           ...data,
           profilePicture: data.profilePicture,
         });
-
+        changeIsFirstTimeLogin();
         fetchUserData();
         setOpen(false);
       } else {
         NotificationService.notifyError("Profile update failed");
       }
     } catch (error) {
+      console.log(error)
       NotificationService.notifyError("Profile update failed");
     }
   };
@@ -180,7 +184,6 @@ const InitialSignInInfo = ({ setSuccess }) => {
       <h4 style={{ textAlign: "center", marginTop: "10px" }}>Update Profile</h4>
       <Modal.Body>
         <div className="d-flex flex-wrap align-items-center justify-content-center w-full py-2 w-md-100">
-         
           <div className="flex-grow-1 position-relative uploadmaindiv">
             <div
               style={{
@@ -260,7 +263,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
                         id="name"
                         name="fullName"
                         className="form-control"
-                        value={profileCredentials.fullName}
+                        value={profileCredentials?.fullName}
                         onChange={handleChange}
                         placeholder="Enter your name"
                       />
@@ -280,7 +283,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
                         id="username"
                         name="username"
                         className="form-control"
-                        value={profileCredentials.username}
+                        value={profileCredentials?.username}
                         onChange={handleChange}
                         placeholder="Enter your username"
                       />
@@ -299,7 +302,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
                         id="city"
                         name="city"
                         className="form-control"
-                        value={profileCredentials.city}
+                        value={profileCredentials?.city}
                         onChange={handleChange}
                         placeholder="Enter your city"
                       />
@@ -319,7 +322,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
                         id="danceAlias"
                         name="danceAlias"
                         className="form-control"
-                        value={profileCredentials.danceAlias}
+                        value={profileCredentials?.danceAlias}
                         onChange={handleChange}
                         placeholder="Enter your dance alias"
                       />
@@ -339,7 +342,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
                         id="moveMuse"
                         name="moveMuse"
                         className="form-control"
-                        value={profileCredentials.moveMuse}
+                        value={profileCredentials?.moveMuse}
                         onChange={handleChange}
                         placeholder="Enter your movement inspiration"
                       />

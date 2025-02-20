@@ -52,13 +52,10 @@ const CardsForFutureEvents = () => {
   };
 
   return (
-    <section className="p-4 cursor-pointer">
-      <div className="d-flex row gap-4">
+    <section className="p-md-4 ">
+      <div className="d-md-flex d-lg-flex gap-md-4">
         {currentEvents.map((event) => (
-          <div
-            key={event._id}
-            className="card_Div p-3 shadow-sm"
-          >
+          <div key={event._id} className="card_Div shadow-sm ">
             {/* <div className="imag-wrapper" >
               <img
                 src={
@@ -69,37 +66,32 @@ const CardsForFutureEvents = () => {
                 alt="Event Thumbnail"
               />
             </div> */}
-            <div className="card-content" style={{ lineHeight: "10px" }}>
-              <div
-                style={{
-                  marginLeft: '20px',
-                }}
-              >
-                <h5 className="event-title fs-3  fw-bold">{event?.title}</h5>
+            <div className="card-content">
+              <div className="eventtitlediv">
+                <h5 className="linesofCards fw-bold ">{event?.title}</h5>
               </div>
-              <p className="event-description pt-3 ">
+              <p className="linesofCards  pt-md-3 ">
                 <span className="sub">
                   {" "}
                   {event?.description.split(" ").slice(0, 3).join(" ")}...
                 </span>
               </p>
-              <div className="event-details">
-                <p className="event-description ">
+              <div className="event-details gap-y-0">
+                <p className="linesofCards ">
                   <FaUser />{" "}
                   <span className="sub"> {event?.artist || "N/A"}</span>
                 </p>
-                <p className="event-description ">
+                <p className="linesofCards ">
                   <FaMapMarkerAlt />{" "}
                   <span className="sub">
-                    {" "}
                     {event?.location.split(" ").slice(0, 3).join(" ") || "N/A"}
                   </span>
                 </p>
-                <p className="event-description ">
+                <p className="linesofCards ">
                   <LuCircleDollarSign />{" "}
                   <span className="sub"> {event?.price}</span>
                 </p>
-                <p className="event-description align-items-center d-flex gap-1">
+                <p className="linesofCards align-items-md-center d-md-flex gap-md-1">
                   <FaCalendarAlt />{" "}
                   <span className="sub">
                     {" "}
@@ -107,10 +99,11 @@ const CardsForFutureEvents = () => {
                   </span>
                 </p>
               </div>
-              <a 
+              <a
                 className=""
                 onClick={() => navigate(`/event/${event?._id}`)}
-            style={{display: 'flex', justifyContent: 'center', }}  >
+                style={{ display: "flex", justifyContent: "center" }}
+              >
                 Visit Event
               </a>
             </div>

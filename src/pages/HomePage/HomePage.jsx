@@ -12,12 +12,20 @@ import KeyProject from "../../components/KeyProject/KeyProject";
 // import FbEvent from "../../components/Events/FbEvent";
 // import { UserContext } from "../../context/UserContext";
 import ApiService from "../../services/ApiService";
+import InitialSignInInfo from "../NotificationPage/InitialSignInInfo";
+import { UserContext } from "../../context/UserContext";
 
 const HomePage = () => {
   // const { user } = useContext(UserContext);
 
-  const [upcomingEvents, setUpcomingEvents] = useState([]);
+  const { profileCredentials } = useContext(UserContext);
+  const [success, setSuccess] = useState(
+    JSON.parse(localStorage.getItem("success")) || false
+  );
 
+  const [upcomingEvents, setUpcomingEvents] = useState([]);
+  const [isFirstTimeLoginModalOPen, setIsFirstTimeLoginModalOPen] =
+    useState(false);
   const upcomingEventsRef = useRef(() => {});
 
   upcomingEventsRef.current = async () => {
@@ -42,12 +50,23 @@ const HomePage = () => {
     pastEventsRef.current();
   }, [upcomingEventsRef]);
 
+  useEffect(() => {
+    if (profileCredentials?.isFirstTimeLogin) {
+      setIsFirstTimeLoginModalOPen(true);
+    } else {
+      setIsFirstTimeLoginModalOPen(false);
+    }
+  }, [profileCredentials?.isFirstTimeLogin]);
+
   const handleFavoriteToggle = (eventIdData) => {
     console.log(`Toggling favorite status for event ID: ${eventIdData}`);
   };
-    
+
   return (
-    <div className="homepage" >
+    <div className="homepage">
+      {isFirstTimeLoginModalOPen && (
+        <InitialSignInInfo setSuccess={setSuccess} />
+      )}
       <Hero />
       {/* <FbEvent eventId={eventId} accessToken={accessToken} /> */}
       <HP_Events

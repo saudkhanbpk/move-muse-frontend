@@ -28,12 +28,17 @@ const NavBar = () => {
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('userData'));
     console.log('User Data Retrieved from Local Storage:', userData);
-    if (userData && userData.profilePicture) {
-      setProfilePicture(userData.profilePicture)
+    if (userData && userData?.profilePicture) {
+      setProfilePicture(userData?.profilePicture)
     } else {
       setProfilePicture(profileCredentials.profilePicture);
     }
   }, [user]);
+  useEffect(() => {
+    setProfilePicture(profileCredentials?.profilePicture)
+  }
+    , [profileCredentials?.profilePicture])
+
 
 
   useEffect(() => {

@@ -1,4 +1,10 @@
-import React, { createContext, useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import ApiService from "../services/ApiService";
 import { useNavigate } from "react-router-dom";
 import NotificationService from "../components/NotificationService/NotificationService";
@@ -10,8 +16,9 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [profileCredentials, setProfileCredentials] = useState({});
-  const [showAdditionalSignInInfo, setShowAdditionalSignInInfo] = useState(false);
-  const [ProfilePicture, setProfilePicture] = useState('');
+  const [showAdditionalSignInInfo, setShowAdditionalSignInInfo] =
+    useState(false);
+  const [ProfilePicture, setProfilePicture] = useState("");
   const [open, setOpen] = useState(false);
   const [token, setToken] = useState(null);
   const fetchUser = useRef(() => {});
@@ -45,7 +52,7 @@ export const UserProvider = ({ children }) => {
       const response = await fetch(`${BaseUrl}/api/v1/auth/get-profile`, {
         method: "GET",
         headers: {
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
       const data = await response.json();
@@ -65,7 +72,6 @@ export const UserProvider = ({ children }) => {
     }
   }, [token, fetchUserData]);
 
-
   const logout = async () => {
     try {
       await ApiService.post(
@@ -78,7 +84,7 @@ export const UserProvider = ({ children }) => {
           },
         }
       );
-      navigate('/');
+      navigate("/");
     } catch (error) {
       setUser(null);
     }
@@ -98,8 +104,7 @@ export const UserProvider = ({ children }) => {
             "Content-Type": "application/json",
           },
         });
-
-        setProfileCredentials(res.data.profile);
+        setProfileCredentials(res.data.profile || {});
       }
     } catch (error) {
       console.error(error);
@@ -108,7 +113,14 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     profileRef.current();
-  }, [user]);
+  }, [profileRef]);
+
+  const changeIsFirstTimeLogin = async (params) => {
+    const res = await ApiService.get("/change-first-time-login-status");
+    if (res.data.success) {
+      setProfileCredentials(res.data.user);
+    }
+  };
 
   return (
     <UserContext.Provider
@@ -124,10 +136,10 @@ export const UserProvider = ({ children }) => {
         setShowAdditionalSignInInfo,
         ProfilePicture,
         setProfilePicture,
-        fetchUserData ,
+        fetchUserData,
         open,
-        setOpen
-
+        setOpen,
+        changeIsFirstTimeLogin,
       }}
     >
       {children}
