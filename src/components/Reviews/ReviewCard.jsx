@@ -23,7 +23,7 @@ export default function ReviewCard({
     label,
     description,
     flagged,
-    favourite,
+    likeReview,
   },
   fetchFeedback,
 }) {
@@ -31,7 +31,7 @@ export default function ReviewCard({
   const [showMessage, setShowMessage] = useState(false);
   const [message, setMessage] = useState("");
   const [isFlagged, setFlagged] = useState(flagged);
-  const [isFavorited, setIsFavorited] = useState(favourite);
+  const [isLiked, setIsLiked] = useState(likeReview);
 
   useEffect(() => {
     const calculateStars = () => {
@@ -73,29 +73,21 @@ export default function ReviewCard({
     }
   };
 
-  const favouriteUpdate = async (isFavorited) => {
+  const handleLike = async () => {
     try {
-      const response = await ApiService.put(`/favourite-update/:eventId/${_id}`, {
-        favourite: isFavorited,
+      const response = await ApiService.put(`events/like-review/${_id}`, {
+        likeReview: !isLiked,
       });
+      fetchFeedback();
       if (response.data.success) {
-        if (isFavorited) {
-          toast.success("Review added to favorites.");
-        } else {
-          toast.info("Review removed from favorites.");
-        }
-        setIsFavorited(isFavorited); // Update the favorited state
+        setIsLiked(!isLiked);
+        toast.success(isLiked ? "Review unliked successfully." : "Review liked successfully.");
       } else {
-        toast.error("Failed to update favorite status.");
+        toast.error("Failed to update like status.");
       }
     } catch (error) {
-      console.error("Error updating favorite status:", error);
-      toast.error("There was an error updating the favorite status.");
+      toast.error("There was an error updating the like status.");
     }
-  };
-
-  const handleFavoriteToggle = () => {
-    favouriteUpdate(!isFavorited);
   };
 
   const renderStars = () => {
@@ -147,19 +139,11 @@ export default function ReviewCard({
                 )}
               </div>
               <div>
-                {isFavorited ? (
-                  <img
-                    src={blog_heart_selected}
-                    style={{ cursor: "pointer", width: "70px" }}
-                    onClick={handleFavoriteToggle}
-                  />
-                ) : (
-                  <img
-                    src={blog_heart_unselected}
-                    style={{ cursor: "pointer", width: "70px" }}
-                    onClick={handleFavoriteToggle}
-                  />
-                )}
+                <img
+                  src={isLiked ? blog_heart_selected : blog_heart_unselected}
+                  style={{ cursor: "pointer", width: "70px" }}
+                  onClick={handleLike}
+                />
               </div>
             </div>
           </div>

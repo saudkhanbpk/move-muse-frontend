@@ -8,6 +8,8 @@ import { useNavigate, useLocation,  } from "react-router-dom";
 import AllTopics from "./AllTopics";
 
 const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
+  console.log("topicValue", topicValue);
+  
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -15,6 +17,7 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
 
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
+  console.log("title", title);
   const [author, setAuthor] = useState(user?.fullName);
   const [date, setDate] = useState(new Date().toLocaleDateString());
   const [inputValue, setInputValue] = useState("");
@@ -72,6 +75,12 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
     setSelectedHashtags([]);
     setDate(new Date().toISOString().slice(0, 10));
     setText("");
+    if (!topicValue ){
+      NotificationService.notifyError("Please fill out the title field");
+    }
+    if (!text ){
+      NotificationService.notifyError("Please fill out the text field");
+    }
   };
 
   const handleScroll = () => {
@@ -109,6 +118,13 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
       );
     }
   };
+
+  useEffect(() => {
+    if (state) {
+      setTopicValue(state?.name);
+      
+    }
+  }, [state, topicValue]);
 
   return (
     <>
@@ -181,7 +197,7 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
             <input
               type="text"
               placeholder="Enter Your Title"
-              value={topicValue?.name || state?.name}
+              value={topicValue || state?.name}
               className="Title_input "
               style={{ fontFamily: "cursive" }}
             />

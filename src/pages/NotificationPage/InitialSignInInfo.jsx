@@ -34,6 +34,15 @@ const InitialSignInInfo = ({ setSuccess }) => {
   const [lead, setLead] = useState("Not interested");
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
+  // Local state to hold form data
+  const [formData, setFormData] = useState({
+    fullName: profileCredentials?.fullName || "",
+    username: profileCredentials?.username || "",
+    city: profileCredentials?.city || "",
+    danceAlias: profileCredentials?.danceAlias || "",
+    moveMuse: profileCredentials?.moveMuse || "",
+  });
+
   const genderOptions = ["Male", "Female", "Others"];
   const ethnicityOptions = [
     "African",
@@ -96,8 +105,8 @@ const InitialSignInInfo = ({ setSuccess }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setProfileCredentials({
-      ...profileCredentials,
+    setFormData({
+      ...formData,
       [name]: value,
     });
   };
@@ -105,11 +114,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
-      fullName: profileCredentials?.fullName,
-      username: profileCredentials?.username,
-      city: profileCredentials?.city,
-      danceAlias: profileCredentials?.danceAlias,
-      moveMuse: profileCredentials?.moveMuse,
+      ...formData,
       dances: dances,
       gender,
       ethnicity,
@@ -263,7 +268,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
                         id="name"
                         name="fullName"
                         className="form-control"
-                        value={profileCredentials?.fullName}
+                        value={formData.fullName}
                         onChange={handleChange}
                         placeholder="Enter your name"
                       />
@@ -283,7 +288,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
                         id="username"
                         name="username"
                         className="form-control"
-                        value={profileCredentials?.username}
+                        value={formData.username}
                         onChange={handleChange}
                         placeholder="Enter your username"
                       />
@@ -302,7 +307,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
                         id="city"
                         name="city"
                         className="form-control"
-                        value={profileCredentials?.city}
+                        value={formData.city}
                         onChange={handleChange}
                         placeholder="Enter your city"
                       />
@@ -322,7 +327,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
                         id="danceAlias"
                         name="danceAlias"
                         className="form-control"
-                        value={profileCredentials?.danceAlias}
+                        value={formData.danceAlias}
                         onChange={handleChange}
                         placeholder="Enter your dance alias"
                       />
@@ -342,7 +347,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
                         id="moveMuse"
                         name="moveMuse"
                         className="form-control"
-                        value={profileCredentials?.moveMuse}
+                        value={formData.moveMuse}
                         onChange={handleChange}
                         placeholder="Enter your movement inspiration"
                       />

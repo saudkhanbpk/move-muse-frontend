@@ -32,16 +32,16 @@ const TopicCardReadmore = () => {
     <div className="topicreadmoremain p-5">
       <div className="backgroundblogreadmore">
         <div className="blog-header">
-          <h1>{blogContent.title.name}</h1>
-          <h3>{blogContent.author?.fullName}</h3>
+          <h1 style={{fontFamily: 'cursive'}}>{blogContent.title.name}</h1>
+          <h3 style={{fontFamily: 'cursive'}}>{blogContent.author?.fullName}</h3>
         </div>
         <div className="blog-content">
-          <p style={{ fontSize: "21px", textAlign: "justify" }}>
+          <p  style={{ fontFamily: 'cursive', fontSize: "21px", textAlign: "justify" }}>
             {blogContent.message}
           </p>
           <div className="textmainn">
             <p className="mt-md-5 ms-md-5">
-              <span className="cedarville-cursive-regular">
+              <span style={{fontFamily: 'cursive'}}>
                 Move & Muse Community | Author
               </span>
             </p>
