@@ -64,7 +64,7 @@ const CardsForPastsEvents = () => {
           <div
             key={event._id}
             className="card_Div p-3 shadow-sm"
-          >
+            onClick={() => navigate(`/past-event/${event._id}`)}>
             {/* <div className="imag-wrapper">
               <img
                 src={
@@ -88,7 +88,7 @@ const CardsForPastsEvents = () => {
                   <span className="sub">{event.artist || "N/A"}</span>
                 </p>
                 <p className="event-description">
-                  <FaMapMarkerAlt />{" "}
+                  <FaMapMarkerAlt  />
                   <span className="sub">
                     {event.location.split(" ").slice(0, 3).join(" ") || "N/A"}
                   </span>

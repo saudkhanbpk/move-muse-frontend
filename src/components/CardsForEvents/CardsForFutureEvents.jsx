@@ -55,7 +55,7 @@ const CardsForFutureEvents = () => {
     <section className="p-md-4 ">
       <div className="d-md-flex d-lg-flex gap-md-4">
         {currentEvents.map((event) => (
-          <div key={event._id} className="card_Div shadow-sm ">
+          <div key={event._id} className="card_Div shadow-sm "  onClick={() => navigate(`/event/${event?._id}`)}>
             {/* <div className="imag-wrapper" >
               <img
                 src={

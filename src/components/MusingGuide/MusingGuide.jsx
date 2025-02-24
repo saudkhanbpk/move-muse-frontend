@@ -4,12 +4,10 @@ import blog from "../../img/icons/blogcatalogue.svg";
 import NotificationService from "../NotificationService/NotificationService";
 import ApiService from "../../services/ApiService";
 import { UserContext } from "../../context/UserContext";
-import { useNavigate, useLocation,  } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import AllTopics from "./AllTopics";
 
 const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
-  console.log("topicValue", topicValue);
-  
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -17,7 +15,6 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
 
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
-  console.log("title", title);
   const [author, setAuthor] = useState(user?.fullName);
   const [date, setDate] = useState(new Date().toLocaleDateString());
   const [inputValue, setInputValue] = useState("");
@@ -27,6 +24,7 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
   const [filter, setFilter] = useState("");
   const [originalTopics, setOriginalTopics] = useState([]);
   const [displayedTopics, setDisplayedTopics] = useState([]);
+  const [signatureOption, setSignatureOption] = useState("author"); // Default to author
   const topicsPerPage = 5;
   const submitArticeleContainerRef = useRef();
 
@@ -51,14 +49,40 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
 
   const handleTextChange = (e) => setText(e.target.value);
   const handleAuthorChange = (e) => setAuthor(e.target.value);
+  const handleSignatureChange = (e) => setSignatureOption(e.target.value);
+
+  const handleTagInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const addTag = () => {
+    if (inputValue.trim() && selectedHashtags.length < 5) {
+      setSelectedHashtags([...selectedHashtags, inputValue.trim()]);
+      setInputValue("");
+    } else if (selectedHashtags.length >= 5) {
+      NotificationService.notifyError("You can add up to 5 tags.");
+    }
+  };
+
+  const handleTagInputKeyDown = (e) => {
+    if (e.key === "Enter") {
+      addTag();
+    }
+  };
 
   const logData = async (e) => {
     e.preventDefault();
+    if (selectedHashtags.length < 5) {
+      NotificationService.notifyError("Please add at least 5 tags.");
+      return;
+    }
+
     const newPost = {
       titleId: state !== null ? state._id : topicValue?._id,
-      author: user?._id,
+      author: signatureOption === "author" ? user?._id : "Move & Muse Community",
       message: text,
       hashtags: selectedHashtags,
+      authorType: signatureOption,
     };
     try {
       const response = await ApiService.post("createBlog", newPost);
@@ -75,10 +99,10 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
     setSelectedHashtags([]);
     setDate(new Date().toISOString().slice(0, 10));
     setText("");
-    if (!topicValue ){
+    if (!topicValue) {
       NotificationService.notifyError("Please fill out the title field");
     }
-    if (!text ){
+    if (!text) {
       NotificationService.notifyError("Please fill out the text field");
     }
   };
@@ -122,13 +146,12 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
   useEffect(() => {
     if (state) {
       setTopicValue(state?.name);
-      
     }
   }, [state, topicValue]);
 
   return (
     <>
-      <div className="main_misguide mt-4 ">
+      <div className="main_misguide mt-4  mb-5" >
         <div
           className=" p-5 "
           style={{
@@ -189,8 +212,9 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
             backgroundPosition: "bottom",
             backgroundRepeat: "no-repeat",
             height: "100vh",
+            marginBottom: "20px",
           }}
-          className="p-md-4 mt-5"
+          className="p-md-4 p-3 mt-5"
           ref={submitArticeleContainerRef}
         >
           <div>
@@ -198,53 +222,84 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
               type="text"
               placeholder="Enter Your Title"
               value={topicValue || state?.name}
-              className="Title_input "
-              style={{ fontFamily: "cursive" }}
+              className="Title_input Musingtext"
             />
-            <p
-              className="my-2 d-md-flex flex-column  "
-              style={{ marginTop: "20px" }}
-            >
-              <input
-                type="text"
-                placeholder="Author"
-                value={user?.fullName}
-                onChange={handleAuthorChange}
-                style={{
-                  background: "transparent",
-                  outline: "none",
-                  border: "none",
-                  width: "fit-content",
-                  fontSize: "30px",
-                  fontFamily: 'cursive'
-                }}
-              />
-              <strong style={{ fontSize: "30px", fontFamily: 'cursive' }}>
-                Date : {new Date().toLocaleDateString()}
-              </strong>
-            </p>
+            <div className=" d-md-flex flex-column gap-0   ">
+              <div>
+                <input
+                  type="text"
+                  placeholder="Author"
+                  value={user?.fullName}
+                  onChange={handleAuthorChange}
+                  style={{
+                    background: "transparent",
+                    outline: "none",
+                    border: "none",
+                  }}
+                  className="Musingtext fs-1 "
+                />
+              </div>
+              <div>
+                <strong className="Musingtext  fs-3 ">
+                  Date : {new Date().toLocaleDateString()}
+                </strong>
+              </div>
+            </div>
+
             <textarea
               value={text}
               placeholder="Start Writing here..."
               onChange={handleTextChange}
-              className="my-2  fs-5   textareamsg border-0"
-              style={{fontFamily: 'cursive'}}
+              className="my-2  fs-4   textareamsg border-0 Musingtext"
             />
-          </div>
 
-          <div className="moveandmusetextmain">
-            <p className=" moveandmusetextchild">
-              <span style={{fontFamily: 'cursive'}}>
-                Move & Muse Community | Author
-              </span>
-            </p>
+            <div className=" hashtahmain  d-flex flex-column align-items-center">
+              <div className="Musingtext d-flex justify-content-end">
+                <h2 className="">How would you like to sign your article?</h2>
+              </div>
+              <div className="d-flex gap-3 autor justify-content-end ">
+                <input
+                  type="checkbox"
+                  value="author"
+                  checked={signatureOption === "author"}
+                  onChange={handleSignatureChange}
+                  style={{ background: "transparent" }}
+                />
+                <label className="Musingtext fs-2"> Author</label>
+              </div>
+              <div className="d-flex gap-3 justify-content-end ">
+                <input
+                  type="checkbox"
+                  value="community"
+                  checked={signatureOption === "community"}
+                  onChange={handleSignatureChange}
+                />
+                <label className="Musingtext fs-2">Move & Muse Community</label>
+              </div>
+            </div>
+            <div className="tags-section">
+              <input
+                type="text"
+                value={inputValue}
+                onChange={handleTagInputChange}
+                onKeyDown={handleTagInputKeyDown}
+                placeholder="Enter a tag"
+                style={{ background: "transparent" }}
+              />
+              <div className="d-flex gap-3" >
+                {selectedHashtags.map((tag, index) => (
+                  <span key={index} className="Musingtext fs-4 " >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="my-4 d-flex align-items-center gap-3  ">
+              <button className="button-3d mb-5 " onClick={logData}>
+                Submit
+              </button>
+            </div>
           </div>
-        </div>
-
-        <div className="my-4 d-flex align-items-center gap-3 ">
-          <button className="button-3d" onClick={logData}>
-            Submit
-          </button>
         </div>
       </div>
     </>

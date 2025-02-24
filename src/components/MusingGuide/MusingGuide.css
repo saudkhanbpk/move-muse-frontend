@@ -2,31 +2,48 @@
   list-style: none;
   text-align: justify;
 }
+
 .imgesss {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .socialiamge {
   width: 50%;
 }
+
+.Musingtext {
+  font-family: "Dancing Script", cursive;
+}
+
+.hashtahmain {
+  margin-left: 50%;
+}
+
+.autor {
+  margin-right: 210px;
+}
+
 .main_misguide {
   display: block;
   width: 20%;
   margin: auto;
   margin-top: 30px;
 }
+
 .Title_input {
   margin-top: 10px;
   background-color: transparent;
   outline: none;
   border: none;
-  padding: "10px 0px";
+  padding: 10px 0;
   font-size: 40px;
   width: 20%;
   font-family: "Dancing Script", cursive;
   border: 2px solid greenyellow;
 }
+
 .musingparagraph {
   width: 90%;
   text-align: justify;
@@ -93,11 +110,13 @@
 .arrow-next.open {
   transform: translateY(120px);
 }
+
 .buttons {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .cedarville-cursive-regular {
   font-family: "Cedarville Cursive", serif;
   font-weight: 400;
@@ -108,20 +127,23 @@
   width: 800px;
   position: relative;
 }
+
 .moveandmusetextchild {
   font-size: 40px;
   width: 300px;
   position: absolute;
   left: 50%;
 }
+
 span {
   font-size: 41px !important;
 }
 
-.nsm7Bb-HzV7m-LgbsSe-BPrWId{
+.nsm7Bb-HzV7m-LgbsSe-BPrWId {
   font-size: unset !important;
   font-size: 20px;
 }
+
 .firsttwoinputsmain {
   display: flex;
   gap: 20px;
@@ -131,6 +153,7 @@ span {
   justify-content: space-between;
   width: 100%;
 }
+
 .childinput {
   outline: none;
   border: 2px solid gray;
@@ -139,64 +162,86 @@ span {
   width: 140px;
   text-align: center;
 }
+
 .searchfotopicinputmain {
   display: flex;
   align-items: center;
   gap: 10px;
   justify-content: end;
 }
+
 .searfotopicinout {
   outline: none;
   border: 2px solid gray;
   padding-top: 5px;
   border-radius: 10px;
 }
+
 .textareamsg {
   min-height: 150px;
   background: transparent;
   outline: none;
   width: 90%;
 }
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
   .imgesss {
     display: block;
     justify-content: start;
     align-items: start;
   }
+
   .Title_input {
     font-size: 30px;
+    width: 100%;
   }
+  .button{
+    top: 0;
+  }
+
   .main_misguide {
     display: block;
     width: 100%;
-    margin: auto;
   }
+
   .socialiamge {
     width: 100%;
   }
+
   .buttons {
-    width: 200px;
-    margin-left: 10px;
+    width: 100%;
+    margin-left: 0;
     display: flex;
     flex-wrap: wrap;
     row-gap: 10px;
   }
+
   .moveandmusetextmain {
-    width: fit-content;
+    width: 100%;
   }
+
   span {
     font-size: 21px !important;
-    padding: 30px;
-    padding-left: 20px;
+    padding: 10px;
   }
 
-  /* Mobile screen CSS */
-
   .firsttwoinputsmain {
-    padding: 20px;
+    padding: 10px;
     border-radius: 25px;
-    width: fit-content;
+    width: 100%;
     overflow-x: hidden;
+  }
+
+  .hashtahmain {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .autor {
+    margin-right: 357px !important;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
   }
 
   .childinput {
@@ -204,14 +249,14 @@ span {
     border: 2px solid gray;
     padding: 10px;
     border-radius: 10px;
-    max-width: 80%;
+    width: 100%;
     text-align: center;
     margin-top: 10px;
-    min-width: 200px;
   }
-  .textareamsg{
-    width: fit-content;
-    padding: 20px;
+
+  .textareamsg {
+    width: 100%;
+    padding: 10px;
   }
 
   .searchfotopicinputmain {
@@ -240,6 +285,7 @@ span {
   box-shadow: 0 4px #999;
   transition: all 0.3s ease;
 }
+
 .button-3d:active {
   background-color: lightgray;
   box-shadow: 0 2px #666;

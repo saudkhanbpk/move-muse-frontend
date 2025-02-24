@@ -9,7 +9,6 @@ import { CiSquarePlus } from "react-icons/ci";
 
 const adminToken = localStorage.getItem("token");
 
-
 const AllTopics = ({ originalTopics, handleScroll }) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -132,17 +131,24 @@ const AllTopics = ({ originalTopics, handleScroll }) => {
             </div>
           ))
         ) : (
-          <p className="text-center w-full">No topics found.</p>
+          <p className="text-center w-full ">No topics found.</p>
         )}
-        <div style={{ fontFamily: "serif" }}>
-          <CiSquarePlus
-            onClick={handleAddTitle}
-            style={{
-              borderRadius: "5px",
-              fontSize: "50px",
-              cursor: "pointer",
-            }}
-          />
+        <div className="d-flex align-items-center gap-2 " >
+          <div>
+            <CiSquarePlus
+              onClick={handleAddTitle}
+              style={{
+                borderRadius: "5px",
+                fontSize: "50px",
+                cursor: "pointer",
+              }}
+            />
+          </div>
+          <div>
+            <h6 className="cursor-pointer fontFamily mt-2" >
+              Add your topic
+            </h6>
+          </div>
         </div>
       </div>
 

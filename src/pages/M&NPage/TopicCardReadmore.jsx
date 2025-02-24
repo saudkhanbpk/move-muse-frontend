@@ -7,6 +7,7 @@ const TopicCardReadmore = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [blogContent, setBlogContent] = useState(null);
+  console.log("blogContent", blogContent);
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -32,30 +33,42 @@ const TopicCardReadmore = () => {
     <div className="topicreadmoremain p-5">
       <div className="backgroundblogreadmore">
         <div className="blog-header">
-          <h1 style={{fontFamily: 'cursive'}}>{blogContent.title.name}</h1>
-          <h3 style={{fontFamily: 'cursive'}}>{blogContent.author?.fullName}</h3>
+          <h1 className="Musingtext">{blogContent.title.name}</h1>
+          <h3 className="Musingtext fs-1">{blogContent?.authorType}</h3>
         </div>
         <div className="blog-content">
-          <p  style={{ fontFamily: 'cursive', fontSize: "21px", textAlign: "justify" }}>
+          <p
+            className="Musingtext"
+            style={{ fontSize: "25px", textAlign: "justify" }}
+          >
             {blogContent.message}
           </p>
-          <div className="textmainn">
-            <p className="mt-md-5 ms-md-5">
-              <span style={{fontFamily: 'cursive'}}>
-                Move & Muse Community | Author
+          <p
+            className="Musingtext"
+            style={{ fontSize: "25px", textAlign: "justify" }}
+          >
+            {blogContent.hashtags.map((hashtag, index) => (
+              <span key={index} className="mr-2">
+                #{hashtag}
               </span>
+            ))}
+          </p>
+
+          {/* <div className="textmainn">
+            <p className="mt-md-5 ms-md-5">
+              <span className="Musingtext">Move & Muse Community | Author</span>
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
 
       {/* Back to Topic Cards Button */}
-      <div className="text-center">
+      <div className="text-start">
         <img
           src={arrow_previous_prpl}
           alt=""
           className=""
-          style={{ width: "100px", cursor: 'pointer' }}
+          style={{ width: "100px", cursor: "pointer" }}
           onClick={() => navigate(-1)}
         />
       </div>
