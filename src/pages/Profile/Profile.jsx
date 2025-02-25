@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./profileown.css"
+import "./profileown.css";
 import edit from "../../img/icons/edit.png";
 import dance from "../../img/icons/dance.png";
 import year from "../../img/icons/year.png";
@@ -13,7 +13,8 @@ import { UserContext } from "../../context/UserContext";
 import InitialSignInInfo from "../NotificationPage/InitialSignInInfo";
 import MyFPevents from "../NotificationPage/MyDances/MyFPevents";
 import { BaseUrl } from "../../BaseUrl";
-
+import CardsForFutureEvents from "../../components/CardsForEvents/CardsForFutureEvents";
+import CardsForPastsEvents from "../../components/CardsForEvents/CardsForPastsEvents";
 const Profile = () => {
   const { profileCredentials, setProfileCredentials, token, setOpen, open } =
     useContext(UserContext);
@@ -22,8 +23,8 @@ const Profile = () => {
   const [success, setSuccess] = useState(
     JSON.parse(localStorage.getItem("success")) || false
   );
-  console.log ("profileCredentials", profileCredentials)
-console.log('userData:', userData)
+  console.log("profileCredentials", profileCredentials);
+  console.log("userData:", userData);
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -95,17 +96,17 @@ console.log('userData:', userData)
             </div>
             <div className="col-md-6 profile_Info p-0 ">
               <h3>My Dance Profile</h3>
-              <div className="profile_tablediv" >
-                <div className="d-md-flex justify-content-between align-items-center gap-2 advancemainimg " >
+              <div className="profile_tablediv">
+                <div className="d-md-flex justify-content-between align-items-center gap-2 advancemainimg ">
                   <img
                     src={dance}
                     alt=""
                     className="img-fluid"
                     style={{ mixBlendMode: "multiply" }}
                   />
-                  <div className="d-flex justify-content-around align-items-center gap-md-4 gap-sm-0 advancemainimg " >
+                  <div className="d-flex justify-content-around align-items-center gap-md-4 gap-sm-0 advancemainimg ">
                     {profileCredentials?.dances?.map((dance, index) => (
-                      <div key={index} className="" >
+                      <div key={index} className="">
                         <span className="maintext fs-5 ">{dance.style}</span>
                       </div>
                     ))}
@@ -120,7 +121,7 @@ console.log('userData:', userData)
                   />
                   <div className="d-flex justify-content-between mt-2 advancemaintext">
                     {profileCredentials?.dances?.map((dance, index) => (
-                      <div key={index} className="maintext ms-2" >
+                      <div key={index} className="maintext ms-2">
                         {dance.years}
                       </div>
                     ))}
@@ -135,7 +136,11 @@ console.log('userData:', userData)
                   />
                   <div className="d-flex justify-content-between mt-2 p-md-2 w-100 advancemaintext advancemaintextlg">
                     {profileCredentials?.dances?.map((dance, index) => (
-                      <div style={{width: 'fit-content'}} key={index} className="maintext">
+                      <div
+                        style={{ width: "fit-content" }}
+                        key={index}
+                        className="maintext"
+                      >
                         {dance.follow}
                       </div>
                     ))}
@@ -150,7 +155,11 @@ console.log('userData:', userData)
                   />
                   <div className="d-flex justify-content-between mt-2 p-2 w-100 advancemaintext advancemaintextlg">
                     {profileCredentials?.dances?.map((dance, index) => (
-                      <div style={{width: 'fit-content'}} key={index} className="maintext">
+                      <div
+                        style={{ width: "fit-content" }}
+                        key={index}
+                        className="maintext"
+                      >
                         {dance.lead}
                       </div>
                     ))}
@@ -160,15 +169,19 @@ console.log('userData:', userData)
             </div>
 
             {success ? (
-              <div className="profile-container " >
+              <div className="profile-container ">
                 <div className="profile-details">
                   <div className="detail-item">
                     <h4>Name:</h4>
-                    <h4 className="formlabels">{profileCredentials?.fullName}</h4>
+                    <h4 className="formlabels">
+                      {profileCredentials?.fullName}
+                    </h4>
                   </div>
                   <div className="detail-item">
                     <h4 className="text">Username:</h4>
-                    <h4 className="formlabels">{profileCredentials?.username}</h4>
+                    <h4 className="formlabels">
+                      {profileCredentials?.username}
+                    </h4>
                   </div>
                   <div className="detail-item">
                     <h4>email:</h4>
@@ -180,11 +193,15 @@ console.log('userData:', userData)
                   </div>
                   <div className="detail-item">
                     <h4>Dance alias:</h4>
-                    <h4 className="formlabels">{profileCredentials?.danceAlias}</h4>
+                    <h4 className="formlabels">
+                      {profileCredentials?.danceAlias}
+                    </h4>
                   </div>
                   <div className="detail-item">
                     <h4>I Move&Muse:</h4>
-                    <h4 className="formlabels">{profileCredentials?.moveMuse}</h4>
+                    <h4 className="formlabels">
+                      {profileCredentials?.moveMuse}
+                    </h4>
                   </div>
                 </div>
                 {/* <div className="profile-image " >
@@ -200,7 +217,15 @@ console.log('userData:', userData)
 
       {open && <InitialSignInInfo setSuccess={setSuccess} />}
 
-      <MyFPevents />
+      {/* <MyFPevents /> */}
+      <div className="ms-4 mt-5">
+        <h1 className="ps-4"> My Furure Events</h1>
+        <CardsForFutureEvents />
+      </div>
+      <div className="ms-4">
+        <h1 className="ps-4"> My Past Events</h1>
+        <CardsForPastsEvents />
+      </div>
     </>
   );
 };

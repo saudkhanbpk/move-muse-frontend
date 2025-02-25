@@ -12,7 +12,13 @@
 .socialiamge {
   width: 50%;
 }
-
+.titleanddatemain{
+  position: relative;
+}
+.tags-section{
+  position: absolute;
+  bottom: -6%;
+}
 .Musingtext {
   font-family: "Dancing Script", cursive;
 }
@@ -198,7 +204,13 @@ span {
   .button{
     top: 0;
   }
-
+  .titleanddatemain{
+    position: static;
+  }
+  .tags-section{
+    position: static;
+    margin-bottom: 40px;
+  }
   .main_misguide {
     display: block;
     width: 100%;

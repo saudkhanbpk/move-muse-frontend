@@ -3,16 +3,16 @@ import axios from "axios";
 import "./CardsForEvents.css";
 import { useNavigate } from "react-router-dom";
 import { BaseUrl } from "../../BaseUrl";
-import {
-  FaCalendarAlt,
-  FaMapMarkerAlt,
-  FaPeriscope,
-  FaUser,
-} from "react-icons/fa";
+import { FaCalendarAlt, FaMapMarkerAlt, FaUser } from "react-icons/fa";
+import { LuCircleDollarSign } from "react-icons/lu";
 import arrowleft from "../../../src/img/icons/arrow_previous_prpl.png";
 import arrowright from "../../../src/img/icons/arrow_next_prpl.png";
+import blog_heart_selected from "../../img/icons/blog_heart_selected.png";
+import blog_heart_unselected from "../../img/icons/blog_heart_unselected.png";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const CardsForPastsEvents = () => {
+const CardsForPastEvents = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -37,6 +37,24 @@ const CardsForPastsEvents = () => {
     fetchPastEvents();
   }, []);
 
+  const handleLikeToggle = async (eventId, currentLikeStatus) => {
+    try {
+      const newLikeStatus = !currentLikeStatus;
+      await axios.put(`${BaseUrl}/api/v1/events/Like-PastFestival/${eventId}`, {
+        likePastFestival: newLikeStatus,
+      });
+      setEvents((prevEvents) =>
+        prevEvents.map((event) =>
+          event._id === eventId ? { ...event, likePastFestival: newLikeStatus } : event
+        )
+      );
+      toast.success(newLikeStatus ? "Festival liked!" : "Festival unliked!");
+    } catch (error) {
+      console.error("Error liking the festival", error);
+      toast.error("Failed to update like status.");
+    }
+  };
+
   if (loading) {
     return <div>Loading events...</div>;
   }
@@ -58,57 +76,55 @@ const CardsForPastsEvents = () => {
   };
 
   return (
-    <section className="p-4 cursor-pointer">
-      <div className="d-flex row gap-4">
+    <section className="p-md-4">
+      <ToastContainer />
+      <div className="row">
         {currentEvents.map((event) => (
-          <div
-            key={event._id}
-            className="card_Div p-3 shadow-sm"
-            onClick={() => navigate(`/past-event/${event._id}`)}>
-            {/* <div className="imag-wrapper">
-              <img
-                src={
-                  event.image ||
-                  "https://img.freepik.com/free-vector/party-people-silhouetes-background_1048-911.jpg?semt=ais_hybrid"
-                }
-                className="card-image"
-                alt="Event Thumbnail"
-              />
-            </div> */}
-            <div className="card-content" style={{ lineHeight: "10px" }}>
-              <h4 className="event-title fs-3 fw-bold ms-4">{event.title}</h4>
-              <p className="event-description pt-3 fw-bold">
-                <span className="sub">
-                  {event.description.split(" ").slice(0, 3).join(" ")}...
-                </span>
-              </p>
-              <div className="event-details">
+          <div key={event._id} className="col-lg-4 col-xl-3 gap-2 col-md-6">
+            <div className="card_Div_Fav shadow-sm">
+              <div className="card-content mt-3 position-relative">
+                <div className="eventtitlediv blogheartfuturecard">
+                  <h5 className="linesofCards fw-bold">{event.title}</h5>
+                </div>
+                <div
+                  className="position-absolute image_div"
+                  onClick={() => handleLikeToggle(event._id, event.likePastFestival)}
+                >
+                  <img
+                    src={
+                      event.likePastFestival
+                        ? blog_heart_selected
+                        : blog_heart_unselected
+                    }
+                    alt={event.likePastFestival ? "Like" : "Unlike"}
+                    className="blogheartfuturecard"
+                    style={{ cursor: "pointer" }}
+                  />
+                </div>
+                <p className="linesofCards pt-md-3">
+                  <span className="sub">
+                    {event.description.split(" ").slice(0, 3).join(" ")}...
+                  </span>
+                </p>
                 <p className="event-description">
                   <FaUser />{" "}
                   <span className="sub">{event.artist || "N/A"}</span>
                 </p>
                 <p className="event-description">
-                  <FaMapMarkerAlt  />
-                  <span className="sub">
-                    {event.location.split(" ").slice(0, 3).join(" ") || "N/A"}
-                  </span>
+                  <FaMapMarkerAlt />{" "}
+                  <span className="sub">{event.location || "N/A"}</span>
                 </p>
                 <p className="event-description">
-                  <FaPeriscope /> <span className="sub">{event.price}</span>
+                  <LuCircleDollarSign />{" "}
+                  <span className="sub">{event.price}</span>
                 </p>
-                <p className="event-description align-items-center d-flex gap-1">
+                <p className="event-description d-flex gap-1 align-items-center">
                   <FaCalendarAlt />{" "}
                   <span className="sub">
                     {new Date(event.startDateTime).toLocaleDateString()}
                   </span>
                 </p>
               </div>
-              <a
-                className=""
-                onClick={() => navigate(`/past-event/${event._id}`)}
-                style={{display: 'flex', justifyContent: 'center', }}>
-                Visit Event
-              </a>
             </div>
           </div>
         ))}
@@ -119,7 +135,7 @@ const CardsForPastsEvents = () => {
           src={arrowleft}
           alt="previous"
           width={120}
-          className={` ${currentPage === 1 ? "opacity-50" : ""}`}
+          className={`${currentPage === 1 ? "opacity-50" : ""}`}
           onClick={handlePreviousPage}
           style={{ cursor: "pointer" }}
         />
@@ -139,4 +155,4 @@ const CardsForPastsEvents = () => {
   );
 };
 
-export default CardsForPastsEvents;
+export default CardsForPastEvents;

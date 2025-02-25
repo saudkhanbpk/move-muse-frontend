@@ -18,6 +18,7 @@ const CreateEvent = ({ closeForm }) => {
     artist: "",
     eventlink: "",
     flagged: false,
+    likeFestival: false,
     favourite: false
   });
 

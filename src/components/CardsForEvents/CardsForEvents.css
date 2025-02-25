@@ -1,11 +1,6 @@
-.card_Div {
-  width: 30% !important;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+.card_Div_Fav {
   border-radius: 10px;
   cursor: pointer;
-  overflow: hidden;
   box-shadow: inset;
   background-color: #ffd1dc !important;
   align-items: center;
@@ -22,11 +17,28 @@
   align-items: center;
   text-align: center;
 }
-
-.card_Div:hover {
-  transform: translate(-5px);
-  /* box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); */
+.mainofheart{
+  position: relative;
 }
+.blogheart{
+  width: 70px;
+  display: flex;
+  justify-content: end !important;
+  position: absolute;
+  right: 10px;
+  top: 0;
+  
+}
+
+.blogheartfuturecard{
+ 
+  width: 70px;
+ 
+}
+/* .card_Div:hover {
+  transform: translate(-5px);
+ 
+} */
 .cards-text {
   color: rgb(180, 177, 177);
 }
@@ -64,8 +76,7 @@
 
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 1024px) {
-  .card_Div {
-    width: 100% !important;
+  .card_Div_Fav {
     margin-top: 10px;
     padding: 20px;
   }
@@ -89,13 +100,11 @@
 }
 
 @media only screen and (max-width: 808px) {
-  .card_Div {
-    width: 100% !important;
+  .card_Div_Fav {
     margin-top: 10px;
     padding: 15px;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
   }
 
   .imag-wrapper {
@@ -119,11 +128,9 @@
   }
 }
 @media only screen and (min-width: 809px) and (max-width: 1024px) {
-  .card_Div {
-    width: 45% !important; /* Two cards per row */
+  .card_Div_Fav {
     margin-top: 10px;
     padding: 15px;
-    gap: 8px;
   }
 
   .imag-wrapper {
@@ -135,4 +142,8 @@
     line-height: 1.2;
     text-align: center;
   }
+}
+.image_div{
+  top: -30px;
+  right: -30px;
 }

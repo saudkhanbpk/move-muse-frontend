@@ -7,6 +7,10 @@ import { FaCalendarAlt, FaMapMarkerAlt, FaUser } from "react-icons/fa";
 import { LuCircleDollarSign } from "react-icons/lu";
 import arrowleft from "../../../src/img/icons/arrow_previous_prpl.png";
 import arrowright from "../../../src/img/icons/arrow_next_prpl.png";
+import blog_heart_selected from "../../img/icons/blog_heart_selected.png";
+import blog_heart_unselected from "../../img/icons/blog_heart_unselected.png";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CardsForFutureEvents = () => {
   const [events, setEvents] = useState([]);
@@ -28,9 +32,10 @@ const CardsForFutureEvents = () => {
       setLoading(false);
     }
   };
+
   useEffect(() => {
     fetchFutureEvents(); // Initial fetch
-  }, [events]);
+  }, []);
 
   if (loading) {
     return <div>Loading events...</div>;
@@ -39,6 +44,7 @@ const CardsForFutureEvents = () => {
   if (error) {
     return <div>{error}</div>;
   }
+
   const totalPages = Math.ceil(events.length / eventsPerPage);
   const startIndex = (currentPage - 1) * eventsPerPage;
   const currentEvents = events.slice(startIndex, startIndex + eventsPerPage);
@@ -51,61 +57,83 @@ const CardsForFutureEvents = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
 
+  const handleLikeToggle = async (eventId, currentLikeStatus) => {
+    try {
+      const newLikeStatus = !currentLikeStatus;
+      await axios.put(`${BaseUrl}/api/v1/events/like-festival/${eventId}`, {
+        like: newLikeStatus,
+      });
+      setEvents((prevEvents) =>
+        prevEvents.map((event) =>
+          event._id === eventId ? { ...event, like: newLikeStatus } : event
+        )
+      );
+      toast.success(newLikeStatus ? "Festival liked!" : "Festival unliked!");
+    } catch (err) {
+      console.error("Failed to update like status:", err);
+      toast.error("Failed to update like status.");
+    }
+  };
+
   return (
     <section className="p-md-4 ">
-      <div className="d-md-flex d-lg-flex gap-md-4">
+      <ToastContainer />
+      <div className="row  ">
         {currentEvents.map((event) => (
-          <div key={event._id} className="card_Div shadow-sm "  onClick={() => navigate(`/event/${event?._id}`)}>
-            {/* <div className="imag-wrapper" >
-              <img
-                src={
-                  event.image ||
-                  "https://img.freepik.com/free-vector/party-people-silhouetes-background_1048-911.jpg?semt=ais_hybrid"
-                } // Assuming event.image is the event's image URL
-                className="card-image"
-                alt="Event Thumbnail"
-              />
-            </div> */}
-            <div className="card-content">
-              <div className="eventtitlediv">
-                <h5 className="linesofCards fw-bold ">{event?.title}</h5>
-              </div>
-              <p className="linesofCards  pt-md-3 ">
-                <span className="sub">
-                  {" "}
-                  {event?.description.split(" ").slice(0, 3).join(" ")}...
-                </span>
-              </p>
-              <div className="event-details gap-y-0">
-                <p className="linesofCards ">
-                  <FaUser />{" "}
-                  <span className="sub"> {event?.artist || "N/A"}</span>
-                </p>
-                <p className="linesofCards ">
-                  <FaMapMarkerAlt />{" "}
+          <div key={event._id} className="col-lg-4 col-xl-3 gap-2 col-md-6">
+            <div className="card_Div_Fav shadow-sm">
+              <div className="card-content mt-3 position-relative">
+                <div className="eventtitlediv blogheartfuturecard">
+                  <h5 className="linesofCards fw-bold ">{event?.title}</h5>
+                </div>
+                <div
+                  className="position-absolute image_div"
+                  onClick={() => handleLikeToggle(event._id, event.like)}
+                >
+                  <img
+                    src={
+                      event.like ? blog_heart_selected : blog_heart_unselected
+                    }
+                    alt="Like"
+                    className="blogheartfuturecard"
+                  />
+                </div>
+                <p className="linesofCards pt-md-3">
                   <span className="sub">
-                    {event?.location.split(" ").slice(0, 3).join(" ") || "N/A"}
+                    {event?.description.split(" ").slice(0, 3).join(" ")}...
                   </span>
                 </p>
-                <p className="linesofCards ">
-                  <LuCircleDollarSign />{" "}
-                  <span className="sub"> {event?.price}</span>
-                </p>
-                <p className="linesofCards align-items-md-center d-md-flex gap-md-1">
-                  <FaCalendarAlt />{" "}
-                  <span className="sub">
-                    {" "}
-                    {new Date(event?.startDateTime).toLocaleDateString()}
-                  </span>
-                </p>
+                <div className="event-details gap-y-0">
+                  <p className="linesofCards">
+                    <FaUser />{" "}
+                    <span className="sub"> {event?.artist || "N/A"}</span>
+                  </p>
+                  <p className="linesofCards">
+                    <FaMapMarkerAlt />{" "}
+                    <span className="sub">
+                      {event?.location.split(" ").slice(0, 3).join(" ") ||
+                        "N/A"}
+                    </span>
+                  </p>
+                  <p className="linesofCards">
+                    <LuCircleDollarSign />{" "}
+                    <span className="sub"> {event?.price}</span>
+                  </p>
+                  <p className="linesofCards align-items-md-center d-md-flex gap-md-1">
+                    <FaCalendarAlt />{" "}
+                    <span className="sub">
+                      {new Date(event?.startDateTime).toLocaleDateString()}
+                    </span>
+                  </p>
+                </div>
+                <a
+                  className=""
+                  onClick={() => navigate(`/event/${event?._id}`)}
+                  style={{ display: "flex", justifyContent: "center" }}
+                >
+                  Visit Event
+                </a>
               </div>
-              <a
-                className=""
-                onClick={() => navigate(`/event/${event?._id}`)}
-                style={{ display: "flex", justifyContent: "center" }}
-              >
-                Visit Event
-              </a>
             </div>
           </div>
         ))}
