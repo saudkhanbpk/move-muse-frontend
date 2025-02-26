@@ -7,7 +7,6 @@ const TopicCardReadmore = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [blogContent, setBlogContent] = useState(null);
-  console.log("blogContent", blogContent);
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -26,29 +25,30 @@ const TopicCardReadmore = () => {
   }, [id]);
 
   if (!blogContent) {
-    return <p>Loading... </p>;
+    return <p>Internal Server Error... </p>;
   }
 
   return (
     <div className="topicreadmoremain p-5">
       <div className="backgroundblogreadmore">
         <div className="blog-header">
-          <h1 className="Musingtext">{blogContent.title.name}</h1>
-          <h3 className="Musingtext fs-1">{blogContent?.authorType}</h3>
+          <h1 className="Musingtexttitle  fontsizeoftitle">
+            {blogContent.title.name}
+          </h1>
+          <h3 className="Musingtexttitle fontsizeofauthor">
+            {blogContent?.authorType}
+          </h3>
         </div>
         <div className="blog-content">
           <p
-            className="Musingtext"
-            style={{ fontSize: "25px", textAlign: "justify" }}
+            className="Musingtexttitle"
+            style={{ fontSize: "27px",  textAlign: "justify" }}
           >
             {blogContent.message}
           </p>
-          <p
-            className="Musingtext"
-            style={{ fontSize: "25px", textAlign: "justify" }}
-          >
+          <p>
             {blogContent.hashtags.map((hashtag, index) => (
-              <span key={index} className="mr-2">
+              <span key={index} className="mr-2 Musingtexttitle hashtagsss">
                 #{hashtag}
               </span>
             ))}

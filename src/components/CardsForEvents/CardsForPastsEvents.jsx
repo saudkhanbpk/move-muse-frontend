@@ -45,7 +45,9 @@ const CardsForPastEvents = () => {
       });
       setEvents((prevEvents) =>
         prevEvents.map((event) =>
-          event._id === eventId ? { ...event, likePastFestival: newLikeStatus } : event
+          event._id === eventId
+            ? { ...event, likePastFestival: newLikeStatus }
+            : event
         )
       );
       toast.success(newLikeStatus ? "Festival liked!" : "Festival unliked!");
@@ -81,30 +83,24 @@ const CardsForPastEvents = () => {
       <div className="row">
         {currentEvents.map((event) => (
           <div key={event._id} className="col-lg-4 col-xl-3 gap-2 col-md-6">
-            <div className="card_Div_Fav shadow-sm">
-              <div className="card-content mt-3 position-relative">
-                <div className="eventtitlediv blogheartfuturecard">
-                  <h5 className="linesofCards fw-bold">{event.title}</h5>
-                </div>
-                <div
-                  className="position-absolute image_div"
-                  onClick={() => handleLikeToggle(event._id, event.likePastFestival)}
-                >
-                  <img
-                    src={
-                      event.likePastFestival
-                        ? blog_heart_selected
-                        : blog_heart_unselected
-                    }
-                    alt={event.likePastFestival ? "Like" : "Unlike"}
-                    className="blogheartfuturecard"
-                    style={{ cursor: "pointer" }}
-                  />
-                </div>
-                <p className="linesofCards pt-md-3">
-                  <span className="sub">
-                    {event.description.split(" ").slice(0, 3).join(" ")}...
-                  </span>
+            <div
+              className="event-card p-2"
+              onClick={() => navigate(`/past-event/${event._id}`)}
+            >
+              <div
+                className="event-image d-flex align-items-center justify-content-center"
+                style={{
+                  backgroundImage: `url(${event.imageUrl})`,
+                }}
+              >
+                <h1 className="fw-bold">
+                  {!event.imageUrl && event.title.slice(0, 2).toUpperCase()}
+                </h1>
+              </div>
+              <div className="event-info">
+                <h5>{event.title}</h5>
+                <p className="event-duration">
+                  {event?.description.split(" ").slice(0, 3).join(" ")}...
                 </p>
                 <p className="event-description">
                   <FaUser />{" "}
@@ -118,13 +114,36 @@ const CardsForPastEvents = () => {
                   <LuCircleDollarSign />{" "}
                   <span className="sub">{event.price}</span>
                 </p>
-                <p className="event-description d-flex gap-1 align-items-center">
-                  <FaCalendarAlt />{" "}
-                  <span className="sub">
-                    {new Date(event.startDateTime).toLocaleDateString()}
-                  </span>
-                </p>
+                <div
+                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                >
+                  <FaCalendarAlt />
+                  <p>
+                    {new Date(event.startDateTime).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </p>
+                </div>
               </div>
+              <button
+                className="event-favorite"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleLikeToggle(event._id, event.likePastFestival);
+                }}
+              >
+                <img
+                  src={
+                    event.likePastFestival
+                      ? blog_heart_selected
+                      : blog_heart_unselected
+                  }
+                  alt="Favorite"
+                  style={{ width: "60px", height: "60px" }}
+                />
+              </button>
             </div>
           </div>
         ))}

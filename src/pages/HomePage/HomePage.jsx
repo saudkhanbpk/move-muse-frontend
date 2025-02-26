@@ -14,6 +14,7 @@ import KeyProject from "../../components/KeyProject/KeyProject";
 import ApiService from "../../services/ApiService";
 import InitialSignInInfo from "../NotificationPage/InitialSignInInfo";
 import { UserContext } from "../../context/UserContext";
+import CardsForFutureEvents from "../../components/CardsForEvents/CardsForFutureEvents";
 
 const HomePage = () => {
   // const { user } = useContext(UserContext);
@@ -69,11 +70,17 @@ const HomePage = () => {
       )}
       <Hero />
       {/* <FbEvent eventId={eventId} accessToken={accessToken} /> */}
-      <HP_Events
+      {/* <HP_Events
         upcomingEvents={upcomingEvents}
         pastEvents={pastEvents}
         onFavoriteToggle={handleFavoriteToggle}
-      />
+      /> */}
+      <div className="">
+        <p className="mt-4 fs-1 fw-bold ms-5">Coming up</p>
+      </div>
+      <div>
+        <CardsForFutureEvents />
+      </div>
       <HP_PlatformFeatures />
       <DiscoverNewEvent />
       <HP_Share />

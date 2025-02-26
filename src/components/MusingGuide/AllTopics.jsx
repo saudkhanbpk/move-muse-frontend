@@ -24,17 +24,33 @@ const AllTopics = ({ originalTopics, handleScroll }) => {
     setFilteredTopics(originalTopics);
   }, [originalTopics]);
 
+  // const handleFilterChange = (event) => {
+  //   const searchQuery = event.target.value.toLowerCase();
+  //   setFilter(searchQuery);
+
+  //   const filtered = originalTopics?.filter((topic) =>
+  //     topic.name.toLowerCase().includes(searchQuery)
+  //   );
+
+  //   setFilteredTopics(filtered);
+  // };
   const handleFilterChange = (event) => {
-    const searchQuery = event.target.value.toLowerCase();
+    let searchQuery = event.target.value;
+  
+    // Capitalize the first letter
+    if (searchQuery.length > 0) {
+      searchQuery = searchQuery.charAt(0).toUpperCase() + searchQuery.slice(1).toLowerCase();
+    }
+  
     setFilter(searchQuery);
-
+  
     const filtered = originalTopics?.filter((topic) =>
-      topic.name.toLowerCase().includes(searchQuery)
+      topic.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
-
+  
     setFilteredTopics(filtered);
   };
-
+  
   const paginate = (topics, pageNumber) => {
     const indexOfLastTopic = pageNumber * topicsPerPage;
     const indexOfFirstTopic = indexOfLastTopic - topicsPerPage;

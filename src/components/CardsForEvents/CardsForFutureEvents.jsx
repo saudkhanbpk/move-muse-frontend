@@ -76,67 +76,58 @@ const CardsForFutureEvents = () => {
   };
 
   return (
-    <section className="p-md-4 ">
+    <section className="p-md-4">
       <ToastContainer />
-      <div className="row  ">
-        {currentEvents.map((event) => (
-          <div key={event._id} className="col-lg-4 col-xl-3 gap-2 col-md-6">
-            <div className="card_Div_Fav shadow-sm">
-              <div className="card-content mt-3 position-relative">
-                <div className="eventtitlediv blogheartfuturecard">
-                  <h5 className="linesofCards fw-bold ">{event?.title}</h5>
+      <div className="row">
+        {currentEvents.map((event) => {
+          const titleChars = event.title.slice(0, 2);
+          return (
+            <div key={event._id} className="col-lg-4 col-xl-3 gap-2 col-md-6">
+              <div
+                className="event-card p-3"
+                onClick={() => navigate(`/event/${event?._id}`)}
+              >
+                <div className="event-image">
+                  <h1 className="event-title">{titleChars}</h1>
+                  <div
+                    className="favorite-icon"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleLikeToggle(event._id, event.like);
+                    }}
+                  >
+                    <img
+                      src={
+                        event.like ? blog_heart_selected : blog_heart_unselected
+                      }
+                      alt="Like"
+                      className="blogheartfuturecard"
+                    />
+                  </div>
                 </div>
-                <div
-                  className="position-absolute image_div"
-                  onClick={() => handleLikeToggle(event._id, event.like)}
-                >
-                  <img
-                    src={
-                      event.like ? blog_heart_selected : blog_heart_unselected
-                    }
-                    alt="Like"
-                    className="blogheartfuturecard"
-                  />
-                </div>
-                <p className="linesofCards pt-md-3">
-                  <span className="sub">
+                <div className="event-info">
+                  <h5>{event.title}</h5>
+                  <p className="event-description">
                     {event?.description.split(" ").slice(0, 3).join(" ")}...
-                  </span>
-                </p>
-                <div className="event-details gap-y-0">
-                  <p className="linesofCards">
-                    <FaUser />{" "}
-                    <span className="sub"> {event?.artist || "N/A"}</span>
                   </p>
-                  <p className="linesofCards">
-                    <FaMapMarkerAlt />{" "}
-                    <span className="sub">
-                      {event?.location.split(" ").slice(0, 3).join(" ") ||
-                        "N/A"}
-                    </span>
+                  <p className="event-details">
+                    <FaUser /> {event?.artist || "N/A"}
                   </p>
-                  <p className="linesofCards">
-                    <LuCircleDollarSign />{" "}
-                    <span className="sub"> {event?.price}</span>
+                  <p className="event-details">
+                    <FaMapMarkerAlt /> {event?.location || "N/A"}
                   </p>
-                  <p className="linesofCards align-items-md-center d-md-flex gap-md-1">
+                  <p className="event-details">
+                    <LuCircleDollarSign /> {event?.price}
+                  </p>
+                  <p className="event-details">
                     <FaCalendarAlt />{" "}
-                    <span className="sub">
-                      {new Date(event?.startDateTime).toLocaleDateString()}
-                    </span>
+                    {new Date(event?.startDateTime).toLocaleDateString()}
                   </p>
                 </div>
-                <a
-                  className=""
-                  onClick={() => navigate(`/event/${event?._id}`)}
-                  style={{ display: "flex", justifyContent: "center" }}
-                >
-                  Visit Event
-                </a>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       <div className="d-flex justify-content-between align-items-center mt-5 flex-column flex-md-row text-center">

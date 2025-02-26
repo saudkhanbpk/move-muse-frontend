@@ -16,7 +16,9 @@
 .topic-heading {
   font-family: "Dancing Script", cursive;
 }
-
+.titleofblogg{
+  font-size: 30px;
+}
 .move-and-mouse-color {
   color: #545454 !important;
 }
@@ -42,6 +44,24 @@
   margin: auto;
   margin-top: 20px;
 }
+.Musingtexttitle {
+  font-family: "Dancing Script", cursive;
+  
+}
+
+.fontsizeoftitle{
+  font-size: 50px;
+
+}
+.fontsizeofauthor{
+  font-size: 40px;
+  font-weight: bold;
+}
+.hashtagsss{
+  font-size: 28px !important;
+  font-weight: bold;
+}
+
 
 @media (max-width: 768px) {
   .backgroundblogreadmore {

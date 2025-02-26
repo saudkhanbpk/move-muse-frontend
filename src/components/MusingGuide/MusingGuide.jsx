@@ -56,15 +56,27 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
     setInputValue(e.target.value);
   };
 
+  // const addTag = () => {
+  //   if (inputValue.trim() && selectedHashtags.length < 5) {
+  //     setSelectedHashtags([...selectedHashtags, inputValue.trim()]);
+  //     setInputValue("");
+  //   } else if (selectedHashtags.length >= 5) {
+  //     NotificationService.notifyError("You can add up to 5 tags.");
+  //   }
+  // };
+
+  // const handleTagInputKeyDown = (e) => {
+  //   if (e.key === "Enter") {
+  //     addTag();
+  //   }
+  // };
   const addTag = () => {
-    if (inputValue.trim() && selectedHashtags.length < 5) {
+    if (inputValue.trim()) {
       setSelectedHashtags([...selectedHashtags, inputValue.trim()]);
       setInputValue("");
-    } else if (selectedHashtags.length >= 5) {
-      NotificationService.notifyError("You can add up to 5 tags.");
     }
   };
-
+  
   const handleTagInputKeyDown = (e) => {
     if (e.key === "Enter") {
       addTag();
@@ -73,8 +85,8 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
 
   const logData = async (e) => {
     e.preventDefault();
-    if (selectedHashtags.length < 5) {
-      NotificationService.notifyError("Please add at least 5 tags.");
+    if (selectedHashtags.length < 2) {
+      NotificationService.notifyError("Please add  tags.");
       return;
     }
 
@@ -83,7 +95,7 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
       author: signatureOption === "author" ? user?._id : "Move & Muse Community",
       message: text,
       hashtags: selectedHashtags,
-      authorType: signatureOption,
+      authorType: signatureOption === "author" ? user?.fullName : "Move & Muse Community",
     };
     try {
       const response = await ApiService.post("createBlog", newPost);
@@ -282,10 +294,10 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
                 <div className="d-flex gap-3 justify-content-end ">
                   <input
                     type="checkbox"
-                    value="community"
+                    value="move & muse community"
                     checked={signatureOption === "community"}
                     onChange={handleSignatureChange}
-                  />
+                  style={{color: 'blue'}}/>
                   <label className="Musingtext fs-2">Move & Muse Community</label>
                 </div>
               </div>
@@ -308,7 +320,7 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
                 </div>
               </div>
               <div className="  ">
-                <button className="button-3d mb-5 " onClick={logData}>
+                <button className="button-3d mb-5 mt-2" onClick={logData}>
                   Submit
                 </button>
               </div>
@@ -321,7 +333,7 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
       {showSuccess && (
         <div className="success-popup">
           <div className="success-message-content">
-            Thank you for sharing your musings with us, an admin will approve your article or get back with some comments as soon as possible!
+            Thank you for sharing your musings with us.
           </div>
         </div>
       )}
@@ -332,16 +344,18 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          background-color: #F6D46B;
+          background-color: #EBE1D5;
           border: 1px solid #ccc;
-          padding: 20px;
+          padding: 10px;
           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
           z-index: 1000;
-          border-radius: 40px;
+          border-radius: 10px;
+          width: 90%;
+          text-align: center;
         }
         .success-message-content {
           font-size: 1.2rem;
-          color: white;
+          color: black;
         }
       `}</style>
     </>
