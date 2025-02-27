@@ -234,14 +234,7 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
           >
             <div className="titleanddatemain">
               <div className="mt-3 d-flex justify-content-center" style={{ position: 'relative'}}>
-                <IoClose onClick={() => navigate(-1)} style={{
-                  position: 'absolute',
-                  top: '-20px',
-                  right:'-10px',
-                  fontSize:'25px',
-                  cursor:'pointer'
-                }} />
-              </div>
+               </div>
               <input
                 type="text"
                 placeholder="Enter Your Title"
@@ -309,7 +302,7 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
                   onChange={handleTagInputChange}
                   onKeyDown={handleTagInputKeyDown}
                   placeholder="Enter a tag"
-                  style={{ background: "transparent", border: '2px solid red', outline: 'none', textAlign: 'center', padding: '3px 5px' }}
+                  style={{ background: "transparent", border: '1px solid black', outline: 'none', textAlign: 'center', padding: '3px 5px' }}
                  className=""/>
                 <div className="d-flex gap-3" >
                   {selectedHashtags.map((tag, index) => (
@@ -337,25 +330,41 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
           </div>
         </div>
       )}
-
-      <style jsx>{`
+<style jsx>{`
         .success-popup {
           position: fixed;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          background-color: #EBE1D5;
-          border: 1px solid #ccc;
-          padding: 10px;
+           background-color: #D4C2EF;
+          border: 2px solid red;
+          padding: 20px;
           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
           z-index: 1000;
-          border-radius: 10px;
-          width: 90%;
+          border-radius: 50%;
+          width: 280px;
+          height: 280px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           text-align: center;
         }
         .success-message-content {
-          font-size: 1.2rem;
+          font-size: 1.5rem;
           color: black;
+          font-weight: bold;
+        }
+        .success-circle {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+         
+        }
+        .success-text {
+          padding: 10px 20px;
         }
       `}</style>
     </>

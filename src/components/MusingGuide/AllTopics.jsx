@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./alltopics.css";
-import { CiSearch } from "react-icons/ci";
+import { CiSearch, CiSquarePlus } from "react-icons/ci";
 import axios from "axios";
 import { BaseUrl } from "../../BaseUrl";
 import { toast, ToastContainer } from "react-toastify";
-import { CiSquarePlus } from "react-icons/ci";
+import 'react-toastify/dist/ReactToastify.css';
 
 const adminToken = localStorage.getItem("token");
 
@@ -24,33 +24,23 @@ const AllTopics = ({ originalTopics, handleScroll }) => {
     setFilteredTopics(originalTopics);
   }, [originalTopics]);
 
-  // const handleFilterChange = (event) => {
-  //   const searchQuery = event.target.value.toLowerCase();
-  //   setFilter(searchQuery);
-
-  //   const filtered = originalTopics?.filter((topic) =>
-  //     topic.name.toLowerCase().includes(searchQuery)
-  //   );
-
-  //   setFilteredTopics(filtered);
-  // };
   const handleFilterChange = (event) => {
     let searchQuery = event.target.value;
-  
+
     // Capitalize the first letter
     if (searchQuery.length > 0) {
       searchQuery = searchQuery.charAt(0).toUpperCase() + searchQuery.slice(1).toLowerCase();
     }
-  
+
     setFilter(searchQuery);
-  
+
     const filtered = originalTopics?.filter((topic) =>
       topic.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
-  
+
     setFilteredTopics(filtered);
   };
-  
+
   const paginate = (topics, pageNumber) => {
     const indexOfLastTopic = pageNumber * topicsPerPage;
     const indexOfFirstTopic = indexOfLastTopic - topicsPerPage;
@@ -62,11 +52,13 @@ const AllTopics = ({ originalTopics, handleScroll }) => {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
   const axiosConfig = {
     headers: {
       Authorization: `Bearer ${adminToken}`,
     },
   };
+
   const handleAddTitle = async () => {
     console.log("clicked", newTitle);
     if (newTitle.trim()) {
@@ -138,8 +130,8 @@ const AllTopics = ({ originalTopics, handleScroll }) => {
                 }}
               >
                 <h5
-                  className="cursor-pointer cedarville-cursive-regular"
-                  style={{ width: "fit-content", textAlign: "justify" }}
+                  className="cursor-pointer textttt"
+                  style={{ width: "fit-content", textAlign: "justify", }}
                 >
                   {index + 1 + (currentPage - 1) * topicsPerPage}. {topic.name}
                 </h5>
@@ -161,7 +153,7 @@ const AllTopics = ({ originalTopics, handleScroll }) => {
             />
           </div>
           <div>
-            <h6 className="cursor-pointer fontFamily mt-2" >
+            <h6 className="cursor-pointer textttt mt-2" >
               Add your topic
             </h6>
           </div>
@@ -199,6 +191,7 @@ const AllTopics = ({ originalTopics, handleScroll }) => {
           </button>
         </div>
       )}
+      <ToastContainer />
     </div>
   );
 };
