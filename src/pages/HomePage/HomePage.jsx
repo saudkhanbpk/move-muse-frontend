@@ -69,7 +69,6 @@ const HomePage = () => {
         <InitialSignInInfo setSuccess={setSuccess} />
       )}
       <Hero />
-      {/* <FbEvent eventId={eventId} accessToken={accessToken} /> */}
       {/* <HP_Events
         upcomingEvents={upcomingEvents}
         pastEvents={pastEvents}

@@ -30,8 +30,8 @@ const InitialSignInInfo = ({ setSuccess }) => {
   const [birthday, setBirthday] = useState(profileCredentials?.birthday || "");
   const [style, setStyle] = useState("");
   const [since, setSince] = useState("");
-  const [follow, setFollow] = useState("Not interested");
-  const [lead, setLead] = useState("Not interested");
+  const [follow, setFollow] = useState("");
+  const [lead, setLead] = useState("");
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   // Local state to hold form data
@@ -65,8 +65,28 @@ const InitialSignInInfo = ({ setSuccess }) => {
     "November",
     "December",
   ];
-  const styleOptions = ["Bachata", "Kizomba", "Salsa", "Tango", "Other"];
-  const sinceOptions = ["1 year", "2 years", "3 years", "4 years", "5+ years"];
+  const styleOptions = [
+    "Bachata",
+    "Kizomba",
+    "Salsa",
+    "Tango",
+    "Fono",
+    "Swing",
+    "Konpa",
+    "Brazalian zouk",
+    " Lindy Hop",
+    "Other",
+  ];
+  const sinceOptions = [
+    "3 months",
+    "6 months",
+    "9 months",
+    "1 year",
+    "2 years",
+    "3+ years",
+    "4 years",
+    "5+ years",
+  ];
   const followLeadOptions = [
     "Beginner",
     "Intermediate",
@@ -75,21 +95,35 @@ const InitialSignInInfo = ({ setSuccess }) => {
   ];
 
   const addDance = () => {
-    if (dances?.length >= 3) {
-      NotificationService.notifyError("You can add a maximum of three dances.");
+    if (dances?.length >= 10) {
+      NotificationService.notifyError("You can add a maximum of ten dances.");
       return;
     }
+
+    if (!style || !since || !follow || !lead) {
+      NotificationService.notifyError("Style, Since, Follow, and Lead are required.");
+      return;
+    }
+
+    if (follow === "Not interested" && lead === "Not interested") {
+      NotificationService.notifyError(
+        "At least one of Follow or Lead is required."
+      );
+      return;
+    }
+
     const newDance = {
       style: style || "New Style",
       years: since || "0 years",
-      follow: follow || "Not interested",
-      lead: lead || "Not interested",
+      follow,
+      lead,
     };
+
     setDances([...dances, newDance]);
     setStyle("");
     setSince("");
-    setFollow("Not interested");
-    setLead("Not interested");
+    setFollow("");
+    setLead("");
   };
 
   const removeDance = (index) => {
@@ -120,6 +154,13 @@ const InitialSignInInfo = ({ setSuccess }) => {
       ethnicity,
       birthday,
     };
+
+    if (!formData.fullName || !formData.city || !formData.danceAlias) {
+      NotificationService.notifyError(
+        "Name, City, and Dance Alias are required."
+      );
+      return;
+    }
 
     if (userImage) {
       const imageFormData = new FormData();
@@ -178,7 +219,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
         NotificationService.notifyError("Profile update failed");
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
       NotificationService.notifyError("Profile update failed");
     }
   };
@@ -249,7 +290,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
         </div>
         <div
           className="card bg-transparent shadow p-2 rounded-4 border-3 border-black"
-          style={{ border: "2px solid red" }}
+          style={{ border: "2px solid red", width: "100%" }}
         >
           <div className="container mt-4">
             <div className="card shadow border-0">
@@ -358,10 +399,10 @@ const InitialSignInInfo = ({ setSuccess }) => {
             </div>
           </div>
 
-          {/* <h5 className="text-center my-4 fw-bold" style={{ color: "#480249" }}>
+          <h5 className="text-center my-4 fw-bold" style={{ color: "#480249" }}>
             A little about me
-          </h5> */}
-          {/* <div className="row d-flex flex-column align-items-center text-center mb-4">
+          </h5>
+          <div className="row d-flex flex-column align-items-center text-center mb-4">
             <div className="col-md-8 sm:col-md-4 mt-3 ">
               <Dropdown
                 id="gender"
@@ -389,7 +430,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
                 options={birthdayOptions}
               />
             </div>
-          </div> */}
+          </div>
 
           <div className="my-3">
             <div className="text-center">
@@ -409,7 +450,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
                       options={styleOptions}
                     />
                   </div>
-                  <div className="mb-3 w-full">
+                  <div className="mb-3 w-full" style={{ zIndex: 1000 }}>
                     <Dropdown
                       id="since"
                       label={since || "Since"}
@@ -451,15 +492,18 @@ const InitialSignInInfo = ({ setSuccess }) => {
               </div>
             </div>
           </div>
-          <div className="">
+          <div className=" ">
             {dances.map((dance, index) => (
               <div
                 key={index}
-                className="d-flex justify-content-between align-items-center"
+                className="d-flex justify-content-between align-items-center "
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
-                <p className="fw-bold" style={{ color: "#480249" }}>
+                <p
+                  className="fw-bold  "
+                  style={{ fontSize: "13px", color: "#480249" }}
+                >
                   {index + 1}. {dance.style}; {dance.years}; Follow -{" "}
                   {dance.follow}; Lead - {dance.lead}
                 </p>
