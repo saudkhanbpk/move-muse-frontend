@@ -324,49 +324,16 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
       </div>
 
       {showSuccess && (
-        <div className="success-popup">
-          <div className="success-message-content">
+        <div className="mainpopup">
+        <div className="bgimg">
+
+          <div className="">
             Thank you for sharing your musings with us.
           </div>
         </div>
+        </div>
       )}
-<style jsx>{`
-        .success-popup {
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-           background-color: #D4C2EF;
-          border: 2px solid red;
-          padding: 20px;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-          z-index: 1000;
-          border-radius: 50%;
-          width: 280px;
-          height: 280px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-        }
-        .success-message-content {
-          font-size: 1.5rem;
-          color: black;
-          font-weight: bold;
-        }
-        .success-circle {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 50%;
-         
-        }
-        .success-text {
-          padding: 10px 20px;
-        }
-      `}</style>
+
     </>
   );
 };

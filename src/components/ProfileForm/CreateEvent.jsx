@@ -20,15 +20,19 @@ const CreateEvent = ({ closeForm }) => {
     flagged: false,
     likeFestival: false,
     favourite: false
-  });
+    });
 
   const [formErrors, setFormErrors] = useState({});
   const [danceInput, setDanceInput] = useState("");
+  const [user, setuser] = useState("");
   const [addedDances, setAddedDances] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
+  useEffect(()=>{
+    setuser(JSON.parse(localStorage.getItem("userData")))
+  },[])
   const handleKeyPress = (e) => {
     if (
       e.key === "Enter" &&
@@ -78,6 +82,7 @@ const CreateEvent = ({ closeForm }) => {
         await axios.post(`${BaseUrl}/api/v1/events/create`, {
           ...formData,
           category: addedDances.join(", "),
+          userId:user._id,
           artist: formData.artist,
         });
         resetForm();

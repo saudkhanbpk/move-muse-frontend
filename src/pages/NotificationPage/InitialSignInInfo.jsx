@@ -441,7 +441,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
             <div className="d-flex flex-wrap gap-5 justify-center ms-md-5 ms-0">
               <div className="w-full w-md-1/2 text-md-center">
                 <div className="d-md-flex gap-md-3 w-full">
-                  <div className=" w-full">
+                  <div className=" w-full" >
                     <Dropdown
                       id="style"
                       label={style || "Style"}
@@ -502,7 +502,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
               >
                 <p
                   className="fw-bold  "
-                  style={{ fontSize: "13px", color: "#480249" }}
+                  style={{ fontSize: "13px", color: "#480249", }}
                 >
                   {index + 1}. {dance.style}; {dance.years}; Follow -{" "}
                   {dance.follow}; Lead - {dance.lead}

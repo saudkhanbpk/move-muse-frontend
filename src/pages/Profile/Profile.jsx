@@ -5,18 +5,12 @@ import dance from "../../img/icons/dance.png";
 import year from "../../img/icons/year.png";
 import lead from "../../img/icons/lead.png";
 import follow from "../../img/icons/follow.png";
-import sidelogo from "../../img/icons/magic_stream_upwards.png";
-import eliza from "../../img/icons/eliza.png";
-import { IoMdCamera } from "react-icons/io";
 import NotificationService from "../../components/NotificationService/NotificationService";
 import { UserContext } from "../../context/UserContext";
 import InitialSignInInfo from "../NotificationPage/InitialSignInInfo";
-import MyFPevents from "../NotificationPage/MyDances/MyFPevents";
 import { BaseUrl } from "../../BaseUrl";
 import CardsForFutureEvents from "../../components/CardsForEvents/CardsForFutureEvents";
 import CardsForPastsEvents from "../../components/CardsForEvents/CardsForPastsEvents";
-import TopicCardReadmore from "../../pages/M&NPage/TopicCardReadmore";
-import BlogPage from "../BlogPage/BlogPage";
 import MAndNPage from "../M&NPage/M&NPage";
 
 const Profile = () => {
@@ -98,10 +92,10 @@ const Profile = () => {
                     className="img-fluid"
                     style={{ mixBlendMode: "multiply" }}
                   />
-                  <div className="d-flex justify-content-around align-items-center gap-md-4 gap-sm-0 advancemainimg ">
+                  <div className="d-flex  ms-3 justify-content-around align-items-center gap-md-4 gap-sm-0 advancemainimg w-100">
                     {profileCredentials?.dances?.map((dance, index) => (
-                      <div key={index} className="">
-                        <span className="maintext fs-5 ">{dance.style}</span>
+                      <div key={index} className="text-center w-100">
+                        <span className="maintext fs-5  ">{dance.style}</span>
                       </div>
                     ))}
                   </div>
@@ -113,9 +107,9 @@ const Profile = () => {
                     className="img-fluid"
                     style={{ mixBlendMode: "multiply" }}
                   />
-                  <div className="d-flex justify-content-between mt-2 advancemaintext">
+                  <div className="d-flex justify-content-between mt-2 advancemaintext w-100">
                     {profileCredentials?.dances?.map((dance, index) => (
-                      <div key={index} className="maintext ms-2">
+                      <div key={index} className="text-center maintext w-100">
                         {dance.years}
                       </div>
                     ))}
@@ -128,12 +122,12 @@ const Profile = () => {
                     className="img-fluid"
                     style={{ mixBlendMode: "multiply" }}
                   />
-                  <div className="d-flex justify-content-between mt-2 p-md-2 w-100 advancemaintext advancemaintextlg">
+                  <div className="d-flex justify-content-between mt-2  w-100 advancemaintext advancemaintextlg">
                     {profileCredentials?.dances?.map((dance, index) => (
                       <div
                         style={{ width: "fit-content" }}
                         key={index}
-                        className="maintext"
+                        className="text-center w-100 maintext"
                       >
                         {dance.follow}
                       </div>
@@ -147,12 +141,12 @@ const Profile = () => {
                     className="img-fluid"
                     style={{ mixBlendMode: "multiply" }}
                   />
-                  <div className="d-flex justify-content-between mt-2 p-2 w-100 advancemaintext advancemaintextlg">
+                  <div className="d-flex justify-content-between mt-2  w-100 advancemaintext advancemaintextlg">
                     {profileCredentials?.dances?.map((dance, index) => (
                       <div
                         style={{ width: "fit-content" }}
                         key={index}
-                        className="maintext"
+                        className="text-center w-100 maintext"
                       >
                         {dance.lead}
                       </div>
@@ -212,12 +206,12 @@ const Profile = () => {
         <h1 className="ps-4"> My Future Events</h1>
         <CardsForFutureEvents />
       </div>
-      <div className="ms-4">
+      <div className="ms-4" style={{ border: "2px solid red" }}>
         <h1 className="ps-4"> My Past Events</h1>
         <CardsForPastsEvents />
       </div>
       <div>
-        <MAndNPage  />
+        <MAndNPage />
       </div>
     </>
   );
