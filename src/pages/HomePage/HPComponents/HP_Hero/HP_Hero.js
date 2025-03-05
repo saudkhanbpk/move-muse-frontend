@@ -1,7 +1,7 @@
 import React from "react";
 import SignUpButton from "../../../../components/Buttons/SignUpButton/SignUpButton";
 import "../../HPComponents/HP_Hero/HP_Hero.css";
-import celeb from "../../../../img/icons/heroimage.png";
+import newhomee from "../../../../img/icons/newhomee.png";
 import { Link, useNavigate } from "react-router-dom";
 
 const Hero = () => {
@@ -14,12 +14,11 @@ const Hero = () => {
     <section className="Hero">
       <div className="container">
         <div className="row align-items-center">
-          <div className="col-md-6 text-center text-md-start">
+          <div className="col-md-6 text-center text-md-start mb-5">
             <Link to="/festivals" className="User_celebration d-block mb-3">
               <img
-                src={celeb}
-                alt="Celebrating user"
-                className="user_cleb img-fluid"
+                src={newhomee}
+                className=" imgggg"
               />
             </Link>
           </div>

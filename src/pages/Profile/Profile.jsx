@@ -206,13 +206,13 @@ const Profile = () => {
         <h1 className="ps-4"> My Future Events</h1>
         <CardsForFutureEvents />
       </div>
-      <div className="ms-4" style={{ border: "2px solid red" }}>
+      <div className="ms-4" >
         <h1 className="ps-4"> My Past Events</h1>
         <CardsForPastsEvents />
       </div>
-      <div>
+      {/* <div>
         <MAndNPage />
-      </div>
+      </div> */}
     </>
   );
 };

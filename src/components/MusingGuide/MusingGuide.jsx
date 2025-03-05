@@ -56,27 +56,13 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
     setInputValue(e.target.value);
   };
 
-  // const addTag = () => {
-  //   if (inputValue.trim() && selectedHashtags.length < 5) {
-  //     setSelectedHashtags([...selectedHashtags, inputValue.trim()]);
-  //     setInputValue("");
-  //   } else if (selectedHashtags.length >= 5) {
-  //     NotificationService.notifyError("You can add up to 5 tags.");
-  //   }
-  // };
-
-  // const handleTagInputKeyDown = (e) => {
-  //   if (e.key === "Enter") {
-  //     addTag();
-  //   }
-  // };
   const addTag = () => {
     if (inputValue.trim()) {
       setSelectedHashtags([...selectedHashtags, inputValue.trim()]);
       setInputValue("");
     }
   };
-  
+
   const handleTagInputKeyDown = (e) => {
     if (e.key === "Enter") {
       addTag();
@@ -86,16 +72,18 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
   const logData = async (e) => {
     e.preventDefault();
     if (selectedHashtags.length < 2) {
-      NotificationService.notifyError("Please add  tags.");
+      NotificationService.notifyError("Please add tags.");
       return;
     }
 
     const newPost = {
       titleId: state !== null ? state._id : topicValue?._id,
-      author: signatureOption === "author" ? user?._id : "Move & Muse Community",
+      author:
+        signatureOption === "author" ? user?._id : "Move & Muse Community",
       message: text,
       hashtags: selectedHashtags,
-      authorType: signatureOption === "author" ? user?.fullName : "Move & Muse Community",
+      authorType:
+        signatureOption === "author" ? user?.fullName : "Move & Muse Community",
     };
     try {
       const response = await ApiService.post("createBlog", newPost);
@@ -165,7 +153,7 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
 
   return (
     <>
-      <div className="main_misguide mt-4  mb-5">
+      <div className="main_misguide mt-4  ">
         <div
           className=" p-5 "
           style={{
@@ -232,9 +220,11 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
             className="p-md-4 p-3 mt-5"
             ref={submitArticeleContainerRef}
           >
-            <div className="titleanddatemain">
-              <div className="mt-3 d-flex justify-content-center" style={{ position: 'relative'}}>
-               </div>
+            <div className="titleanddatemain ">
+              <div
+                className="mt-3 d-flex justify-content-center"
+                style={{ position: "relative" }}
+              ></div>
               <input
                 type="text"
                 placeholder="Enter Your Title"
@@ -290,33 +280,43 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
                     value="move & muse community"
                     checked={signatureOption === "community"}
                     onChange={handleSignatureChange}
-                  style={{color: 'blue'}}/>
-                  <label className="Musingtext fs-2">Move & Muse Community</label>
+                    style={{ color: "blue" }}
+                  />
+                  <label className="Musingtext fs-2">
+                    Move & Muse Community
+                  </label>
                 </div>
               </div>
               <div className="tags-section">
-              <div>
-                <input
-                  type="text"
-                  value={inputValue}
-                  onChange={handleTagInputChange}
-                  onKeyDown={handleTagInputKeyDown}
-                  placeholder="Enter a tag"
-                  style={{ background: "transparent", border: '1px solid black', outline: 'none', textAlign: 'center', padding: '3px 5px' }}
-                 className=""/>
-                <div className="d-flex gap-3" >
-                  {selectedHashtags.map((tag, index) => (
-                    <span key={index} className="Musingtext fs-4 " >
-                      {tag}
-                    </span>
-                  ))}
+                <div>
+                  <input
+                    type="text"
+                    value={inputValue}
+                    onChange={handleTagInputChange}
+                    onKeyDown={handleTagInputKeyDown}
+                    placeholder="Enter a tag"
+                    style={{
+                      background: "transparent",
+                      border: "1px solid black",
+                      outline: "none",
+                      textAlign: "center",
+                      padding: "3px 5px",
+                    }}
+                    className=""
+                  />
+                  <div className="d-flex gap-3">
+                    {selectedHashtags.map((tag, index) => (
+                      <span key={index} className="Musingtext fs-4 ">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-              <div className="  ">
-                <button className="button-3d mb-5 mt-2" onClick={logData}>
-                  Submit
-                </button>
-              </div>
+                <div className="buttonmain "> 
+                  <button className="button-3d btnn mt-md-2 mb-5" onClick={logData}>
+                    Submit
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -324,16 +324,16 @@ const MusingGuide = ({ topicValue, setTopicValue, fetchData }) => {
       </div>
 
       {showSuccess && (
-        <div className="mainpopup">
-        <div className="bgimg">
-
-          <div className="">
-            Thank you for sharing your musings with us.
+        <div className="popupconatinerr">
+          <div className="mainpopup">
+            <div className="bgimg"></div>
+            <div className="cricleofpopup"></div>
+            <div className="textofit">
+              Thank you for sharing your musings with us.
+            </div>
           </div>
         </div>
-        </div>
       )}
-
     </>
   );
 };
