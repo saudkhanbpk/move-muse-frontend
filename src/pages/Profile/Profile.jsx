@@ -12,6 +12,7 @@ import { BaseUrl } from "../../BaseUrl";
 import CardsForFutureEvents from "../../components/CardsForEvents/CardsForFutureEvents";
 import CardsForPastsEvents from "../../components/CardsForEvents/CardsForPastsEvents";
 import MAndNPage from "../M&NPage/M&NPage";
+import Attended from "../reviews/Attended";
 
 const Profile = () => {
   const { profileCredentials, setProfileCredentials, token, setOpen, open } =
@@ -213,6 +214,9 @@ const Profile = () => {
       {/* <div>
         <MAndNPage />
       </div> */}
+      <div>
+        <Attended/>
+      </div>
     </>
   );
 };

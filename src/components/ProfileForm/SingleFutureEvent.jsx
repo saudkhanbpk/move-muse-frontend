@@ -112,8 +112,8 @@ const SingleFutureEvent = () => {
           `${BaseUrl}/api/v1/events/future-event/${id}`
         );
         setEvent(response.data.event);
-        setIsFlagged(response.data.event.flagged); // Set initial flagged state
-        setIsFavorited(response.data.event.favourite); // Set initial favorited state
+        setIsFlagged(response.data.event.flagged);
+        setIsFavorited(response.data.event.favourite);
         setLoading(false);
       } catch (err) {
         setError("Failed to fetch events.");

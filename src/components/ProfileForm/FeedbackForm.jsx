@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import axios from "axios";
@@ -25,13 +25,15 @@ const FeedbackForm = ({ onSubmit }) => {
     flagged: false,
     role: "",
     likeReview: false,
-    
   });
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
+  const [user, setuser] = useState('')
 
   const { id } = useParams();
-
+  useEffect(()=>{
+    setuser(JSON.parse(localStorage.getItem("userData")))
+  },[])
   const toggleForm = () => setIsOpen(!isOpen);
 
   const handleChange = (e) => {
@@ -53,11 +55,18 @@ const FeedbackForm = ({ onSubmit }) => {
     if (!formData.as) {
       newErrors.role = "Role selection is required.";
     }
-    if (!formData.venue || !formData.ratio || !formData.artists || !formData.organization || !formData.culture) {
+    if (
+      !formData.venue ||
+      !formData.ratio ||
+      !formData.artists ||
+      !formData.organization ||
+      !formData.culture
+    ) {
       newErrors.rating = "Please rate your experience for all categories.";
     }
     if (!formData.description) {
-      newErrors.description = "Please share what others should know about this event.";
+      newErrors.description =
+        "Please share what others should know about this event.";
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -68,10 +77,12 @@ const FeedbackForm = ({ onSubmit }) => {
     setErrors({});
     setLoading(true);
     try {
-      console.log("Form Data:", formData); // Add this line to log the form data
-      const response = await axios.post(
+       await axios.post(
         `${BaseUrl}/api/v1/events/feedback/${id}`,
-        formData
+        {
+          ...formData,
+          userId: user._id,
+        }
       );
       toast.success(
         "Thank you for sharing your experience with the community!"
@@ -96,7 +107,9 @@ const FeedbackForm = ({ onSubmit }) => {
       console.error("Error submitting feedback:", error);
       if (error.response && error.response.data) {
         console.error("Error details:", error.response.data);
-        setErrors({ general: error.response.data.message || "An error occurred." });
+        setErrors({
+          general: error.response.data.message || "An error occurred.",
+        });
       } else {
         setErrors({ general: "An unexpected error occurred." });
       }
@@ -136,7 +149,9 @@ const FeedbackForm = ({ onSubmit }) => {
                 value={formData.title}
                 onChange={handleChange}
                 placeholder="Give a title to your review! (Optional)"
-                className={`form-control rounded ${formData.title === "" ? "border-danger" : ""}`}
+                className={`form-control rounded ${
+                  formData.title === "" ? "border-danger" : ""
+                }`}
                 style={{
                   backgroundColor: "#F2E7CB",
                   border: "2px solid gray",
@@ -156,7 +171,9 @@ const FeedbackForm = ({ onSubmit }) => {
                   <input
                     type="checkbox"
                     name="role"
-                    className={`form-check-input rounded custom-checkbox ${formData.role === "" ? "border-danger" : ""}`}
+                    className={`form-check-input rounded custom-checkbox ${
+                      formData.role === "" ? "border-danger" : ""
+                    }`}
                     checked={formData.role}
                     onChange={handleChange}
                     style={{
@@ -176,7 +193,9 @@ const FeedbackForm = ({ onSubmit }) => {
                         <input
                           type="radio"
                           required
-                          className={`form-check-input rounded ${formData.as === "" ? "border-danger" : ""}`}
+                          className={`form-check-input rounded ${
+                            formData.as === "" ? "border-danger" : ""
+                          }`}
                           name="as"
                           id={`role-${id}`}
                           value={role.toLowerCase()}
@@ -194,7 +213,9 @@ const FeedbackForm = ({ onSubmit }) => {
                   )}
                 </div>
               )}
-              {errors.role && <div className="text-danger mt-2">{errors.role}</div>}
+              {errors.role && (
+                <div className="text-danger mt-2">{errors.role}</div>
+              )}
             </div>
 
             <div className="mb-3">
@@ -221,7 +242,11 @@ const FeedbackForm = ({ onSubmit }) => {
                             handleChange(e);
                           }
                         }}
-                        className={`form-control rounded ${formData[field.toLowerCase()] === "" ? "border-danger" : ""}`}
+                        className={`form-control rounded ${
+                          formData[field.toLowerCase()] === ""
+                            ? "border-danger"
+                            : ""
+                        }`}
                         style={{
                           backgroundColor: "#F2E7CB",
                           border: "2px solid gray",
@@ -235,7 +260,9 @@ const FeedbackForm = ({ onSubmit }) => {
                   )
                 )}
               </div>
-              {errors.rating && <div className="text-danger mt-2">{errors.rating}</div>}
+              {errors.rating && (
+                <div className="text-danger mt-2">{errors.rating}</div>
+              )}
             </div>
 
             <div className="mb-3">
@@ -244,7 +271,9 @@ const FeedbackForm = ({ onSubmit }) => {
                 value={formData.description}
                 onChange={handleChange}
                 placeholder="Share your experience"
-                className={`form-control rounded-4 ${formData.description === "" ? "border-danger" : ""}`}
+                className={`form-control rounded-4 ${
+                  formData.description === "" ? "border-danger" : ""
+                }`}
                 rows="3"
                 style={{
                   backgroundColor: "#F2E7CB",
@@ -252,7 +281,9 @@ const FeedbackForm = ({ onSubmit }) => {
                   outline: "none",
                 }}
               />
-              {errors.description && <div className="text-danger mt-2">{errors.description}</div>}
+              {errors.description && (
+                <div className="text-danger mt-2">{errors.description}</div>
+              )}
             </div>
             <button
               style={{ background: "#F6D46B", width: "200px" }}
@@ -266,7 +297,9 @@ const FeedbackForm = ({ onSubmit }) => {
                 "Submit Feedback"
               )}
             </button>
-            {errors.general && <div className="text-danger mt-2">{errors.general}</div>}
+            {errors.general && (
+              <div className="text-danger mt-2">{errors.general}</div>
+            )}
           </div>
         </form>
       )}
