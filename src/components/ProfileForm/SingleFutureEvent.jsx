@@ -43,7 +43,6 @@ const SingleFutureEvent = () => {
           message: message,
         }
       );
-      console.log("response", response);
       if (response.data.success) {
         toast.success("Content flagged successfully.");
         setShowMessage(false);
@@ -52,7 +51,6 @@ const SingleFutureEvent = () => {
         toast.error("Failed to flag content.");
       }
     } catch (error) {
-      console.error("Error flagging content:", error);
       toast.error("There was an error flagging the content.");
     }
   };
@@ -66,7 +64,6 @@ const SingleFutureEvent = () => {
   //         message: "",
   //       }
   //     );
-  //     console.log("response", response);
   //     if (response.data.success) {
   //       toast.success("Content unflagged successfully.");
   //       setIsFlagged(false);
@@ -74,7 +71,6 @@ const SingleFutureEvent = () => {
   //       toast.error("Failed to unflag content.");
   //     }
   //   } catch (error) {
-  //     console.error("Error unflagging content:", error);
   //     toast.error("There was an error unflagging the content.");
   //   }
   // };
@@ -84,7 +80,6 @@ const SingleFutureEvent = () => {
       const response = await ApiService.put(`events/favourite-update/${id}`, {
         favourite: isFavorited,
       });
-      console.log("response", response);
       if (response.data.success) {
         if (isFavorited) {
           toast.success("Event added to favorites.");
@@ -96,7 +91,6 @@ const SingleFutureEvent = () => {
         toast.error("Failed to update favorite status.");
       }
     } catch (error) {
-      console.error("Error updating favorite status:", error);
       toast.error("There was an error updating the favorite status.");
     }
   };

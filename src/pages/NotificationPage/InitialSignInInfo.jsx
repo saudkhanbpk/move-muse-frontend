@@ -73,7 +73,7 @@ const InitialSignInInfo = ({ setSuccess }) => {
     "Fono",
     "Swing",
     "Konpa",
-    "Brazalian zouk",
+    "Brazalian ",
     " Lindy Hop",
     "Other",
   ];
@@ -186,7 +186,6 @@ const InitialSignInInfo = ({ setSuccess }) => {
           return;
         }
       } catch (error) {
-        console.log(error);
         NotificationService.notifyError(
           "Image can't be uploaded. Try again later."
         );
@@ -219,7 +218,6 @@ const InitialSignInInfo = ({ setSuccess }) => {
         NotificationService.notifyError("Profile update failed");
       }
     } catch (error) {
-      console.log(error);
       NotificationService.notifyError("Profile update failed");
     }
   };

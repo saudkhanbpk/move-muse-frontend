@@ -30,14 +30,12 @@ const ConfirmAttendance = () => {
     message: "",
   });
   const data = new Date();
-  console.log("data", data);
   const year = data.getFullYear();
   const month = String(data.getMonth() + 1).padStart(2, "0");
   const day = String(data.getDate()).padStart(2, "0");
   const fulldata = `${year}, ${month}, ${day}`;
 
-  const [date, setDate] = useState(data); // Use date object here instead of string
-  console.log("data", date);
+  const [date, setDate] = useState(data); 
 
   const onChange = (newDate) => {
     setDate(newDate);
@@ -53,7 +51,6 @@ const ConfirmAttendance = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form data:", formData);
   };
 
   const [confirmAttendanceForm, setConfirmAttendanceForm] = useState({
@@ -453,7 +450,6 @@ const ConfirmAttendance = () => {
             </div>
           </div>
         </div>
-        {/* favourite festival section */}
         <div className="kudosbg p-5">
           <div className="d-flex align-items-center gap-2">
             <h4 className="ps-4 fw-bold">Favorite Festivals</h4>

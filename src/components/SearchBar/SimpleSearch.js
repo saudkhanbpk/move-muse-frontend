@@ -7,8 +7,6 @@ const SimpleSearch = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // Handle the search logic here
-    console.log(searchTerm);
   };
 
   return (

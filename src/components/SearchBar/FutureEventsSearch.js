@@ -12,7 +12,6 @@ const FutureEventsSearch = () => {
   const handleSearch = (e) => {
     e.preventDefault();
    
-    console.log({ style, location, date, containsText });
   };
 
   return (
@@ -44,7 +43,6 @@ const FutureEventsSearch = () => {
           title="Date"
           id="input-group-dropdown-3"
         >
-          {/* Replace these with your actual date options */}
           <Dropdown.Item href="#" onClick={() => setDate('Date 1')}>Date 1</Dropdown.Item>
           <Dropdown.Item href="#" onClick={() => setDate('Date 2')}>Date 2</Dropdown.Item>
         </DropdownButton>

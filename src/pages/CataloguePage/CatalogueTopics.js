@@ -33,7 +33,6 @@ const CatalogueTopics = () => {
             const response = await ApiService.get("getAllTitles");
             setTopics(response.data.data.titles);
         } catch (error) {
-            console.log("Failed to fetch titles:", error);
             NotificationService.notifyError(
                 "Failed to fetch titles. Please try again."
             );

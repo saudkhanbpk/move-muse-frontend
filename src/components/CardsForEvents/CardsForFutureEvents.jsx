@@ -35,7 +35,6 @@ const CardsForFutureEvents = () => {
         response = await axios.get(`${BaseUrl}/api/v1/events/future-events`);
       }
 
-      // Sort events by start date
       const sortedEvents = response.data.sort(
         (a, b) => new Date(a.startDateTime) - new Date(b.startDateTime)
       );
@@ -88,7 +87,6 @@ const CardsForFutureEvents = () => {
       );
       toast.success(newLikeStatus ? "Festival liked!" : "Festival unliked!");
     } catch (err) {
-      console.error("Failed to update like status:", err);
       toast.error("Failed to update like status.");
     }
   };

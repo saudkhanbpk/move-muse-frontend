@@ -107,7 +107,6 @@ export const UserProvider = ({ children }) => {
         setProfileCredentials(res.data.profile || {});
       }
     } catch (error) {
-      console.error(error);
     }
   };
 

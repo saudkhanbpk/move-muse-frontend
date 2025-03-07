@@ -27,7 +27,6 @@ export default function ReviewsFilter() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(filterCredentials);
     alert("filter is trigger")
   };
 

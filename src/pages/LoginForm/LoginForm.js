@@ -30,7 +30,6 @@ const LoginForm = () => {
     e.preventDefault();
     try {
       const response = await axios.post(`${BaseUrl}/api/v1/auth/login`, formData);
-      console.log("API Response:", response); // Log the entire response for debugging
       if (response.data && response.data.success) {
         localStorage.setItem("token", response.data.token);
         NotificationService.notifySuccess("Login successful!");
@@ -40,7 +39,6 @@ const LoginForm = () => {
         setError(response.data.message || "Login failed");
       }
     } catch (error) {
-      console.error("Error during login:", error);
       if (error.response) {
       
         setError(error.response.data.message || "Internal server error");

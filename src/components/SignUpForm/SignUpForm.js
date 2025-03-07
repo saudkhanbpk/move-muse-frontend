@@ -16,16 +16,12 @@
 //     const { name, value } = e.target;
 //     setFormData({ ...formData, [name]: value });
 //   };
-//   console.log("the form data are shown here :", formData);
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
 //     try {
-//       console.log("form submit !!!");
 //       let response = await ApiService.post("auth/signup", formData);
-//       console.log("response :", response);
 //       navigate("/login")
 //     } catch (error) {
-//       console.log("error :", error);
 //     }
 //   };
  

@@ -73,7 +73,6 @@ const BlogDiscover = () => {
   const handlePopularChange = (event) => {
     setSelectedPopular(event.target.value);
   };
-  console.log("the seelected post : ", selectedPost);
   return (
     <>
       <div className="p-4 bg-colormain">

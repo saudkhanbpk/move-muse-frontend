@@ -30,7 +30,6 @@ function InviteUser({ eventId }) {
           );
           setSearchResults(results.data);
         } catch (error) {
-          console.error("Error fetching profiles", error);
         }
       } else {
         setSearchResults([]);

@@ -60,7 +60,6 @@ const HomePage = () => {
   }, [profileCredentials?.isFirstTimeLogin]);
 
   const handleFavoriteToggle = (eventIdData) => {
-    console.log(`Toggling favorite status for event ID: ${eventIdData}`);
   };
 
   return (

@@ -1,27 +1,28 @@
 .navbar {
-  background: #F6D46B !important;
+  background: #f6d46b !important;
   position: relative;
   box-shadow: none !important;
   width: 100%;
 }
 
 .nav-link {
-  color: #480249; 
+  color: #480249;
   font-family: "HK Grotesk", sans-serif;
-  float: left; 
-  display: block; 
-  text-align: center; 
-  padding: 14px 5px; 
-  text-decoration: none; 
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 14px 5px;
+  text-decoration: none;
   font-size: 20px;
   padding: 10px 10px;
   margin: 5px;
   font-weight: bold;
   border-radius: 20px;
+  margin-left: 20px;
 }
 
 .profile-btn:hover {
-background-color: #8d168f;
+  background-color: #8d168f;
 }
 .main-logo {
   width: 150px;
@@ -36,11 +37,11 @@ background-color: #8d168f;
   width: 80px;
 }
 .navbar a:hover {
-  color: black; 
+  color: black;
 }
 
 .navbar a.active {
-  background-color: transparent; 
+  background-color: transparent;
   color: #480249 !important;
   border: 2px solid #480249;
 }
@@ -56,7 +57,7 @@ background-color: #8d168f;
   right: 0px;
   padding: 20px;
   background-color: #480249;
-  color: 'white';
+  color: "white";
 }
 /* Animation when a section comes into view */
 @keyframes popUp {
@@ -93,12 +94,11 @@ background-color: #8d168f;
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
   .dropdown {
-  position: absolute;
-  top: 300px;
-  right: 40px;
-  padding: 20px;
-  background-color: #480249;
-  color: 'white';
+    position: absolute;
+    top: 300px;
+    right: 40px;
+    padding: 20px;
+    background-color: #480249;
+    color: "white";
   }
 }
-

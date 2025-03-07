@@ -17,7 +17,6 @@ function AllReviews() {
         const response = await axios.get(`${BaseUrl}/api/v1/events/feedback`);
         setFlaggedReviews(response.data.data || []);
       } catch (error) {
-        console.error("Error fetching flagged reviews:", error);
       }
     };
 
@@ -45,12 +44,10 @@ function AllReviews() {
     const maxPossible = 5;
     const average = total / 5;
 
-    // Round up to the next whole number if the average is 0.5 or higher
     if (average % 1 >= 0.5) {
       return Math.ceil(average);
     }
 
-    // Return the average rating
     return average;
   };
 

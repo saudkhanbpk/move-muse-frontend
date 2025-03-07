@@ -16,7 +16,6 @@ export default function TopicTitleContainer({ setSelectTopic, selectTopic }) {
       setTopics(response.data.data.titles);
       setAllBlogLength(response?.data?.data?.titles?.length);
     } catch (error) {
-      console.log("Failed to fetch titles:", error);
       NotificationService.notifyError(
         "Failed to fetch titles. Please try again."
       );

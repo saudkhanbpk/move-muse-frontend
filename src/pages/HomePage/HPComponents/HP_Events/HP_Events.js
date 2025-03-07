@@ -15,17 +15,14 @@ const HP_Events = ({ onFavoriteToggle }) => {
   // Fetch upcoming events
   useEffect(() => {
     const fetchEvents = async () => {
-      // console.log("Fetching future events...");
       try {
         const response = await axios.get(
           // "https://move-muse-backend-1.onrender.com/api/v1/events/future-events"
           `${BaseUrl}/api/v1/events/future-events`
         );
-        // console.log("response", response);
         setUpcomingEvents(response.data); // Populate events state with fetched data
         setLoading(false); // Set loading to false after data is fetched
       } catch (err) {
-        console.error("Error fetching events:", err);
         setError("Failed to load events.");
         setLoading(false); // Set loading to false even if there is an error
       }
@@ -39,7 +36,6 @@ const HP_Events = ({ onFavoriteToggle }) => {
     setUpcomingRange((prevRange) => prevRange + 2);
   };
 
-  // Handle loading and error states
   if (loading) return <p>Loading events...</p>;
   if (error) return <p>{error}</p>;
 

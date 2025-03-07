@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import "./NavBar.css";
-import logo from "../../img/logo/Black sq.png";
+import blacksq from "../../img/icons/blacksq.png";
 import notify from '../../img/icons/bell.png';
 import dancelogo from "../../img/icons/DanceLogIn.png";
 import { UserContext } from "../../context/UserContext";
@@ -27,7 +27,6 @@ const NavBar = () => {
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('userData'));
-    console.log('User Data Retrieved from Local Storage:', userData);
     if (userData && userData?.profilePicture) {
       setProfilePicture(userData?.profilePicture)
     } else {
@@ -84,7 +83,7 @@ const NavBar = () => {
     <Navbar bg="transparent" expand="lg" expanded={expanded}>
       <Container fluid>
         <Navbar.Brand href="/">
-          <img src={logo} alt="Logo" className="main-logo" />
+          <img src={blacksq} alt="Logo" className="main-logo" />
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"

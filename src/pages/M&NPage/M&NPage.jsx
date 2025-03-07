@@ -37,7 +37,7 @@ export default function MAndNPage() {
   useEffect(() => {
     getAllBlogsRef.current();
   }, [getAllBlogsRef]);
-
+  
   // const visibleBlog = blogs.filter((blog) => blog?._id === blogId);
 
   return (

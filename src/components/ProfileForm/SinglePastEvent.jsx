@@ -66,7 +66,6 @@ const SinglePastEvent = () => {
           : "Event removed from favorites!"
       );
     } catch (err) {
-      console.error("Failed to update favourite status:", err);
       toast.error("Failed to update favorite status.");
     }
   };
@@ -81,7 +80,6 @@ const SinglePastEvent = () => {
       setShowMessage(false);
       toast.success("Event flagged successfully!");
     } catch (err) {
-      console.error("Failed to flag event:", err);
       toast.error("Failed to flag event.");
     }
   };

@@ -7,7 +7,6 @@ import MAndNHero from '../M&NPage/hero/MAndNHero';
 
 const Article = () => {
     const [topics, setTopics] = useState([]);
-    console.log('topics', topics)
     const [newTopic, setNewTopic] = useState("");
     const [topicValue, setTopicValue] = useState("");
     const [posts, setPosts] = useState([]);
@@ -66,7 +65,6 @@ const Article = () => {
             const response = await ApiService.get("getAllTitles");
             setTopics(response.data.data.titles);
         } catch (error) {
-            console.log("Failed to fetch titles:", error);
             NotificationService.notifyError(
                 "Failed to fetch titles. Please try again."
             );

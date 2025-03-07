@@ -67,7 +67,6 @@ const BlogPage = () => {
         setTopics(fetchedTopics);
         setDates(fetchedDates);
       } catch (error) {
-        console.error("Failed to fetch blogs:", error);
       }
     };
 

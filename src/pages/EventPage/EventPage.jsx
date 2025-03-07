@@ -36,7 +36,6 @@ const EventPage = () => {
       );
       setEvent(res.data.event);
     } catch (error) {
-      console.error("Error fetching event data", error);
     }
   };
 
@@ -59,7 +58,6 @@ const EventPage = () => {
       );
       setUserInterest(res.data);
     } catch (error) {
-      console.error("Error fetching user interest data", error);
     }
   };
 
@@ -77,7 +75,6 @@ const EventPage = () => {
   };
 
   const isIdInUserInterest = userInterest?.some((interest) => {
-    console.log(interest?.profile?._id, profileCredentials?._id);
     return interest?.profile?._id === profileCredentials?._id;
   });
 
@@ -116,7 +113,6 @@ const EventPage = () => {
       );
       NotificationService.notifySuccess("Interest toggled");
     } catch (error) {
-      console.error("Error toggling interest", error);
     }
   };
 

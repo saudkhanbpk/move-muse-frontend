@@ -104,9 +104,7 @@ const FeedbackForm = ({ onSubmit }) => {
         role: "",
       });
     } catch (error) {
-      console.error("Error submitting feedback:", error);
       if (error.response && error.response.data) {
-        console.error("Error details:", error.response.data);
         setErrors({
           general: error.response.data.message || "An error occurred.",
         });

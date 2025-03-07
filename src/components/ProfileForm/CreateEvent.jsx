@@ -4,7 +4,7 @@ import EventModal from "./EventModal";
 import { BaseUrl } from "../../BaseUrl";
 import MagicCircle from "../../img/icons/magic_circle.png";
 import { IoClose } from "react-icons/io5";
-
+import './createevent.css';
 const CreateEvent = ({ closeForm }) => {
   const [formData, setFormData] = useState({
     title: "",
@@ -20,7 +20,7 @@ const CreateEvent = ({ closeForm }) => {
     flagged: false,
     likeFestival: false,
     favourite: false
-    });
+  });
 
   const [formErrors, setFormErrors] = useState({});
   const [danceInput, setDanceInput] = useState("");
@@ -30,9 +30,10 @@ const CreateEvent = ({ closeForm }) => {
   const [showModal, setShowModal] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     setuser(JSON.parse(localStorage.getItem("userData")))
-  },[])
+  }, [])
+
   const handleKeyPress = (e) => {
     if (
       e.key === "Enter" &&
@@ -82,7 +83,7 @@ const CreateEvent = ({ closeForm }) => {
         await axios.post(`${BaseUrl}/api/v1/events/create`, {
           ...formData,
           category: addedDances.join(", "),
-          userId:user._id,
+          userId: user._id,
           artist: formData.artist,
         });
         resetForm();
@@ -92,7 +93,6 @@ const CreateEvent = ({ closeForm }) => {
           closeForm();
         }, 4000);
       } catch (error) {
-        console.log("error", error);
       } finally {
         setLoading(false);
       }
@@ -134,8 +134,14 @@ const CreateEvent = ({ closeForm }) => {
     <>
       <div className="container col-12 col-lg-6">
         {showSuccess ? (
-          <div className="success-message">
-            Event created successfully!
+          <div className="popupconatinerr">
+            <div className="mainpopup">
+              <div className="bgimg"></div>
+              <div className="cricleofpopup"></div>
+              <div className="textofitevent">
+              Event created successfully!
+              </div>
+            </div>
           </div>
         ) : (
           <div

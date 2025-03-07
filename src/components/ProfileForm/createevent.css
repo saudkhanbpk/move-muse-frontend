@@ -1,0 +1,52 @@
+/* popup start */
+.popupconatinerr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .mainpopup {
+    position: relative;
+    width: 500px;
+    height: 500px;
+  }
+  
+  .bgimg {
+    background-image: url("../../img/icons/magic_circle.png");
+    background-size: cover;
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    mix-blend-mode: multiply;
+    border-radius: 50%;
+  }
+  
+  .textofitevent {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    font-size: 21px;
+    width: 200px;
+    font-family: sans-serif;
+    font-weight: bold;
+  }
+  
+  .cricleofpopup {
+    position: absolute;
+    top: 30%;
+    left: 27%;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: #f6d46b;
+  }
+  
+  /* popup end */
+  

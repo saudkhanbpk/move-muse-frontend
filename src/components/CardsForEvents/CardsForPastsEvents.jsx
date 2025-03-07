@@ -17,9 +17,6 @@ import { useLocation } from "react-router-dom";
 
 const CardsForPastEvents = () => {
   const [events, setEvents] = useState([]);
-
-  console.log("events : 11", events);
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,7 +24,6 @@ const CardsForPastEvents = () => {
   const eventsPerPage = 4;
   const navigate = useNavigate();
   const location = useLocation();
-  console.log("location 1122: ", location);
   useEffect(() => {
     const fetchPastEvents = async () => {
       try {
@@ -46,7 +42,6 @@ const CardsForPastEvents = () => {
             (a, b) => new Date(b.startDateTime) - new Date(a.startDateTime)
           );
         }
-        console.log("sortedEvents :", sortedEvents);
 
         const storedRatings =
           JSON.parse(localStorage.getItem("eventRatings")) || {};
@@ -54,7 +49,6 @@ const CardsForPastEvents = () => {
           ...event,
           rating: storedRatings[event._id] || event.rating || 0,
         }));
-        console.log("eventsWithRatings :", eventsWithRatings);
 
         setEvents(eventsWithRatings);
       } catch (err) {
@@ -82,7 +76,6 @@ const CardsForPastEvents = () => {
       );
       toast.success(newLikeStatus ? "Festival liked!" : "Festival unliked!");
     } catch (error) {
-      console.error("Error liking the festival", error);
       toast.error("Failed to update like status.");
     }
   };
@@ -93,7 +86,6 @@ const CardsForPastEvents = () => {
         rating: newRating,
       });
 
-      // Update localStorage with the new rating
       const updatedEvents = events.map((event) =>
         event._id === eventId ? { ...event, rating: newRating } : event
       );
@@ -106,7 +98,6 @@ const CardsForPastEvents = () => {
       setEvents(updatedEvents);
       toast.success("Rating updated!");
     } catch (error) {
-      console.error("Error updating rating", error);
       toast.error("Failed to update rating.");
     }
   };

@@ -21,7 +21,6 @@ const TopicCardReadmore = () => {
         return response.json();
       })
       .then((data) => setBlogContent(data))
-      .catch((error) => console.error("Error fetching blog content:", error));
   }, [id]);
 
   if (!blogContent) {
@@ -53,12 +52,6 @@ const TopicCardReadmore = () => {
               </span>
             ))}
           </p>
-
-          {/* <div className="textmainn">
-            <p className="mt-md-5 ms-md-5">
-              <span className="Musingtext">Move & Muse Community | Author</span>
-            </p>
-          </div> */}
         </div>
       </div>
 

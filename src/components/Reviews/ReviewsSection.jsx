@@ -12,7 +12,6 @@ export default function ReviewsSection() {
   const [feedbackData, setFeedbackData] = useState([]);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
-  console.log(id);
   const fetchFeedback = async () => {
     try {
       const response = await axios.get(
@@ -20,7 +19,6 @@ export default function ReviewsSection() {
       );
       setFeedbackData(response.data.data);
     } catch (error) {
-      console.error("Error fetching feedback:", error);
     } finally {
       setLoading(false);
     }
@@ -35,9 +33,8 @@ export default function ReviewsSection() {
       await axios.delete(
         `${BaseUrl}/api/v1/events/single-feedback/${reviewId}`
       );
-      fetchFeedback(); // Refetch the data after deletion
+      fetchFeedback(); 
     } catch (error) {
-      console.error("Error deleting feedback:", error);
     }
   };
 

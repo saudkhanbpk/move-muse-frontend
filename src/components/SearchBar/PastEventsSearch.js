@@ -13,7 +13,6 @@ const PastEventsSearch = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     // Implement your search logic here, like sending a request to your backend
-    console.log({ style, location, rating, date, containsText });
   };
 
   return (

@@ -11,7 +11,6 @@ const RecentKudosDetail = ({ users = [] }) => {
   const [currentStartIndex, setCurrentStartIndex] = useState(0);
 
   // Debugging: Log the users prop
-  console.log("Users data:", users);
 
   const handleResize = () => {
     if (window.innerWidth < 768) {
@@ -48,8 +47,6 @@ const RecentKudosDetail = ({ users = [] }) => {
     ? users.slice(currentStartIndex, currentStartIndex + itemsToShow)
     : [];
     
-  // Debugging: Log the visible kudos array
-  console.log("Visible Kudos:", visibleKudos);
 
   const remainingItems = users.length - (currentStartIndex + itemsToShow);
   const remainingCount = remainingItems > 0 ? remainingItems : 0;

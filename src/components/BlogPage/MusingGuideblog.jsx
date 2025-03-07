@@ -62,7 +62,6 @@ const MusingGuideblog = ({ topicValue, setTopicValue, fetchData }) => {
     setDate(new Date().toISOString().slice(0, 10));
     setText("");
   };
-  console.log("the selected hashtags are show here : ", selectedHashtags);
   const guideSteps = [
     "We see musing about dance like a generous flow of sap! But for our blog posts we are inviting you to share the maple syrup thoughts that can heal hearts, or trigger profound conversations in our communities. Therefore please enjoy the playground of 500 words.",
     "Decide whether you would like to publish it under your name or as a MnM community member.",

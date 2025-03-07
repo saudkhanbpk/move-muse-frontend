@@ -30,7 +30,6 @@ const Signup = () => {
     setLoading(true); 
     try {
       const response = await axios.post(`${BaseUrl}/api/v1/auth/signup`, formData);
-      console.log("API Response:", response);
       if (response.data && response.data.success) {
         NotificationService.notifySuccess("User registered successfully!");
         navigate("/login"); 
@@ -38,7 +37,6 @@ const Signup = () => {
         setError(response.data.message || "Registration failed");
       }
     } catch (error) {
-      console.error("Error during signup:", error);
       if (error.response) {
         setError(error.response.data.message || "Internal server error");
       } else if (error.request) {
@@ -56,7 +54,6 @@ const Signup = () => {
     setLoading(true); 
     axios.post(`${BaseUrl}/api/v1/auth/google`, { idToken: credential })
       .then(res => {
-        console.log('Token Exchange Response:', res);
         localStorage.setItem('token', res.data.token); 
         localStorage.setItem('userData', JSON.stringify(res.data.user)); 
         setUserLoggedIn(true);
@@ -66,7 +63,6 @@ const Signup = () => {
         navigate('/');
       })
       .catch(error => {
-        console.error('Error logging in with Google', error);
         if (error.response) {
       
           setError(error.response.data.message || "Google login failed. Please try again.");
@@ -123,7 +119,6 @@ const Signup = () => {
             <GoogleLogin 
               onSuccess={handleGoogleLogin}
               onError={() => {
-                console.log('Login Failed');
                 setError("Google login failed. Please try again.");
               }}
             />
